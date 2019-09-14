@@ -1,0 +1,19 @@
+span.headerbtn.glyphicon:hover {
+    cursor: pointer;
+}
+
+span.headerbtn.glyphicon {
+    font-size: 60%;
+    position: relative;
+    margin-left: -25px;
+    padding-right: 5px;
+    color: rgb(161, 161, 161);
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+    opacity: 0;
+}
+
+h1:hover span.headerbtn,h2:hover span.headerbtn, h3:hover span.headerbtn{
+    opacity: 1;
+    visibility: visible;
+}
