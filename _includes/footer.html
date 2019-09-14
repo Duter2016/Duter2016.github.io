@@ -221,6 +221,47 @@
 
 
 
+<!-- Jekyll-Search -->
+{% if site.Jekyll-Search %}
+<div class="cb-search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
+      opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+    <input type="text" class="form-control cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="日期 or 标题 or 标签" >
+    <div style="position: fixed; top: 16px; right: 16px;">
+        <img src="/myPlugins/search/img/cb-close.png"  id="cb-close-btn"/>
+    </div>
+</div>
+<div style="position: fixed; right: 16px; bottom: 20px;">
+    <img src="/myPlugins/search/img/cb-search.png"  id="cb-search-btn"  title="双击ctrl试一下"/>
+</div>
+<link rel="stylesheet" href="{{ "/myPlugins/search/css/cb-search.min.css" | prepend: site.baseurl }}">
+<script src="{{ "/myPlugins/search/js/bootstrap3-typeahead.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/myPlugins/search/js/cb-search.js" | prepend: site.baseurl }}"></script>
+{% endif %}
+
+
+<!-- 增加图片放大预览插件 -->
+{% if site.lightbox %}
+<link rel="stylesheet" href="{{ "/myPlugins/lightbox/lightbox.min.css" | prepend: site.baseurl }}">
+<script src="{{ "/myPlugins/lightbox/lightbox.min.js" | prepend: site.baseurl }}"></script>
+<script>
+    $('div.post-container img').each(function(index, val) {
+        var link = $('<a></a>').attr({
+        'rel': 'lightbox',
+        'href': $(val).attr('src'),
+        'data-lightbox':"roadtrip"
+        });
+        /* if image has title */
+        if ($(val).siblings('em')!=null) {
+            link.attr('title', $(val).next('em').html());
+        }
+        $(val).parent().prepend(link);
+        link.append($(val)); /* move img inside link */
+        $(val).addClass('img-fluid'); /* add BS4 image fluid class */
+    });
+</script>
+{% endif %}
+
+
 
 <!-- Side Catalog -->
 {% if page.catalog %}
