@@ -92,38 +92,6 @@
                 </ul>
                 <p class="copyright text-muted">
                     Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}
- <!-- Baidu Tongji -->
-{% if site.ba_track_id %}
-<script>
-    // dynamic User by Hux
-    var _baId = '{{ site.ba_track_id }}';
-
-    // Originial
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?" + _baId;
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-{% endif %}
-
- <script type="text/javascript">
-document.write("Hello World!")
-</script>
-<noscript>Your browser does not support JavaScript!</noscript>
-
-<!-- duter2016.github.io Baidu tongji analytics -->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?6b745afaf4056010d2a874cb474bfedf";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
                     <br>
                     Theme on <a href="{{ site.github_repo }}">GitHub</a> |
                     <iframe
