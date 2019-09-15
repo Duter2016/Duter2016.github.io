@@ -267,6 +267,18 @@ ga_domain: huangxuan.me			# 默认的是 auto, 这里我是自定义了的域名
 
 参考文档：[using jekyll with pages](https://help.github.com/articles/using-jekyll-with-pages/) & [Upgrading from 2.x to 3.x](http://jekyllrb.com/docs/upgrading/2-to-3/)
 
+## 添加文章访问量功能[不蒜子]：
+在_includes目录下的head.html中添加
+
+`<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>`
+
+在_includes目录下的footer.html中添加如下代码，这样文章底部有了统计访问量功能，pv的方式，单个用户连续点击n篇文章，记录n次访问量：  
+
+`<span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span>次</span>`
+
+在_layouts目录下的post.html中添加如下代码，这样每篇文章有了统计访问量功能，uv的方式，单个用户连续点击n篇文章，只记录1次访客数：  
+
+`<span id="busuanzi_container_page_pv"> | 访问量：<span id="busuanzi_value_page_pv"></span> 次</span>`
 
 ## 致谢
 
