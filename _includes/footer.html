@@ -100,7 +100,7 @@
                         src="https://ghbtns.com/github-btn.html?user={{ site.github_username }}&repo={{ site.github_username }}.github.io&type=star&count=true" >
                     </iframe>
                     <br>
-                    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span><span id="busuanzi_container_site_uv"> | 本站访客数<span id="busuanzi_value_site_uv"></span>人 | </span><span id="htmer_time" style="color: black;"></span>
+                    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span><span id="busuanzi_container_site_uv"> | 本站访客数<span id="busuanzi_value_site_uv"></span>人 | </span><span id="htmer_time"></span>
                 </p>
             </div>
         </div>
@@ -353,7 +353,7 @@
 <!-- 动态显示网站运行时间 -->
 <script type="text/javascript" language="javascript">
     function setTime() {
-        var create_time = Math.round(new Date(Date.UTC(2018, 05, 05, 0, 0, 0)).getTime() / 1000);
+        var create_time = Math.round(new Date(Date.UTC(2019, 09, 13, 0, 0, 0)).getTime() / 1000);
         var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
         currentTime = secondToDate((timestamp - create_time));
         currentTimeHtml = '运行' + currentTime[0] + '年' + currentTime[1] + '天' ;
