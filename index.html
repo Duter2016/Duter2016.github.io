@@ -19,7 +19,7 @@ description: "死马当作活马医，再糟，死马还能再死一回。"
         </div>
     </a>
     <p class="post-meta">
-        作者: {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%Y - %m - %d" }}
+        作者: {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} | {{ post.date | date: "%Y - %m - %d" }}
     </p>
 </div>
 <hr>
