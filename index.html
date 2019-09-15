@@ -25,7 +25,8 @@ description: "死马当作活马医，再糟，死马还能再死一回。"
 <hr>
 {% endfor %}
 
-<!-- Pager -->
+<!-- Pager 1-->
+<!-- 
 {% if paginator.total_pages > 1 %}
 <ul class="pager">
     {% if paginator.previous_page %}
@@ -40,3 +41,7 @@ description: "死马当作活马医，再糟，死马还能再死一回。"
     {% endif %}
 </ul>
 {% endif %}
+-->
+
+<!-- Pager 2-->
+{% include pagination.html %}
