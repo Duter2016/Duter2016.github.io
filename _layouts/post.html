@@ -48,6 +48,7 @@ layout: default
 </header>
 
 <!-- Post Content -->
+ <span class="meta">本文含英文{{ page.content | number_of_words }}字，中文{{ content | strip_html | strip_newlines | split: "" | size }}字</span>
 <article>
     <div class="container">
         <div class="row">
