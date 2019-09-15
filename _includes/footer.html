@@ -356,7 +356,7 @@
         var create_time = Math.round(new Date(Date.UTC(2019, 09, 13, 0, 0, 0)).getTime() / 1000);
         var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
         currentTime = secondToDate((timestamp - create_time));
-        currentTimeHtml = '运行' + Time[0] + '年' + Time[1] + '天' ;
+        currentTimeHtml = '运行' + time[0] + '年' + time[1] + '天' ;
         document.getElementById("htmer_time").innerHTML = currentTimeHtml;
     }
     setInterval(setTime, 1000);
