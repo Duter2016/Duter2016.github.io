@@ -1,7 +1,7 @@
 # Site settings
 title: 优源
 SEOTitle: 优源的博客 | YouYuan Blog
-header-img: img/post-bg-dutlx.jpg
+header-img: img/post-bg-dutbs.jpg
 email: duter2016@foxmail.com
 description: "优源，一个有想法的地方。"
 keyword: "优源, YouYuan Blog, 优源的博客, Duter2016, Duter, Linux"
@@ -111,6 +111,9 @@ friends: [
     },{
         title: "Deepin",
         href: "https://bbs.deepin.org"
+    },{
+        title: "图片压缩",
+        href: "https://compressjpeg.com/zh/"
     }
 ]
 
