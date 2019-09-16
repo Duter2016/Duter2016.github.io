@@ -213,6 +213,12 @@ disqus_username: qiubaiying
 
 参考我的这篇文章：[《为博客添加 Gitalk 评论插件》](http://qiubaiying.top/2017/12/19/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0-Gitalk-%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/)
 
+## 使用intensedebate添加评论
+也可以使用intensedebate，注册账号什么得不说了，将得到的html文件，即intensedebate-comments.html保存到_includes目录下，在post.html正文结束处添加(**[]替换为{}**)：
+
+  [% if site.intensedebate_comments %]
+    [% include intensedebate-comments.html %]
+  [% endif %] 
 
 ### Analytics
 
@@ -279,6 +285,70 @@ ga_domain: huangxuan.me			# 默认的是 auto, 这里我是自定义了的域名
 在_layouts目录下的post.html中添加如下代码，这样每篇文章有了统计访问量功能，uv的方式，单个用户连续点击n篇文章，只记录1次访客数：  
 
 `<span id="busuanzi_container_page_pv"> | 访问量：<span id="busuanzi_value_page_pv"></span> 次</span>`
+
+## 添加文章访问量功能[不蒜子]：
+在_includes目录下的head.html中添加
+
+直接将以下代码加入_post文件夹的footer.html文件的合适位置，将代码：
+
+```
+<span id="htmer_time" style="color: red;"></span>
+```
+
+放在你认为合适的地方显示网站运行时间。  
+
+然后，在footer.html文件的合适位置（我放在最后）添加如下代码：  
+
+```
+<!-- 计算网站运行时间 -->
+<span style="font-size:12px;"><script language=JavaScript> 
+ function secondToDate(second) {
+     if (!second) {
+        return 0;
+     }
+
+ var time = new Array(0, 0, 0, 0, 0);
+
+ if (second >= 365 * 24 * 3600) {
+     time[0] = parseInt(second / (365 * 24 * 3600));
+     second %= 365 * 24 * 3600;
+ }  
+
+ if (second >= 24 * 3600) {
+     time[1] = parseInt(second / (24 * 3600));
+     second %= 24 * 3600;
+ }
+
+ if (second >= 3600) {
+     time[2] = parseInt(second / 3600);
+     second %= 3600;
+ }
+
+ if (second >= 60) {
+     time[3] = parseInt(second / 60);
+     second %= 60;
+ }
+
+ if (second > 0) {
+     time[4] = second;
+ }
+    return time;
+}
+</script>
+
+<!-- 动态显示网站运行时间 -->
+<script type="text/javascript" language="javascript">
+    function setTime() {
+        var create_time = Math.round(new Date(Date.UTC(2018, 05, 05, 0, 0, 0)).getTime() / 1000);
+        var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
+        currentTime = secondToDate((timestamp - create_time));
+        currentTimeHtml = '本站已安全运行' + currentTime[0] + '年' + currentTime[1] + '天' + currentTime[2] + '时' + currentTime[3] + '分' + currentTime[4] + '秒';
+        document.getElementById("htmer_time").innerHTML = currentTimeHtml;
+    }
+    setInterval(setTime, 1000);
+</script></span>
+```
+
 
 ## 致谢
 
