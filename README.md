@@ -1,7 +1,7 @@
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/home-assistant/home-assistant-iOS/blob/master/LICENSE)
 
 
-博客的搭建教程修改自 [Hux](https://github.com/Huxpro/huxpro.github.io) 和[Qiubaiying](https://github.com/qiubaiying/qiubaiying.github.io)
+博客的搭建教程修改自 [Hux](https://github.com/Huxpro/huxpro.github.io) 和[BY](https://github.com/qiubaiying/qiubaiying.github.io)
  
 更为详细的教程戳这 [《利用 GitHub Pages 快速搭建个人博客》](http://www.jianshu.com/p/e68fba58f75c) 或 [wiki](https://github.com/qiubaiying/qiubaiying.github.io/wiki/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B)
 
@@ -17,11 +17,41 @@
 + 网站运行时间功能
 + 添加“归档”分页
 + 添加“留言板”分页
++ 增加全站搜索功能（右下角的蓝色圆圈）
 + 增加网站整体汉化
 
 **目录**  
 
 [TOC]
+
+```
+目录
+查看博客戳这里 👆
+本仓库博客实现的附加功能（相对Fork的仓库）
+使用
+1.环境
+2.开始
+3.撰写博文
+4.侧边栏
+5.Mini About Me
+6.Featured Tags
+7.Social-media Account
+8.Friends
+9.Keynote Layout
+10.Comment
+  (1)Disqus
+（2）Gitalk
+（3）使用intensedebate添加评论
+11.Analytics
+12.Customization
+13.Header Image
+14.SEO Title
+15.关于收到"Page Build Warning"的 Email
+16.添加文章访问量功能[不蒜子]：
+17.添加文章访问量功能[不蒜子]：
+致谢
+License
+```
 
 ## 使用
 
@@ -45,13 +75,13 @@
 
 
 
-### 环境
+### 1.环境
 
 如果你安装了 [jekyll](http://jekyllcn.com/)，那你只需要在命令行输入`jekyll serve` 或 `jekyll s`就能在本地浏览器中输入`http://127.0.0.1:4000/`预览主题，对主题的修改也能实时展示（需要强刷浏览器）。
 
 
 
-### 开始
+### 2.开始
 
 你可以通用修改 `_config.yml`文件来轻松的开始搭建自己的博客:
 
@@ -71,7 +101,7 @@ jianshu_username: e71990ada2fd  # 你的简书ID。
 
 Jekyll官方网站还有很多的参数可以调，比如设置文章的链接形式...网址在这里：[Jekyll - Official Site](http://jekyllrb.com/) 中文版的在这里：[Jekyll中文](http://jekyllcn.com/).
 
-### 撰写博文
+### 3.撰写博文
 
 要发表的文章一般以 **Markdown** 的格式放在这里`_posts/`，你只要看看这篇模板里的文章你就立刻明白该如何设置。
 
@@ -93,7 +123,7 @@ tags:
 
 ```
 
-### 侧边栏
+### 4.侧边栏
 
 看右边:
 ![](https://raw.githubusercontent.com/qiubaiying/qiubaiying.github.io/master/img/readme-side.png)
@@ -110,11 +140,11 @@ sidebar-avatar: /img/avatar-by.jpg     #你的大头贴，请使用绝对地址.
 侧边栏是响应式布局的，当屏幕尺寸小于992px的时候，侧边栏就会移动到底部。具体请见bootstrap栅格系统 <http://v3.bootcss.com/css/>
 
 
-### Mini About Me
+### 5.Mini About Me
 
 Mini-About-Me 这个模块将在你的头像下面，展示你所有的社交账号。这个也是响应式布局，当屏幕变小时候，会将其移动到页面底部，只不过会稍微有点小变化，具体请看代码。
 
-### Featured Tags
+### 6.Featured Tags
 
 看到这个网站 [Medium](http://medium.com) 的推荐标签非常的炫酷，所以我将他加了进来。
 这个模块现在是独立的，可以呈现在所有页面，包括主页和发表的每一篇文章标题的头上。
@@ -129,7 +159,7 @@ featured-condition-size: 1     # A tag will be featured if the size of it is mor
  
 内部有一个条件模板 `{% if tag[1].size > {{site.featured-condition-size}} %}` 是用来做筛选过滤的.
 
-### Social-media Account
+### 7.Social-media Account
 
 在下面输入的社交账号，没有的添加的不会显示在侧边框中。新加入了[简书](https:/www.jianshu.com)链接, <http://www.jianshu.com/u/e71990ada2fd>
 
@@ -145,7 +175,7 @@ featured-condition-size: 1     # A tag will be featured if the size of it is mor
 
 ![](http://ww4.sinaimg.cn/large/006tKfTcgy1fgrgbgf77aj308i02v748.jpg)
 
-### Friends
+### 8.Friends
 
 好友链接部分。这会在全部页面显示。
 
@@ -166,7 +196,7 @@ friends: [
 ```
 
 
-### Keynote Layout
+### 9.Keynote Layout
 
 HTML5幻灯片的排版：
 
@@ -186,11 +216,11 @@ iframe:     "http://huangxuan.me/js-module-7day/"
 iframe在不同的设备中，将会自动的调整大小。保留内边距是为了让手机用户可以向下滑动，以及添加更多的内容。
 
 
-### Comment
+### 10.Comment
 
-博客不仅支持 [Disqus](http://disqus.com) 评论系统,还加入了 [Gitalk](https://gitalk.github.io/) 评论系统，[支持 Markdwon 语法](https://guides.github.com/features/mastering-markdown/)，cool~
+博客不仅支持 [Disqus](http://disqus.com)和Intensedebate 评论系统,还加入了 [Gitalk](https://gitalk.github.io/) 评论系统，[支持 Markdwon 语法](https://guides.github.com/features/mastering-markdown/)，cool~
 
-#### Disqus
+#### (1)Disqus
 
 优点：国际比较流行，界面也很大气、简洁，如果有人评论，还能实时通知，直接回复通知的邮件就行了；
 
@@ -210,7 +240,7 @@ iframe在不同的设备中，将会自动的调整大小。保留内边距是�
 disqus_username: qiubaiying
 ```
 
-#### Gitalk
+#### （2）Gitalk
 
 优点：界面干净简洁，利用 Github issue API 做的评论插件，使用 Github 帐号进行登录和评论，最喜欢的支持 Markdown 语法，对于程序员来说真是太 cool 了。
 
@@ -220,7 +250,7 @@ disqus_username: qiubaiying
 
 参考我的这篇文章：[《为博客添加 Gitalk 评论插件》](http://qiubaiying.top/2017/12/19/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0-Gitalk-%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/)
 
-#### 使用intensedebate添加评论  
+#### （3）使用intensedebate添加评论  
 先去IntenseDebate注册一个账号。  
 
 在Jekyll站点的_includes目录下创建intensedebate-comments.html文件。  
@@ -262,7 +292,7 @@ intensedebate_comments: true
                [% endif %]
 	       <!-- intensedebate 评论框 end -->
 ```
-### Analytics
+### 11.Analytics
 
 网站分析，现在支持百度统计和Google Analytics。需要去官方网站注册一下，然后将返回的code贴在下面：
 
@@ -275,13 +305,13 @@ ga_track_id: 'UA-49627206-1'            # 你用Google账号去注册一个就�
 ga_domain: huangxuan.me			# 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto。
 ```
 
-### Customization
+### 12.Customization
 
 如果你喜欢折腾，你可以去自定义这个模板的 Code。
 
 **如果你可以理解 `_include/` 和 `_layouts/`文件夹下的代码（这里是整个界面布局的地方），你就可以使用 Jekyll 使用的模版引擎 [Liquid](https://github.com/Shopify/liquid/wiki)的语法直接修改/添加代码，来进行更有创意的自定义界面啦！**
 
-### Header Image
+### 13.Header Image
 
 博客每页的标题底图是可以自己选的，看看几篇示例post你就知道如何设置了。
   
@@ -291,13 +321,13 @@ ga_domain: huangxuan.me			# 默认的是 auto, 这里我是自定义了的域名
 
 但是需要注意的是本模板的标题是**白色**的，所以背景色要设置为**灰色**或者**黑色**，总之深色系就对了。当然你还可以自定义修改字体颜色，总之，用github pages就是可以完全的个性定制自己的博客。
 
-### SEO Title
+### 14.SEO Title
 
 我的博客标题是 **“BY Blog”** 但是我想要在搜索的时候显示 **“柏荧的博客 | BY Blog”** ，这个就需要 SEO Title 来定义了。
 
 其实这个 SEO Title 就是定义了<head><title>标题</title></head>这个里面的东西和多说分享的标题，你可以自行修改的。
 
-### 关于收到"Page Build Warning"的 Email
+### 15.关于收到"Page Build Warning"的 Email
 
 由于jekyll升级到3.0.x,对原来的 pygments 代码高亮不再支持，现只支持一种-rouge，所以你需要在 `_config.yml`文件中修改`highlighter: rouge`.另外还需要在`_config.yml`文件中加上`gems: [jekyll-paginate]`.
 
@@ -315,7 +345,7 @@ ga_domain: huangxuan.me			# 默认的是 auto, 这里我是自定义了的域名
 
 参考文档：[using jekyll with pages](https://help.github.com/articles/using-jekyll-with-pages/) & [Upgrading from 2.x to 3.x](http://jekyllrb.com/docs/upgrading/2-to-3/)
 
-## 添加文章访问量功能[不蒜子]：
+### 16.添加文章访问量功能[不蒜子]：
 在_includes目录下的head.html中添加
 
 `<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>`
@@ -328,7 +358,7 @@ ga_domain: huangxuan.me			# 默认的是 auto, 这里我是自定义了的域名
 
 `<span id="busuanzi_container_page_pv"> | 访问量：<span id="busuanzi_value_page_pv"></span> 次</span>`
 
-## 添加文章访问量功能[不蒜子]：
+### 17.添加文章访问量功能[不蒜子]：
 在_includes目录下的head.html中添加
 
 直接将以下代码加入_post文件夹的footer.html文件的合适位置，将代码：
@@ -394,7 +424,7 @@ ga_domain: huangxuan.me			# 默认的是 auto, 这里我是自定义了的域名
 
 ## 致谢
 
-1. 这个模板是从这里 [Hux](https://github.com/Huxpro/huxpro.github.io) fork 的, 感谢这个作者。 
+1. 这个模板是从这里 [Hux](https://github.com/Huxpro/huxpro.github.io) 和[BY](https://github.com/qiubaiying/qiubaiying.github.io)fork 的, 感谢这几个作者。 
 2. 感谢 Jekyll、Github Pages 和 Bootstrap!
 
 ## License
