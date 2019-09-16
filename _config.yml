@@ -1,10 +1,10 @@
 # Site settings
 title: 优源
-SEOTitle: 优源的博客 | YouYuan Blog
+SEOTitle: 优源博客 | YouYuan Blog
 header-img: img/post-bg-dutbs.jpg
-email: duter2016@foxmail.com
-description: "优源，一个有想法的地方。"
-keyword: "优源, YouYuan Blog, 优源的博客, Duter2016, Duter, Linux"
+email: duter2016#foxmail.com
+description: "优源，一个有想法的地方！"
+keyword: "优源, YouYuan Blog, 优源博客, Duter2016, Duter, Linux"
 url: "https://duter2016.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/Duter2016/Duter2016.github.io.git" # you code repository
