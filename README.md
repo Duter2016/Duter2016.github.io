@@ -213,12 +213,14 @@ disqus_username: qiubaiying
 
 参考我的这篇文章：[《为博客添加 Gitalk 评论插件》](http://qiubaiying.top/2017/12/19/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0-Gitalk-%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/)
 
-## 使用intensedebate添加评论
+#### 使用intensedebate添加评论
 也可以使用intensedebate，注册账号什么得不说了，将得到的html文件，即intensedebate-comments.html保存到_includes目录下，在post.html正文结束处添加(**[]替换为{}**)：
 
+```
   [% if site.intensedebate_comments %]
     [% include intensedebate-comments.html %]
   [% endif %] 
+```
 
 ### Analytics
 
