@@ -126,6 +126,12 @@ layout: default
                 <!-- disqus 评论框 end -->
                 {% endif %}
 
+	       <!-- intensedebate 评论框 start -->
+	       {% if site.intensedebate_comments %}
+                      {% include intensedebate-comments.html %}
+               {% endif %}
+	       <!-- intensedebate 评论框 end -->
+		    
             </div>  
 
     <!-- Side Catalog Container -->
