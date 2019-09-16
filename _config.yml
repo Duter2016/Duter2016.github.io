@@ -59,6 +59,9 @@ kramdown:
 # Disqus（https://disqus.com/）
 # disqus_username: qiubaiying
 
+# intensedebate评论系统开关
+intensedebate_comments: true
+
 # Gitalk
 gitalk:
   enable: true    #是否开启Gitalk评论
