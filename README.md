@@ -213,15 +213,48 @@ disqus_username: qiubaiying
 
 参考我的这篇文章：[《为博客添加 Gitalk 评论插件》](http://qiubaiying.top/2017/12/19/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0-Gitalk-%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/)
 
-#### 使用intensedebate添加评论
-也可以使用intensedebate，注册账号什么得不说了，将得到的html文件，即intensedebate-comments.html保存到_includes目录下，在post.html正文结束处添加(**[]替换为{}**)：
+#### 使用intensedebate添加评论  
+先去IntenseDebate注册一个账号。  
+
+在Jekyll站点的_includes目录下创建intensedebate-comments.html文件。  
+文件内容如下(**[]替换为{}**)。'xxxxxxxxxxxxx'是IntenseDebate注册完以后得到的脚本代码。
 
 ```
-  [% if site.intensedebate_comments %]
-    [% include intensedebate-comments.html %]
-  [% endif %] 
+[% if page.comments != false %]
+  <!-- 显示评论 -->
+  <script>
+  var idcomments_acct = 'xxxxxxxxxxxxx';
+  var idcomments_post_id;
+  var idcomments_post_url;
+  </script>
+  <span id="IDCommentsPostTitle" style="display:none"></span>
+  <script type='text/javascript' src='https://www.intensedebate.com/js/genericCommentWrapperV2.js'></script>
+  <!-- 显示评论计数 -->
+  <script>
+  var idcomments_acct = 'xxxxxxxxxxxxx';
+  var idcomments_post_id;
+  var idcomments_post_url;
+  </script>
+  <script type="text/javascript" src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script>
+[% endif %]
 ```
 
+在站点配置文件_config.yml中添加评论配置参数，方便灵活的enable/disable评论功能。
+
+```
+  # intensedebate评论系统开关
+intensedebate_comments: true
+```
+
+在post.html文件末尾后面添加代码引用intensedebate-comments.html来显示评论框(**[]替换为{}**)：
+
+```
+	       <!-- intensedebate 评论框 start -->
+	       [% if site.intensedebate_comments %]
+                      [% include intensedebate-comments.html %]
+               [% endif %]
+	       <!-- intensedebate 评论框 end -->
+```
 ### Analytics
 
 网站分析，现在支持百度统计和Google Analytics。需要去官方网站注册一下，然后将返回的code贴在下面：
