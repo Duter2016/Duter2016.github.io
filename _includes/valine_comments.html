@@ -1,10 +1,4 @@
-{%- if site.valine.appid and
-    site.valine.appkey and
-    site.valine.placeholder and
-    site.valine.notify and
-    site.valine.verify and
-    site.valine.guest_info and
-    site.valine.pageSize -%}
+{%- if site.valine.enable -%}
 
     <div id="vcomments"></div>
     <!--Leancloud 操作库:-->
@@ -12,13 +6,13 @@
     <!--Valine 的核心代码库:-->
     <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
     <script>
-        new Valine({
+        var valine = new Valine({
             el: '#vcomments',
             appid: '{{ site.valine.appid }}',
             appkey: '{{ site.valine.appkey }}',
             verify: '{{ site.valine.verify }}',
             notify: '{{ site.valine.notify }}',
-            path: '{{ page.url }}',
+            path: '{{ site.valine.path }}',
             guest_info: '{{ site.valine.guest_info }}',
             pageSize: '{{ site.valine.pageSize }}',
             placeholder: '{{ site.valine.placeholder }}'
