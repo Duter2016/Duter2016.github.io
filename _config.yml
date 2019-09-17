@@ -66,8 +66,9 @@ intensedebate_comments: true
 # Valine.
 # You can get your appid and appkey from https://leancloud.app
 # more info please open https://valine.js.org
+valine_enable: true
 valine:
-  enable: true
+#  enable: true
   appid:  nvYN2RxydarHJ11V8CTyuYkI-MdYXbMMI
   appkey: LHvLGcwcauE5B2JpMxJ3lbtF
   notify: true # mail notifier , https://github.com/xCss/Valine/wiki
