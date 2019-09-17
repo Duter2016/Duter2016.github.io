@@ -1,13 +1,14 @@
 {% if site.valine.enable %}
 
-    <div id="comment"></div>
+    <div id="comments"></div>
     <!--Leancloud 操作库:-->
     <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
     <!--Valine 的核心代码库:-->
     <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
     <script>
         var valine = new Valine({
-            el: '#vcomments',
+            av: AV,
+            el: '#comments',
             appid: '{{ site.valine.appid }}',
             appkey: '{{ site.valine.appkey }}',
             verify: '{{ site.valine.verify }}',
