@@ -1,7 +1,11 @@
-{%- if page.key and
-    site.comments.custom.API_ID and
-    site.comments.custom.API_Key and
-    site.comments.custom.placeholder -%}
+{%- if site.valine.appid and
+    site.valine.appkey and
+    site.valine.placeholder and
+    site.valine.notify and
+    site.valine.verify and
+    site.valine.path and
+    site.valine.guest_info and
+    site.valine.pageSize -%}
 
     <div id="vcomments"></div>
     <!--Leancloud 操作库:-->
@@ -11,9 +15,13 @@
     <script>
         new Valine({
             el: '#vcomments',
-            appid: '{{ site.comments.custom.API_ID }}',
-            appkey: '{{ site.comments.custom.API_Key }}',
-            verify: true,
+            appid: '{{ site.valine.appid }}',
+            appkey: '{{ site.valine.appkey }}',
+            verify: '{{ site.valine.verify }}',
+            notify: '{{ site.valine.notify }}' ,
+            path: '{{ site.valine.path }}',
+            guest_info: '{{ site.valine.guest_info }}',
+            pageSize: '{{ site.valine.pageSize }}',
             placeholder: '{{ site.comments.custom.placeholder }}'
         })
     </script>
