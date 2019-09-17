@@ -68,8 +68,8 @@ intensedebate_comments: true
 # more info please open https://valine.js.org
 valine:
   enable: true
-  appid:  nvYN2RxydarHJ11V8CTyuYkI-MdYXbMMI
-  appkey: LHvLGcwcauE5B2JpMxJ3lbtF
+  appid:  YAqRhk6s2saMLOPiM1B7fSzq-gzGzoHsz
+  appkey: f7HSzCcCnvN5PLJJY7BQy7q8
   notify: true # mail notifier , https://github.com/xCss/Valine/wiki
   verify: false # Verification code
   placeholder: 非Github帐号登录用户，在此处留言 # comment box placeholder
