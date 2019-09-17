@@ -62,6 +62,21 @@ kramdown:
 # intensedebate评论系统开关
 intensedebate_comments: true
 
+# Valine评论系统开关
+# Valine.
+# You can get your appid and appkey from https://leancloud.app
+# more info please open https://valine.js.org
+valine:
+  enable: true
+  appid:  nvYN2RxydarHJ11V8CTyuYkI-MdYXbMMI
+  appkey: LHvLGcwcauE5B2JpMxJ3lbtF
+  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
+  verify: false # Verification code
+  placeholder: 留言 # comment box placeholder
+  avatar:   # gravatar style
+  guest_info: 昵称,邮件,网址 # custom comment header
+  pageSize: 10 # pagination size
+
 # Gitalk
 gitalk:
   enable: true    #是否开启Gitalk评论
