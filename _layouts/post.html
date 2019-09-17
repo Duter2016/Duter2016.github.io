@@ -126,6 +126,12 @@ layout: default
                 <!-- disqus 评论框 end -->
                 {% endif %}
 
+	       <!-- Valine 评论框 start -->
+	       {% if site.valine_enable %}
+                      {% include valine_comments.html %}
+               {% endif %}
+	       <!-- Valine 评论框 end -->
+		    
 	       <!-- intensedebate 评论框 start -->
 	       {% if site.intensedebate_comments %}
                       {% include intensedebate-comments.html %}
