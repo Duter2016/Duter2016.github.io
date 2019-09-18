@@ -34,8 +34,8 @@ description: "死马当作活马医，再糟，死马还能再死一回。"
     </li>
     {% endif %}
     
-    <li class="previous">
-       {{ paginator.page }} / {{ paginator.total_pages }}
+    <li>
+       {{ paginator.page }} / 共{{ paginator.total_pages }}页
     </li>
         
     {% if paginator.next_page %}
