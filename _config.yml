@@ -60,7 +60,7 @@ kramdown:
 # disqus_username: qiubaiying
 
 # intensedebate评论系统开关
-intensedebate_comments: true
+intensedebate_comments: false
 
 # Valine评论系统开关
 # Valine.
