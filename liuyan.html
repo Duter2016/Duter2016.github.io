@@ -1,11 +1,46 @@
 ---
-layout: post
+layout: page
 permalink: /liuyan/
 title: "留言"
+description: "畅所欲言，说您想说！"
+header-img: "img/post-bg-dutljl.jpg"
 ---
 <ul>
       <h2>您如果有话想对我说，请在下面留言！您可以使用Intensedebate（可无需登录）或Gitalk（需登录Github帐号）进行留言！您的留言我会尽快回复！</h2>
      <br>
+	
+		       <!-- Valine 评论框 start -->
+	       {% if site.valine.enable %}
+                      {% include valine_comments.html %}
+               {% endif %}
+	       <!-- Valine 评论框 end -->
+		    
+		    
+                <!--Gitalk评论start  -->
+                {% if site.gitalk.enable %}
+                <!-- 引入Gitalk评论插件  -->
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+                <h4 align="left">「Github登录用户留言」：</h4>    
+                <div id="gitalk-container"></div>
+                <!-- 引入一个生产md5的js，用于对id值进行处理，防止其过长 -->
+                <!-- Thank DF:https://github.com/NSDingFan/NSDingFan.github.io/issues/3#issuecomment-407496538 -->
+                <script src="{{ site.baseurl }}/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                    clientID: '{{site.gitalk.clientID}}',
+                    clientSecret: '{{site.gitalk.clientSecret}}',
+                    repo: '{{site.gitalk.repo}}',
+                    owner: '{{site.gitalk.owner}}',
+                    admin: ['{{site.gitalk.admin}}'],
+                    distractionFreeMode: {{site.gitalk.distractionFreeMode}},
+                    id: md5(location.pathname),
+                    });
+                    gitalk.render('gitalk-container');
+                </script>
+                {% endif %}
+                <!-- Gitalk end -->
+	
 	       <!-- intensedebate 评论框 start -->
 	       {% if site.intensedebate_comments %}
                       {% include intensedebate-comments.html %}
