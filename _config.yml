@@ -133,6 +133,15 @@ friends: [
     },{
         title: "图片压缩",
         href: "https://compressjpeg.com/zh/"
+    },{
+        title: "Valine评论",
+        href: "https://duter2016.avosapps.us/"
+    },{
+        title: "leancloud",
+        href: "https://console.leancloud.app/"
+    },{
+        title: "Intensedebate",
+        href: "https://www.intensedebate.com"
     }
 ]
 
