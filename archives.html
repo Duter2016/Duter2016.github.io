@@ -7,8 +7,6 @@ header-img: "img/post-bg-dutme.jpg"
 ---
 <ul>
   
-  <h3 align="center">「共{{ site.posts}}篇文章」</h3>
-  
   {% for post in site.posts %}
 
     {% unless post.next %}
@@ -24,3 +22,16 @@ header-img: "img/post-bg-dutme.jpg"
     <li>{{ post.date | date:"%Y年%m月%d日：" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
+
+<ul>
+{% assign counter = 0 %}
+{% for post in site.posts %}
+  {% assign thisyear = post.date | date: "%B %Y" %}
+  {% assign prevyear = post.previous.date | date: "%B %Y" %}
+  {% assign counter = counter | plus: 1 %}
+  {% if thisyear != prevyear %}
+    <li><a href="/archive/#{{ post.date | date:"%B %Y" }}">{{ thisyear }} ({{ counter }})</a></li>
+    {% assign counter = 0 %}
+  {% endif %}
+{% endfor %}
+ </ul>
