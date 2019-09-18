@@ -7,14 +7,14 @@ header-img: "img/post-bg-dutme.jpg"
 ---
 
 <ul>
+  <h4>数量统计：</h4>
 {% assign counter = 0 %}
 {% for post in site.posts %}
   {% assign thisyear = post.date | date: "%Y年" %}
   {% assign prevyear = post.previous.date | date: "%Y年" %}
   {% assign counter = counter | plus: 1 %}
   {% if thisyear != prevyear %}
-    <h3>数量统计：</h3>
-    <a>{{ thisyear }} 共 {{ counter }} 篇文章</a><br>
+    <li type="circle"><a>{{ thisyear }} 共 {{ counter }} 篇文章；</a></li><br>
     {% assign counter = 0 %}
   {% endif %}
 {% endfor %}
