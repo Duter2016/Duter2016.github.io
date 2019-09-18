@@ -5,30 +5,6 @@ title: "归档"
 description: "文章按日期分类归档！"
 header-img: "img/post-bg-dutme.jpg"
 ---
-<ul>
-  {% assign counter = 0 %}
-  {% for post in site.posts %}
-    
-  {% assign thisyear = post.date | date: "%Y年" %}
-  {% assign prevyear = post.previous.date | date: "%Y年" %}
-  {% assign counter = counter | plus: 1 %}
-  {% if thisyear != prevyear %}
-  
-  
-    {% unless post.next %}
-      <h2>{{ post.date | date: '%Y年' }}({{ counter }})</h2>
-    {% else %}
-      {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-      {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
-      {% if year != nyear %}
-        <h2>{{ post.date | date: '%Y年' }}({{ counter }})</h2>
-        {% assign counter = 0 %}
-      {% endif %}
-    {% endunless %}
-
-    <li>{{ post.date | date:"%Y年%m月%d日：" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
 
 <ul>
 {% assign counter = 0 %}
@@ -37,8 +13,27 @@ header-img: "img/post-bg-dutme.jpg"
   {% assign prevyear = post.previous.date | date: "%Y年" %}
   {% assign counter = counter | plus: 1 %}
   {% if thisyear != prevyear %}
-    <li><a href="/archive/#{{ post.date | date:"%Y年" }}">{{ thisyear }} ({{ counter }})</a></li>
+    <h3>数量统计：</h3>
+    <a>{{ thisyear }} 共 {{ counter }} 篇文章</a><br>
     {% assign counter = 0 %}
   {% endif %}
 {% endfor %}
  </ul>
+
+<ul>
+  {% for post in site.posts %}
+  
+    {% unless post.next %}
+      <h2>{{ post.date | date: '%Y年' }}</h2>
+    {% else %}
+      {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+      {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+      {% if year != nyear %}
+        <h2>{{ post.date | date: '%Y年' }}</h2>
+      {% endif %}
+    {% endunless %}
+
+    <li>{{ post.date | date:"%Y年%m月%d日：" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+
