@@ -26,11 +26,11 @@ header-img: "img/post-bg-dutme.jpg"
 <ul>
 {% assign counter = 0 %}
 {% for post in site.posts %}
-  {% assign thisyear = post.date | date: "%B %Y" %}
-  {% assign prevyear = post.previous.date | date: "%B %Y" %}
+  {% assign thisyear = post.date | date: "%Y年" %}
+  {% assign prevyear = post.previous.date | date: "%Y年" %}
   {% assign counter = counter | plus: 1 %}
   {% if thisyear != prevyear %}
-    <li><a href="/archive/#{{ post.date | date:"%B %Y" }}">{{ thisyear }} ({{ counter }})</a></li>
+    <li><a href="/archive/#{{ post.date | date:"%Y年" }}">{{ thisyear }} ({{ counter }})</a></li>
     {% assign counter = 0 %}
   {% endif %}
 {% endfor %}
