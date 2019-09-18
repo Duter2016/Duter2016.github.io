@@ -36,7 +36,7 @@ layout: default
                     <div class="post-heading">
                         <div class="tags">
                             {% for tag in page.tags %}
-                            <a class="tag" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+                            <a class="tag" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}" target="_blank">{{ tag }}</a>
                             {% endfor %}
                         </div>
                         <h1>{{ page.title }}</h1>
@@ -88,6 +88,12 @@ layout: default
                     {% endif %}
                 </ul>
 
+	       <!-- Valine 评论框 start -->
+	       {% if site.valine.enable %}
+                      {% include valine_comments.html %}
+               {% endif %}
+	       <!-- Valine 评论框 end -->		    
+		    
                 <!-- Gitalk 评论 start  -->
                 {% if site.gitalk.enable %}
                 <!-- Gitalk link  -->
@@ -134,7 +140,7 @@ layout: default
                     <div class="tags">
                         {% for tag in site.tags %}
                             {% if tag[1].size > {{site.featured-condition-size}} %}
-                                <a href="/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+                                <a href="/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}"  target="_blank">
                                     {{ tag[0] }}
                                 </a>
                             {% endif %}
@@ -149,7 +155,7 @@ layout: default
                 <h5>FRIENDS</h5>
                 <ul class="list-inline">
                     {% for friend in site.friends %}
-                        <li><a href="{{friend.href}}">{{friend.title}}</a></li>
+                        <li><a href="{{friend.href}}"  target="_blank">{{friend.title}}</a></li>
                     {% endfor %}
                 </ul>
                 {% endif %}
