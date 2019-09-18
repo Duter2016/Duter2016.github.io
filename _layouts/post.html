@@ -93,7 +93,13 @@ layout: default
                     {% endif %}
                 </ul>
 
-
+	       <!-- Valine 评论框 start -->
+	       {% if site.valine.enable %}
+                      {% include valine_comments.html %}
+               {% endif %}
+	       <!-- Valine 评论框 end -->
+		    
+		    
                 <!--Gitalk评论start  -->
                 {% if site.gitalk.enable %}
                 <!-- 引入Gitalk评论插件  -->
@@ -126,11 +132,7 @@ layout: default
                 <!-- disqus 评论框 end -->
                 {% endif %}
 
-	       <!-- Valine 评论框 start -->
-	       {% if site.valine.enable %}
-                      {% include valine_comments.html %}
-               {% endif %}
-	       <!-- Valine 评论框 end -->
+
 		    
 	       <!-- intensedebate 评论框 start -->
 	       {% if site.intensedebate_comments %}
