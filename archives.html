@@ -14,7 +14,7 @@ header-img: "img/post-bg-dutme.jpg"
   {% assign prevyear = post.previous.date | date: "%Y年" %}
   {% assign counter = counter | plus: 1 %}
   {% if thisyear != prevyear %}
-    <li type="circle"><a>{{ thisyear }} 共 {{ counter }} 篇文章；</a></li><br>
+    <li type="circle"><a>{{ thisyear }} 共 {{ counter }} 篇文章；</a></li>
     {% assign counter = 0 %}
   {% endif %}
 {% endfor %}
