@@ -1,6 +1,6 @@
 ---
 layout:     post   				    # 使用的布局（不需要改）
-title:      Jekyll: 添加Valine评论(邮件通知、评论列表头像) 				# 标题 
+title:      Jekyll添加Valine评论「邮件通知和评论列表头像」				# 标题 
 subtitle:   Valine评论系统 #副标题
 date:       2019-09-18 				# 时间
 author:     Duter2016 						# 作者
