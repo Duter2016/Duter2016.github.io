@@ -72,7 +72,7 @@ valine:
   appkey: LHvLGcwcauE5B2JpMxJ3lbtF
   notify: true # mail notifier , https://github.com/xCss/Valine/wiki
   verify: true # Verification code
-  placeholder: 非Github帐号登录用户，在此处留言 # comment box placeholder
+  placeholder: 游客请在此处留言！留下邮箱，若有回复，您将及时收到提醒邮件！ # comment box placeholder
   avatar:   # gravatar style
   guest_info: 昵称,邮件,网址 # custom comment header
   pageSize: 10 # pagination size
