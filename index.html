@@ -33,6 +33,17 @@ description: "死马当作活马医，再糟，死马还能再死一回。"
         <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" target="_blank">&larr; Newer Posts</a>
     </li>
     {% endif %}
+    
+    {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <em>{{ page }}</em>
+    {% elsif page == 1 %}
+      <a href="{{ paginator.previous_page_path | relative_url }}">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+    
     {% if paginator.next_page %}
     <li class="next">
         <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" target="_blank">Older Posts &rarr;</a>
