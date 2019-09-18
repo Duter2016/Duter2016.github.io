@@ -6,16 +6,23 @@ description: "文章按日期分类归档！"
 header-img: "img/post-bg-dutme.jpg"
 ---
 <ul>
-  
+  {% assign counter = 0 %}
   {% for post in site.posts %}
-
+    
+  {% assign thisyear = post.date | date: "%Y年" %}
+  {% assign prevyear = post.previous.date | date: "%Y年" %}
+  {% assign counter = counter | plus: 1 %}
+  {% if thisyear != prevyear %}
+  
+  
     {% unless post.next %}
-      <h2>{{ post.date | date: '%Y年' }}</h2>
+      <h2>{{ post.date | date: '%Y年' }}({{ counter }})</h2>
     {% else %}
       {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
       {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
       {% if year != nyear %}
-        <h2>{{ post.date | date: '%Y年' }}</h2>
+        <h2>{{ post.date | date: '%Y年' }}({{ counter }})</h2>
+        {% assign counter = 0 %}
       {% endif %}
     {% endunless %}
 
