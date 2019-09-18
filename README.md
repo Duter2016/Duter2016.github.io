@@ -10,15 +10,16 @@
 
 ## 本仓库博客实现的附加功能（相对Fork的仓库）  
 
-+ Gitalk评论功能
-+ Intensedebate评论功能
++ Gitalk评论功能略改（启用）
++ Valine评论功能（启用）
++ Intensedebate评论功能（未启用，可选）
 + 网易云音乐功能
 + 网站访问点击量和访问人数功能
 + 网站运行时间功能
 + 添加“归档”分页
 + 添加“留言板”分页
 + 增加全站搜索功能（右下角的蓝色圆圈）
-+ 增加网站整体汉化
++ 网站部分汉化美化
 
 **目录**  
 
@@ -42,6 +43,7 @@
   (1)Disqus
 （2）Gitalk
 （3）使用intensedebate添加评论
+（4）使用Valine添加评论
 11.Analytics
 12.Customization
 13.Header Image
@@ -292,6 +294,10 @@ intensedebate_comments: true
                [% endif %]
 	       <!-- intensedebate 评论框 end -->
 ```
+#### （4）使用Valine添加评论  
+参阅我的博文[Jekyll添加Valine评论「邮件通知和评论列表头像」](https://duter2016.github.io/2019/09/18/Jekyll%E6%B7%BB%E5%8A%A0Valine%E8%AF%84%E8%AE%BA-%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5%E5%92%8C%E8%AF%84%E8%AE%BA%E5%88%97%E8%A1%A8%E5%A4%B4%E5%83%8F/)。
+
+
 ### 11.Analytics
 
 网站分析，现在支持百度统计和Google Analytics。需要去官方网站注册一下，然后将返回的code贴在下面：
