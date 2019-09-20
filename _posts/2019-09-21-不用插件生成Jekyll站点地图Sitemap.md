@@ -12,6 +12,7 @@ tags:								#标签
     - Blog
 ---
 
+**原文地址**：https://danny.li/notes/jekyll-sitemap/  
 
 Sitemap 可以帮助搜索引擎抓取网站内容，增加访问量。不过如何你不想别人访问你的网站，就不需要这个东西。
 在站点根目录下创建一个新的文件，文件名为 sitemap.xml，文件内容如下：
@@ -26,7 +27,7 @@ sitemap:
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  {% for post in site.posts %}
+  /{% for post in site.posts %/}
   <url>
     <loc>{{ site.url }}{{ post.url }}</loc>
     {% if post.lastmod == null %}
