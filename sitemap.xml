@@ -1,122 +1,33 @@
+---
+sitemap:
+    priority: 0.7
+    changefreq: monthly
+    lastmod: 2013-07-28T12:49:30-05:00
+---
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-
-<url>
-  <loc>https://duter2016.github.io/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/about/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/archives/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/liuyan/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/tags/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2019/09/18/Jekyll%E6%B7%BB%E5%8A%A0Valine%E8%AF%84%E8%AE%BA-%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5%E5%92%8C%E8%AF%84%E8%AE%BA%E5%88%97%E8%A1%A8%E5%A4%B4%E5%83%8F/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2019/09/17/Python%E6%95%99%E7%A8%8B-Python%E8%AF%AD%E6%B3%95%E5%85%83%E7%B4%A0/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2019/09/17/Markdown%E8%AF%AD%E6%B3%95/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2019/09/17/IRC-%E6%80%A5%E9%80%9F%E5%85%A5%E9%97%A8/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2019/09/16/%E6%B7%BB%E5%8A%A0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E6%8F%92%E4%BB%B6/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2019/09/16/2019%E5%B9%B49%E6%9C%88%E6%AD%8C%E5%8D%95%E6%AC%A3%E8%B5%8F/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2019/09/15/%E6%88%91%E7%9A%84%E6%96%B0%E5%8D%9A%E5%AE%A2%E5%BC%80%E9%80%9A%E4%BA%86/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2019/09/15/github%E5%8D%9A%E6%96%87%E6%A0%BC%E5%BC%8F/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2019/09/15/LinuxMint18.3+-%E5%90%AB19.2-%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BC%98%E5%8C%96%E6%8C%87%E5%AF%BC%E6%89%8B%E5%86%8C/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2017/12/19/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0-Gitalk-%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/page2/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2017/05/03/Swift-%E7%9A%84%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E8%AE%A1%E7%AE%97%E5%9E%8B%E5%B1%9E%E6%80%A7/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2017/04/07/%E5%BC%BA%E5%8C%96-Swift-%E4%B8%AD%E7%9A%84-print/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2017/02/22/%E4%BD%BF%E7%94%A8-.gitignore-%E5%BF%BD%E7%95%A5-git-%E4%BB%93%E5%BA%93%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2017/02/16/Git-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2017/02/15/Git%E6%8C%87%E4%BB%A4%E6%95%B4%E7%90%86/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://duter2016.github.io/2017/02/06/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
-  <lastmod>2019-09-19T07:30:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-
+  {% for post in site.posts %}
+  <url>
+    <loc>{{ site.url }}{{ post.url }}</loc>
+    {% if post.lastmod == null %}
+    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+    {% else %}
+    <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
+    {% endif %}
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  {% endfor %}
+  {% for page in site.pages %}
+  {% if page.sitemap != null and page.sitemap != empty %}
+  <url>
+    <loc>{{ site.url }}{{ page.url }}</loc>
+    <lastmod>{{ page.sitemap.lastmod | date_to_xmlschema }}</lastmod>
+    <changefreq>{{ page.sitemap.changefreq }}</changefreq>
+    <priority>{{ page.sitemap.priority }}</priority>
+  </url>
+  {% endif %}
+  {% endfor %}
 
 </urlset>
