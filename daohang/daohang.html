@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<!--头部信息-->
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!--title keywords description 请改为自己的-->
+<title>优源导航 - 个人导航站</title>
+<meta name="keywords" content="优源,导航,网址"/>
+<meta name="description" content="个人导航站"/>
+
+<!--网站favicon可以没有或者改为自己的-->
+<link rel="shortcut icon" type="image/x-icon" href="{{ site.baseurl }}/img/favicon.ico"/>
+
+<!--CSS 若不需要变动样式不用改-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.8.1/css/zui.min.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+ul {
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+a:hover,a:active,a:focus {
+    text-decoration: none;
+}
+body {
+    background-image: url(data:image/png;base64,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);
+    background-repeat:repeat;
+    background-attachment:fixed;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+i.icon,i.fa {
+    margin-right: 6px
+}
+.col, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+    padding: 0px 5px;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    height: 50px;
+    background: #FFF;
+}
+header .logo {
+    font-size: 20px;
+    height: 50px;
+    margin: 0;
+    font-weight: 400;
+    position: relative;
+    z-index: 99;
+    border-bottom: 1px solid #e8e8e8;
+    background: #FFF;
+    text-align:center;
+}
+header .main {
+    position: relative;
+}
+header .nav {
+    width: 100%;
+    margin-left: 25px;
+    background: #FFF;
+    margin: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+ /* Firefox 4 */
+    -webkit-transition: all 0.4s ease;
+ /* Safari  Chrome */
+    -o-transition: all 0.4s ease;
+ /* Opera */
+    position: absolute;
+    top: -300px;
+    left: 0;
+}
+header .showNav {
+    top: 50px;
+    box-shadow: 0 5px 5px rgba(204,204,204,.15);
+    -moz-box-shadow: 0 5px 5px rgba(204,204,204,.15);
+}
+header .nav li {
+    font-size: 16px;
+}
+header .nav a {
+    display: block;
+    line-height: 40px;
+    font-size: 16px;
+    color: #959595;
+    padding: 0 25px;
+    border-bottom: 1px solid #f5f5f5;
+}
+header .nav a:hover {
+    border-color: #459df5;
+    color: #459df5;
+}
+header .head-btn {
+    float: right;
+    line-height: 60px;
+}
+header .head-btn a {
+    margin-left: 5px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #f5f5f5;
+    color: #03b8cf;
+    border: 1px solid #e5e5e5;
+    transition: all .2s;
+    -moz-transition: all .2s;
+ /* Firefox 4 */
+    -webkit-transition: all .2s;
+ /* Safari Chrome */
+    -o-transition: all .2s;
+ /* Opera */
+}
+header .head-btn a:hover {
+    background: #03b8cf;
+    color: #FFF;
+    border: 1px solid #03b8cf;
+}
+header .head-btn a>i {
+    margin-right: 0px;
+    font-size: 15px;
+}
+header .nav-btn {
+    position: fixed;
+    border: none;
+    background: transparent;
+    top: 0;
+    left: 10px;
+    outline: 0;
+    margin-top: 10px;
+    z-index: 100
+}
+header .nav-btn {
+    left: inherit;
+    right: 10px;
+}
+header .nav-btn .icon-line {
+    display: block;
+    margin: 6px 0;
+    width: 25px;
+    height: 2px;
+    background: #999;
+    cursor: pointer;
+    transition: all .4s ease;
+    -moz-transition: all .4s ease;
+ /* Firefox 4 */
+    -webkit-transition: all .4s ease;
+ /* Safari  Chrome */
+    -o-transition: all .4s ease;
+ /* Opera */
+}
+header .nav-btn .middle {
+    margin: 0 auto;
+}
+header .animated2 .top {
+    transform: translateY(8px) rotateZ(45deg);
+    -ms-transform: translateY(8px) rotateZ(45deg);
+   /* IE 9 */
+    -moz-transform: translateY(8px) rotateZ(45deg);
+   /* Firefox */
+    -webkit-transform: translateY(8px) rotateZ(45deg);
+ /* Safari  Chrome */
+    -o-transform: translateY(8px) rotateZ(45deg);
+   /* Opera */
+}
+header .animated2 .middle {
+    width: 0;
+}
+header .animated2 .bottom {
+    transform: translateY(-8px) rotateZ(-45deg);
+    -ms-transform: translateY(-8px) rotateZ(-45deg);
+   /* IE 9 */
+    -moz-transform: translateY(-8px) rotateZ(-45deg);
+   /* Firefox */
+    -webkit-transform: translateY(-8px) rotateZ(-45deg);
+ /* Safari Chrome */
+    -o-transform: translateY(-8px) rotateZ(-45deg);
+   /* Opera */
+}
+.left-bar {
+    position: fixed;
+    top: 50px;
+    left: -240px;
+    width: 200px;
+    max-width: 100%;
+    height: 100%;
+    background: #353535;
+    z-index: 12;
+    transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+ /* Firefox 4 */
+    -webkit-transition: all 0.4s ease;
+ /* Safari  Chrome */
+    -o-transition: all 0.4s ease;
+ /* Opera */
+    transform: translateZ(0);
+    -ms-transform: translateZ(0);
+   /* IE 9 */
+    -moz-transform: translateZ(0);
+   /* Firefox */
+    -webkit-transform: translateZ(0);
+ /* Safari  Chrome */
+    -o-transform: translateZ(0);
+   /* Opera */
+}
+.left-bar .header {
+    padding: 0px 15px;
+    border-bottom: 1px solid #464646;
+}
+.left-bar .header h2 {
+    font-size: 17px;
+    line-height: 40px;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0;
+    font-weight: 400;
+    display: block;
+    color: #ccc;
+}
+.left-bar .menu {
+    height: 450px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #424242
+}
+.left-bar .menu ul li a {
+    display: block;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    color: #777;
+    padding-left: 38px;
+}
+.scrollcontent {
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding-right: 4px;
+    padding-top: 5px
+}
+.left-bar .menu ul li a:hover {
+    background: #f5f5f5
+}
+.left-bar .menu ul li i.fa {
+    width: 15px;
+    text-align: center;
+    margin-right: 20px
+}
+.left-bar .tree li.open > ul::-webkit-scrollbar {
+    width: 3px;
+    margin-right: 2px
+}
+.menu-about p {
+    font-size: 12px;
+    color: #ccc;
+    text-align: center;
+}
+#content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+#content > .Off-left-menu {
+    display: none;
+}
+#content > div.center-main {
+    margin: 0 auto;
+}
+.sousuo {
+    padding: 35px 0;
+}
+.search {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+.search-box {
+    height: 50px;
+  /*box-shadow: 0px 0px 2px 0px #ccc;*/
+    border-radius: 10px;
+    overflow: hidden;
+    display: -webkit-flex;
+ /* Safari */
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #e6e6e6
+}
+.search-engine-name {
+    width: 69px;
+    height: 50px;
+    background: #16C0F8;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    outline: none;
+}
+.search-input {
+    box-sizing: border-box;
+    flex: 1;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    color: #999;
+    border: none;
+    outline: none;
+    padding-left: 6px;
+}
+input::-webkit-input-placeholder {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #ccc;
+}
+.search-btn {
+    width: 80px;
+    height: 50px;
+    background: #16C0F8;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    outline: none;
+}
+.search-engine {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #FFF;
+    padding: 15px 0 0 15px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 20px 0px #d8d7d7;
+    transition: all 0.3s;
+    display: none;
+    z-index: 999
+}
+.search-engine-head {
+    overflow: hidden;
+    margin-bottom: 10px;
+    padding-right: 15px;
+}
+.search-engine-tit {
+    float: left;
+    margin: 0;
+    font-size: 14px;
+    color: #999;
+}
+.search-engine ul::before {
+    content: '';
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: -15px;
+    border-top: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+    border-left: 8px solid transparent;
+}
+.search-engine-list::after {
+    content: '';
+    width: 70px;
+    height: 18px;
+    position: absolute;
+    top: -17px;
+    left: 1px;
+}
+.search-engine-list li {
+    float: left;
+    width: 30%;
+    line-height: 30px;
+    font-size: 14px;
+    padding: 5px 10px 5px 10px;
+    margin: 0 10px 10px 0;
+    background: #f9f9f9;
+    color: #999;
+    cursor: pointer
+}
+.search-engine-list li img {
+    width: 25px;
+    height: 25px;
+    border-radius: 15px;
+    float: left;
+    margin-right: 5px;
+    margin-top: 2.5px;
+}
+#content .content-box {
+    padding-top: 51px
+}
+.content-box {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.item {
+    width: 100%;
+}
+.item > .container-fluid {
+    padding-top: 0;
+    margin-top: 0;
+}
+.item > .container-fluid .row {
+    padding: 10px 5px;
+}
+.item-tit > strong {
+    color: #999;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+.item-tit > strong > i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+.card-link {
+    display: block;
+    padding: 10px 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: #fff;
+    transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+ /* Firefox 4 */
+    -webkit-transition: all 0.2s ease-out;
+ /* Safari Chrome */
+    -o-transition: all 0.2s ease-out;
+ /* Opera */
+}
+.card-link:hover {
+    transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+   /* IE 9 */
+    -moz-transform: translateY(-5px);
+   /* Firefox */
+    -webkit-transform: translateY(-5px);
+ /* Safari  Chrome */
+    -o-transform: translateY(-5px);
+   /* Opera */
+    box-shadow: 4px 4px 10px rgba(204, 204, 204, 0.5);
+    -moz-box-shadow: 4px 4px 10px rgba(204, 204, 204, 0.5);
+ /* Firefox */
+}
+.card-tit {
+    height: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+.card-tit img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.card-desc {
+    color: gray;
+    font-size: 12px;
+    padding-top: 10px;
+    height: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.content-box .list-box {
+    background: #FFF;
+    padding: 20px 10px 0px 10px;
+    margin: 0;
+}
+#get-top {
+    width: 40px;
+    height: 40px;
+    background: #03b8cf;
+    color: #FFF;
+    position: fixed;
+    right: 15px;
+    bottom: 55px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
+    z-index: 100;
+}
+#get-top i {
+    margin: 0;
+    font-size: 20px;
+}
+.footer {
+    padding: 15px 20px 10px 20px;
+    border-top: 1px solid #d0d0d0;
+    background-color: #e8e8e8;
+    text-align: center;
+    font-size: 14px;
+    color: #5d5d5d;
+}
+@media (min-width: 768px) {
+    .col, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+        padding: 0 10px
+    }
+    #content .main {
+        padding-top: 51px;
+    }
+    .sousuo {
+        padding: 10px 0 50px 0;
+        margin-top: 0;
+    }
+    .sousuo-form {
+        width: 100%;
+        margin: 0 auto;
+    }
+    #input {
+        outline: none;
+        padding: 0 10px;
+        height: 46px;
+        line-height: 46px;
+        border: 1px solid #ccc;
+        border-left: none;
+        display: block;
+        padding-left: 90px;
+    }
+    .link-box {
+        width: 12.5%;
+        float: left
+    }
+    .item-tit > strong {
+        padding: 5px 0 0 10px;
+        margin-bottom: 10px;
+    }
+    .get-home {
+        margin: 0;
+        margin-top: 20px;
+    }
+    .footer {
+        margin-top: 20px;
+    }
+}
+@media (min-width: 992px) {
+    header {
+        height: 60px;
+        border-bottom: 1px solid #e8e8e8;
+    }
+    header .main {
+        padding: 0 22px;
+    }
+    header .logo {
+        float: left;
+        font-size: 22px;
+        margin: 0;
+        font-weight: 400;
+        border: none;
+    }
+    header .logo a {
+        display: block;
+        line-height: 50px;
+        color: #484848;
+        font-weight: 400;
+    }
+    header .logo img {
+        width: 30px;
+        vertical-align: -10px;
+    }
+    header .nav {
+        float: left;
+        margin-left: 25px;
+        padding-top: 0px;
+        height: 100%;
+        display: block;
+        overflow: hidden;
+        position: static;
+        width: auto;
+        box-shadow: none;
+    }
+    header .nav li {
+        float: left;
+        font-size: 16px;
+    }
+    header .nav a {
+        display: block;
+        line-height: 59px;
+        color: #959595;
+        padding: 0 18px;
+        border-bottom: 1px solid #e8e8e8;
+    }
+    header .nav a:hover {
+        border-color: #459df5;
+        color: #459df5;
+    }
+    .left-bar {
+        height: 100%;
+        background: #FFF;
+        top: 60px;
+        left: 0;
+        z-index: 1;
+    }
+    .left-bar .header {
+        padding: 11px 0px;
+        border-bottom: none;
+        margin: 0 25px;
+        padding-top: 15px;
+    }
+    .left-bar .header h2 {
+        color: #28b779;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: inherit;
+        border-left: 3px solid #28b779;
+        padding-left: 10px;
+    }
+    .left-bar .menu {
+        height: 600px;
+        border-top: 1px solid #f2f2f2;
+        border-bottom: 1px solid #f2f2f2
+    }
+    .left-bar .tree-menu {
+        border-bottom: 1px solid #e8e8e8;
+    }
+    .left-bar .tree li.open > ul {
+        height: 281px;
+        background: #f5f5f5;
+    }
+    .tree-menu li li a {
+        color: #797979;
+        font-size: 14px;
+    }
+    .search {
+        width: 650px;
+    }
+    .search-engine {
+        width: 650px;
+    }
+    .search-engine-list li {
+        width: 112px;
+        margin: 0 15px 15px 0;
+    }
+    #content .main {
+        margin-left: 200px;
+        padding-top: 70px
+    }
+    .content-box {
+        padding: 0 10px;
+        padding-top: 61px
+    }
+    .nav-item .container-fluid {
+        padding: 20px 20px 10px 20px;
+    }
+    .item > .container-fluid .row {
+        padding: 0;
+    }
+    .card-box .col-md-3 {
+        padding: 0 7.5px;
+    }
+    .card-link {
+        margin-bottom: 15px;
+    }
+    .main .list-box .menu-list {
+        margin: 0px 10px 20px 10px;
+    }
+    .nav-tabs > li > a {
+        padding: 4px 15px;
+    }
+    .footer {
+        margin-top: 30px;
+    }
+}
+@media (min-width: 1200px) {
+    header .nav a {
+        padding: 0 25px;
+    }
+    .content-box {
+        padding: 0 20px;
+    }
+    .sousuo-form {
+        width: 60%
+    }
+    .item > .container-fluid {
+        padding: 0;
+        padding-top: 91px;
+        margin-top: -65px;
+    }
+}
+@media (min-width: 1700px) {
+    .content-box {
+        max-width: 1400px;
+    }
+    .col-md-3 {
+        width: 20%;
+    }
+}
+</style>
+</head>
+<body id="nav_body">
+<!--[if lt IE 10]>
+<div class="alert alert-danger">
+    您正在使用 
+    <strong>过时的</strong> 浏览器. 请更换一个更好的浏览器来提升用户体验.
+</div>
+<![endif]--><!--头部导航条-->
+<header>
+<div class="main">
+    <h1 class="logo">
+    <a href="goodweb.html">
+    <img src="{{ site.baseurl }}/img/favicon.ico">
+    <span>优源导航</span>
+    </a>
+    </h1>
+    <!--顶部导航条-->
+    <nav class="nav">
+    <ul>
+        <li><a href="https://duter2016.github.io/" target="_blank">优源主站</a></li>
+        <li><a href="https://duter2016.gitee.io/" target="_blank">优源辅站</a></li>
+        <li><a href="https://duter2016.github.io/about/" target="_blank">联系方式</a></li>
+    </ul>
+    </nav>
+    <!--便携设备右上角菜单-->
+    <button class="nav-btn visible-xs visible-sm"><span class="icon-line top"></span><span class="icon-line middle"></span><span class="icon-line bottom"></span>
+    </button>
+</div>
+</header>
+<div id="content">
+    <!--左侧目录，导航跳转-->
+    <div class="left-bar">
+        <div class="header">
+            <h2>目录</h2>
+        </div>
+        <div class="menu" id="menu">
+            <ul class="scrollcontent">
+                <!--左侧目录，按照需要修改和添加，参考已有的修改名称和href-->
+                <li><a href="#row-1">视频教程</a></li>
+                <li><a href="#row-2">在线学习</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--内容-->
+    <div class="main">
+        <div class="container content-box">
+            <!--搜索栏-->
+            <section class="sousuo">
+            <div class="search">
+                <div class="search-box">
+                    <button class="search-engine-name" id="search-engine-name">小众搜索</button>
+                    <input type="text" id="txt" class="search-input" placeholder="选择引擎，输入关键字，回车/Enter搜索"/>
+                    <button class="search-btn" id="search-btn">搜索</button>
+                </div>
+                <!-- 搜索引擎 -->
+                <div class="search-engine">
+                    <div class="search-engine-head">
+                        <strong class="search-engine-tit">选择您的默认搜索引擎：</strong>
+                    </div>
+                    <ul class="search-engine-list">
+                    </ul>
+                </div>
+            </div>
+            </section>
+            <!--导航分类范例1，请根据自己的需求进行修改-->
+            <section class="item card-box" id="row-1">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="item-tit">
+                        <strong>视频教程</strong>
+                    </div>
+                    <!--获取内容列表-->
+                    <div class="clearfix two-list-box">
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://www.imooc.com/" class="card-link" target="_blank">
+                            <div class="card-tit">慕课网</div>
+                            <div class="card-desc">程序员的梦工厂，慕课网是垂直的互联网IT技能免费学习网站</div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://www.jikexueyuan.com/" class="card-link" target="_blank">
+                            <div class="card-tit">极客学院</div>
+                            <div class="card-desc">一家很不错的IT职业在线教育平台，入门教程视频通俗易懂，很适合新手学习</div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://www.zhaikexueyuan.com/" class="card-link" target="_blank">
+                            <div class="card-tit">宅客学院</div>
+                            <div class="card-desc">IT职业教育线上品牌，课程涵盖大数据、前端开发、后端开发等，免费课程挺多的</div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://jirengu.com/app/album/index" class="card-link" target="_blank">
+                            <div class="card-tit">饥人谷</div>
+                            <div class="card-desc">一家收费的前端开发线上培训机构，虽然课程收费，但是官网还是有挺多免费教程视频的</div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://study.163.com/category/it" class="card-link" target="_blank">
+                            <div class="card-tit">网易云课程 - 编程开发</div>
+                            <div class="card-desc">网易旗下实用技能学习平台，内容非常丰富，免费教程也挺多的</div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://ke.qq.com/course/list?mt=1001" class="card-link" target="_blank">
+                            <div class="card-tit">腾讯课程 - IT&middot;互联网</div>
+                            <div class="card-desc">腾讯推出的专业在线教育平台，采用直播教学方式，适合有充裕时间学习的同学</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+			<!--范例二 导航内容参考修改，如果需要更多的分类，拷贝整个section标签进行修改-->
+            <section class="item card-box" id="row-2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="item-tit">
+                        <strong>在线学习</strong>
+                    </div>
+                    <!--获取内容列表-->
+                    <div class="clearfix ">
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://www.w3school.com.cn" class="card-link" target="_blank">
+                            <div class="card-tit">w3school</div>
+                            <div class="card-desc">领先的免费 Web 技术教程，在 w3school，你可以找到你所需要的所有的网站建设教程</div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://www.runoob.com/" class="card-link" target="_blank">
+                            <div class="card-tit">菜鸟教程</div>
+                            <div class="card-desc">学的不仅是技术，更是梦想！该站提供了很全的编程技术基础教程，适合入门学习</div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://www.hubwiz.com/" class="card-link" target="_blank">
+                            <div class="card-tit">汇智网</div>
+                            <div class="card-desc">汇智网是一个学习最前沿编程技术的平台，提供了node.js、js、jq等相关的课程</div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://www.w3cways.com/" class="card-link" target="_blank">
+                            <div class="card-tit">W3Cways</div>
+                            <div class="card-desc">Web前端学习之路，网站提供很丰富的相关技术中文文档</div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://www.css88.com/" class="card-link" target="_blank">
+                            <div class="card-tit">WEB前端开发</div>
+                            <div class="card-desc">一个前端开发技术和前端开发资讯的专业博客，专注前端开发，关注用户体验</div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Learn" class="card-link" target="_blank">
+                            <div class="card-tit">Mozilla 开发者网络</div>
+                            <div class="card-desc">一个完整的学习平台，你可以在这里深入学习网络技术以及能够驱动网络的软件</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+            <!--页脚-->
+            <footer class="footer">
+            <div class="container">
+                <div class="rwo">
+                    <div class="col-md-12">
+                        <p>
+                            本站内容源自互联网，如有内容侵犯了你的权益，请联系删除相关内容，联系邮箱：xxx
+                        </p>
+                        <!--代码源自小呆导航的开源代码，遵循MIT协议，此处保留源代码的声明-->
+                        <p>
+                            Copyright © 2017-2018 小呆导航（webjike.com）All Rights Reserved
+                        </p>
+                    </div>
+                </div>
+            </div>
+            </footer>
+        </div>
+        <!--内容区域-->
+    </div>
+    <div id="get-top" title="回到顶部">
+        <i class="icon icon-arrow-up"></i>
+    </div>
+    
+    <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    
+<script>
+window.onscroll = function(){
+//回到顶部
+var sllTop = document.documentElement.scrollTop||document.body.scrollTop;
+if(sllTop>240){
+  $('#get-top').css('display','block')
+}else{
+  $('#get-top').css('display','none')
+}
+}
+$('#get-top').click(function(){ 
+  $('body,html').animate({
+    scrollTop: 0
+  }, 800);//点击回到顶部按钮，数字越小越快
+})
+//判断用户使用的设备
+var deviceVal  = browserRedirect();
+function browserRedirect() {
+  var sUserAgent = navigator.userAgent.toLowerCase();
+  var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+  var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+  var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+  var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+  var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+  var bIsAndroid = sUserAgent.match(/android/i) == "android";
+  var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+  var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+  if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+    return 'phone';
+  } else {
+    return 'pc';
+  }
+}
+  $('.nav-btn').on('click', function () {
+    $('.nav').toggleClass('showNav');
+    $(this).toggleClass('animated2');
+  });
+ 
+// 默认搜索引擎的内容，如果界面修改了需要同步修改
+var thisSearch = 'http://www.caup.cn/search?q=';
+
+$('#txt').keydown(function(ev){
+    // 回车键的处理
+    if(ev.keyCode==13){
+        window.open(thisSearch + $('#txt').val())
+        // $('#txt').val('');
+        $('#box ul').html('')
+    }
+})
+$(function(){
+  // 搜索引擎列表，样式一行五个内容，自动换行
+  var search = {
+    data: [{
+      name: '小众搜索',
+      url: 'http://www.caup.cn/search?q='
+    }, {
+      name: '百度',
+      url: 'https://www.baidu.com/s?wd='
+    }, {
+      name: '谷歌',
+      url: 'https://www.google.com/search?q='
+    }, {
+      name: '必应',
+      url: 'https://cn.bing.com/search?q='
+    }, {
+      name: '好搜',
+      url: 'https://www.so.com/s?q='
+    }, {
+      name: '搜狗',
+      url: 'https://www.sogou.com/web?query='
+    }, {
+      name: '淘宝',
+      url: 'https://s.taobao.com/search?q='
+    }, {
+      name: '京东',
+      url: 'http://search.jd.com/Search?keyword='
+    }, {
+      name: '天猫',
+      url: 'https://list.tmall.com/search_product.htm?q='
+    }, {
+      name: '1688',
+      url: 'https://s.1688.com/selloffer/offer_search.htm?keywords='
+    }, {
+      name: '知乎',
+      url: 'https://www.zhihu.com/search?type=content&q='
+    }, {
+      name: '微博',
+      url: 'https://s.weibo.com/weibo/'
+    }, {
+      name: 'Bilibili',
+      url: 'http://search.bilibili.com/all?keyword='
+    }, {
+      name: '豆瓣',
+      url: 'https://www.douban.com/search?source=suggest&q='
+    }, {
+      name: '优酷',
+      url: 'https://so.youku.com/search_video/q_'
+    }, {
+      name: 'GitHub',
+      url: 'https://github.com/search?q='
+    }]
+  }
+  for(var i = 0; i < search.data.length; i++){
+    var addList = '<li>' + search.data[i].name + '</li>'
+    $('.search-engine-list').append(addList);
+  }
+  $('.search-engine-name, .search-engine').hover(function() {
+    $('.search-engine').css('display', 'block')
+  }, function() {
+    $('.search-engine').css('display', 'none')
+  });
+  $('.search-engine-list li').click(function() {
+    var _index = $(this).index();
+    var searchNameBtn = document.getElementById("search-engine-name");
+    searchNameBtn.innerHTML = search.data[_index].name;
+    thisSearch = search.data[_index].url;
+    $('.search-engine').css('display', 'none')
+  })
+})
+$("#search-btn").click(function(){
+  var textValue = $('#txt').val();
+  if(textValue != ''){
+    window.open(thisSearch + textValue)
+  }
+});
+</script>
+</div>
+</body>
+</html>
