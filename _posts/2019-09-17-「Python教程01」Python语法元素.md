@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:     「Python教程」Python语法元素
+title:     「Python教程01」Python语法元素
 subtitle:   Python学习笔记
 date:       2019-09-17
 author:     Duter2016
