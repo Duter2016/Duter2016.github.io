@@ -119,14 +119,14 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "优源II",
+        title: "优源[辅站]",
         href: "https://duter2016.gitee.io"
     },{
         title: "朝阳",
         href: "http://www.sun0539.com"
     },{
-        title: "Google",
-        href: "https://google.com.hk"
+        title: "水木",
+        href: "http://www.newsmth.com/"
     },{
         title: "Deepin",
         href: "https://bbs.deepin.org"
