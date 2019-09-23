@@ -122,13 +122,16 @@ friends: [
         title: "优源[辅站]",
         href: "https://duter2016.gitee.io"
     },{
-        title: "朝阳",
+        title: "优源导航",
+        href: "https://duter2016.github.io/daohang/daohang.html"
+    },{
+        title: "朝阳无妨",
         href: "http://www.sun0539.com"
     },{
-        title: "水木",
+        title: "水木社区",
         href: "http://www.newsmth.com/"
     },{
-        title: "Deepin",
+        title: "深度社区",
         href: "https://bbs.deepin.org"
     },{
         title: "图片压缩",
@@ -137,11 +140,8 @@ friends: [
         title: "Valine评论",
         href: "https://duter2016.avosapps.us/"
     },{
-        title: "leancloud",
+        title: "Leancloud",
         href: "https://console.leancloud.app/"
-    },{
-        title: "Intensedebate",
-        href: "https://www.intensedebate.com"
     }
 ]
 
