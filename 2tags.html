@@ -51,7 +51,7 @@ header-img: "img/post-bg-dutme.jpg"
 				    <a href="{{ post.url | prepend: site.baseurl }}">
 				        <h2 class="post-title">
                             {{ post.title }}
-				        </h2>
+				        </h2> <font color="brown">[{% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} | {{ post.date | date: "%Y-%m-%d" }}]</font> 
 				        {% if post.subtitle %}
 				        <h3 class="post-subtitle">
 				            {{ post.subtitle }}
