@@ -36,4 +36,22 @@ header-img: "img/post-bg-dutme.jpg"
     <li>{{ post.date | date:"%Y年%m月%d日：" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
-
+            <!-- 按年分档SideBar start-->
+            <div class="side content">
+                <div>
+                    Content
+                </div>
+                <ul id="content-side" class="content-ul">
+                    {% assign counter = 0 %}
+                        {% for post in site.posts %}
+                          {% assign thisyear = post.date | date: "%Y" %}
+                          {% assign prevyear = post.previous.date | date: "%Y" %}
+                          {% assign counter = counter | plus: 1 %}
+                          {% if thisyear != prevyear %}
+                            <li><a data-scroll href="#y{{ post.date | date: '%Y' }}">{{ thisyear }} ({{ counter }})</a></li>
+                            {% assign counter = 0 %}
+                          {% endif %}
+                        {% endfor %}
+                </ul>
+            </div>
+            <!-- 按年分档SIdeBar end -->
