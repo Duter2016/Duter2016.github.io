@@ -37,9 +37,15 @@ header-img: "img/post-bg-dutme.jpg"
   {% endfor %}
 </ul>
             <!-- 按年分档SideBar start-->
-            <div class="side content">
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
                 <div>
-                    Content
+                     <h5><a href="{{'/archives/' | prepend: site.baseurl }}" target="_blank">特色标签</a></h5>
                 </div>
                 <ul id="content-side" class="content-ul">
                     {% assign counter = 0 %}
