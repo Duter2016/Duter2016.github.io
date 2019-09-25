@@ -59,8 +59,10 @@ kramdown:
 # Disqus（https://disqus.com/）
 # disqus_username: qiubaiying
 
+
 # intensedebate评论系统开关
 intensedebate_comments: false
+
 
 # Valine评论系统开关
 # Valine.
@@ -156,3 +158,8 @@ Jekyll-Search: true             # 是否启用jekyll博客搜索插件
 
 # lightbox 图片预览插件
 lightbox: true
+
+
+
+ # bShare社交分享按钮开关
+post_share: true
