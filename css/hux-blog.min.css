@@ -15,7 +15,7 @@
 .side-catalog.fixed{position:fixed;top:-21px}
 .side-catalog.fold .catalog-toggle::before{content:"+"}
 .side-catalog.fold .catalog-body{display:none}
-.side-catalog .catalog-toggle::before{content:"âˆ?;position:relative;margin-right:5px;bottom:1px}
+.side-catalog .catalog-toggle::before{content:"âˆ’";position:relative;margin-right:5px;bottom:1px}
 .side-catalog .catalog-body{position:relative;list-style:none;height:auto;overflow:hidden;padding-left:0;padding-right:5px;text-indent:0}
 .side-catalog .catalog-body li{position:relative;list-style:none}
 .side-catalog .catalog-body li a{padding-left:10px;max-width:180px;display:inline-block;vertical-align:middle;height:30px;line-height:30px;overflow:hidden;text-decoration:none;white-space:nowrap;text-overflow:ellipsis}
