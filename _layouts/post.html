@@ -72,9 +72,13 @@ layout: default
 		    
 				{{ content }}
 		    
+		                <!-- 版权声明 -->
                                 {% include copyright.html %}
 		    
+		                 <!-- 社交分享按钮 -->
+		                {% if site.post_share %}
 		                {% include share.html %}
+		                {% endif %}
 		    
                 <hr style="visibility: hidden;">
 
