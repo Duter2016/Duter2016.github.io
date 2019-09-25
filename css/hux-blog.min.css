@@ -37,7 +37,8 @@ blockquote p{margin:0}
 small.img-hint{display:block;margin-top:-20px;text-align:center}
 br+small.img-hint{margin-top:-40px}
 img.shadow{box-shadow:rgba(0,0,0,.258824) 0 2px 5px 0}
-select{-webkit-appearance:none;margin-top:15px;color:#337ab7;border-color:#337ab7;padding:0 .4em;background:#fff}select.sel-lang{min-height:28px;font-size:14px}
+select{-webkit-appearance:none;margin-top:15px;color:#337ab7;border-color:#337ab7;padding:0 .4em;background:#fff}
+select.sel-lang{min-height:28px;font-size:14px}
 .table th,.table td{border:1px solid #eee!important}
 hr.small{max-width:100px;margin:15px auto;border-width:4px;border-color:#fff}
 pre,.table-responsive{-webkit-overflow-scrolling:touch}
