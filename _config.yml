@@ -162,4 +162,5 @@ lightbox: true
 
 
  # bShare社交分享按钮开关
-post_share: true
+post_share: false
+
