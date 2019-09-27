@@ -5,7 +5,8 @@ subtitle:   Python学习笔记    #副标题
 date:       2019-09-22 				# 时间
 author:     Duter2016 						# 作者
 header-img: img/post-bg-dutme.jpg 	#这篇文章标题背景图片
-catalog: true 						# 是否归档
+header-mask: "0.5"                    # 博文页面上端的背景图片的亮度，数值越大越黑暗 
+catalog: true 						#  开启catalog，将在博文侧边展示博文的结构 
 music-id:      # 网易云音乐单曲嵌入
 music-idfull:         # 网易云音乐歌单嵌入
 tags:								#标签
