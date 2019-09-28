@@ -109,9 +109,9 @@ background-color:#ffffff;
 -moz-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
 box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
 border: 0px solid #000000;">
-   <h2>&nbsp;&nbsp;&nbsp;&nbsp;相关文章：</h2>
+   <h4 align="left">&nbsp;&nbsp;相关文章：</h4>
    <ul>
-     {% set tagposts = page.tags %}
+     {% set tagposts = page.tags.sort('-date') %}
      {% for post in tagposts.slice('0', '5') %}
        <li>
          <a href="{{ url_for(post.path) }}" title="{{ post.title }}" target="_blank">{{ post.title }}</a>
