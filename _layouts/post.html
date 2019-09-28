@@ -103,7 +103,8 @@ layout: default
 
 		    
 	       <!-- 相关文章推荐 -->
-	       <div style="width:99%; background-color:#ffffff; -webkit-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75); -moz-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75); box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75); border: 0px solid #000000;">
+	       <hr>
+	       <div>
 	          <h4 align="left">&nbsp;&nbsp;相关文章：</h4>
 	          <ul>
 	            {% set tagposts = page.tags.sort('-date') %}
@@ -114,7 +115,7 @@ layout: default
 	            {% endfor %}
 	          </ul>
 	       </div>
-		    
+	       <hr>    
 		    
 	       <!-- Valine 评论框 start -->
 	       {% if site.valine.enable %}
