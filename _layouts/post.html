@@ -108,20 +108,17 @@ background-color:#ffffff;
 -webkit-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
 box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
-border-radius: 10px 10px 10px 10px;
--moz-border-radius: 10px 10px 10px 10px;
--webkit-border-radius: 10px 10px 10px 10px;
 border: 0px solid #000000;">
    <h2>&nbsp;&nbsp;&nbsp;&nbsp;相关文章：</h2>
    <ul>
-     {% set posts = page.tags.sort('-date') %}
-     {% for post in posts.slice('0', '5') %}
+     {% set tagposts = page.tags %}
+     {% for post in tagposts.slice('0', '5') %}
        <li>
          <a href="{{ url_for(post.path) }}" title="{{ post.title }}" target="_blank">{{ post.title }}</a>
        </li>
      {% endfor %}
    </ul>
-</div>    
+</div>
 		    
 		    
 	       <!-- Valine 评论框 start -->
