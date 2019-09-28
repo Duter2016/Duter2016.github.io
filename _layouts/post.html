@@ -102,20 +102,7 @@ layout: default
                 </ul>
 
 		    
-	       <!-- 相关文章推荐 -->
-	       <hr>
-	       <div>
-	          <h4 align="left">&nbsp;&nbsp;相关文章：</h4>
-	          <ul>
-	            {% set tagposts = page.tags.sort('-date') %}
-	            {% for post in tagposts.slice('0', '5') %}
-	              <li>
-	                <a href="{{ url_for(post.path) }}" title="{{ post.title }}" target="_blank">{{ post.title }}</a>
-	              </li>
-	            {% endfor %}
-	          </ul>
-	       </div>
-	       <hr>    
+
 		    
 	       <!-- Valine 评论框 start -->
 	       {% if site.valine.enable %}
