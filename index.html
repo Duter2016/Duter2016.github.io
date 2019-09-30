@@ -39,8 +39,12 @@ description: "死马当作活马医，再糟，死马还能再死一回！"
     </li>
     
     <li>
+        var select = document.querySelector('select');
+        select.onchange = function(){
+	            window.location=this.value;
+                }
     跳转:
-      <select οnchange=”window.location.href=this.options[selectedIndex].value”>
+      <select>
         <option>选页</option>
         <option value="https://duter2016.github.io">1</option>
         <option value="https://duter2016.github.io/page2/">2</option>
