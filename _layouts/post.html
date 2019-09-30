@@ -101,6 +101,46 @@ layout: default
                     {% endif %}
                 </ul>
 
+
+		    
+		    
+	       <!-- 相关文章 start -->
+	       {% raw %}
+	       {% comment %} 一致到获取postsAfterFilter以及tagCountEachPost的部分都没有变化{% endcomment %}
+	       {% comment %} 下面则使用了一个叠加for循环来逐次寻找最大的tagcount, 然后同步输出对应postsAfterFilter的值{% endcomment %}
+	       {% if postsAfterFilter.size > 0 %}
+	       <div class="relatedposts">
+  	          <h2>Related Posts:</h2>
+  	       <ul class="article-list">
+	       {% assign j = tagCountEachPost | size | minus: 1 %}
+	       {% assign maxIndex = 0 %}
+	       {% assign getFirstNumber = true %}
+	       {% assign selectedIndex = "-"|split: "-" %}
+	       {% for p in (0..j) %}
+	         {% for i in (0..j) %}
+	           {% unless selectedIndex contains i %}
+	             {% if getFirstNumber %}
+	               {% assign firstNumber = tagCountEachPost[i] %}
+ 	               {% assign getFirstNumber = false %}
+	             {% endif %}
+	             {% if tagCountEachPost[i] >= firstNumber %}
+	               {% assign firstNumber = tagCountEachPost[i] %}
+	               {% assign maxIndex = i %}
+	             {% endif %}
+	           {% endunless %}
+	        {% endfor %}
+	        {% assign getFirstNumber = true %}
+	        {% assign selectedIndex = selectedIndex | push: maxIndex %}
+	        {% if selectedIndex.size < 6 %}
+	           <li><a href="{{ site.baseurl }}{{ postsAfterFilter[maxIndex]['url'] }}">{{ postsAfterFilter[maxIndex]['title'] }}</a></li>
+	        {% endif %}
+	       {% endfor %}
+	       </ul>
+	       </div>
+	       {% endif %}
+	       {% endraw %}
+	       <!-- 相关文章 end -->
+		    
 		    
 
 		    
