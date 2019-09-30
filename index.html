@@ -37,6 +37,10 @@ description: "死马当作活马医，再糟，死马还能再死一回！"
     <li>
        第{{ paginator.page }}页 / 共{{ paginator.total_pages }}页
     </li>
+    
+    <li>
+    第<input type="text" name="numofpages" size="2">页<a href="//{{site.baseurl}}/page{{numofpages}}/">[跳转]</a>
+    </li>
         
     {% if paginator.next_page %}
     <li class="next">
