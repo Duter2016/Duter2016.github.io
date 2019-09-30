@@ -39,22 +39,50 @@ description: "死马当作活马医，再糟，死马还能再死一回！"
     </li>
     
     <li>
-
     跳转:
-      <select οnchange=mbar(this) name="select">
-        <option selected>选页</option>
-        <option value="https://duter2016.github.io">1</option>
-        <option value="https://duter2016.github.io/page2/">2</option>
-        <option value="https://duter2016.github.io/page3/">3</option>
-        <option value="https://duter2016.github.io/page4/">4</option>
-        <option value="https://duter2016.github.io/page5/">5</option>
-        <option value="https://duter2016.github.io/page6/">6</option>
-        <option value="https://duter2016.github.io/page7/">7</option>
-        <option value="https://duter2016.github.io/page8/">8</option>
-        <option value="https://duter2016.github.io/page9/">9</option>
-        <option value="https://duter2016.github.io/page10/">10</option>
-	<option value="https://duter2016.github.io/page11/">11</option>
+      <select name="" id='selectId'>
+        <option selected>选择</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+	<option value="11">11</option>
       </select>
+	  <script>
+   　　　　$(function (){
+   　　　　　　$('#selectId').on('change',function(){
+   　　　　　　　　var selectId = $('#selectId option:selected');
+   　　　　　　　　if(selectId.val()==1){
+  　　　　　　　　　　 window.open('https://duter2016.github.io');
+   　　　　　　　　}else if(selectId.val()==2){
+   　　　　　　　　　　window.open('https://duter2016.github.io/page2/');
+   　　　　　　　　}else if(selectId.val()==3){
+   　　　　　　　　　　window.open("https://duter2016.github.io/page3/");
+   　　　　　　　　}else if(selectId.val()==4){
+   　　　　　　　　　　window.open('https://duter2016.github.io/page4/');
+   　　　　　　　　}else if(selectId.val()==5){
+   　　　　　　　　　　window.open('https://duter2016.github.io/page5/');
+   　　　　　　　　}else if(selectId.val()==6){
+   　　　　　　　　　　window.open('https://duter2016.github.io/page6/');
+   　　　　　　　　}else if(selectId.val()==7){
+   　　　　　　　　　　window.open('https://duter2016.github.io/page7/');
+   　　　　　　　　}else if(selectId.val()==8){
+   　　　　　　　　　　window.open('https://duter2016.github.io/page8/');
+   　　　　　　　　}else if(selectId.val()==9){
+   　　　　　　　　　　window.open('https://duter2016.github.io/page9/');
+   　　　　　　　　}else if(selectId.val()==10){
+   　　　　　　　　　　window.open('https://duter2016.github.io/page10/');
+   　　　　　　　　}else if(selectId.val()==11){
+   　　　　　　　　　　window.open('https://duter2016.github.io/page11/');
+   　　　　　　　　})   
+   　　　　});
+   　　　　</script>
     </li>
         
     {% if paginator.next_page %}
