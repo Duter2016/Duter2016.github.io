@@ -39,8 +39,19 @@ description: "死马当作活马医，再糟，死马还能再死一回！"
     </li>
     
     <li>
-    {% set nofp=numofpage %}    
-    第<input type="text" name="numofpage">页<a href="{{ page{{nofp}} | prepend: site.baseurl | replace: '//', '/' }}">[跳转]</a>
+    跳转:<select name="" id=""  οnchange="window.location=this.value">
+        <option value="选页">选页</option>
+        <option value="https://duter2016.github.io/page1/"></option>
+        <option value="https://duter2016.github.io/page2/"></option>
+        <option value="https://duter2016.github.io/page3/"></option>
+        <option value="https://duter2016.github.io/page4/"></option>
+        <option value="https://duter2016.github.io/page5/"></option>
+        <option value="https://duter2016.github.io/page6/"></option>
+        <option value="https://duter2016.github.io/page7/"></option>
+        <option value="https://duter2016.github.io/page8/"></option>
+        <option value="https://duter2016.github.io/page9/"></option>
+        <option value="https://duter2016.github.io/page10/"></option>
+    </select>
     </li>
         
     {% if paginator.next_page %}
