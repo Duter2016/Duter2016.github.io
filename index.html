@@ -35,28 +35,6 @@ description: "死马当作活马医，再糟，死马还能再死一回！"
     {% endif %}
     
 
-    <!--
-    <li>
-    第{{ paginator.page }}页 / 跳第
-      <select name="mylink" id="mylink" onchange="window.location=mylink.value">
-        <option selected>选择</option>
-        <option value="../">1</option>
-        <option value="../page2/">2</option>
-        <option value="../page3/">3</option>
-        <option value="../page4/">4</option>
-        <option value="../page5/">5</option>
-        <option value="../page6/">6</option>
-        <option value="../page7/">7</option>
-        <option value="../page8/">8</option>
-        <option value="../page9/">9</option>
-        <option value="../page10/">10</option>
-	<option value="../page11/">11</option>
-	<option value="../page12/">12</option>
-      </select>
-      页 / 共{{ paginator.total_pages }}页
-    </li>
-    -->
-
 	
     <li>
     第{{ paginator.page }}页 / 跳第
@@ -80,18 +58,4 @@ description: "死马当作活马医，再糟，死马还能再死一回！"
 {% endif %}
 
 
-            <!-- Select 分页跳转脚本 -->
-            <!--
-	    <script type="text/javascript">
 
-                    function mbar(sobj) {
-                    var docurl =sobj.options[sobj.selectedIndex].value;
-                    if (docurl != "") {
-                       open(docurl,'_blank');
-                       sobj.selectedIndex=0;
-                       sobj.blur();
-                    }
-                    }
-
-            </script>
-            -->
