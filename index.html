@@ -57,6 +57,19 @@ description: "死马当作活马医，再糟，死马还能再死一回！"
     </li>
 
 	
+    <li>
+    第{{ paginator.page }}页 / 跳第
+      <select name="mylink" id="mylink" onchange="window.location=mylink.value">
+        <option selected>选择</option>
+        <option value="../">1</option>
+	{% for page in (2..paginator.total_pages) %}
+        <option value="../page{{ page }}/">{{ page }}</option>
+	{% endfor %}
+      </select>
+      页 / 共{{ paginator.total_pages }}页
+    </li>
+	
+	
     {% if paginator.next_page %}
     <li class="next">
         <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">后一页 &rarr;</a>
@@ -65,16 +78,3 @@ description: "死马当作活马医，再糟，死马还能再死一回！"
 </ul>
 {% endif %}
 
-
-	    <script type="text/javascript">
-
-                    function mbar(sobj) {
-                    var docurl =sobj.options[sobj.selectedIndex].value;
-                    if (docurl != "") {
-                       open(docurl,'_blank');
-                       sobj.selectedIndex=0;
-                       sobj.blur();
-                    }
-                    }
-
-            </script>
