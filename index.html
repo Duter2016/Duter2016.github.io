@@ -78,3 +78,17 @@ description: "死马当作活马医，再糟，死马还能再死一回！"
 </ul>
 {% endif %}
 
+
+            <!-- Select 分页跳转脚本 -->
+	    <script type="text/javascript">
+
+                    function mbar(sobj) {
+                    var docurl =sobj.options[sobj.selectedIndex].value;
+                    if (docurl != "") {
+                       open(docurl,'_blank');
+                       sobj.selectedIndex=0;
+                       sobj.blur();
+                    }
+                    }
+
+            </script>
