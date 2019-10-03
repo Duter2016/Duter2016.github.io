@@ -102,8 +102,7 @@ layout: default
                 </ul>
 
 		    
-	       <!-- 相关文章推荐 -->
-	       <!--
+	       <!-- 相关文章推荐 -->	       
 	       <br>
 	       <div style="border: 1px;">
 	         {% for eachtag in site.tags %}
@@ -112,15 +111,16 @@ layout: default
 	           {% endif %}
 	           <h4 align="left">相关文章</h4>
 	           <ul>
-	           {% for post in eachtag.last %}
+	           {% assign tagposts = eachtag.last.sort('-date') %}
+	           {% for post in tagposts.slice('0', '5') %}
+	          <!-- {% for post in eachtag.last %}  -->
 	             <li>
 	               <a href="{{ post.url }}" target="_blank">{{ post.title }} <font color="brown">[{{ post.date | date: "%Y-%m-%d" }}]</font></a>
 	             </li>
 	           {% endfor %}
 	         </ul>
 	         {% endfor %}
-	       </div>
-                -->
+	       </div>    
 
 		    
 	       <!-- Valine 评论框 start -->
