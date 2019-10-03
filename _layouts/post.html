@@ -104,7 +104,6 @@ layout: default
 
 		    
 	       <!-- 相关文章推荐 开始-->
-	       {% if site.related_posts %}
 	       <div style="border: 1px solid #ddd;">
 	         {% for eachtag in site.tags %}
 	           {% if page.tags.first != eachtag.first %}
@@ -120,7 +119,6 @@ layout: default
 	         </ul>
 	         {% endfor %}
 	       </div>
-	       {% endif %}
 	       <!-- 相关文章推荐 结束-->
 
 		    
