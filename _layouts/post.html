@@ -103,7 +103,8 @@ layout: default
 
 		    
 	       <!-- 相关文章推荐 -->
-	       <div style="border: 1px solid gray;">
+	       <br>
+	       <div style="border: 1px;">
 	         {% for eachtag in site.tags %}
 	           {% if page.tags.first != eachtag.first %}
 	             {% continue %}
@@ -111,7 +112,7 @@ layout: default
 	           <h4 align="left">相关文章</h4>
 	           <ul>
 	           {% set tagposts = eachtag.last.sort('-date') %}
-	           {% for post in tagposts.slice('0', '5') %}
+	           {% for post in tagposts.slice(0,5) %}
 	             <li>
 	               <a href="{{ post.url }}" target="_blank">{{ post.title }} <font color="brown">[{{ post.date | date: "%Y-%m-%d" }}]</font></a>
 	             </li>
