@@ -100,16 +100,16 @@ layout: default
                     </li>
                     {% endif %}
                 </ul>
+		<br>      <!-- 添加一行空行 -->
 
 		    
-	       <!-- 相关文章推荐 -->	       
-	       <br>
+	       <!-- 相关文章推荐 开始-->	           
 	       <div style="border: 1px solid #ddd;">
 	         {% for eachtag in site.tags %}
 	           {% if page.tags.first != eachtag.first %}
 	             {% continue %}
 	           {% endif %}
-	           <h4 align="left">相关文章</h4>
+	           <h4 align="left">&nbsp;&nbsp;相关文章：</h4>
 	           <ul>
 	          {% for post in eachtag.last %}
 	             <li>
@@ -118,7 +118,8 @@ layout: default
 	           {% endfor %}
 	         </ul>
 	         {% endfor %}
-	       </div>    
+	       </div>
+	       <!-- 相关文章推荐 结束-->
 
 		    
 	       <!-- Valine 评论框 start -->
