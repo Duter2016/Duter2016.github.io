@@ -54,6 +54,9 @@ kramdown:
   input: GFM                            # use Github Flavored Markdown !important
 
 
+# 相关文章推荐开关
+related_posts: false
+
 
 # 评论系统
 # Disqus（https://disqus.com/）
