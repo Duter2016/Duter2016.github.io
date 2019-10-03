@@ -103,21 +103,22 @@ layout: default
 
 		    
 	       <!-- 相关文章推荐 -->
-	       <div style="border: 1px solid #000000;" id="">
+	       <div style="border: 1px solid gray;">
 	         {% for eachtag in site.tags %}
 	           {% if page.tags.first != eachtag.first %}
 	             {% continue %}
 	           {% endif %}
-	           <h4 align="left">相关文章 </h4>
+	           <h4 align="left">相关文章</h4>
 	           <ul>
-	           {% for post in eachtag.last.slice(0,5) %}
+	           {% set tagposts = eachtag.last.sort('-date') %}
+	           {% for post in tagposts.slice('0', '5') %}
 	             <li>
 	               <a href="{{ post.url }}" target="_blank">{{ post.title }} <font color="brown">[{{ post.date | date: "%Y-%m-%d" }}]</font></a>
 	             </li>
 	           {% endfor %}
 	         </ul>
 	         {% endfor %}
-	       </div>   
+	       </div>
 
 		    
 	       <!-- Valine 评论框 start -->
