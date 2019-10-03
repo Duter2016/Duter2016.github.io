@@ -15,9 +15,10 @@ tags:								#标签
 **原文地址**：https://danny.li/notes/jekyll-sitemap/  
 
 Sitemap 可以帮助搜索引擎抓取网站内容，增加访问量。不过如何你不想别人访问你的网站，就不需要这个东西。
-在站点根目录下创建一个新的文件，文件名为 sitemap.xml，文件内容如下（**把一下代码中的[]替换为{}**）：
+在站点根目录下创建一个新的文件，文件名为 sitemap.xml，文件内容如下：
 
 ```
+{% raw %}
 ---
 sitemap:
     priority: 0.7
@@ -27,28 +28,29 @@ sitemap:
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  [% for post in site.posts %]                 # 把代码中的[]替换为{}
+  {% for post in site.posts %]}               
   <url>
-    <loc>[[ site.url ]][[ post.url ]]</loc>              # 把代码中的[]替换为{}
-    [% if post.lastmod == null %]              # 把代码中的[]替换为{}
-    <lastmod>[[ post.date | date_to_xmlschema ]]</lastmod>              # 把代码中的[]替换为{}
-    [% else %]              # 把代码中的[]替换为{}
-    <lastmod>[[ post.lastmod | date_to_xmlschema ]]</lastmod>              # 把代码中的[]替换为{}
-    [% endif %]              # 把代码中的[]替换为{}
+    <loc>{{ site.url }}{{ post.url }}</loc>             
+    {% if post.lastmod == null %}             
+    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>              
+    {% else %}             
+    <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>             
+    {% endif %}             
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  [% endfor %]              # 把代码中的[]替换为{}
-  [% for page in site.pages %]              # 把代码中的[]替换为{}
-  [% if page.sitemap != null and page.sitemap != empty %]              # 把代码中的[]替换为{}
+  {% endfor %}             
+  {% for page in site.pages %}            
+  {% if page.sitemap != null and page.sitemap != empty %}             
   <url>
-    <loc>[[ site.url ]][[ page.url ]]</loc>              # 把代码中的[]替换为{}
-    <lastmod>[[ page.sitemap.lastmod | date_to_xmlschema ]]</lastmod>              # 把代码中的[]替换为{}
-    <changefreq>[[ page.sitemap.changefreq ]]</changefreq>              # 把代码中的[]替换为{}
-    <priority>[[ page.sitemap.priority ]]</priority>              # 把代码中的[]替换为{}
+    <loc>{{ site.url }}{{ page.url }}</loc>             
+    <lastmod>{{ page.sitemap.lastmod | date_to_xmlschema }}</lastmod>            
+    <changefreq>{{ page.sitemap.changefreq }}</changefreq>             
+    <priority>{{ page.sitemap.priority }}</priority>             
   </url>
-  [% endif %]              # 把代码中的[]替换为{}
-  [% endfor %]              # 把代码中的[]替换为{}
+  {% endif %}            
+  {% endfor %}              
 
 </urlset>
+{% endraw %}
 ```
