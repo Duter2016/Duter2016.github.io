@@ -103,14 +103,14 @@ layout: default
 
 		    
 	       <!-- 相关文章推荐 -->
-	       <div>
+	       <div style="border: 1px solid #000000;" id="">
 	         {% for eachtag in site.tags %}
 	           {% if page.tags.first != eachtag.first %}
 	             {% continue %}
 	           {% endif %}
 	           <h4 align="left">相关文章 </h4>
 	           <ul>
-	           {% for post in eachtag.last %}
+	           {% for post in eachtag.last.slice(0,5) %}
 	             <li>
 	               <a href="{{ post.url }}" target="_blank">{{ post.title }} <font color="brown">[{{ post.date | date: "%Y-%m-%d" }}]</font></a>
 	             </li>
