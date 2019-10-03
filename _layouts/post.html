@@ -102,7 +102,22 @@ layout: default
                 </ul>
 
 		    
-		    
+	       <!-- 相关文章推荐 -->
+	       <div>
+	         {% for eachtag in site.tags %}
+	           {% if page.tags.first != eachtag.first %}
+	             {% continue %}
+	           {% endif %}
+	           <h3 style="font-family: Microsoft YaHei">{{ eachtag.first }} 相关文章 </h3>
+	           <ul>
+	           {% for post in eachtag.last.slice('0', '5') %}
+	             <li>
+	               <a href="{{ post.url }}" target="_blank">{{ post.title }} <font color="brown">[{{ post.date | date: "%Y-%m-%d" }}]</font></a>
+	             </li>
+	           {% endfor %}
+	         </ul>
+	         {% endfor %}
+	       </div>   
 
 		    
 	       <!-- Valine 评论框 start -->
