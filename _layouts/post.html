@@ -111,8 +111,7 @@ layout: default
 	           {% endif %}
 	           <h4 align="left">相关文章</h4>
 	           <ul>
-	           {% set tagposts = eachtag.last.sort('-date') %}
-	           {% for post in tagposts.slice(0,5) %}
+	           {% for post in eachtag.last %}
 	             <li>
 	               <a href="{{ post.url }}" target="_blank">{{ post.title }} <font color="brown">[{{ post.date | date: "%Y-%m-%d" }}]</font></a>
 	             </li>
