@@ -40,7 +40,7 @@ layout: default
                     {% comment %} if page.subtitle {% endcomment %}
                     <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
-                    <span class="meta">作者: {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} | {{ page.date | date: "%Y-%m-%d" }} | 阅读<span id="busuanzi_value_page_pv"></span> 次</span>
+                    <span class="meta">作者: {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} | {{ page.date | date: "%Y-%m-%d" }} | 阅读<span id="busuanzi_value_page_pv"></span> 次</span> | <a href="https://github.com/{{ site.repository }}/blob/master/{{ page.path }}" target="_blank" title="编辑本文" >编辑</a>
                 </div>
             </div>
         </div>
@@ -71,6 +71,9 @@ layout: default
                                 {% endif %} 
 		    
 				{{ content }}
+		    
+		               <!-- 文章Markdown源码 -->
+		               <a href="https://raw.githubusercontent.com/{{ site.repository }}/master/{{ page.path }}" target="_blank" title="查看本文Markdown源码" >「本文源码」</a>
 		    
 		                <!-- 版权声明 -->
                                 {% include copyright.html %}
