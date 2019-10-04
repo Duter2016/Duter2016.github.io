@@ -40,7 +40,7 @@ layout: default
                     {% comment %} if page.subtitle {% endcomment %}
                     <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
-                    <span class="meta">作者: {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} | {{ page.date | date: "%Y-%m-%d" }} | 阅读<span id="busuanzi_value_page_pv"></span> 次</span> | <a href="https://github.com/{{ site.repository }}/blob/master/{{ page.path }}" target="_blank" title="编辑本文" >编辑</a>
+                    <span class="meta">作者: {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} | {{ page.date | date: "%Y-%m-%d" }} | 阅读<span id="busuanzi_value_page_pv"></span> 次</span>
                 </div>
             </div>
         </div>
@@ -57,6 +57,21 @@ layout: default
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 post-container">
+		    
+		                 <!-- 文章编辑与Markdown源码 -->
+		                <div style="width: 170px;
+		                background-color:#fff;
+		                border: 1px solid #ddd;
+		                border-radius: 6px 6px 6px 6px;
+		                -moz-border-radius: 6px 6px 6px 6px;
+		                -webkit-border-radius: 6px 6px 6px 6px;
+		                -webkit-box-shadow: 5px 5px 3px #888888;
+		                -moz-box-shadow: 5px 5px 3px #888888;
+		                box-shadow: 5px 5px 3px #888888;" text-align="center">
+		                <a href="https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io/blob/master/{{ page.path }}" target="_blank" title="编辑本文" >「编辑」</a>
+		                <a href="https://raw.githubusercontent.com/{{ site.github_username }}/{{ site.github_username }}.github.io/master/{{ page.path }}" target="_blank" title="查看本文Markdown源码" >「本文源码」</a>
+		                </div>
+		    
 		                <!-- 在正文开头添加网易云音乐插件 -->
 		                <!-- cloud music -->
                                 {% if page.music-id %}
@@ -71,9 +86,6 @@ layout: default
                                 {% endif %} 
 		    
 				{{ content }}
-		    
-		               <!-- 文章Markdown源码 -->
-		               <a href="https://raw.githubusercontent.com/{{ site.repository }}/master/{{ page.path }}" target="_blank" title="查看本文Markdown源码" >「本文源码」</a>
 		    
 		                <!-- 版权声明 -->
                                 {% include copyright.html %}
