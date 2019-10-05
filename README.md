@@ -25,6 +25,7 @@
 + 增加文章页面“编辑”、“查看源码”按钮
 + 添加首页下拉菜单式分页导航
 + 增加post页面“相关文章”模块
++ 添加文章置顶功能
 + 网站汉化
 
 **目录**  
@@ -53,6 +54,7 @@
 * [15.关于收到"Page Build Warning"的 Email](#15关于收到page-build-warning的-email)
 * [16.添加文章访问量功能[不蒜子]：](#16添加文章访问量功能不蒜子)
 * [17.添加网站运行时间：](#17添加网站运行时间)
+* [18.文章置顶：](#18文章置顶)
 * [致谢](#致谢)
 * [License](#license)
 
@@ -91,18 +93,20 @@ yaml 头文件长这样:
 
 ```
 ---
-layout:     post
-title:      定时器 你真的会使用吗？
-subtitle:   iOS定时器详解
-date:       2016-12-13
-author:     BY
-header-img: img/post-bg-ios9-web.jpg
-catalog: 	 true
-tags:
-    - iOS
-    - 定时器
+layout:     post   				    # 使用的布局（不需要改）
+title:      这是文章正标题 				# 标题 
+subtitle:      这是副标题                  #副标题
+date:       2019-10-01 				# 时间
+author:     Duter2016 						# 作者
+header-img: img/post-bg-dutbs.jpg 	#这篇文章标题背景图片
+header-mask: "0.1"                    # 博文页面上端的背景图片的亮度，数值越大越黑暗
+catalog: true 						# 开启catalog，将在博文侧边展示博文的结构
+istop: false            # 设为true可把文章设置为置顶文章
+music-id: 1359xxxxxx        # 网易云音乐单曲嵌入
+music-idfull: 293xxxxxxx        # 网易云音乐歌单嵌入
+tags:								#标签
+    - Python
 ---
-
 ```
 
 ### 4.侧边栏
@@ -407,6 +411,45 @@ ga_domain: huangxuan.me			# 默认的是 auto, 这里我是自定义了的域名
 </script></span>
 ```
 
+### 18.文章置顶
+在文章参数里面添加 `istop: true` 属性会让该博文置顶显示。但该文章在原始位置依旧会显示，这就意味址如果你置顶了第一页的文章，你会在第一页看到两篇文章。
+
+如果想要修改博文置顶的逻辑可以在 index.html 文件中修改。比如，在index.html中的“普通文档流”中添加如下代码，就可以使该文章在原始位置不再显示（我想使其在原始位置依旧显示，故没添加）：
+```
+{% if post.istop %}
+{% else %}
+^^^^^^^^
+{% endif %}
+```
+即修改后变为：
+
+```
+<!--普通文档流开始-->
+{% for post in paginator.posts %}
+{% if post.istop %}
+{% else %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}" target="_blank">
+        <h2 class="post-title">
+            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {{ post.content | strip_html | truncate:200 }}
+        </div>
+    </a>
+    <p class="post-meta">
+        作者: {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} | {{ post.date | date: "%Y-%m-%d" }} | {% for tag in post.tags %}<a href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}" target="_blank"> {{ tag }}</a>{% endfor %}
+    </p>
+</div>
+<hr>
+{% endif %}
+{% endfor %}
+```
 
 ## 致谢
 
