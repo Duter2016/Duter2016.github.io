@@ -4,13 +4,13 @@ description: "死马当作活马医，再糟，死马还能再死一回！"
 ---
 
 <!--置顶文章开始-->
-{% for post in paginator.posts %}
+{% for post in site.posts %}
   {% if post.istop %}
     {% if paginator.page == 1 %}
     <div class="post-preview">
         <a href="{{ post.url | prepend: site.baseurl }}" target="_blank">
             <h2 class="post-title">
-                {{ post.title }}
+                {{ post.title }}[置顶]
             </h2>
             {% if post.subtitle %}
             <h3 class="post-subtitle">
