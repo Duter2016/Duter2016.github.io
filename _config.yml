@@ -150,9 +150,10 @@ friends: [
 
 
 
-# Jekyll-Search settings
+# Jekyll-Search settings 
+# 是否启用jekyll博客搜索插件
 # url: https://github.com/androiddevelop/jekyll-search
-Jekyll-Search: true             # 是否启用jekyll博客搜索插件
+Jekyll-Search: true
 
 
 
@@ -162,5 +163,5 @@ lightbox: true
 
 
  # Share社交分享按钮开关
-post_share: true
+post_share: false
 
