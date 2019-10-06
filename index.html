@@ -33,6 +33,8 @@ description: "死马当作活马医，再糟，死马还能再死一回！"
 
 <!--普通文档流开始-->
 {% for post in paginator.posts %}
+{% if post.istop %}
+{% else %}
 <div class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}" target="_blank">
         <h2 class="post-title">
@@ -52,7 +54,9 @@ description: "死马当作活马医，再糟，死马还能再死一回！"
     </p>
 </div>
 <hr>
+{% endif %}
 {% endfor %}
+<!--普通文档流开始-->
 
 <!-- Pager -->
 {% if paginator.total_pages > 1 %}
