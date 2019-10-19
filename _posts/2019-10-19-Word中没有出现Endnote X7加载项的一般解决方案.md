@@ -32,7 +32,9 @@ tags:								#标签
 
 左上角的office按钮-word选项-加载项-左下方禁用项目 找到Endote相关项-点击转到-启用。若是禁用项目中没有找到Endnote相关项，则进入步骤3。
 
-### 3.将Endnote安装文件夹“`Program Files（你的文件安装路径）\EndNote X7\ResearchSoft\Cwyw\17`”下面的所有文件（主要是一定要有两个文件EndNote Cwyw.dot和EndNote Cwyw.dll） 复制到 “`%userprofile%\AppData\Roaming\Microsoft\Word\STARTUP`”（win8系统）或者win7系统的“`C:\Documents and Settings\Administrator（或者具有管理员权限的账户）\Application Data\Microsoft\Word\STARTUP`”目录下。
+### 3.移动文件
+
+将Endnote安装文件夹“`Program Files（你的文件安装路径）\EndNote X7\ResearchSoft\Cwyw\17`”下面的所有文件（主要是一定要有两个文件EndNote Cwyw.dot和EndNote Cwyw.dll） 复制到 “`%userprofile%\AppData\Roaming\Microsoft\Word\STARTUP`”（win8系统）或者win7系统的“`C:\Documents and Settings\Administrator（或者具有管理员权限的账户）\Application Data\Microsoft\Word\STARTUP`”目录下。
 
 ## 较低版本（如endnote x5、x6）解决办法
 
@@ -50,4 +52,6 @@ tags:								#标签
 
 左上角的office按钮-word选项-加载项-左下方禁用项目 找到Endote相关项-点击转到-启用。若是禁用项目中没有找到Endnote相关项，则进入步骤3。
 
-### 3.将Endnote安装文件夹`\Program Files\EndNote X5\Product-Support\CWYW`下面的两个文件**EndNote Cwyw.dot和EndNote Cwyw.dll 复制到** “`%userprofile%\AppData\Roaming\Microsoft\Word\STARTUP`”（win8系统）或者win7系统的“`C:\Documents and Settings\Administrator（或者具有管理员权限的账户）\Application Data\Microsoft\Word\STARTUP`”目录下。
+### 3.移动文件
+
+将Endnote安装文件夹`\Program Files\EndNote X5\Product-Support\CWYW`下面的两个文件**EndNote Cwyw.dot和EndNote Cwyw.dll 复制到** “`%userprofile%\AppData\Roaming\Microsoft\Word\STARTUP`”（win8系统）或者win7系统的“`C:\Documents and Settings\Administrator（或者具有管理员权限的账户）\Application Data\Microsoft\Word\STARTUP`”目录下。
