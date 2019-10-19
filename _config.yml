@@ -163,5 +163,5 @@ lightbox: true
 
 
  # Share社交分享按钮开关
-post_share: false
+post_share: true
 
