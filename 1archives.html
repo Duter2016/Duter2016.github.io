@@ -35,6 +35,6 @@ header-img: "img/post-bg-dutlx.jpg"
       {% endif %}
     {% endunless %}
 
-    <li>{{ post.date | date:"%Y年%m月%d日：" }} <a href="{{ post.url }}" target="_blank">{{ post.title }}</a> <font color="#0085a1">☖</font> {% for tag in post.tags %}<a href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}" target="_blank"> <font color="#0085a1">{{ tag }}</font></a>{% endfor %}</li>
+    <li>{{ post.date | date:"%Y-%m-%d：" }} <a href="{{ post.url }}" target="_blank">{{ post.title }}</a> <font color="#0085a1">☖</font> {% for tag in post.tags %}<a href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}" target="_blank"> <font color="#0085a1">{{ tag }}</font></a>{% endfor %}</li>
   {% endfor %}
 </ul>
