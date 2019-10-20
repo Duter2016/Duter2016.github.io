@@ -55,7 +55,7 @@ This error may also be caused if you are using a different version of EndNote th
 摘自：[http://www.endnote.com/support/faqs/CWYW/faq13.asp#vista](http://www.endnote.com/support/faqs/CWYW/faq13.asp#vista)
 
 ### 方法二：
-EndNote工具栏出现无效字符串怎么破？点击<a href=)在Word的工具栏出现「无效字符串」或「Invalid Class String」错误提示，这错误是怎么造成的，又该怎么解决呢？
+EndNote工具栏出现无效字符串怎么破？点击[EndNote](http://www.howsci.com/tag/endnote/)在Word的工具栏出现「无效字符串」或「Invalid Class String」错误提示，这错误是怎么造成的，又该怎么解决呢？
 
 #### 1.EndNote工具栏出现无效字符串原因分析
 ---------------------
@@ -85,9 +85,9 @@ EndNote工具栏出现无效字符串怎么破？点击<a href=)在Word的工具
 
 最简单的解决方法是关闭用户UAC功能。打开控制面板→系统和安全→更改用户账户控制设置，把控制条拉到最后，成为「从不通知」，然后确定即可。此时再次重新修复安装一下EndNote即可。
 
-但是我个人不并建议这样做，因为这样系统的安全性就降低了。我更建议是使用[EndNote安装出现error1723怎么破](http://www.howsci.com/endnote-error1723.html)一文提到的使用管理员权限安装EndNote的安装方法。
+但是我个人不并建议这样做，因为这样系统的安全性就降低了。我更建议是使用《[EndNote安装出现error1723怎么破](http://www.howsci.com/endnote-error1723.html)》一文提到的使用管理员权限安装EndNote的安装方法。
 
-到此应该问题解决了，如果还解决，那么请继续。
+到此应该问题解决了，如果还没解决，那么请继续。
 
 **修改注册表**
 
@@ -115,6 +115,6 @@ EndNote工具栏出现无效字符串怎么破？点击<a href=)在Word的工具
 
 确定，关闭注册表编辑器即可。有时可能需要重启一下电脑。
 
-> 注：如果在注册表里面找不到EndNote17.AddinServer这一项的话，就把所有关于EndNote的注册表项都重复以上的权限设置，并把你当前用户的权限也设置为“完全控制”就可以了，本站（锐经）站长在一台电脑上遇到了这个情况，这样处理后可以正常使用了！
+> 注：如果在注册表里面找不到EndNote17.AddinServer这一项的话，就把所有关于EndNote的注册表项都重复以上的权限设置，并把你当前用户的权限也设置为“完全控制”就可以了，我在一台电脑上遇到了这个情况，这样处理后可以正常使用了！
 
 > 另外，在word中使用EndNote时，一定要先打开EndNote，然后再打开你要编辑的word文档！
