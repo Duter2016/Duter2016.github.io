@@ -1,6 +1,6 @@
 ---
 layout:     post   				    # 使用的布局（不需要改）
-title:      windows安装Office-2013后，安装Visio-2013报错「安装程序找不到office.zh-cn」 				# 标题 
+title:      安装Office-2013后，安装Visio-2013报错「安装程序找不到office-zh-cn」 				# 标题 
 subtitle:      安装程序找不到office.zh-cn疑难解答                #副标题
 date:       2019-10-22 				# 时间
 author:     Duter2016 						# 作者
