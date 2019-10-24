@@ -54,7 +54,13 @@ Windows Registry Editor Version 5.00
 第二步：重新启动电脑进入安全模式（启动时按F8键），然后点击“开始－－>运行”，输入“CMD”命令，
 在弹出的”CMD命令提示符“窗口中输入“`msiexec /regserver`”，最后重新启动系统即可。
 
-二、如果不是在“安全模式”下出现该情况，那么很可能是由于“Windows Installer”服务被禁用了。运行“`services.msc`”，找到服务“`Windows Installer`”，
-双击打开其属性。然后在“常规”选项卡的“启动类型”下拉框中选择“手动”，最后单击“启动”按钮，便可启动该服务。
+二、如果不是在“安全模式”下出现该情况，那么很可能是由于“Windows Installer”服务被禁用了。
+
+运行“`services.msc`”，找到服务“`Windows Installer`”，
+双击打开其属性。
+
+然后在“常规”选项卡的“启动类型”下拉框中选择“手动”，最后单击“启动”按钮，便可启动该服务。
+
 如果这时提示“指定的服务已标记为删除”或其他错误，无法启动该服务，那么就需要重新安装Windows Installer。
-1.Windows XP的用户可以到 `http：//www.skycn.com/soft/11601.html `上下载Windows Installer 3.1 进行安装。
+
+Windows XP的用户可以到 `http：//www.skycn.com/soft/11601.html `上下载Windows Installer 3.1 进行安装。
