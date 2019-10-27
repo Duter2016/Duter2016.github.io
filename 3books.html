@@ -175,6 +175,7 @@ header-img: "img/post-bg-coffee.jpeg"
     <!-- 已读000开始 -->
     {% for book in site.data.booksyd.books %}
     <div class="hexo-douban-item">
+     <li><a href="{{ book.doubanurl }}">{{ book.name }}</a></li>
       <div class="hexo-douban-picture"><img src="{{ book.bookimg }}" data-src="{{ book.bookimg }}" referrerpolicy="no-referrer"></div>
       <div class="hexo-douban-info">
           <div class="hexo-douban-title"><a target="_blank" href="{{ book.doubanurl }}"> {{ book.name }}</a></div>
