@@ -175,15 +175,15 @@ header-img: "img/post-bg-coffee.jpeg"
     <!-- 已读000开始 -->
     {% for book in site.data.booksyd %}
     <div class="hexo-douban-item">
-      <div class="hexo-douban-picture"><img src="https://img1.doubanio.com/view/subject/m/public/s29362779.jpg" data-src="https://img1.doubanio.com/view/subject/m/public/s29362779.jpg" referrerpolicy="no-referrer"></div>
+      <div class="hexo-douban-picture"><img src="{{book.bookimg}}" data-src="{{book.bookimg}}" referrerpolicy="no-referrer"></div>
       <div class="hexo-douban-info">
-          <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/26971148/"> {{ book.name }}</a></div>
+          <div class="hexo-douban-title"><a target="_blank" href="{{book.doubanurl}}"> {{book.name}}</a></div>
           <div class="hexo-douban-meta">
-            {{ book.author }} / {{ book.translator }} / {{ book.press }} / {{ book.publishdate }} / {{ book.price }}
+            {{book.author}} / {{book.translator}} / {{book.press}} / {{book.publishdate}} / {{book.price}}
           </div>
-          <div class="hexo-douban-meta">{{ book.readdate }}
-            读过 / {{ book.booktag }} / {{ book.stars }} {{ book.rate }}</div>
-          <div class="hexo-douban-comments">我的书评：{{ book.review }}</div>
+          <div class="hexo-douban-meta">{{book.readdate}}
+            读过 / {{book.booktag}} / {{book.stars}} {{book.rate}}</div>
+          <div class="hexo-douban-comments">我的书评：{{book.review}}</div>
       </div>
     </div>
     {% endfor %}
