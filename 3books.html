@@ -171,52 +171,22 @@ header-img: "img/post-bg-coffee.jpeg"
 
   <!--      已读 start      -->
   <div id="hexo-douban-item3">
-    
-    <!-- 已读01开始 -->
+    <!-- 已读000开始 -->
+    {% for book in site.data.booksyd %}
     <div class="hexo-douban-item">
-      <div class="hexo-douban-picture"><img src="https://img1.doubanio.com/view/subject/m/public/s29362779.jpg" data-src="https://img1.doubanio.com/view/subject/m/public/s29362779.jpg" referrerpolicy="no-referrer"></div>
+      <div class="hexo-douban-picture"><img src="{{ book.bookimg }}" data-src="{{ book.bookimg }}" referrerpolicy="no-referrer"></div>
       <div class="hexo-douban-info">
-          <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/26971148/"> 风雪追击</a></div>
+          <div class="hexo-douban-title"><a target="_blank" href="{{ book.doubanurl }}"> {{ book.name }}</a></div>
           <div class="hexo-douban-meta">
-            [日] 东野圭吾 / 赵文梅 / 现代出版社 / 2017-4 / 39.80元
+            {{ book.author }} | {{ book.translator }} | {{ book.press }} | {{ book.publishdate }} | {{ book.price }}
           </div>
-          <div class="hexo-douban-meta">2018-12-29
-            读过 /  / ★★★☆☆ 还行</div>
-          <div class="hexo-douban-comments">我的书评：等待也是种信念，海的爱太深，时间太浅。</div>
+          <div class="hexo-douban-meta">{{ book.readdate }}
+            读过 | {{ book.booktag }} | {{ book.stars }} {{ book.rate }}</div>
+          <div class="hexo-douban-comments">我的书评：{{ book.review }}</div>
       </div>
     </div>
-    <!-- 已读01结束 -->
-    
-    <!-- 已读02开始 -->
-    <div class="hexo-douban-item">
-      <div class="hexo-douban-picture"><img src="https://img1.doubanio.com/view/subject/m/public/s5743437.jpg" data-src="https://img1.doubanio.com/view/subject/m/public/s5743437.jpg" referrerpolicy="no-referrer"></div>
-      <div class="hexo-douban-info">
-          <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/26971148/"> 生死疲劳</a></div>
-          <div class="hexo-douban-meta">
-            莫言 / 作家出版社 / 2006-1-1 / 39.00元
-          </div>
-          <div class="hexo-douban-meta">2018-12-21
-            读过 /  / ★★★★☆ 推荐</div>
-          <div class="hexo-douban-comments">我的书评：等待也是种信念，海的爱太深，时间太浅。</div>
-      </div>
-    </div>
-    <!-- 已读02结束 -->
-    
-    <!-- 已读03开始 -->
-    <div class="hexo-douban-item">
-      <div class="hexo-douban-picture"><img src="https://img3.doubanio.com/view/subject/m/public/s1111124.jpg" data-src="https://img3.doubanio.com/view/subject/m/public/s1111124.jpg" referrerpolicy="no-referrer"></div>
-      <div class="hexo-douban-info">
-          <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/26971148/"> 现实一种</a></div>
-          <div class="hexo-douban-meta">
-            余华 / 上海文艺出版社 / 2004-01 / 12.00
-          </div>
-          <div class="hexo-douban-meta">2018-12-21
-            读过 /  / ★★★★★ 力荐</div>
-          <div class="hexo-douban-comments">我的书评：等待也是种信念，海的爱太深，时间太浅。</div>
-      </div>
-    </div>
-    <!-- 已读03结束 -->
-    
+    {% endfor %}
+    <!-- 已读000结束 -->
   </div>
   <!--      已读 end      -->
 
@@ -339,3 +309,4 @@ for (var i = 0; i < firstpages.length; i++) {
     firstpages[i].click();
 }
 </script>
+
