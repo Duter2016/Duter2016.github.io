@@ -107,7 +107,7 @@ header-img: "img/post-bg-coffee.jpeg"
 <div class="container">
 <h1>这里是我的书籍清单</h1>
 <blockquote>
-    <p>本页面正在测试中。</p>
+    <p>{{ site.data.bookstj.booknote }}</p>
 </blockquote>
 
 
@@ -115,56 +115,54 @@ header-img: "img/post-bg-coffee.jpeg"
 <div class="hexo-douban-tabs">
     <a class="hexo-douban-tab" id="hexo-douban-tab1" href="javascript:;" rel="external">
         在读
-        (1)</a>
+        ({{ site.data.bookstj.zdnum }})</a>
     <a class="hexo-douban-tab" id="hexo-douban-tab2" href="javascript:;" rel="external">
         想读
-        (1)</a>
+        ({{ site.data.bookstj.xdnum }})</a>
     <a class="hexo-douban-tab" id="hexo-douban-tab3" href="javascript:;" rel="external">
         已读
-        (3)</a>
+        ({{ site.data.bookstj.ydnum }})</a>
 </div>
 
 <div>
   <!--      在读 start      -->
   <div id="hexo-douban-item1">
-  
-    <!-- 在读01开始 -->
+    <!-- 在读000开始 -->
+    {% for book in site.data.bookszd %}
     <div class="hexo-douban-item">
-      <div class="hexo-douban-picture"><img src="https://img1.doubanio.com/view/subject/m/public/s5743437.jpg" data-src="https://img3.doubanio.com/view/subject/m/public/s28976475.jpg" referrerpolicy="no-referrer"></div>
+      <div class="hexo-douban-picture"><img src="{{ book.bookimg }}" data-src="{{ book.bookimg }}" referrerpolicy="no-referrer"></div>
       <div class="hexo-douban-info">
-          <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/26413027/"> 虚无的十字架</a></div>
+          <div class="hexo-douban-title"><a target="_blank" href="{{ book.doubanurl }}"> {{ book.name }}</a></div>
           <div class="hexo-douban-meta">
-            [日] 东野圭吾 / 王蕴洁 / 湖南文艺出版社 / 2015-6 / 39.80元
+            {{ book.author }} | {{ book.translator }}译 | {{ book.press }} | {{ book.publishdate }} | {{ book.price }}
           </div>
-          <div class="hexo-douban-meta">2019-09-21
-          在读 / </div>
+          <div class="hexo-douban-meta">{{ book.readdate }} 在读 | {{ book.booktag }}</div>
           <div class="hexo-douban-comments"></div>
       </div>
     </div>
-    <!-- 在读01结束 -->
-    
+    {% endfor %}
+    <!-- 在读000结束 -->
   </div>
   <!--      在读 end      -->
 
 
   <!-- 想读 start -->
   <div id="hexo-douban-item2">
-  
-    <!-- 想读01开始 -->
+    <!-- 想读000开始 -->
+    {% for book in site.data.booksxd %}
     <div class="hexo-douban-item">
-      <div class="hexo-douban-picture"><img src="https://img1.doubanio.com/view/subject/m/public/s5743437.jpg" data-src="https://img3.doubanio.com/view/subject/m/public/s28976475.jpg" referrerpolicy="no-referrer"></div>
+      <div class="hexo-douban-picture"><img src="{{ book.bookimg }}" data-src="{{ book.bookimg }}" referrerpolicy="no-referrer"></div>
       <div class="hexo-douban-info">
-          <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/26413027/"> 想读虚无的十字架</a></div>
+          <div class="hexo-douban-title"><a target="_blank" href="{{ book.doubanurl }}"> {{ book.name }}</a></div>
           <div class="hexo-douban-meta">
-            [日] 东野圭吾 / 王蕴洁 / 湖南文艺出版社 / 2015-6 / 39.80元
+            {{ book.author }} | {{ book.translator }}译 | {{ book.press }} | {{ book.publishdate }} | {{ book.price }}
           </div>
-          <div class="hexo-douban-meta">2019-09-21
-          想读 / </div>
+          <div class="hexo-douban-meta">{{ book.readdate }} 想读 | {{ book.booktag }}</div>
           <div class="hexo-douban-comments"></div>
       </div>
     </div>
-    <!-- 想读01结束 -->
-    
+    {% endfor %}
+    <!-- 想读000结束 -->
   </div>
   <!--      想读 end      -->
 
@@ -178,7 +176,7 @@ header-img: "img/post-bg-coffee.jpeg"
       <div class="hexo-douban-info">
           <div class="hexo-douban-title"><a target="_blank" href="{{ book.doubanurl }}"> {{ book.name }}</a></div>
           <div class="hexo-douban-meta">
-            {{ book.author }} | {{ book.translator }} | {{ book.press }} | {{ book.publishdate }} | {{ book.price }}
+            {{ book.author }} | {{ book.translator }}译 | {{ book.press }} | {{ book.publishdate }} | {{ book.price }}
           </div>
           <div class="hexo-douban-meta">{{ book.readdate }}
             读过 | {{ book.booktag }} | {{ book.stars }} {{ book.rate }}</div>
