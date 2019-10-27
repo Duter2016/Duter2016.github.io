@@ -4,6 +4,8 @@
   press: 现代出版社    #出版社
   publishdate: 2017-4    #出版日期
   price: 39.80元    #价格
+  bookimg: https://img1.doubanio.com/view/subject/m/public/s29362779.jpg    #封面图片链接地址
+  doubanurl: https://book.douban.com/subject/26971148/    #豆瓣书单地址
   readdate: 2018-12-29    #阅读日期
   booktag: 文学    #书的分类标签
   stars: ★★★☆☆    #评价星级
@@ -18,6 +20,8 @@
   press: 现代出版社    #出版社
   publishdate: 2017-4    #出版日期
   price: 39.80元    #价格
+  bookimg: https://img1.doubanio.com/view/subject/m/public/s29362779.jpg    #封面图片链接地址
+  doubanurl: https://book.douban.com/subject/26971148/    #豆瓣书单地址
   readdate: 2018-12-29    #阅读日期
   booktag: 文学    #书的分类标签
   stars: ★★★☆☆    #评价星级
