@@ -1,33 +1,8 @@
-books_list_title: 已读书单
-books:
+- name: Tom Preston-Werner
+  github: mojombo
 
-- name: 风雪追击01    #书名
-  author: [日] 东野圭吾    #作者
-  translator: 赵文梅    #翻译者
-  press: 现代出版社    #出版社
-  publishdate: 2017-4    #出版日期
-  price: 39.80元    #价格
-  bookimg: https://img1.doubanio.com/view/subject/m/public/s29362779.jpg    #封面图片链接地址
-  doubanurl: https://book.douban.com/subject/26971148/    #豆瓣书单地址
-  readdate: 2018-12-29    #阅读日期
-  booktag: 文学    #书的分类标签
-  stars: ★★★☆☆    #评价星级
-  rate: 还行    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: 等待也是种信念，海的爱太深，时间太浅。 #书评
-  
-  
-  
-- name: 风雪追击02    #书名
-  author: [日] 东野圭吾    #作者
-  translator: 赵文梅    #翻译者
-  press: 现代出版社    #出版社
-  publishdate: 2017-4    #出版日期
-  price: 39.80元    #价格
-  bookimg: https://img1.doubanio.com/view/subject/m/public/s29362779.jpg    #封面图片链接地址
-  doubanurl: https://book.douban.com/subject/26971148/    #豆瓣书单地址
-  readdate: 2018-12-29    #阅读日期
-  booktag: 文学    #书的分类标签
-  stars: ★★★☆☆    #评价星级
-  rate: 还行    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: 等待也是种信念，海的爱太深，时间太浅。 #书评
+- name: Parker Moore
+  github: parkr
 
+- name: Liu Fengyun
+  github: liufengyun
