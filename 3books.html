@@ -153,13 +153,6 @@ header-img: "img/post-bg-coffee.jpeg"
     </div>
     <!-- 分页 结束 -->
     
-    <!-- 在读书单统计 开始 -->
-    <div align="center">在读书单共 <script language="JavaScript">
-    var numitem1 = document.getElementById('hexo-douban-item1').getElementsByClassName('hexo-douban-item').length;
-    document.write(numitem1)
-</script> 本</div>
-    <!-- 在读书单统计 结束 -->
-    
   </div>
   <!--      在读 end      -->
 
@@ -191,13 +184,6 @@ header-img: "img/post-bg-coffee.jpeg"
       <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;">尾页</a>
     </div>
     <!-- 分页 结束 -->
-    
-    <!-- 想读书单统计 开始 -->
-    <div align="center">想读书单共 <script language="JavaScript">
-    var numitem2 = document.getElementById('hexo-douban-item2').getElementsByClassName('hexo-douban-item').length;
-    document.write(numitem2)
-</script> 本</div>
-    <!-- 想读书单统计 结束 -->
     
   </div>
   <!--      想读 end      -->
@@ -232,17 +218,27 @@ header-img: "img/post-bg-coffee.jpeg"
     </div>
     <!-- 分页 结束 -->
     
-    <!-- 已读书单统计 开始 -->
-    <div align="center">已读书单共 <script language="JavaScript">
-    var numitem3 = document.getElementById('hexo-douban-item3').getElementsByClassName('hexo-douban-item').length;
-    document.write(numitem3)
-</script> 本</div>
-    <!-- 已读书单统计 结束 -->
-    
   </div>
   <!--      已读 end      -->
 
 </div>
+
+    <!-- 书单统计 开始 -->
+    <div align="center">
+    在读书单共 <script language="JavaScript">
+    var numitem1 = document.getElementById('hexo-douban-item1').getElementsByClassName('hexo-douban-item').length;
+    document.write(numitem1)
+</script> 本；
+    想读书单共 <script language="JavaScript">
+    var numitem2 = document.getElementById('hexo-douban-item2').getElementsByClassName('hexo-douban-item').length;
+    document.write(numitem2)
+</script> 本；
+    已读书单共 <script language="JavaScript">
+    var numitem3 = document.getElementById('hexo-douban-item3').getElementsByClassName('hexo-douban-item').length;
+    document.write(numitem3)
+</script> 本
+    </div>
+    <!-- 书单统计 结束 -->
 
 </div>
 <!-- Main Content end-->
