@@ -1,128 +1,128 @@
-- name: "风雪追击01"    #书名
-  author: "[日] 东野圭吾"    #作者
-  translator: "赵文梅"    #翻译者
-  press: "现代出版社"    #出版社
-  publishdate: "2017-4"    #出版日期
-  price: "39.80元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/m/public/s29362779.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26971148/"    #豆瓣书单地址
-  readdate: "2018-12-29"    #阅读日期
-  booktag: "文学"    #书的分类标签
-  stars: "★★★☆☆"    #评价星级
-  rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: "等待也是种信念，海的爱太深，时间太浅。"    #书评
+- name: "变量：看见中国社会小趋势"    #书名
+  author: " 何帆"    #作者
+  translator: "--"    #翻译者
+  press: "中信出版社"    #出版社
+  publishdate: "2019-1"    #出版日期
+  price: "59.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s29965871.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/30418697/"    #豆瓣书单地址
+  readdate: "2019"    #阅读日期
+  booktag: "社科"    #书的分类标签
+  stars: "★★☆☆☆"    #评价星级
+  rate: "较差"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "说实话，这是一本挺烂的书，整体上就是作者搞的一些学术研究融合在一起，然后在书中对一些事物或现象起了一个新颖的名字，再罗列一些阐述，就成了这本书，实际上作者提的新鲜，实际没什么营养。如果你做过学术，可能读到一半就不想读了……"    #书评
   
-- name: "风雪追击02"    #书名
-  author: "[日] 东野圭吾"    #作者
-  translator: "赵文梅"    #翻译者
-  press: "现代出版社"    #出版社
-  publishdate: "2017-4"    #出版日期
-  price: "39.80元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/m/public/s29362779.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26971148/"    #豆瓣书单地址
-  readdate: "2018-12-29"    #阅读日期
-  booktag: "文学"    #书的分类标签
-  stars: "★★★☆☆"    #评价星级
-  rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: "等待也是种信念，海的爱太深，时间太浅。"    #书评
+- name: "OKR工作法：谷歌、领英等顶级公司的高绩效秘籍"    #书名
+  author: "克里斯蒂娜•沃特克 (Christina Wodtke)"    #作者
+  translator: "明道团队"    #翻译者
+  press: "中信出版社"    #出版社
+  publishdate: "2017-9-1"    #出版日期
+  price: "42.00元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/l/public/s29808796.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/27132072/"    #豆瓣书单地址
+  readdate: "2019-03"    #阅读日期
+  booktag: "管理"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "这本书讲解的OKR，实际上是很多公司都在用的“目标-绩效指标考核”管理方法，基本思想是提前制订下一阶段的季度或年度计划，依次为基础推进。对于在公司已经熟练使用该方法的读者，可看读可不读！自认为类似思想的书籍中，《平衡计分卡》更有深度！"    #书评
   
-- name: "风雪追击03"    #书名
-  author: "[日] 东野圭吾"    #作者
-  translator: "赵文梅"    #翻译者
-  press: "现代出版社"    #出版社
-  publishdate: "2017-4"    #出版日期
-  price: "39.80元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/m/public/s29362779.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26971148/"    #豆瓣书单地址
-  readdate: "2018-12-29"    #阅读日期
-  booktag: "文学"    #书的分类标签
+- name: "成为：米歇尔·奥巴马自传"    #书名
+  author: "[美] 米歇尔·奥巴马"    #作者
+  translator: "胡晓凯 / 闫洁"    #翻译者
+  press: "天地出版社"    #出版社
+  publishdate: "2019-1"    #出版日期
+  price: " 98.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s29934143.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/30389372/"    #豆瓣书单地址
+  readdate: "2019"    #阅读日期
+  booktag: "文学、自传"    #书的分类标签
   stars: "★★★☆☆"    #评价星级
   rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: "等待也是种信念，海的爱太深，时间太浅。"    #书评
+  review: "这是一本米歇尔的自传书吧，讲述了她从小到大的生活经历、她的家人、她的学习、她的工作。如果用一句话概括的话，这是一本讲述心灵鸡汤的成长日记。如果你喜欢这个口味，你可以看，如果你希望看到的是一本传奇式的传记，可能味道不大合口！"    #书评
   
-- name: "风雪追击04"    #书名
-  author: "[日] 东野圭吾"    #作者
-  translator: "赵文梅"    #翻译者
-  press: "现代出版社"    #出版社
-  publishdate: "2017-4"    #出版日期
-  price: "39.80元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/m/public/s29362779.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26971148/"    #豆瓣书单地址
-  readdate: "2018-12-29"    #阅读日期
-  booktag: "文学"    #书的分类标签
+- name: "规模：复杂世界的简单法则"    #书名
+  author: "杰弗里·韦斯特 (Geoffrey West)"    #作者
+  translator: "张培"    #翻译者
+  press: "中信出版社"    #出版社
+  publishdate: "2018-6-1"    #出版日期
+  price: " 98.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s29809453.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/30244461/"    #豆瓣书单地址
+  readdate: "2019"    #阅读日期
+  booktag: "社科、管理"    #书的分类标签
   stars: "★★★☆☆"    #评价星级
   rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: "等待也是种信念，海的爱太深，时间太浅。"    #书评
+  review: "比较浅显的一本书，读下来，给人的感觉就是，这本书又是把作者自己的学术研究罗列起来变成了一本书。对于熟悉管理的同学来说，这本书讲的内容比较浅，而且是那种一句话能给你恨不得来十个例子的浅。熟悉管理的同学不推荐看！"    #书评
   
-- name: "风雪追击05"    #书名
-  author: "[日] 东野圭吾"    #作者
-  translator: "赵文梅"    #翻译者
-  press: "现代出版社"    #出版社
-  publishdate: "2017-4"    #出版日期
-  price: "39.80元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/m/public/s29362779.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26971148/"    #豆瓣书单地址
-  readdate: "2018-12-29"    #阅读日期
-  booktag: "文学"    #书的分类标签
-  stars: "★★★☆☆"    #评价星级
-  rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: "等待也是种信念，海的爱太深，时间太浅。"    #书评
+- name: "刻意练习：如何从新手到大师"    #书名
+  author: "[美] 安德斯·艾利克森（Anders Ericsson） / 罗伯特·普尔（Robert Pool）"    #作者
+  translator: "王正林"    #翻译者
+  press: "机械工业出版社"    #出版社
+  publishdate: "2016-11-6"    #出版日期
+  price: "39.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s29105145.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/26895993/"    #豆瓣书单地址
+  readdate: "2019"    #阅读日期
+  booktag: "心理学"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "估计这也是一本把学术研究整合成一本书的作品。好在这本书用一些分析和例子讲清了一个心理学问题，为什么你天天练习，别人也天天练习，别人成就非凡，而你却依然平庸？原因就是别人刻意进步，你却刻意简单重复！哈哈！"    #书评
   
-- name: "风雪追击06"    #书名
-  author: "[日] 东野圭吾"    #作者
-  translator: "赵文梅"    #翻译者
-  press: "现代出版社"    #出版社
-  publishdate: "2017-4"    #出版日期
-  price: "39.80元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/m/public/s29362779.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26971148/"    #豆瓣书单地址
-  readdate: "2018-12-29"    #阅读日期
-  booktag: "文学"    #书的分类标签
-  stars: "★★★☆☆"    #评价星级
-  rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: "等待也是种信念，海的爱太深，时间太浅。"    #书评
+- name: "深度思考：不断逼近问题的本质-莫琳·希凯"    #书名
+  author: "[美]莫琳·希凯"    #作者
+  translator: "孔锐才"    #翻译者
+  press: "江苏凤凰文艺出版社"    #出版社
+  publishdate: "2018-9"    #出版日期
+  price: "48.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s29856182.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/30312510/"    #豆瓣书单地址
+  readdate: "2019"    #阅读日期
+  booktag: "社科"    #书的分类标签
+  stars: "★★☆☆☆"    #评价星级
+  rate: "较差"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "唉，又读一本一本“好书”！书的内容和书的名字怎么品，都感觉对不上味，我感觉是书的作者深度思考过度了，才写了这本书。全书都在写自己的工作生涯，然后衍生出了一些对工作的思考。然后，我也不知道作者到底是想表达什么了！！！"    #书评
   
-- name: "风雪追击07"    #书名
-  author: "[日] 东野圭吾"    #作者
-  translator: "赵文梅"    #翻译者
-  press: "现代出版社"    #出版社
-  publishdate: "2017-4"    #出版日期
-  price: "39.80元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/m/public/s29362779.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26971148/"    #豆瓣书单地址
-  readdate: "2018-12-29"    #阅读日期
-  booktag: "文学"    #书的分类标签
-  stars: "★★★☆☆"    #评价星级
-  rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: "等待也是种信念，海的爱太深，时间太浅。"    #书评
+- name: "显微镜下的大明"    #书名
+  author: "马伯庸"    #作者
+  translator: "--"    #翻译者
+  press: "湖南文艺出版社"    #出版社
+  publishdate: "2019-1"    #出版日期
+  price: "52.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s29960161.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/30414743/"    #豆瓣书单地址
+  readdate: "2019"    #阅读日期
+  booktag: "历史"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "一本好书，通过六个故事缩影把明朝描述的立马鲜活了起来。这本书可以作为《明朝那些事儿》的拓展书来补充知识，可以让你对《明朝那些事儿》讲述的一些历史事件理解的更为透彻。我读完了这本书后，又把《明朝那些事儿》读了一遍！"    #书评
   
-- name: "风雪追击08"    #书名
-  author: "[日] 东野圭吾"    #作者
-  translator: "赵文梅"    #翻译者
-  press: "现代出版社"    #出版社
-  publishdate: "2017-4"    #出版日期
-  price: "39.80元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/m/public/s29362779.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26971148/"    #豆瓣书单地址
-  readdate: "2018-12-29"    #阅读日期
-  booktag: "文学"    #书的分类标签
-  stars: "★★★☆☆"    #评价星级
-  rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: "等待也是种信念，海的爱太深，时间太浅。"    #书评
+- name: "明朝那些事儿"    #书名
+  author: "当年明月"    #作者
+  translator: "--"    #翻译者
+  press: "浙江人民出版社"    #出版社
+  publishdate: "2011-12-1"    #出版日期
+  price: "208.60元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/l/public/s29399938.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/7163250/"    #豆瓣书单地址
+  readdate: "2014"    #阅读日期
+  booktag: "历史"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "好书，很好的书。"    #书评
     
-- name: "风雪追击09"    #书名
-  author: "[日] 东野圭吾"    #作者
-  translator: "赵文梅"    #翻译者
-  press: "现代出版社"    #出版社
-  publishdate: "2017-4"    #出版日期
-  price: "39.80元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/m/public/s29362779.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26971148/"    #豆瓣书单地址
-  readdate: "2018-12-29"    #阅读日期
-  booktag: "文学"    #书的分类标签
-  stars: "★★★☆☆"    #评价星级
-  rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: "等待也是种信念，海的爱太深，时间太浅。"    #书评
+- name: "周期"    #书名
+  author: "[美]霍华德·马克斯"    #作者
+  translator: "刘建位"    #翻译者
+  press: "中信出版集团"    #出版社
+  publishdate: "2019-2"    #出版日期
+  price: "88.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s29988314.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/30443502/"    #豆瓣书单地址
+  readdate: "2019"    #阅读日期
+  booktag: "经济"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "将周期细分为经济周期、政府干预经济周期、企业盈利周期、投资人心理和情绪钟摆、风险态度周期、信贷周期、不良债权周期、房地产周期、市场周期，并对每种周期做了详细的阐述。作者总结了自己50多年的投资经验，提出了一个鲜明的观点：人的决策对经济周期、企业周期、市场周期产生了巨大影响，而人做的决策，并不是科学的。他认为，人容易走极端的倾向，永远不会终止，因此，这些极端最终需要修正，而不是周期的发生会有改变。"    #书评
   
 - name: "风雪追击10"    #书名
   author: "[日] 东野圭吾"    #作者
