@@ -124,44 +124,46 @@
   rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
   review: "将周期细分为经济周期、政府干预经济周期、企业盈利周期、投资人心理和情绪钟摆、风险态度周期、信贷周期、不良债权周期、房地产周期、市场周期，并对每种周期做了详细的阐述。作者总结了自己50多年的投资经验，提出了一个鲜明的观点：人的决策对经济周期、企业周期、市场周期产生了巨大影响，而人做的决策，并不是科学的。他认为，人容易走极端的倾向，永远不会终止，因此，这些极端最终需要修正，而不是周期的发生会有改变。"    #书评
   
-- name: "风雪追击10"    #书名
-  author: "[日] 东野圭吾"    #作者
-  translator: "赵文梅"    #翻译者
-  press: "现代出版社"    #出版社
-  publishdate: "2017-4"    #出版日期
-  price: "39.80元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/m/public/s29362779.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26971148/"    #豆瓣书单地址
-  readdate: "2018-12-29"    #阅读日期
-  booktag: "文学"    #书的分类标签
-  stars: "★★★☆☆"    #评价星级
-  rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: "等待也是种信念，海的爱太深，时间太浅。"    #书评
+- name: "蓝海战略（扩展版）:超越产业竞争，开创全新市场"    #书名
+  author: "[韩] W.钱·金 / [美] 勒妮·莫博涅"    #作者
+  translator: "吉宓"    #翻译者
+  press: "商务印书馆"    #出版社
+  publishdate: "2016-4"    #出版日期
+  price: "49.90元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/l/public/s28711496.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/26791265/"    #豆瓣书单地址
+  readdate: "2016"    #阅读日期
+  booktag: "管理"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "蓝海战略的方法根据书中所讲，实施步骤比较复杂，但是管理思想比较好，而且在实际的应用中，不必照搬，领会其核心管理思想并能将其思想嵌入现有管理方法是要点。"    #书评
     
-- name: "风雪追击11"    #书名
-  author: "[日] 东野圭吾"    #作者
-  translator: "赵文梅"    #翻译者
-  press: "现代出版社"    #出版社
-  publishdate: "2017-4"    #出版日期
-  price: "39.80元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/m/public/s29362779.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26971148/"    #豆瓣书单地址
-  readdate: "2018-12-29"    #阅读日期
-  booktag: "文学"    #书的分类标签
-  stars: "★★★☆☆"    #评价星级
-  rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: "等待也是种信念，海的爱太深，时间太浅。"    #书评
+- name: "查令十字街84号"    #书名
+  author: "[美] 海莲·汉芙"    #作者
+  translator: "陈建铭"    #翻译者
+  press: "译林出版社"    #出版社
+  publishdate: "2005-05-01"    #出版日期
+  price: "18.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s1326174.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/1316648/"    #豆瓣书单地址
+  readdate: "2018"    #阅读日期
+  booktag: "文学小说"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "这本书记录了纽约女作家海莲和一家伦敦旧书店的书商弗兰克之间的书缘情缘。双方二十年间始终未曾谋面，相隔万里，深厚情意却能莫逆于心。目前这本书已经被拍成了电影，书和电影我都看了！值得阅读的一本书！"    #书评
   
-- name: "风雪追击12"    #书名
-  author: "[日] 东野圭吾"    #作者
-  translator: "赵文梅"    #翻译者
-  press: "现代出版社"    #出版社
-  publishdate: "2017-4"    #出版日期
-  price: "39.80元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/m/public/s29362779.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26971148/"    #豆瓣书单地址
-  readdate: "2018-12-29"    #阅读日期
+- name: "见识：商业的本质和人生的智慧"    #书名
+  author: "[美]吴军"    #作者
+  translator: "--"    #翻译者
+  press: "中信出版社"    #出版社
+  publishdate: "2017-10"    #出版日期
+  price: "78.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s29575321.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/27167992/"    #豆瓣书单地址
+  readdate: "2018"    #阅读日期
   booktag: "文学"    #书的分类标签
-  stars: "★★★☆☆"    #评价星级
-  rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
-  review: "等待也是种信念，海的爱太深，时间太浅。"    #书评
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "内容很多很杂的一本书，甚至里面有些内容在读过后，可以不去在读其他讲述类似观点的书，概述性比较广吧！仔细品味，可以算是一本好书，里面又很多作者自己的见解。"    #书评
+  
+  
