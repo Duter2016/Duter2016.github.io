@@ -278,14 +278,171 @@
   rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
   review: "如果说《白夜行》我给打五星，《嫌疑人X的献身》我最多给四星。原因是，这本书主要描写了数学天才石神为了掩盖暗恋对象靖子与女儿错手杀害前夫的真相，精心设计了一个将警察带入歧途的谜局，而故事情节的推进不是以警察找到的确切的线索一点点推进，而是完全靠警察的猜测在推进故事情节，对，你没听错，全是警察在猜证据，结局竟他妈的全让警察给猜对了！！！这是什么逻辑，让我脑洞大开！神警！！！"    #书评
   
+- name: "1942:河南大饥荒"    #书名
+  author: "宋致新"    #作者
+  translator: "--"    #翻译者
+  press: "湖北人民出版社"    #出版社
+  publishdate: "2005-7-1"    #出版日期
+  price: "22.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/l/public/s10007589.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/1676672/"    #豆瓣书单地址
+  readdate: "2017"    #阅读日期
+  booktag: "历史、档案"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "黄河决堤、疾病、灾荒、饥荒，天灾还是人祸，可以看看这本书。"    #书评
   
+- name: "万历十五年:经典版"    #书名
+  author: "黄仁宇"    #作者
+  translator: "--"    #翻译者
+  press: "中华书局"    #出版社
+  publishdate: "2014-7"    #出版日期
+  price: "59.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/l/public/s28332809.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/25893465/"    #豆瓣书单地址
+  readdate: "2017"    #阅读日期
+  booktag: "历史、档案"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "因为看了《人民的名义》这部电视剧，才知道的这本书。一本史料，可以看看。"    #书评
   
+- name: "乌合之众：大众心理研究（修订版）"    #书名
+  author: "（法）勒庞"    #作者
+  translator: "冯克利"    #翻译者
+  press: "中央编译出版社"    #出版社
+  publishdate: "2011-5-1"    #出版日期
+  price: "16.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s1988393.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/1012611/"    #豆瓣书单地址
+  readdate: "2017"    #阅读日期
+  booktag: "心理学"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "作者在书中极为精致地描述了集体心态，对人们理解集体行为的作用以及对社会心理学的思考发挥了巨大影响。"    #书评
   
+- name: "闲看水浒:字缝里的梁山规则与江湖世界"    #书名
+  author: "十年砍柴"    #作者
+  translator: "--"    #翻译者
+  press: "同心出版社"    #出版社
+  publishdate: "2004-6"    #出版日期
+  price: "22.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s1828653.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/1009640/"    #豆瓣书单地址
+  readdate: "2017"    #阅读日期
+  booktag: "文学评论"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "这本书可以看作是《水浒传》的新解吧，如果先看一遍《水浒传》、再看一遍这本书》、再看一遍《水浒传》，你一定会看得更加透彻！"    #书评
   
+- name: "沉默的大多数"    #书名
+  author: "王小波"    #作者
+  translator: "--"    #翻译者
+  press: "陕西师范大学出版社"    #出版社
+  publishdate: "2009-7-1"    #出版日期
+  price: "32.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/l/public/s3955998.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/3901880/"    #豆瓣书单地址
+  readdate: "2016"    #阅读日期
+  booktag: "杂文随笔"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "这本书是我的同学郑送我的。这本书真的是杂文，没有章序。作者对一些社会思想进行批判，并阐述了自己的思想。"    #书评
   
+- name: "岛上书店"    #书名
+  author: "[美] 加布瑞埃拉·泽文"    #作者
+  translator: "孙仲旭 / 李玉瑶"    #翻译者
+  press: "江苏凤凰文艺出版社"    #出版社
+  publishdate: "2015-5-1"    #出版日期
+  price: "35.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/l/public/s29810488.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/26340138/"    #豆瓣书单地址
+  readdate: "2016"    #阅读日期
+  booktag: "文学小说"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "费克里，人近中年，在一座与世 隔绝的小岛上，经营一家书店。命运从未眷顾过他，爱妻去世，书店危机，就连唯一值钱的宝贝也遭窃。他的人生陷入僵局，他的内心沦为荒岛。就在此时，一个神秘的包袱出现在书店中，意外地拯救了陷于孤独 绝境中的A．J．，成为了连接他和妻姐伊斯梅、 警长兰比亚斯、出版社女业务员阿米莉娅之间的纽带，为他的生活带来了转机。"    #书评
   
+- name: "蛙"    #书名
+  author: "莫言"    #作者
+  translator: "--"    #翻译者
+  press: "上海文艺出版社"    #出版社
+  publishdate: "2009-12"    #出版日期
+  price: "27.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s4104535.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/4169424/"    #豆瓣书单地址
+  readdate: "2016"    #阅读日期
+  booktag: "文学小说"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "通过讲述从事妇产科工作50多年的乡村女医生姑姑的人生经历，反映新中国近60年波澜起伏的农村生育史，描述国家为了控制人口剧烈增长、实施计划生育国策所走过的艰巨而复杂的历史过程。"    #书评
   
+- name: "从你的全世界路过"    #书名
+  author: "张嘉佳"    #作者
+  translator: "--"    #翻译者
+  press: "湖南文艺出版社"    #出版社
+  publishdate: "2013-11-1"    #出版日期
+  price: "36.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s27102925.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/25747921/"    #豆瓣书单地址
+  readdate: "2015"    #阅读日期
+  booktag: "青春小说"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "写的一本不错的很动人的书。里面有多个动人的故事。现在这本书已经被改拍成的电影。不过，我感觉电影不如这书精彩！"    #书评
   
+- name: "看见"    #书名
+  author: "柴静"    #作者
+  translator: "--"    #翻译者
+  press: "广西师范大学出版社"    #出版社
+  publishdate: "2013-1-1"    #出版日期
+  price: "39.80元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s24468373.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/20427187/"    #豆瓣书单地址
+  readdate: "2014"    #阅读日期
+  booktag: "社会纪实"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "很不错的一本书，相信很多人都已经读过了。我在上学的时候读了一遍，毕业后又读了一遍！这本书是作者讲述央视十年历程的自传性作品，既是柴静个人的成长告白书，某种程度上亦可视作中国社会十年变迁的备忘录。十年前她被选择成为国家电视台新闻主播，却因毫无经验而遭遇挫败，非典时期成为现场记者后，现实生活犬牙交错的切肤之感，让她一点一滴脱离外在与自我的束缚，对生活与人性有了更为宽广与深厚的理解。这本书讲述了十年间，非典、汶川地震、两会报道、北京奥运……在每个重大事件现场，都是柴静在讲自己经历，而如华南虎照、征地等刚性的调查报道也有记述。"    #书评
   
+- name: "撒哈拉的故事"    #书名
+  author: "三毛"    #作者
+  translator: "--"    #翻译者
+  press: "哈尔滨出版社"    #出版社
+  publishdate: "2013-1-1"    #出版日期
+  price: "15.80元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s1066570.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/1060068/"    #豆瓣书单地址
+  readdate: "2015"    #阅读日期
+  booktag: "散文随笔"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "很好的一本书，主要记述了三毛和其丈夫在撒哈拉的生活，里面故事很多，品味也很多……"    #书评
   
+- name: "谁的青春不迷茫"    #书名
+  author: "刘同"    #作者
+  translator: "--"    #翻译者
+  press: "中信出版社"    #出版社
+  publishdate: "2012-12"    #出版日期
+  price: "35.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s24476315.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/20278327/"    #豆瓣书单地址
+  readdate: "2014"    #阅读日期
+  booktag: "青春文学、回忆录"    #书的分类标签
+  stars: "★★☆☆☆"    #评价星级
+  rate: "较差"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "一本安排很乱的书，读了找不到头绪，搞不清作者是在说什么、在矫情什么……没有读的价值！"    #书评
+  
+- name: "偷影子的人"    #书名
+  author: "[法] 马克·李维"    #作者
+  translator: "段韵灵"    #翻译者
+  press: "湖南文艺出版社"    #出版社
+  publishdate: "2012-6-20"    #出版日期
+  price: "29.80元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/l/public/s10339418.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/10763902/"    #豆瓣书单地址
+  readdate: "2015"    #阅读日期
+  booktag: "文学小说"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "一个老是受班上同学欺负的瘦弱小男孩，因为拥有一种特殊能力而强大：他能“偷别人的影子”，因而能看见他人心事，听见人们心中不愿意说出口的秘密。他开始成为需要帮助者的心灵伙伴，为每个偷来的影子找到点亮生命的小小光芒。"    #书评
   
