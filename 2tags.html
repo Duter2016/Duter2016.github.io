@@ -32,7 +32,7 @@ header-img: "img/post-bg-dutbc.jpg"
 			</div>
 
 	    <!-- 浮动标签云 -->
-            <div id='tag_cloud' class="tags" style="border:1px solid gray;position:fixed;right:15px;top:235px;background:#0085a1;">
+            <div id='tag_cloud' class="tags" style="border:1px solid gray;position:fixed;right:15px;top:235px;background:#0085a1;z-index:9999;">
                 <select name="mylink" id="mylink" onchange="window.location=mylink.value">
                   <option value="../tags/#" selected>选择跳转标签</option>
                     {% for tag in site.tags %}
