@@ -31,6 +31,13 @@ header-img: "img/post-bg-dutbc.jpg"
 				{% endfor %}
 			</div>
 
+	    <!-- 浮动标签云 -->
+	    <div id='tag_cloud' class="tags" style="overflow: scroll;width:200px;height:355px;border:1px solid gray;position:fixed;left:1px;top:235px;background:#fff;">
+	          {% for tag in site.tags %}
+	            <a href="#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">{{ tag[0] }}</a>
+	          {% endfor %}
+	    </div>
+
             <!--<blockquote class="tag-comments">
                 标签命名规范：
                     <li>行业观察、职位、公司优先使用中文</li>
