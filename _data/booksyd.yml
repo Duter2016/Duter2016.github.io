@@ -166,4 +166,126 @@
   rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
   review: "内容很多很杂的一本书，甚至里面有些内容在读过后，可以不去在读其他讲述类似观点的书，概述性比较广吧！仔细品味，可以算是一本好书，里面又很多作者自己的见解。"    #书评
   
+- name: "刺杀骑士团长"    #书名
+  author: "[日] 村上春树"    #作者
+  translator: "林少华"    #翻译者
+  press: "上海译文出版社"    #出版社
+  publishdate: "2018-3"    #出版日期
+  price: "98.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s29687411.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/27199470/"    #豆瓣书单地址
+  readdate: "2018"    #阅读日期
+  booktag: "文学小说"    #书的分类标签
+  stars: "★★★☆☆"    #评价星级
+  rate: "还行"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "刚读这本书时，这本书刚上市不久，而且热度挺高的。以为这是一本讲述类似拿破仑那个时代的战争故事，结果看了一半，基本都是在讲这位艺术家的一夜情，虽然内容安排不错，但不喜欢这种题材，读了一半就没有在读……"    #书评
+  
+- name: "我们仨"    #书名
+  author: "杨绛"    #作者
+  translator: "--"    #翻译者
+  press: "生活·读书·新知三联书店"    #出版社
+  publishdate: "2003-7"    #出版日期
+  price: "18.80元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s1015872.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/1023045/"    #豆瓣书单地址
+  readdate: "2016"    #阅读日期
+  booktag: "回忆录"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "说实话，对这本书，读的有点晚了，我是在微信好友的朋友圈看到别人在读这本书，我才发现了这本书。然后，一读就爱上了这本书，我已经读了两遍了！这本书是钱钟书夫人杨绛撰写的家庭生活回忆录。1998年，钱钟书逝世，而他和杨绛唯一的女儿钱瑗已于此前（1997年）先他们而去。在人生的伴侣离去四年后，杨绛在92岁高龄的时候用心记述了他们这个特殊家庭63年的风风雨雨、点点滴滴，结成回忆录《我们仨》。"    #书评
+  
+- name: "原则"    #书名
+  author: "[美] 瑞·达利欧"    #作者
+  translator: "刘波 / 綦相"    #翻译者
+  press: "中信出版社"    #出版社
+  publishdate: "2018-1"    #出版日期
+  price: "98.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s29643861.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/27608239/"    #豆瓣书单地址
+  readdate: "2018"    #阅读日期
+  booktag: "管理、投资"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "这本书是华尔街投资大神、对冲基金公司桥水创始人，根据自己管理桥水的过程中和生活中总结出来的工作原则、生活原则，全书内容比较充实，没有为罗列而罗列的成分。通过这本书，你基本可以读完桥水的发展历程。"    #书评
+  
+- name: "月亮与六便士"    #书名
+  author: "[英] 威廉·萨默塞特·毛姆"    #作者
+  translator: "徐淳刚"    #翻译者
+  press: "浙江文艺出版社"    #出版社
+  publishdate: "2017-1-1"    #出版日期
+  price: "39.80元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/l/public/s29634528.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/26954760/"    #豆瓣书单地址
+  readdate: "2019"    #阅读日期
+  booktag: "文学小说"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "一个冷漠、怪异的画家，就当悬疑小说读吧，没啥太吸引人的点，但也不是太烂。"    #书评
+  
+- name: "重新定义公司：谷歌是如何运营的"    #书名
+  author: "[美] 埃里克·施密特"    #作者
+  translator: "靳婷婷 / 陈序 / 何晔"    #翻译者
+  press: "中信出版社"    #出版社
+  publishdate: "2015-8"    #出版日期
+  price: "49.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s28278604.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/26582822/"    #豆瓣书单地址
+  readdate: "2017"    #阅读日期
+  booktag: "管理"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "披露了谷歌如何颠覆传统的MBA模式，建立独树一帜的管理哲学，作者分享了外界普遍好奇的企业文化、战略、人才、决策、沟通以及创新之道。埃里克•施密特和乔纳森•罗森伯格列举了谷歌历史上众多只有内部人员才知道的实例，其中许多事件更是第一次为广大读者公布。他们旨在将谷歌的管理秘密转化为人人皆可用的经验，帮助我们迎接变化世界中的巨大挑战。"    #书评
+  
+- name: "从0到1：开启商业与未来的秘密"    #书名
+  author: "彼得·蒂尔 / 布莱克·马斯特斯"    #作者
+  translator: "高玉芳"    #翻译者
+  press: "中信出版社"    #出版社
+  publishdate: "2015-1-1"    #出版日期
+  price: "45.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s28299265.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/26297606/"    #豆瓣书单地址
+  readdate: "2016"    #阅读日期
+  booktag: "管理"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "我是在一位同学的面试经历中知道的这本书。本书揭开创新的秘密：创新不是从1到N，而是从0到1。在本书中详细阐述了作者的创业历程与心得，包括如何避免竞争、如何进行垄断、如何发现新的市场。《从0到1》还将带你穿越哲学、历史、经济等多元领域，解读世界运行的脉络，分享商业与未来发展的逻辑，帮助你思考从0到1的秘密，在意想不到之处发现价值与机会。"    #书评
+  
+- name: "白夜行"    #书名
+  author: "[日] 东野圭吾"    #作者
+  translator: "刘姿君"    #翻译者
+  press: "南海出版公司"    #出版社
+  publishdate: "2013-1-1"    #出版日期
+  price: "39.50元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/l/public/s24514468.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/10554308/"    #豆瓣书单地址
+  readdate: "2017"    #阅读日期
+  booktag: "文学小说"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "一部命案推力小说，喜欢的可以读。"    #书评
+  
+- name: "嫌疑人X的献身"    #书名
+  author: "[日] 东野圭吾"    #作者
+  translator: "刘子倩"    #翻译者
+  press: "南海出版公司"    #出版社
+  publishdate: "2008-9"    #出版日期
+  price: "28.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/l/public/s3254244.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/3211779/"    #豆瓣书单地址
+  readdate: "2017"    #阅读日期
+  booktag: "文学小说"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "如果说《白夜行》我给打五星，《嫌疑人X的献身》我最多给四星。原因是，这本书主要描写了数学天才石神为了掩盖暗恋对象靖子与女儿错手杀害前夫的真相，精心设计了一个将警察带入歧途的谜局，而故事情节的推进不是以警察找到的确切的线索一点点推进，而是完全靠警察的猜测在推进故事情节，对，你没听错，全是警察在猜证据，结局竟他妈的全让警察给猜对了！！！这是什么逻辑，让我脑洞大开！神警！！！"    #书评
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
