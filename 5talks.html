@@ -57,7 +57,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
     position: absolute;
     left: 0;
     top: 10px;
-    width: 100px;
+    width: 1px;
 }
 
 .hexo-douban-info {
@@ -98,8 +98,8 @@ header-img: "img/post-bg-YesOrNo.jpg"
 }
 
 .hexo-douban-picture img{
-    width:92px;
-    height:131px
+    width:1px;
+    height:1px
 }
 
 .page-action-calendar {
@@ -153,6 +153,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
     <!-- 已读000开始 -->
     {% for talk in site.data.talks %}
     <div class="hexo-douban-item">
+      <div class="hexo-douban-picture"><img src="https://raw.githubusercontent.com/Duter2016/Duter2016.github.io/master/img/talks_img.png}" data-src="https://raw.githubusercontent.com/Duter2016/Duter2016.github.io/master/img/talks_img.png" referrerpolicy="no-referrer"></div>
       <div class="page-action-calendar">
           <div class="sub-month">{{ talk.talkmonth }}</div>
           <div class="sub-day">{{ talk.talkday }}</div>
