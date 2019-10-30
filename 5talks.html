@@ -53,13 +53,6 @@ header-img: "img/post-bg-YesOrNo.jpg"
     }
 }
 
-.hexo-douban-picture {
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 100px;
-}
-
 .hexo-douban-info {
     padding-left: 120px;
 }
@@ -102,7 +95,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
     height:131px
 }
 
-.page-action-calendar {
+.hexo-douban-picture {
     width: 60px;
     height: 60px;
     background-color: #f2f2f2;
@@ -148,13 +141,12 @@ header-img: "img/post-bg-YesOrNo.jpg"
 </div>
 
 <div>
-
   <!--      已读 start      -->
   <div id="hexo-douban-item1">
     <!-- 已读000开始 -->
     {% for talk in site.data.talks %}
     <div class="hexo-douban-item">
-      <div class="page-action-calendar">
+      <div class="hexo-douban-picture">
           <div class="sub-month">{{ talk.talkmonth }}</div>
           <div class="sub-day">{{ talk.talkday }}</div>
       </div>
