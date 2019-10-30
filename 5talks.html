@@ -168,14 +168,14 @@ header-img: "img/post-bg-YesOrNo.jpg"
     {% endfor %}
     <!-- 已读000结束 -->
     
-    <!-- 分页 开始 -->
+    <!-- 分页 开始 --><!--
     <div class="hexo-douban-pagination">
       <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;"> 首页</a>
       <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;">上一页</a>
       <span class="hexo-douban-pagenum">2 / 3</span>
       <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;">下一页</a>
       <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;">尾页</a>
-    </div>
+    </div>-->
     <!-- 分页 结束 -->
     
   </div>
@@ -188,7 +188,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
     Duter2016 共发表了 <script language="JavaScript">
     var numitem1 = document.getElementById('hexo-douban-item1').getElementsByClassName('hexo-douban-item').length;
     document.write(numitem1)
-     </script> 条说说！
+</script> 条说说！
     </div>
     <!-- 说说统计 结束 -->
     
@@ -315,4 +315,51 @@ for (var i = 0; i < firstpages.length; i++) {
     pagenums[i].innerText = '1 / ' + (Math.ceil(size / 10) === 0 ? 1 : Math.ceil(size / 10));
     firstpages[i].click();
 }
+
+    //新分页脚本
+var listElement = $('#hexo-douban-item1');
+var perPage = 10; 
+var numItems = listElement.children().size();
+var numPages = Math.ceil(numItems/perPage);
+
+$('.pager').data("curr",0);
+
+var curr = 0;
+while(numPages > curr){
+  $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo('.pager');
+  curr++;
+}
+
+$('.pager .page_link:first').addClass('active');
+
+listElement.children().css('display', 'none');
+listElement.children().slice(0, perPage).css('display', 'block');
+
+$('.pager li a').click(function(){
+  var clickedPage = $(this).html().valueOf() - 1;
+  goTo(clickedPage,perPage);
+});
+
+function previous(){
+  var goToPage = parseInt($('.pager').data("curr")) - 1;
+  if($('.active').prev('.page_link').length==true){
+    goTo(goToPage);
+  }
+}
+
+function next(){
+  goToPage = parseInt($('.pager').data("curr")) + 1;
+  if($('.active_page').next('.page_link').length==true){
+    goTo(goToPage);
+  }
+}
+
+function goTo(page){
+  var startAt = page * perPage,
+    endOn = startAt + perPage;
+
+  listElement.children().css('display','none').slice(startAt, endOn).css('display','block');
+  $('.pager').attr("curr",page);
+}
+    
 </script>
