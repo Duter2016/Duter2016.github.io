@@ -150,14 +150,14 @@ header-img: "img/post-bg-YesOrNo.jpg"
   <!--      说说 start      -->
   <div id="hexo-douban-item1">
     <!-- 说说000开始 -->
-    {% for talk in site.data.taiks %}
+    {% for talk in site.data.talks %}
     <div class="hexo-douban-item">
       <div class="page-action-calendar">
           <div class="sub-month">{{ talk.talkmonth }}</div>
           <div class="sub-day">{{ talk.talkday }}</div>
       </div>
       <div class="hexo-douban-info">
-          <div class="hexo-douban-title"><a target="_blank" href="{{ book.doubanurl }}"> {{ talk.mytalk }}</a></div>
+          <div class="hexo-douban-title"><a> {{ talk.mytalk }}</a></div>
           <div class="hexo-douban-meta"><br></div>
           <div class="hexo-douban-meta"> 💖 Duter2016 | ☎️ <a href="#comments">评论</a></div>
           <div class="hexo-douban-comments"></div>
