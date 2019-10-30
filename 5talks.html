@@ -144,17 +144,13 @@ header-img: "img/post-bg-YesOrNo.jpg"
 
 <div class="hexo-douban-tabs">
     <a class="hexo-douban-tab" id="hexo-douban-tab1" href="javascript:;" rel="external">
-        在读</a>
-    <a class="hexo-douban-tab" id="hexo-douban-tab2" href="javascript:;" rel="external">
-        想读</a>
-    <a class="hexo-douban-tab" id="hexo-douban-tab3" href="javascript:;" rel="external">
         我的说说</a>
 </div>
 
 <div>
 
   <!--      已读 start      -->
-  <div id="hexo-douban-item3">
+  <div id="hexo-douban-item1">
     <!-- 已读000开始 -->
     {% for talk in site.data.talks %}
     <div class="hexo-douban-item">
@@ -165,7 +161,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
       <div class="hexo-douban-info">
           <div class="hexo-douban-title"><a> {{ talk.mytalk }}</a></div>
           <div class="hexo-douban-meta"><br></div>
-          <div class="hexo-douban-meta"> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a href="#comments"><font color="#2fb4f5">评论</font></a></div>
+          <div class="hexo-douban-meta"> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 </div>
           <div class="hexo-douban-comments"></div>
       </div>
     </div>
