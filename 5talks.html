@@ -65,7 +65,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
 }
 
 .hexo-douban-meta {
-    font-size: 12px;
+    font-size: 14px;
     color: #2fb4f5;
     padding-right: 10px;
 }
@@ -160,7 +160,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
       <div class="hexo-douban-info">
           <div class="hexo-douban-title"><a> {{ talk.mytalk }}</a></div>
           <div class="hexo-douban-meta"><br></div>
-          <div class="hexo-douban-meta"> 💖 Duter2016 | {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a href="#comments"><font color="#2fb4f5;">评论</font></a></div>
+          <div class="hexo-douban-meta"> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a href="#comments"><font color="#2fb4f5">评论</font></a></div>
           <div class="hexo-douban-comments"></div>
       </div>
     </div>
@@ -191,10 +191,10 @@ header-img: "img/post-bg-YesOrNo.jpg"
     </div>
     <!-- 说说统计 结束 -->
     
-    <!-- Valine 评论框 start -->
+    <!-- Valine 评论框 start --><!--
     {% if site.valine.enable %}
         {% include valine_comments.html %}
-    {% endif %}
+    {% endif %}-->
     <!-- Valine 评论框 end -->
     
 
