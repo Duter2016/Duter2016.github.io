@@ -143,10 +143,10 @@ header-img: "img/post-bg-YesOrNo.jpg"
 </blockquote>
 
 <div class="hexo-douban-tabs">
-    <a class="hexo-douban-tab" id="hexo-douban-tab1" href="javascript:;" rel="external">
-        我的说说</a>
-    <a class="hexo-douban-tab" id="hexo-douban-tab2" href="javascript:;" rel="external">
-        我的说说</a>
+    <a class="hexo-douban-tab" id="hexo-douban-tab1" rel="external">
+        -</a>
+    <a class="hexo-douban-tab" id="hexo-douban-tab2" rel="external">
+        -</a>
     <a class="hexo-douban-tab" id="hexo-douban-tab3" href="javascript:;" rel="external">
         我的说说</a>
 </div>
@@ -247,26 +247,26 @@ header-img: "img/post-bg-YesOrNo.jpg"
 
 </div>
 
-
-</div>
-<!-- Main Content end-->
-
-<div class="container">
     <!-- 说说统计 开始 -->
     <div align="center">
     Duter2016 共发表了 <script language="JavaScript">
-    var numitem1 = document.getElementById('hexo-douban-item1').getElementsByClassName('hexo-douban-item').length;
-    document.write(numitem1)
+    var numitem3 = document.getElementById('hexo-douban-item3').getElementsByClassName('hexo-douban-item').length;
+    document.write(numitem3)
 </script> 条说说！
     </div>
     <!-- 说说统计 结束 -->
     
     <!-- Valine 评论框 start -->
+    <div>
     {% if site.valine.enable %}
         {% include valine_comments.html %}
     {% endif %}
-    <!-- Valine 评论框 end --> 
-</div>    
+    </div>
+    <!-- Valine 评论框 end -->
+    
+</div>
+<!-- Main Content end-->
+
 
 <!-- 标签切换脚本 -->
 <script>
