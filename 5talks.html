@@ -145,6 +145,10 @@ header-img: "img/post-bg-YesOrNo.jpg"
 <div class="hexo-douban-tabs">
     <a class="hexo-douban-tab" id="hexo-douban-tab1" href="javascript:;" rel="external">
         我的说说</a>
+    <a class="hexo-douban-tab" id="hexo-douban-tab2" href="javascript:;" rel="external">
+        我的说说</a>
+    <a class="hexo-douban-tab" id="hexo-douban-tab3" href="javascript:;" rel="external">
+        我的说说</a>
 </div>
 
 <div>
@@ -178,12 +182,69 @@ header-img: "img/post-bg-YesOrNo.jpg"
     </div>
     <!-- 分页 结束 -->
     
+  <!--      已读 start      -->
+  <div id="hexo-douban-item2">
+    <!-- 已读000开始 -->
+    {% for talk in site.data.talks %}
+    <div class="hexo-douban-item">
+      <div class="hexo-douban-picture"><img src="https://raw.githubusercontent.com/Duter2016/Duter2016.github.io/master/img/talks_img.png}" data-src="https://raw.githubusercontent.com/Duter2016/Duter2016.github.io/master/img/talks_img.png" referrerpolicy="no-referrer"></div>
+      <div class="page-action-calendar">
+          <div class="sub-month">{{ talk.talkmonth }}</div>
+          <div class="sub-day">{{ talk.talkday }}</div>
+      </div>
+      <div class="hexo-douban-info">
+          <div class="hexo-douban-title"><a> {{ talk.mytalk }}</a></div>
+          <div class="hexo-douban-meta"><br></div>
+          <div class="hexo-douban-meta"> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a href="#comments"><font color="#2fb4f5">评论</font></a></div>
+          <div class="hexo-douban-comments"></div>
+      </div>
+    </div>
+    {% endfor %}
+    <!-- 已读000结束 -->
+    
     <!-- 分页 开始 -->
-
+    <div class="hexo-douban-pagination">
+      <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;"> 首页</a>
+      <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;">上一页</a>
+      <span class="hexo-douban-pagenum">2 / 3</span>
+      <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;">下一页</a>
+      <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;">尾页</a>
+    </div>
+    <!-- 分页 结束 -->
+    
+  <!--      已读 start      -->
+  <div id="hexo-douban-item3">
+    <!-- 已读000开始 -->
+    {% for talk in site.data.talks %}
+    <div class="hexo-douban-item">
+      <div class="hexo-douban-picture"><img src="https://raw.githubusercontent.com/Duter2016/Duter2016.github.io/master/img/talks_img.png}" data-src="https://raw.githubusercontent.com/Duter2016/Duter2016.github.io/master/img/talks_img.png" referrerpolicy="no-referrer"></div>
+      <div class="page-action-calendar">
+          <div class="sub-month">{{ talk.talkmonth }}</div>
+          <div class="sub-day">{{ talk.talkday }}</div>
+      </div>
+      <div class="hexo-douban-info">
+          <div class="hexo-douban-title"><a> {{ talk.mytalk }}</a></div>
+          <div class="hexo-douban-meta"><br></div>
+          <div class="hexo-douban-meta"> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a href="#comments"><font color="#2fb4f5">评论</font></a></div>
+          <div class="hexo-douban-comments"></div>
+      </div>
+    </div>
+    {% endfor %}
+    <!-- 已读000结束 -->
+    
+    <!-- 分页 开始 -->
+    <div class="hexo-douban-pagination">
+      <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;"> 首页</a>
+      <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;">上一页</a>
+      <span class="hexo-douban-pagenum">2 / 3</span>
+      <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;">下一页</a>
+      <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;">尾页</a>
+    </div>
     <!-- 分页 结束 -->
     
   </div>
   <!--      已读 end      -->
+
 </div>
 
     <!-- 说说统计 开始 -->
@@ -247,7 +308,7 @@ for (var i = 0; i < tabs.length; i++) {
 }
 tabs[2].click();
 
-    var firstpages = document.getElementsByClassName("hexo-douban-firstpage");
+var firstpages = document.getElementsByClassName("hexo-douban-firstpage");
 var previouspages = document.getElementsByClassName("hexo-douban-previouspage");
 var nextpages = document.getElementsByClassName("hexo-douban-nextpage");
 var lastpages = document.getElementsByClassName("hexo-douban-lastpage");
