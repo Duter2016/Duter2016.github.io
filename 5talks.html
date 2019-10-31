@@ -245,6 +245,21 @@ header-img: "img/post-bg-YesOrNo.jpg"
   </div>
   <!--      已读 end      -->
 
+    <!-- 说说统计 开始 -->
+    <div align="center">
+    Duter2016 共发表了 <script language="JavaScript">
+    var numitem3 = document.getElementById('hexo-douban-item3').getElementsByClassName('hexo-douban-item').length;
+    document.write(numitem3)
+</script> 条说说！
+    </div>
+    <!-- 说说统计 结束 -->
+    
+    <!-- Valine 评论框 start -->
+    {% if site.valine.enable %}
+        {% include valine_comments.html %}
+    {% endif %}
+    <!-- Valine 评论框 end -->
+    
 </div>
 
     <!-- 说说统计 开始 -->
