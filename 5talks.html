@@ -168,67 +168,17 @@ header-img: "img/post-bg-YesOrNo.jpg"
     {% endfor %}
     <!-- 已读000结束 -->
     
-    <!-- 分页 开始 --><!--
+    <!-- 分页 开始 -->
     <div class="hexo-douban-pagination">
       <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;"> 首页</a>
       <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;">上一页</a>
       <span class="hexo-douban-pagenum">2 / 3</span>
       <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;">下一页</a>
       <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;">尾页</a>
-    </div>-->
+    </div>
     <!-- 分页 结束 -->
     
     <!-- 分页 开始 -->
-<div id="changePages" name="changePages"></div>
-
-<script type="text/javascript">
-    function goPage(pno,psize){
-    var itable = document.getElementById("hexo-douban-item1");//获取table
-    var num = itable.getElementsByClassName('hexo-douban-item').length;//得到记录总数
-    var totalPage = 0;
-    var pageSize = psize;//一页显示pageSize条记录
-    //计算总页数
-    if(num/pageSize > parseInt(num/pageSize)){   
-            totalPage=parseInt(num/pageSize)+1;   
-       }else{   
-           totalPage=parseInt(num/pageSize);   
-       }   
-     //当前页数
-    var currentPage = pno;
-    //获取当前页第一条、最后一条记录的行号
-    var startRow = (currentPage - 1) * pageSize+1;
-       var endRow = currentPage * pageSize;
-       endRow = (endRow > num)? num : endRow;
-    //修改table中当前页对应的行的属性为显示，非本页的记录为隐藏
-    for(var i=1;i<(num+1);i++){    
-        var irow = itable.rows[i-1];
-        if(i>=startRow && i<=endRow){
-            irow.style.display = "block";    
-        }else{
-            irow.style.display = "none";
-        }
-    }
-    
-    //分页页码列表
-    var tempStr = "共"+num+"条记录 分"+totalPage+"页 当前第"+currentPage+"页";
-    if(currentPage>1){
-        tempStr += "<a href=\"#\" onClick=\"goPage("+(1)+","+psize+")\">首页</a>";
-        tempStr += "<a href=\"#\" onClick=\"goPage("+(currentPage-1)+","+psize+")\"><上一页</a>"
-    }else{
-        tempStr += "首页";
-        tempStr += "<上一页";    
-    }
-
-    if(currentPage<totalPage){
-        tempStr += "<a href=\"#\" onClick=\"goPage("+(currentPage+1)+","+psize+")\">下一页></a>";
-        tempStr += "<a href=\"#\" onClick=\"goPage("+(totalPage)+","+psize+")\">尾页</a>";
-    }else{
-        tempStr += "下一页>";
-        tempStr += "尾页";    
-    }
-    document.getElementById("changePages").innerHTML = tempStr;   
-}
-    </script>
 
     <!-- 分页 结束 -->
     
@@ -291,7 +241,8 @@ function tabClick() {
         sibs[k].classList.add('hexo-douban-hide');
     }
 }
-var tabs = document.getElementsByClassName("hexo-douban-tab");
+// var tabs = document.getElementsByClassName("hexo-douban-tab");
+var tabs = document.getElementById('hexo-douban-item1').getElementsByClassName('hexo-douban-item').length
 for (var i = 0; i < tabs.length; i++) {
     tabs[i].onclick = tabClick;
     tabs[i].onclick.apply(tabs[i]);
