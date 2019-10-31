@@ -248,12 +248,12 @@ header-img: "img/post-bg-YesOrNo.jpg"
 </div>
 
     <!-- 说说统计 开始 -->
-    <a align="center">
+    <div align="center">
     Duter2016 共发表了 <script language="JavaScript">
     var numitem3 = document.getElementById('hexo-douban-item3').getElementsByClassName('hexo-douban-item').length;
     document.write(numitem3)
 </script> 条说说！
-    </a>
+    </div>
     <!-- 说说统计 结束 -->
     
     <!-- Valine 评论框 start -->
@@ -295,9 +295,13 @@ function tabClick() {
     target.classList.remove('hexo-douban-hide');
     target.classList.add('hexo-douban-show');
     sibs = document.getElementById(itemId).siblings();
-    for (var k = 0; k < sibs.length; k++) {
-        sibs[k].classList.remove('hexo-douban-show');
-        sibs[k].classList.add('hexo-douban-hide');
+//    for (var k = 0; k < sibs.length; k++) {
+//        sibs[k].classList.remove('hexo-douban-show');
+//        sibs[k].classList.add('hexo-douban-hide');
+        sibs[1].classList.remove('hexo-douban-show');
+        sibs[1].classList.add('hexo-douban-hide');
+        sibs[2].classList.remove('hexo-douban-show');
+        sibs[2].classList.add('hexo-douban-hide');
     }
 }
 var tabs = document.getElementsByClassName("hexo-douban-tab");
