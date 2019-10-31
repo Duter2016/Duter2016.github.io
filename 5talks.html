@@ -165,7 +165,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
       <div class="hexo-douban-info">
           <div class="hexo-douban-title"><a> {{ talk.mytalk }}</a></div>
           <div class="hexo-douban-meta"><br></div>
-          <div class="hexo-douban-meta"> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a href="#comments"><font color="#2fb4f5">评论</font></a>(格式:“@{{ talk.talkmonth }}月{{ talk.talkday }}日 你的评论”)</div>
+          <div class="hexo-douban-meta"> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a onclick="copyLink()" href="#comments"><font color="#2fb4f5">评论</font></a><textarea id="copy" class="hexo-douban-hide">@{{ talk.talkmonth }}月{{ talk.talkday }}日 评论:</textarea></div>
           <div class="hexo-douban-comments"></div>
       </div>
     </div>
@@ -195,7 +195,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
       <div class="hexo-douban-info">
           <div class="hexo-douban-title"><a> {{ talk.mytalk }}</a></div>
           <div class="hexo-douban-meta"><br></div>
-          <div class="hexo-douban-meta"> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a href="#comments"><font color="#2fb4f5">评论</font></a>(格式:“@{{ talk.talkmonth }}月{{ talk.talkday }}日 你的评论”)</div>
+          <div class="hexo-douban-meta"> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a onclick="copyLink()" href="#comments"><font color="#2fb4f5">评论</font></a><textarea id="copy" class="hexo-douban-hide">@{{ talk.talkmonth }}月{{ talk.talkday }}日 评论:</textarea></div>
           <div class="hexo-douban-comments"></div>
       </div>
     </div>
@@ -225,7 +225,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
       <div class="hexo-douban-info">
           <div class="hexo-douban-title"><a> {{ talk.mytalk }}</a></div>
           <div class="hexo-douban-meta"><br></div>
-          <div class="hexo-douban-meta"> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a href="#comments"><font color="#2fb4f5">评论</font></a>(格式:“@{{ talk.talkmonth }}月{{ talk.talkday }}日 你的评论”)</div>
+          <div class="hexo-douban-meta"> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a onclick="copyLink()" href="#comments"><font color="#2fb4f5">评论</font></a><textarea id="copy" class="hexo-douban-hide">@{{ talk.talkmonth }}月{{ talk.talkday }}日 评论:</textarea></div>
           <div class="hexo-douban-comments"></div>
       </div>
     </div>
@@ -376,6 +376,14 @@ for (var i = 0; i < firstpages.length; i++) {
     var size = pagenums[i].parentNode.siblings().length;
     pagenums[i].innerText = '1 / ' + (Math.ceil(size / 10) === 0 ? 1 : Math.ceil(size / 10));
     firstpages[i].click();
+}
+    
+//点击复制脚本
+function copyLink(){
+    var e = document.getElementById("copy");
+    e.select(); // 选择对象
+    document.execCommand("Copy"); // 执行浏览器复制命令
+    alert("评论格式已复制，评论框粘贴即可！");
 }
     
 </script>
