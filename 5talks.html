@@ -230,12 +230,12 @@ header-img: "img/post-bg-YesOrNo.jpg"
       <div class="hexo-douban-info">
           <div class="hexo-douban-title"><a> {{ talk.mytalk }}</a></div>
           <div class="hexo-douban-meta"><br></div>
-          <div class="hexo-douban-meta"><textarea id="copy{{ talk.talkmonth }}{{ talk.talkday }}" class="copy">@{{ talk.talkmonth }}月{{ talk.talkday }}日 评论:</textarea> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a onclick="copyLink({{ talk.talkmonth }}{{ talk.talkday }})" href="#comments"><font color="#2fb4f5">评论</font></a></div>
+          <div class="hexo-douban-meta"><textarea id="copy{{ talk.talkmonth }}{{ talk.talkday }}" class="copy">@{{ talk.talkmonth }}月{{ talk.talkday }}日 评论:</textarea> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a onclick="copyLink{{ talk.talkmonth }}{{ talk.talkday }}()" href="#comments"><font color="#2fb4f5">评论</font></a></div>
           <div class="hexo-douban-comments"></div>
       </div>
       
 <script type="text/javascript">
-function copyLink({{ talk.talkmonth }}{{ talk.talkday }}){
+function copyLink{{ talk.talkmonth }}{{ talk.talkday }}(){
     var e = document.getElementById("copy{{ talk.talkmonth }}{{ talk.talkday }}");
     e.select(); // 选择对象
     document.execCommand("Copy"); // 执行浏览器复制命令
