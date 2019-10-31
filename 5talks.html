@@ -131,7 +131,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
     color: #2fb4f5;
 }
 
-#copy {
+.copy {
     height: 0.01px;
     width: 0.01px;
 }
@@ -170,7 +170,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
       <div class="hexo-douban-info">
           <div class="hexo-douban-title"><a> {{ talk.mytalk }}</a></div>
           <div class="hexo-douban-meta"><br></div>
-          <div class="hexo-douban-meta"><textarea id="copy">@{{ talk.talkmonth }}月{{ talk.talkday }}日 评论:</textarea> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a onclick="copyLink()" href="#comments"><font color="#2fb4f5">评论</font></a></div>
+          <div class="hexo-douban-meta"><textarea id="copy{{ talk.talkmonth }}{{ talk.talkday }}" class="copy">@{{ talk.talkmonth }}月{{ talk.talkday }}日 评论:</textarea> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a onclick="copyLink()" href="#comments"><font color="#2fb4f5">评论</font></a></div>
           <div class="hexo-douban-comments"></div>
       </div>
     </div>
@@ -200,7 +200,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
       <div class="hexo-douban-info">
           <div class="hexo-douban-title"><a> {{ talk.mytalk }}</a></div>
           <div class="hexo-douban-meta"><br></div>
-          <div class="hexo-douban-meta"><textarea id="copy">@{{ talk.talkmonth }}月{{ talk.talkday }}日 评论:</textarea> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a onclick="copyLink()" href="#comments"><font color="#2fb4f5">评论</font></a></div>
+          <div class="hexo-douban-meta"><textarea id="copy{{ talk.talkmonth }}{{ talk.talkday }}" class="copy">@{{ talk.talkmonth }}月{{ talk.talkday }}日 评论:</textarea> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a onclick="copyLink()" href="#comments"><font color="#2fb4f5">评论</font></a></div>
           <div class="hexo-douban-comments"></div>
       </div>
     </div>
@@ -230,9 +230,19 @@ header-img: "img/post-bg-YesOrNo.jpg"
       <div class="hexo-douban-info">
           <div class="hexo-douban-title"><a> {{ talk.mytalk }}</a></div>
           <div class="hexo-douban-meta"><br></div>
-          <div class="hexo-douban-meta"><textarea id="copy">@{{ talk.talkmonth }}月{{ talk.talkday }}日 评论:</textarea> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a onclick="copyLink()" href="#comments"><font color="#2fb4f5">评论</font></a></div>
+          <div class="hexo-douban-meta"><textarea id="copy{{ talk.talkmonth }}{{ talk.talkday }}" class="copy">@{{ talk.talkmonth }}月{{ talk.talkday }}日 评论:</textarea> 💖 Duter2016 | ⌛️ {{ talk.talkmonth }}月{{ talk.talkday }}日 | ☎️ <a onclick="copyLink()" href="#comments"><font color="#2fb4f5">评论</font></a></div>
           <div class="hexo-douban-comments"></div>
       </div>
+      
+<script type="text/javascript">
+function copyLink(){
+    var e = document.getElementById("copy{{ talk.talkmonth }}{{ talk.talkday }}");
+    e.select(); // 选择对象
+    document.execCommand("Copy"); // 执行浏览器复制命令
+    alert("评论格式已复制，评论框粘贴即可！");
+}
+</script>
+      
     </div>
     {% endfor %}
     <!-- 已读000结束 -->
@@ -381,14 +391,6 @@ for (var i = 0; i < firstpages.length; i++) {
     var size = pagenums[i].parentNode.siblings().length;
     pagenums[i].innerText = '1 / ' + (Math.ceil(size / 10) === 0 ? 1 : Math.ceil(size / 10));
     firstpages[i].click();
-}
-    
-//点击复制脚本
-function copyLink(){
-    var e = document.getElementById("copy");
-    e.select(); // 选择对象
-    document.execCommand("Copy"); // 执行浏览器复制命令
-    alert("评论格式已复制，评论框粘贴即可！");
 }
     
 </script>
