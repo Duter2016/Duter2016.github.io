@@ -144,7 +144,7 @@ header-img: "img/post-bg-YesOrNo.jpg"
 <h1>这里是我的书籍清单</h1>
 -->
 <blockquote>
-    <p>这里是我的说说，记录我的心路或日常所感所悟，欢迎互动！互动评论格式：“@2019年10月30日 这是你的评论内容。”</p>
+    <p>这里是我的说说，记录我的心路或日常所感所悟，欢迎互动！互动评论格式：“@2019年10月30日 评论:这是你的评论内容。”(点击“评论”按钮自动复制该格式)</p>
 </blockquote>
 
 <div class="hexo-douban-tabs">
@@ -217,9 +217,9 @@ header-img: "img/post-bg-YesOrNo.jpg"
     </div>
     <!-- 分页 结束 -->
     
-  <!--      已读 start      -->
+  <!--      我的说说 start      -->
   <div id="hexo-douban-item3">
-    <!-- 已读000开始 -->
+    <!-- 说说000开始 -->
     {% for talk in site.data.talks %}
     <div class="hexo-douban-item">
       <div class="hexo-douban-picture"><img src="https://raw.githubusercontent.com/Duter2016/Duter2016.github.io/master/img/talks_img.png}" data-src="https://raw.githubusercontent.com/Duter2016/Duter2016.github.io/master/img/talks_img.png" referrerpolicy="no-referrer"></div>
@@ -234,18 +234,20 @@ header-img: "img/post-bg-YesOrNo.jpg"
           <div class="hexo-douban-comments"></div>
       </div>
       
-<script type="text/javascript">
-function copyLink{{ talk.talkmonth }}{{ talk.talkday }}(){
-    var e = document.getElementById("copy{{ talk.talkmonth }}{{ talk.talkday }}");
-    e.select(); // 选择对象
-    document.execCommand("Copy"); // 执行浏览器复制命令
-    alert("评论格式已复制，评论框粘贴即可！");
-}
-</script>
+      <!-- 点击复制 开始 -->
+      <script type="text/javascript">
+      function copyLink{{ talk.talkmonth }}{{ talk.talkday }}(){
+          var e = document.getElementById("copy{{ talk.talkmonth }}{{ talk.talkday }}");
+          e.select(); // 选择对象
+          document.execCommand("Copy"); // 执行浏览器复制命令
+          alert("评论格式已复制，评论框粘贴即可！");
+      }
+      </script>
+      <!-- 点击复制 结束 -->
       
     </div>
     {% endfor %}
-    <!-- 已读000结束 -->
+    <!-- 说说000结束 -->
     
     <!-- 分页 开始 -->
     <div class="hexo-douban-pagination">
@@ -258,7 +260,7 @@ function copyLink{{ talk.talkmonth }}{{ talk.talkday }}(){
     <!-- 分页 结束 -->
     
   </div>
-  <!--      已读 end      -->
+  <!--      我的说说 end      -->
 
 </div>
 
