@@ -344,3 +344,7 @@ wp_die('投稿失败！<a href="'.$current_url.'">点此返回</a>');
 ```
 
 这样就可以了！
+
+**参考文献**：
+
++ [WordPress添加投稿功能](https://www.ludou.org/wordpress-add-contribute-page.html)
