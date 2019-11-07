@@ -121,7 +121,7 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "优源[辅站]",
+        title: "优源辅站",
         href: "https://duter2016.gitee.io"
     },{
         title: "优源导航",
