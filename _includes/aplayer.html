@@ -1,0 +1,15 @@
+<!-- require APlayer -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+<!-- APlayer 加载参数 -->
+<meting-js
+	server="{{ page.apserver }}"
+	type="{{ page.aptype }}"
+	id="{{ page.apsongid }}"
+	autoplay="false"
+	theme="#999"
+	preload="none">   # 预加载可选值:‘none’,‘metadata’,‘auto’
+</meting-js>
