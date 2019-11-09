@@ -76,11 +76,15 @@ layout: default
                                 {% if page.music-id %}
                                    {% include cloud-music.html %}
                                 {% endif %} 
-		    
-		    
+		    		    
 		                <!-- cloud music full -->
                                 {% if page.music-idfull %}
                                    {% include cloud-music-full.html %}
+                                {% endif %} 
+
+                                <!-- APlayer 音乐模块 -->
+                                {% if page.apsongid %}
+                                   {% include aplayer.html %}
                                 {% endif %} 
 		    
 				{{ content }}
