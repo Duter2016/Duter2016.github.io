@@ -57,6 +57,7 @@
 * [16.添加文章访问量功能[不蒜子]：](#16添加文章访问量功能不蒜子)
 * [17.添加网站运行时间：](#17添加网站运行时间)
 * [18.文章置顶：](#18文章置顶)
+* [19.书单和说说](#19书单和说说)
 * [致谢](#致谢)
 * [License](#license)
 
@@ -452,6 +453,10 @@ ga_domain: huangxuan.me			# 默认的是 auto, 这里我是自定义了的域名
 {% endif %}
 {% endfor %}
 ```
+
+### 19.书单和说说
+
+使用说明详见《[_data目录Readme.md](https://github.com/Duter2016/Duter2016.github.io/tree/master/_data)》
 
 ## 致谢
 
