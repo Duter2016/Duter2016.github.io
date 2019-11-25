@@ -1,14 +1,3 @@
-- name: "天幕红尘"    #书名
-  author: "豆豆"    #作者
-  translator: "--"    #翻译者
-  press: "作家出版社"    #出版社
-  publishdate: "2013-6-1"    #出版日期
-  price: "36.00元"    #价格
-  bookimg: "https://img9.doubanio.com/view/subject/l/public/s26860726.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/24748615/"    #豆瓣书单地址
-  readdate: "2019-12"    #阅读日期
-  booktag: "文学小说"    #书的分类标签
-  
 - name: "鬼谷子"    #书名
   author: "许富宏 译注"    #作者
   translator: "许富宏 注释"    #翻译者
