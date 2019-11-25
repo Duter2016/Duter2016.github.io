@@ -1,24 +1,13 @@
-- name: "背叛：宋一坤 夏英杰"    #书名
+- name: "天幕红尘"    #书名
   author: "豆豆"    #作者
   translator: "--"    #翻译者
-  press: "群众出版社"    #出版社
-  publishdate: "2000年5月"    #出版日期
-  price: "24.80元"    #价格
-  bookimg: "https://img3.doubanio.com/view/subject/l/public/s26281285.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/1578545/"    #豆瓣书单地址
-  readdate: "2019-10"    #阅读日期
+  press: "作家出版社"    #出版社
+  publishdate: "2013-6-1"    #出版日期
+  price: "36.00元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/l/public/s26860726.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/24748615/"    #豆瓣书单地址
+  readdate: "2019-11"    #阅读日期
   booktag: "文学小说"    #书的分类标签
-  
-- name: "墨菲定律"    #书名
-  author: "[美] 阿瑟·布洛赫"    #作者
-  translator: "曾晓涛"    #翻译者
-  press: "山西人民出版社"    #出版社
-  publishdate: "2012-4"    #出版日期
-  price: "28.00元"    #价格
-  bookimg: "https://img3.doubanio.com/view/subject/l/public/s8958835.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/10541306/"    #豆瓣书单地址
-  readdate: "2019-10"    #阅读日期
-  booktag: "心理学、管理学"    #书的分类标签
   
 - name: "情人"    #书名
   author: "渡边淳一"    #作者
