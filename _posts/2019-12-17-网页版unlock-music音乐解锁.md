@@ -18,11 +18,15 @@ tags:								#标签
     - 网页
 ---
 
-今天在小众软件网站，发现了一个可以在浏览器中解锁加密的QQ音乐、网易云音乐版权音乐文件的项目，项目地址为https://github.com/ix64/unlock-music，原来的网页为https://tool.ixarea.com/music/。但是由于可能存在的法律风险，https://tool.ixarea.com/music/已经停止提供服务了，页面显示“https://tool.ixarea.com/music/”。好在项目地址还在！
+今天在小众软件网站，发现了一个可以在浏览器中解锁加密的QQ音乐、网易云音乐版权音乐文件的项目，项目地址为<https://github.com/ix64/unlock-music>，
+原来的网页为<https://tool.ixarea.com/music/>。但是由于可能存在的法律风险，<https://tool.ixarea.com/music/>已经停止提供服务了，页面显示：
+> unlock-music项目是以学习和技术研究的初衷创建的，由于存在可能的法律风险以及滥用风险，本Demo即日起停止服务。
+
+好在项目地址还在！
 
 于是，把项目下载了下来，发现自己可以搭一个在线的共自己使用，于是乎，我就尝试了，然后就能使用了！
 
 我的**音乐解锁**网页地址为：  
-<https://tool.ixarea.com/music/>
+<https://duter2016.github.io/music-crack/>
 
 仅供自己测试和使用！
