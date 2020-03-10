@@ -1,24 +1,35 @@
-- name: "天幕红尘"    #书名
-  author: "豆豆"    #作者
-  translator: "--"    #翻译者
-  press: "作家出版社"    #出版社
-  publishdate: "2013-6-1"    #出版日期
-  price: "36.00元"    #价格
-  bookimg: "https://img9.doubanio.com/view/subject/l/public/s26860726.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/24748615/"    #豆瓣书单地址
-  readdate: "2019-11"    #阅读日期
-  booktag: "文学小说"    #书的分类标签
-  
-- name: "情人"    #书名
-  author: "渡边淳一"    #作者
-  translator: "祝子平"    #翻译者
-  press: "青岛出版社"    #出版社
-  publishdate: "2015-11-1"    #出版日期
-  price: "39.00元"    #价格
-  bookimg: "https://img9.doubanio.com/view/subject/l/public/s28342236.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26665723/"    #豆瓣书单地址
-  readdate: "2019-9"    #阅读日期
-  booktag: "文学小说"    #书的分类标签
+- name: "红星照耀中国"    #书名
+  author: "[美] 埃德加·斯诺"    #作者
+  translator: "董乐山"    #翻译者
+  press: "人民文学出版社"    #出版社
+  publishdate: "2016-6"    #出版日期
+  price: "43.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/s/public/s29109031.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/26820347/"    #豆瓣书单地址
+  readdate: "2020-03"    #阅读日期
+  booktag: "中国史"    #书的分类标签
+
+- name: "绝对笑喷之弃业医生日志"    #书名
+  author: " [英]亚当·凯"    #作者
+  translator: "胡逍扬"    #翻译者
+  press: "北京时代华文书局"    #出版社
+  publishdate: "2019-5-1"    #出版日期
+  price: "56.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/s/public/s31469977.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/30293663/"    #豆瓣书单地址
+  readdate: "2020-02"    #阅读日期
+  booktag: "医学"    #书的分类标签
+
+- name: "鬼谷子"    #书名
+  author: "许富宏 译注"    #作者
+  translator: "许富宏 注释"    #翻译者
+  press: "中华书局"    #出版社
+  publishdate: "2011-12"    #出版日期
+  price: "15.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/l/public/s9012759.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/10488580/"    #豆瓣书单地址
+  readdate: "2019-12"    #阅读日期
+  booktag: "古典文学"    #书的分类标签
   
   
   
