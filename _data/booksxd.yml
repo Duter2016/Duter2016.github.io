@@ -1,10 +1,21 @@
-- name: "鬼谷子"    #书名
-  author: "许富宏 译注"    #作者
-  translator: "许富宏 注释"    #翻译者
-  press: "中华书局"    #出版社
-  publishdate: "2011-12"    #出版日期
-  price: "15.00元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/l/public/s9012759.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/10488580/"    #豆瓣书单地址
-  readdate: "2019-12"    #阅读日期
-  booktag: "古典文学"    #书的分类标签
+- name: "从一到无穷大--科学中的事实与猜想"    #书名
+  author: "[美]乔治·伽莫夫"    #作者
+  translator: "刘小君 / 岳夏"    #翻译者
+  press: "文化发展出版社"    #出版社
+  publishdate: "2019-3"    #出版日期
+  price: "39.80元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/s/public/s32301226.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/30466214/"    #豆瓣书单地址
+  readdate: "2020-03"    #阅读日期
+  booktag: "科学"    #书的分类标签
+
+- name: "美国陷阱--如何通过非商业手段瓦解他国商业巨头"    #书名
+  author: "[法] 弗雷德里克·皮耶鲁齐 / [法] 马修·阿伦"    #作者
+  translator: "法意"    #翻译者
+  press: "中信出版集团"    #出版社
+  publishdate: "2019-5"    #出版日期
+  price: "68.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/s/public/s32305312.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/33379779/"    #豆瓣书单地址
+  readdate: "2020-03"    #阅读日期
+  booktag: "国际政治经济"    #书的分类标签
