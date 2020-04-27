@@ -81,7 +81,6 @@ valine:
   path: window.location.pathname
   recordIP: true # 是否记录评论者IP
   enableQQ: true # 是否启用昵称框自动获取QQ昵称和QQ头像, 默认关闭
-  requiredFields: ['nick','mail']   # 设置必填项，默认匿名
 
 # Gitalk
 gitalk:
