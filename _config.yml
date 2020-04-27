@@ -78,7 +78,7 @@ valine:
   avatar:   # gravatar style
   guest_info: 昵称,邮件,网址 # custom comment header
   pageSize: 10 # pagination size
-  path: window.location.pathname
+  path: window.location.href
   recordIP: true # 是否记录评论者IP
   enableQQ: true # 是否启用昵称框自动获取QQ昵称和QQ头像, 默认关闭
 
