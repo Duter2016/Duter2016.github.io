@@ -12,6 +12,10 @@ tags:								#标签
     - Blog
 ---
 
+```
+已适配v1.4.0+评论系统
+```
+
 # Jekyll: 添加Valine评论(邮件通知、评论列表头像)  
 
 ## 感谢：
@@ -69,13 +73,15 @@ valine:
   enable: true
   appid:  xxxxxxxx # your leancloud app id
   appkey: xxxxxxxx # your leancloud app key
-  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
-  verify: true # Verification code
+  notify: true # mail notifier , https://github.com/xCss/Valine/wiki，v1.4.0+ 已废弃
+  verify: true # Verification code，v1.4.0+ 已废弃
   placeholder: 非Github帐号登录用户，在此处留言 # comment box placeholder
   avatar:   # gravatar style
   guest_info: 昵称,邮件,网址 # custom comment header
   pageSize: 10 # pagination size
-  # path: window.location.pathname
+  # path: window.location.pathname #  v1.4.0+不要使用参数“app_key: '{{ site.valine.appkey }}',”
+  recordIP: true # 是否记录评论者IP
+  enableQQ: true # 是否启用昵称框自动获取QQ昵称和QQ头像, 默认关闭
 ```
 
 以上的 appid和appkey为本文开始在Leancloud创建应用的 App ID 和 App Key。  
@@ -96,10 +102,11 @@ valine:
             el: '#comments',
             app_id: '[[ site.valine.appid ]]',
             app_key: '[[ site.valine.appkey ]]',
-            path: '[[ site.valine.path ]]',
             placeholder: '[[ site.valine.placeholder ]]',
             notify: '[[ site.valine.notify ]]',
             verify: '[[ site.valine.verify ]]',
+	    recordIP: '{{ site.valine.recordIP }}',
+            enableQQ: '{{ site.valine.enableQQ }}',
         ])
     </script>
 ```
