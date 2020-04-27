@@ -72,13 +72,16 @@ valine:
   enable: true
   appid:  nvYN2RxydarHJ11V8CTyuYkI-MdYXbMMI
   appkey: LHvLGcwcauE5B2JpMxJ3lbtF
-  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
-  verify: true # Verification code
+  notify: true # mail notifier , https://github.com/xCss/Valine/wiki，v1.4.0+ 已废弃
+  verify: true # Verification code，v1.4.0+ 已废弃
   placeholder: 游客请在此处留言！留下邮箱，若有回复，您将及时收到提醒邮件！ # comment box placeholder
   avatar:   # gravatar style
   guest_info: 昵称,邮件,网址 # custom comment header
   pageSize: 10 # pagination size
-  # path: window.location.pathname
+  path: window.location.pathname
+  recordIP: true
+  enableQQ: true
+  requiredFields: ['nick','mail']  # 设置必填项，默认匿名
 
 # Gitalk
 gitalk:
