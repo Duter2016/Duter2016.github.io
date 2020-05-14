@@ -57,7 +57,7 @@ Valine 是基于 [leancloud国际版](https://leancloud.app/)的评论模块，�
 
 登录leancloud控制台，选择 设置 -> 安全中心 -> Web 安全域名，这里设置成博客的域名地址和本地地址即可，如图:
 
-[![](https://postgres.fun/images/safe_domain.png)](https://postgres.fun/images/safe_domain.png)
+[![](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine001.png)
 
 ## 3、配置Jekyll主题配置文件
 
@@ -125,7 +125,7 @@ valine:
 
 之后访问博客，可以看到如下评论模块：
 
-[![](https://postgres.fun/images/valine_comment_test.png)](https://postgres.fun/images/valine_comment_test.png)
+[![](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine002.png)
 
 并且可以留言评论了，以上就是 Valine 模块的基本部署过程。
 
@@ -143,11 +143,11 @@ valine:
 
 1.在[Leancloud](https://leancloud.cn/dashboard/#/apps)云引擎设置界面，填写代码库并保存：[https://github.com/DesertsP/Valine-Admin.git](https://github.com/DesertsP/Valine-Admin.git)  
 
-![设置仓库](https://cloud.panjunwen.com/2018/09/ping-mu-kuai-zhao-2018-09-15-xia-wu-12-56-04.png)
+![设置仓库](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine003.png)
 
 2.在设置页面，设置环境变量以及 Web 二级域名。
 
-![环境变量](https://cloud.panjunwen.com/2018/09/ping-mu-kuai-zhao-2018-09-15-xia-wu-3-40-48.png)
+![环境变量](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine004.png)
 
 变量|示例|说明
 -|-|-
@@ -166,18 +166,18 @@ AKISMET\_KEY|xxxxxxxxxxxx|[可选]Akismet Key 用于垃圾评论检测，设为M
 
 二级域名用于评论后台管理，如[https://deserts.leanapp.us](https://deserts.leanapp.us) 。
 
-![二级域名](https://cloud.panjunwen.com/2018/09/ping-mu-kuai-zhao-2018-09-15-xia-wu-1-06-41.png)
+![二级域名](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine005.png)
 
 3.切换到部署标签页，分支使用master，点击部署即可
 
-![一键部署](https://cloud.panjunwen.com/2018/09/ping-mu-kuai-zhao-2018-09-15-xia-wu-12-56-50.png)
+![一键部署](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine006.png)
 
 第一次部署需要花点时间。
 
-![部署过程](https://cloud.panjunwen.com/2018/09/ping-mu-kuai-zhao-2018-09-15-xia-wu-1-00-45.png)
+![部署过程](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine007.png)
 
 4.评论管理。访问设置的二级域名`https://二级域名.leanapp.us/sign-up`，注册管理员登录信息，如：[https://deserts.leanapp.us/sign-up](https://deserts.leanapp.us/sign-up)  
-    ![管理员注册](https://cloud.panjunwen.com/2018/10/ping-mu-kuai-zhao-2018-10-22-xia-wu-9-35-51.png)
+    ![管理员注册](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine008.png)
 
 
 > 注：使用原版Valine如果遇到注册页面不显示直接跳转至登录页的情况，请手动删除\_User表中的全部数据。  
@@ -192,11 +192,11 @@ AKISMET\_KEY|xxxxxxxxxxxx|[可选]Akismet Key 用于垃圾评论检测，设为M
 
 选择self-wake云函数，Cron表达式为`0 0/30 7-23 * * ?`，表示每天早6点到晚23点每隔30分钟访问云引擎，`ADMIN_URL`环境变量务必设置正确：
 
-![唤醒云引擎](https://cloud.panjunwen.com/2018/09/ping-mu-kuai-zhao-2018-09-18-xia-wu-2-57-43.png)
+![唤醒云引擎](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine009.png)
 
 选择resend-mails云函数，Cron表达式为`0 0 8 * * ?`，表示每天早8点检查过去24小时内漏发的通知邮件并补发：
 
-![通知检查](https://cloud.panjunwen.com/2018/09/ping-mu-kuai-zhao-2018-09-18-xia-wu-2-57-53.png)
+![通知检查](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine010.png)
 
 **添加定时器后记得点击启动方可生效。**  
 
@@ -223,7 +223,7 @@ MAIL\_TEMPLATE\_ADMIN|见下文|[可选]博主邮件通知内容模板
 
 效果如下图：
 
-![mail-blue-template](https://cloud.panjunwen.com/2018/09/wei-ming-ming.png)
+![mail-blue-template](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine011.png)
 
 @通知模板中的可用变量如下（注，这是邮件模板变量，是指嵌入到HTML邮件模板中的变量，请勿与云引擎环境变量混淆）：
 
@@ -253,7 +253,7 @@ COMMENT|新评论内容
 
 效果如图：
 
-![彩虹模板](https://cloud.panjunwen.com/2018/09/ping-mu-kuai-zhao-2018-09-15-xia-wu-5-17-21.png)
+![彩虹模板](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine012.png)
 
 ### (3)垃圾评论检测
 
@@ -284,7 +284,7 @@ AKISMET\_KEY|xxxxxxxxxxxx|[可选]Akismet Key 用于垃圾评论检测
     
 * 邮件发送失败，确保环境变量都没问题后，重启云引擎
     
-    ![重启云引擎](https://cloud.panjunwen.com/2018/09/ping-mu-kuai-zhao-2018-09-15-xia-wu-5-22-56.png)
+    ![重启云引擎](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine013.png)
     
 * 博主通知模板中不要出现`PARENT*`相关参数（请勿混用模板）
     
@@ -321,7 +321,7 @@ Valine 部署完成后使用了默认图像，查阅 [Valine官网](https://vali
 
 Valine 的 avatar 参数用来设置评论头像，avatar 参数可选值如下:
 
-[![](https://postgres.fun/images/avatar_parameter.png)](https://postgres.fun/images/avatar_parameter.png)
+[![](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine014.png)
 
 我这里将 avatar 设置成空，表示使用的是默认的评论图像。
 
@@ -329,7 +329,7 @@ Valine 的 avatar 参数用来设置评论头像，avatar 参数可选值如下:
 
 登录 [gravatar](https://cn.gravatar.com/)，注册账号并设置头像，我的设置如下：
 
-[![](https://postgres.fun/images/gravatar_ruolin.png)](https://postgres.fun/images/gravatar_ruolin.png)
+[![](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/05/14/valine015.png)
 
 ### 主题设置的avatar_cdn 参数主题
 
