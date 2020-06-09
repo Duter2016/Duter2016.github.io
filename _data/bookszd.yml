@@ -1,24 +1,13 @@
-- name: "红星照耀中国"    #书名
-  author: "[美] 埃德加·斯诺"    #作者
-  translator: "董乐山"    #翻译者
-  press: "人民文学出版社"    #出版社
-  publishdate: "2016-6"    #出版日期
-  price: "43.00元"    #价格
-  bookimg: "https://img3.doubanio.com/view/subject/s/public/s29109031.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26820347/"    #豆瓣书单地址
-  readdate: "2020-03"    #阅读日期
-  booktag: "中国史"    #书的分类标签
-
-- name: "绝对笑喷之弃业医生日志"    #书名
-  author: "[英]亚当·凯"    #作者
-  translator: "胡逍扬"    #翻译者
-  press: "北京时代华文书局"    #出版社
-  publishdate: "2019-5-1"    #出版日期
-  price: "56.00元"    #价格
-  bookimg: "https://img1.doubanio.com/view/subject/s/public/s31469977.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/30293663/"    #豆瓣书单地址
-  readdate: "2020-02"    #阅读日期
-  booktag: "医学"    #书的分类标签
+- name: "断舍离"    #书名
+  author: "山下英子"    #作者
+  translator: "吴倩"    #翻译者
+  press: "广西科学技术出版社"    #出版社
+  publishdate: "2013-7-30"    #出版日期
+  price: " 32.00元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/s/public/s26872396.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/24749465/"    #豆瓣书单地址
+  readdate: "2020-06"    #阅读日期
+  booktag: "心理学"    #书的分类标签
 
 - name: "鬼谷子"    #书名
   author: "许富宏 译注"    #作者
