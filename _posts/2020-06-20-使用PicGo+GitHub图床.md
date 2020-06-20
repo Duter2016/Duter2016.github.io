@@ -83,6 +83,22 @@ _可以按照这样配置_
 
 > 注：可以将快捷键设置为`ctrl+shift+c`
 
+### 4.插件设置
+
+PicGo安装插件后，可以大大提高使用的便捷性。你可以在[https://github.com/PicGo/Awesome-PicGo](https://github.com/PicGo/Awesome-PicGo)查找你需要的插件。
+
+我只使用了两个插件：[picgo-plugin-github-plus](https://github.com/zWingz/picgo-plugin-github-plus)和[picgo-plugin-autocopy](https://github.com/PicGo/picgo-plugin-autocopy)。
+
+![](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/07/picgo03.png)
+
+（1）[picgo-plugin-github-plus](https://github.com/zWingz/picgo-plugin-github-plus)是PicGo的加强版，可以同步github的上传和删除动作，还可以拉去github图库。设置如下：
+
+![](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/07/picgo04.png)
+
+（2）[picgo-plugin-autocopy](https://github.com/PicGo/picgo-plugin-autocopy)用来上传完图片后，自动把markdown格式的地址复制到剪贴板。设置如下：
+
+![](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/07/picgo05.png)
+
 ## 总结
 
 将上面的步骤都设置好之后，就可以让自己的Markdown文档飞起来了，每次截图之后，都可以按一下`ctrl+shift+c`，这样就会将剪切板上面的截图转化为在线网络图片链接！
