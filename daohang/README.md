@@ -33,6 +33,13 @@
 1. github提issue
 2. 发送邮件到 bituplink@protonmail.com
 
+### JS加载
+
+```
+104.16.132.229 cdnjs.cloudflare.com
+209.197.3.24 code.jquery.com
+```
+
 ### license
 这是基于小呆导航MIT协议的代码进行开发的，为了遵守协议规定，license文件和界面声明我都保留了，使用的时候建议大家也遵守协议规定
 
