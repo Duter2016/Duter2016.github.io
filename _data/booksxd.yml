@@ -8,14 +8,3 @@
   doubanurl: "https://book.douban.com/subject/30466214/"    #豆瓣书单地址
   readdate: "2020-03"    #阅读日期
   booktag: "科学"    #书的分类标签
-
-- name: "鞋狗"    #书名
-  author: "[美] 菲尔·奈特"    #作者
-  translator: "毛大庆"    #翻译者
-  press: "北京联合出版公司"    #出版社
-  publishdate: "2016-9-1"    #出版日期
-  price: "89.90元"    #价格
-  bookimg: "https://img9.doubanio.com/view/subject/s/public/s29067926.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/26860776/"    #豆瓣书单地址
-  readdate: "2020-06"    #阅读日期
-  booktag: "创业传记"    #书的分类标签
