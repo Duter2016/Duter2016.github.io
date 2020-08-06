@@ -2,6 +2,7 @@
 title: 优源
 SEOTitle: 优源博客 | YouYuan Blog
 header-img: img/post-bg-dutyjl3.jpg
+header-mask: "0.2"                    # 博文页面上端的背景图片的亮度，数值越大越黑暗
 email: duter2016#foxmail.com
 description: "优源，一个有想法的地方！"
 keyword: "优源, YouYuan Blog, 优源博客, Duter2016, Duter, Linux"
