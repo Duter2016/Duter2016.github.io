@@ -1,3 +1,17 @@
+- name: "鞋狗"    #书名
+  author: "[美] 菲尔·奈特"    #作者
+  translator: "毛大庆"    #翻译者
+  press: "北京联合出版公司"    #出版社
+  publishdate: "2016-9-1"    #出版日期
+  price: "89.90元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/s/public/s29067926.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/26860776/"    #豆瓣书单地址
+  readdate: "2020-07"    #阅读日期
+  booktag: "创业传记"    #书的分类标签
+  stars: "★★★★★ "    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "我是在这本书里第一次知道鬼冢虎这个品牌的运动鞋！！！这本书的传记是通过第一人称的角度写的，还可以！读完这本书，你会给自己信心，相信我！"    #书评
+
 - name: "美国陷阱--如何通过非商业手段瓦解他国商业巨头"    #书名
   author: "[法] 弗雷德里克·皮耶鲁齐 / [法] 马修·阿伦"    #作者
   translator: "法意"    #翻译者
