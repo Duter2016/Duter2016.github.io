@@ -33,11 +33,16 @@
 1. github提issue
 2. 发送邮件到 bituplink@protonmail.com
 
-### JS加载
-
+### JS加载加速
+已经把本导航涉及的脚本全部替换为国内CDN加速镜像服务：
 ```
-104.16.132.229 cdnjs.cloudflare.com
-209.197.3.24 code.jquery.com
+//code.jquery.com/jquery-1.11.0.min.js
+替换为360的CDN加速服务
+//lib.baomitu.com/jquery/1.11.0/jquery.min.js
+
+https://cdnjs.cloudflare.com/ajax/libs/zui/1.8.1/css/zui.min.css
+替换为猫云的CDN加速服务
+https://cdn.bootcdn.net/ajax/libs/zui/1.8.1/css/zui.min.css
 ```
 
 ### license
