@@ -81,6 +81,7 @@ valine:
   # path: window.location.pathname #  v1.4.0+不要使用参数“app_key: '{{ site.valine.appkey }}',”
   recordIP: true # 是否记录评论者IP
   enableQQ: true # 是否启用昵称框自动获取QQ昵称和QQ头像, 默认关闭
+  avatar_cdn: https://cn.gravatar.com/avatar/    # gravatar头像镜像
 
 # Gitalk
 gitalk:
