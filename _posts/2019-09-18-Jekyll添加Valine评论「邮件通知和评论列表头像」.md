@@ -335,7 +335,31 @@ Valine 的 avatar 参数用来设置评论头像，avatar 参数可选值如下:
 
 ### 主题设置的avatar_cdn 参数主题
 
-这个我没有用到，木有设置，哈哈！
+在主题配置文件`_config.yml`中的`# Valine评论系统开关`部分增加 avatar_cdn 参数，如下:
+
+```
+valine:
+  avatar_cdn: https://sdn.geekzu.org/avatar/    # gravatar头像镜像
+```
+
+然后修改Valine模板文件`/_includes/valine_comments.html`，增加`avatar_cnd`这行代码，如下:
+
+```
+avatar_cdn: '{{ site.valine.avatar_cdn }}',
+```
+这样就可以了！
+
+如下是可供你选择的gravatar镜像（其中Loli源是valine默认使用的镜像，我使用的是极客族的镜像）：
+```
+zeruns's Blog的镜像源：https://gravatar.zeruns.tech/avatar/
+gravatar官方的www源 https://www.gravatar.com/avatar/
+gravatar官方的cn源 https://cn.gravatar.com/avatar/
+gravatar官方的en源 https://en.gravatar.com/avatar/
+gravatar官方的secure源 https://secure.gravatar.com/avatar/
+V2EX源 https://cdn.v2ex.com/gravatar/
+Loli源 https://gravatar.loli.net/avatar/
+极客族 https://sdn.geekzu.org/avatar/
+```
 
 ## 参考
 
