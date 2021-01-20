@@ -39,7 +39,7 @@ anchorjs: true                          # if you want to customize anchor. check
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
-gems: [jekyll-paginate, jekyll-sitemap, jekyll-mermaid]
+gems: [jekyll-paginate, jekyll-sitemap]
 # gems: [jekyll-sitemap]
 
 
@@ -153,13 +153,6 @@ friends: [
     }
 ]
 
-
-# jekyll-mermaid settings 
-mermaid:
-  src: /js/mermaid.min.js
-  custom:     # mermaid link
-  initialize:    # this will prased to json, default: {}
-  enable: true
 
 
 # Jekyll-Search settings 
