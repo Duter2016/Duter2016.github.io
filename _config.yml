@@ -157,6 +157,7 @@ friends: [
 # jekyll-mermaid settings 
 mermaid:
   src: /js/mermaid.min.js
+  enable: true
 
 
 # Jekyll-Search settings 
