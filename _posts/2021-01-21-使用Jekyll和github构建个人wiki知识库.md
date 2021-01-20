@@ -128,15 +128,18 @@ deepin用户手册文档目录上线GitHub，该项目由Jekyll wiki主题驱动
 
 美人鱼mermaid(流程图，时序图，甘特图，类图等)：
 
-```mermaid
+```
+{% mermaid %}
 graph TD;
     A-->B;
     A-->C;
     B-->D;
     C-->D;
+{% endmermaid %}    
 ```
 
-```mermaid
+```
+{% mermaid %}
 sequenceDiagram
     participant Alice
     participant Bob
@@ -148,9 +151,11 @@ sequenceDiagram
     John-->>Alice: Great!
     John->>Bob: How about you?
     Bob-->>John: Jolly good!
+{% endmermaid %}
 ```
 
-```mermaid
+```
+{% mermaid %}
 gantt
 dateFormat  YYYY-MM-DD
 title Adding GANTT diagram to mermaid
@@ -161,9 +166,11 @@ Completed task            :done,    des1, 2014-01-06,2014-01-08
 Active task               :active,  des2, 2014-01-09, 3d
 Future task               :         des3, after des2, 5d
 Future task2               :         des4, after des3, 5d
+{% endmermaid %}
 ```
 
-```mermaid
+```
+{% mermaid %}
 classDiagram
 Class01 <|-- AveryLongClass : Cool
 Class03 *-- Class04
@@ -178,6 +185,7 @@ Class01 : size()
 Class01 : int chimp
 Class01 : int gorilla
 Class08 <--> C2: Cool label
+{% endmermaid %}
 ```
 
 ## （3）可选参数
