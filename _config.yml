@@ -157,6 +157,8 @@ friends: [
 # jekyll-mermaid settings 
 mermaid:
   src: /js/mermaid.min.js
+  custom:     # mermaid link
+  initialize:    # this will prased to json, default: {}
   enable: true
 
 
