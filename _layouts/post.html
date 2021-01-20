@@ -149,8 +149,8 @@ layout: default
                 <!--Gitalk评论start  -->
                 {% if site.gitalk.enable %}
                 <!-- 引入Gitalk评论插件  -->
-                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-                <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+                <link rel="stylesheet" href="https://lib.baomitu.com/gitalk/latest/gitalk.css">
+                <script src="https://lib.baomitu.com/gitalk/latest/gitalk.min.js"></script>
                 <h4 align="left">「Github登录用户留言」：</h4>    
                 <div id="gitalk-container"></div>
                 <!-- 引入一个生产md5的js，用于对id值进行处理，防止其过长 -->
@@ -277,7 +277,7 @@ layout: default
 </script>
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+    async("//cdn.bootcdn.net/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
         // BY Fix:去除标题前的‘#’ issues:<https://github.com/qiubaiying/qiubaiying.github.io/issues/137>
         // anchors.options = {
         //   visible: 'always',
