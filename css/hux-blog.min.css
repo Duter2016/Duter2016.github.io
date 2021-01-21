@@ -227,7 +227,6 @@ img::-moz-selection{color:#fff;background:0 0}
  
 #cardtab>div {
     display: none;
-    text-align: center;
 }
 
 #cardtab .cardcontent {
