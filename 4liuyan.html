@@ -22,37 +22,55 @@ header-img: "img/post-bg-dutbsyj.jpg"
 	</div>
 	<hr>
 	
-	       <!-- Valine 评论框 start -->
-	       {% if site.valine.enable %}
-                      {% include valine_comments.html %}
-               {% endif %}
-	       <!-- Valine 评论框 end -->
-		    
-		    
-                <!--Gitalk评论start  -->
-                {% if site.gitalk.enable %}
-                <!-- 引入Gitalk评论插件  -->
-                <link rel="stylesheet" href="https://lib.baomitu.com/gitalk/latest/gitalk.css">
-                <script src="https://lib.baomitu.com/gitalk/latest/gitalk.min.js"></script>
-                <h4 align="left">「Github登录用户留言」：</h4>    
-                <div id="gitalk-container"></div>
-                <!-- 引入一个生产md5的js，用于对id值进行处理，防止其过长 -->
-                <!-- Thank DF:https://github.com/NSDingFan/NSDingFan.github.io/issues/3#issuecomment-407496538 -->
-                <script src="{{ site.baseurl }}/js/md5.min.js"></script>
-                <script type="text/javascript">
-                    var gitalk = new Gitalk({
-                    clientID: '{{site.gitalk.clientID}}',
-                    clientSecret: '{{site.gitalk.clientSecret}}',
-                    repo: '{{site.gitalk.repo}}',
-                    owner: '{{site.gitalk.owner}}',
-                    admin: ['{{site.gitalk.admin}}'],
-                    distractionFreeMode: {{site.gitalk.distractionFreeMode}},
-                    id: md5(location.pathname),
-                    });
-                    gitalk.render('gitalk-container');
-                </script>
-                {% endif %}
-                <!-- Gitalk end -->
+    <!-- 评论系统tab卡 -->
+    <div id="cardtab">
+        <h4 class="cardtitle">
+
+            <span class="cardtab" onmouseover="changeTab(this)">
+            「游客留言系统」：
+            </span>
+
+            <span onmouseover="changeTab(this)">
+            「Github用户留言」：
+            </span>
+
+        </h4>
+
+        <div class="cardcontent">
+            <!-- Valine 评论框 start -->
+            {% if site.valine.enable %}
+                {% include valine_comments.html %}
+            {% endif %}
+           <!-- Valine 评论框 end -->
+        </div>
+
+        <div>
+            <!--Gitalk评论start  -->
+            {% if site.gitalk.enable %}
+            <!-- 引入Gitalk评论插件  -->
+            <link rel="stylesheet" href="https://lib.baomitu.com/gitalk/latest/gitalk.css">
+            <script src="https://lib.baomitu.com/gitalk/latest/gitalk.min.js"></script>
+            <div id="gitalk-container"></div>
+            <!-- 引入一个生产md5的js，用于对id值进行处理，防止其过长 -->
+            <!-- Thank DF:https://github.com/NSDingFan/NSDingFan.github.io/issues/3#issuecomment-407496538 -->
+            <script src="{{ site.baseurl }}/js/md5.min.js"></script>
+            <script type="text/javascript">
+                var gitalk = new Gitalk({
+                clientID: '{{site.gitalk.clientID}}',
+                clientSecret: '{{site.gitalk.clientSecret}}',
+                repo: '{{site.gitalk.repo}}',
+                owner: '{{site.gitalk.owner}}',
+                admin: ['{{site.gitalk.admin}}'],
+                distractionFreeMode: {{site.gitalk.distractionFreeMode}},
+                id: md5(location.pathname),
+                });
+                gitalk.render('gitalk-container');
+            </script>
+            {% endif %}
+            <!-- Gitalk end -->
+        </div>
+    </div>
+    <!-- 评论系统tab卡 -->
 	
 	       <!-- intensedebate 评论框 start -->
 	       {% if site.intensedebate_comments %}
@@ -60,4 +78,23 @@ header-img: "img/post-bg-dutbsyj.jpg"
                {% endif %}
 	       <!-- intensedebate 评论框 end -->
          
-
+<!-- 评论系统tab卡js -->
+<script type="text/javascript">
+    // 获取所有的span标签组
+    var tabs = document.getElementById("cardtab").getElementsByTagName("span");
+    // 获取所有的div标签组
+    var cts = document.getElementById("cardtab").getElementsByTagName("div");
+ 
+    function changeTab(current) {
+        for(i = 0; i < tabs.length; i++) {
+            if(tabs[i] == current) {
+                tabs[i].className = "cardtab";
+                cts[i].className = "cardcontent";
+            } else {
+                tabs[i].className = "";
+                cts[i].className = "";
+            }
+        }
+    }
+</script>
+<!-- 评论系统tab卡js -->
