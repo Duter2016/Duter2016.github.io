@@ -196,3 +196,41 @@ img::-moz-selection{color:#fff;background:0 0}
     background: rgba(64,120,192,0.8); /* 小按钮的底色 */
     color: #fff; /* 文字颜色 */
 }
+
+/* 评论系统tab start */
+.cardtitle {    
+    height: 50px;
+    color: #0085a1;
+    background-color: #e2dede;
+    border: 1px solid #bfb8b8;
+    margin: 0;
+    display: flex;
+}
+
+.cardtitle span {
+    width: 45%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    float: center;
+    flex: 1;
+    border-right: 1px solid #bfb8b8;
+}
+.cardtitle span:nth-child(3){
+    border-right: none;
+}
+.cardtab {
+    color: #fff;
+    background-color: #0085a1;
+    cursor: pointer;
+}
+ 
+#cardtab>div {
+    display: none;
+    text-align: center;
+}
+
+#cardtab .cardcontent {
+    display: block;
+}
+/* 评论系统tab end */
