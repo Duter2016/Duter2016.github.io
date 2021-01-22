@@ -168,9 +168,11 @@ Github 添加SSH公钥
 
 直达地址：[https://gitee.com/profile/sshkeys](https%3A%2F%2Fgitee.com%2Fprofile%2Fsshkeys)
 
-1.  登录 Gitee
-2.  点击右上方的头像，点击 `设置`
-3.  后续步骤如 Github
+(1)  登录 Gitee
+
+(2)  点击右上方的头像，点击 `设置`
+
+(3)  后续步骤如 Github
 
 添加过程 码云 会提示你输入一次你的 Gitee 密码 ，确认后即添加完毕。
 
