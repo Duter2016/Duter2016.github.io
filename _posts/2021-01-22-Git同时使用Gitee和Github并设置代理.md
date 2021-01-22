@@ -24,15 +24,17 @@ tags:
 若之前对 git 设置过全局的 `user.name` 和 `user.email`。  
 类似 (用 `git config --global --list` 进行查看你是否设置)
 
-    $ git config --global user.name "你的名字"
-    $ git config --global user.email  "你的邮箱"
-    
+```
+$ git config --global user.name "你的名字"
+$ git config --global user.email  "你的邮箱"
+```
 
 必须删除该设置
 
-    $ git config --global --unset user.name "你的名字"
-    $ git config --global --unset user.email "你的邮箱"
-    
+```
+$ git config --global --unset user.name "你的名字"
+$ git config --global --unset user.email "你的邮箱"
+```
 
 ## 2.生成新的 SSH keys
 
