@@ -65,9 +65,9 @@ ssh-keygen -t rsa -f ~/.ssh/id_rsa.gitee -C "lx@qq.com"
 *   id\_rsa.gitee.pub
 ```
 
-## 3.添加识别 SSH keys 新的私钥
+## 3.添加识别SSH keys新的私钥,并添加到ssh-agent
 
-默认只读取 id\_rsa，为了让 SSH 识别新的私钥，需要将新的私钥加入到 SSH agent 中
+默认只读取 id\_rsa，为了让 SSH 识别新的私钥，需要将新的私钥加入到 ssh-agent 中
 
 ```
 $ ssh-agent bash
