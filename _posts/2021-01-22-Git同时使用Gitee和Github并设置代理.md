@@ -108,6 +108,7 @@ HostName github.com
 User your@email
 PreferredAuthentications publickey
 IdentityFile ~/.ssh/id_rsa.github
+AddKeysToAgent yes
 
 #Add gitLab user
 Host gitee.com
@@ -115,6 +116,7 @@ HostName gitee.com
 User your@email
 PreferredAuthentications publickey
 IdentityFile ~/.ssh/id_rsa.gitee
+AddKeysToAgent yes
 ```
 
 下面对上述配置文件中使用到的配置字段信息进行简单解释：
@@ -138,6 +140,9 @@ IdentityFile ~/.ssh/id_rsa.gitee
 
 > *   IdentityFile  
     指定本次连接使用的密钥文件
+
+> *   AddKeysToAgent yes   
+    加载到 ssh-agent，等同于`$ ssh-add ~/.ssh/id_rsa.github`
 
 ## 5.在 github 和 gitee 网站添加 ssh
 
