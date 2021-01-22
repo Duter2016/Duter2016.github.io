@@ -15,7 +15,7 @@ tags:
 # Git 同时使用 Gitee 和 Github 并设置代理
 
 
-> **建立两个密钥，不同账号配置不同的密钥，为github和gitee仓库配置不同密钥。**
+> **分别为Gitee 和 Github建立两个密钥，不同账号配置不同的密钥，为github和gitee仓库配置不同密钥。**
 
 ## 1.清除 git 的全局设置（针对已安装 git）
 
