@@ -112,7 +112,7 @@ PreferredAuthentications publickey
 IdentityFile ~/.ssh/id_rsa.github
 AddKeysToAgent yes
 
-#Add gitLab user
+#Add gitee user
 Host gitee.com
 HostName gitee.com
 User your@email
