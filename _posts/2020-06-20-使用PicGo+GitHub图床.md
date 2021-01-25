@@ -99,6 +99,21 @@ PicGo安装插件后，可以大大提高使用的便捷性。你可以在[https
 
 ![](https://raw.githubusercontent.com/Duter2016/GitNote-images/master/Images/2020/07/picgo05.png)
 
+## 使用图片外链镜像CDN加速：
+
+在PICGO中可以使用CDN加速，地址做相应修改就可以。例如项目图片相对地址为`GitNote-images/Images/2020/07/picgo04.png`，则CDN为：
+
+（1）jsdelivr的cdn加速（推荐这个）
+
+```
+https://cdn.jsdelivr.net/gh/Duter2016/GitNote-images/Images/2020/07/picgo04.png
+```
+（2）sevencdn的cdn加速
+
+```
+https://raw.sevencdn.com/Duter2016/GitNote-images/master/Images/2020/07/picgo04.png
+```
+
 ## 总结
 
 将上面的步骤都设置好之后，就可以让自己的Markdown文档飞起来了，每次截图之后，都可以按一下`ctrl+shift+c`，这样就会将剪切板上面的截图转化为在线网络图片链接！
