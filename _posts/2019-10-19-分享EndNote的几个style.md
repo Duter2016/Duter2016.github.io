@@ -30,4 +30,4 @@ tags:								#标签
 使用方法，直接复制这3个样式到EndNote安装目录下的Styles下，然后在EndNote或Word里面切换样式，以d定位，就可以方便找到这3个样式了。原谅我在每个style前面加上了我的痕迹，其实可以用于定位。
 
 ### 参考文献：
-[whyes 的博客](http://www.whyes.org/?p=207&print=1)
++ [whyes 的博客](http://www.whyes.org/?p=207&print=1)
