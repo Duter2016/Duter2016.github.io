@@ -1,14 +1,3 @@
-- name: "断舍离"    #书名
-  author: "山下英子"    #作者
-  translator: "吴倩"    #翻译者
-  press: "广西科学技术出版社"    #出版社
-  publishdate: "2013-7-30"    #出版日期
-  price: " 32.00元"    #价格
-  bookimg: "https://img9.doubanio.com/view/subject/s/public/s26872396.jpg"    #封面图片链接地址
-  doubanurl: "https://book.douban.com/subject/24749465/"    #豆瓣书单地址
-  readdate: "2020-06"    #阅读日期
-  booktag: "心理学"    #书的分类标签
-
 - name: "鬼谷子"    #书名
   author: "许富宏 译注"    #作者
   translator: "许富宏 注释"    #翻译者
