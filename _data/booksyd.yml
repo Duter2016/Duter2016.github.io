@@ -1,3 +1,17 @@
+- name: "人间便利店"    #书名
+  author: "[日] 村田沙耶香"    #作者
+  translator: "吴曦"    #翻译者
+  press: "湖南文艺出版社·向上文学品牌"    #出版社
+  publishdate: "2018-4"    #出版日期
+  price: " 45.00元"    #价格
+  bookimg: "https://img2.doubanio.com/view/subject/s/public/s29725172.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/28171580/"    #豆瓣书单地址
+  readdate: "2020-09"    #阅读日期
+  booktag: "日本文学小说"    #书的分类标签
+  stars: "★★★★☆ "    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "一个社会话题的书，可以看看！三十几岁没有结婚，还在兼职的古仓，成为别人眼中的异类，甚至把便利店兼职活成了自己……甚至在懒散无业的“异类”白羽眼中也被看成异类……值得深思的话题！"    #书评
+
 - name: "断舍离"    #书名
   author: "山下英子"    #作者
   translator: "吴倩"    #翻译者
