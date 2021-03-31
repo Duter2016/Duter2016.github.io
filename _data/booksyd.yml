@@ -1,3 +1,17 @@
+- name: "云边有个小卖部"    #书名
+  author: "张嘉佳"    #作者
+  translator: "-"    #翻译者
+  press: "湖南文艺出版社"    #出版社
+  publishdate: "2018-7"    #出版日期
+  price: "42.00元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/s/public/s29799055.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/30254298/"    #豆瓣书单地址
+  readdate: "2020-11"    #阅读日期
+  booktag: "情感"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "感觉这本书也有拍成一部电影的潜质，就像张嘉佳的另一部作品《从你的全世界路过》。这本书还是可以读的，虽然张嘉佳的作品总是带着一种比较夸张的搞笑风格，让人读上去就如同在读一本卡通搞笑片段一样，感觉不真实，但是挺有意思的，让人心情愉悦！"    #书评
+
 - name: "掌控谈话"    #书名
   author: "[美] Chris Voss / [美] Tahl Raz"    #作者
   translator: "赵坤"    #翻译者
