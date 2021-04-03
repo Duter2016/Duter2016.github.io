@@ -1,3 +1,17 @@
+- name: "朝花夕拾"    #书名
+  author: "鲁迅"    #作者
+  translator: "-"    #翻译者
+  press: "人民文学出版社"    #出版社
+  publishdate: "1972-4"    #出版日期
+  price: " 25.00元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/s/public/s27970504.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/1449352/"    #豆瓣书单地址
+  readdate: "2021-01"    #阅读日期
+  booktag: "散文"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "当是重新温习。"    #书评
+
 - name: "被讨厌的勇气"    #书名
   author: "岸见一郎 / 古贺史健"    #作者
   translator: "渠海霞"    #翻译者
