@@ -1,3 +1,17 @@
+- name: "自卑与超越"    #书名
+  author: "阿弗雷德·阿德勒"    #作者
+  translator: "李青霞"    #翻译者
+  press: "沈阳出版社"    #出版社
+  publishdate: "2012-12"    #出版日期
+  price: "22.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/s/public/s26388607.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/20281425/"    #豆瓣书单地址
+  readdate: "2021-02"    #阅读日期
+  booktag: "心理学"    #书的分类标签
+  stars: "★★☆☆☆"    #评价星级
+  rate: "较差"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "怎么评价呢？读上去感觉都是一些浅显的、自认为对自己知识体系没有实质提升的内容，作为一本青少年心理学入门读本感觉还行。刚开始读，还认为后面会加深，但是读到后面还是那个样子，感觉再读下去就是浪费时间，硬着头皮把这本书粗略看了一半，后面实在看不下去了，就弃读了……"    #书评
+
 - name: "朝花夕拾"    #书名
   author: "鲁迅"    #作者
   translator: "-"    #翻译者
