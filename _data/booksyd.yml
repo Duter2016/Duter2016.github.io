@@ -1,3 +1,17 @@
+- name: "天长地久：给美君的信"    #书名
+  author: "龙应台"    #作者
+  translator: "-"    #翻译者
+  press: "湖南文艺出版社"    #出版社
+  publishdate: "2018-8-1"    #出版日期
+  price: "58.00元"    #价格
+  bookimg: "https://img2.doubanio.com/view/subject/s/public/s29825852.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/30280610/"    #豆瓣书单地址
+  readdate: "2021-02"    #阅读日期
+  booktag: "散文"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "龙应台的母亲回忆录吧！如果你也喜欢《我们仨》的风格，这本书你大概也会喜欢吧！文笔不错的，其实可以五星，但是龙近来有一些言论……唉，有点……就四星推荐吧"    #书评
+
 - name: "自卑与超越"    #书名
   author: "阿弗雷德·阿德勒"    #作者
   translator: "李青霞"    #翻译者
