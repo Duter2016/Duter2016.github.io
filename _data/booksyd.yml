@@ -1,3 +1,31 @@
+- name: "风沙星辰"    #书名
+  author: "[法] 安东尼·德·圣-埃克苏佩里"    #作者
+  translator: "梅思繁"    #翻译者
+  press: "湖南文艺出版社"    #出版社
+  publishdate: "2012-2"    #出版日期
+  price: "26.80元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/s/public/s7525065.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/10439392/"    #豆瓣书单地址
+  readdate: "2021-03"    #阅读日期
+  booktag: "自传"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "这本书是《小王子》的作者自述自己飞行员生涯中，执行飞行任务并降落各地的所见所闻所思。这本书的语言很好，与其说这本书偏于哲学，我认为这本书更于文学！"    #书评
+
+- name: "小王子"    #书名
+  author: "[法] 安东尼·德·圣-埃克苏佩里"    #作者
+  translator: "马振聘"    #翻译者
+  press: "人民文学出版社"    #出版社
+  publishdate: "2003-8"    #出版日期
+  price: "22.00元"    #价格
+  bookimg: "https://img2.doubanio.com/view/subject/s/public/s1103152.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/1084336/"    #豆瓣书单地址
+  readdate: "2021-03"    #阅读日期
+  booktag: "童话"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "这本书大概有那么一点鲁迅的“影子”，用简短的故事映射着现实中的一些事或物。这本书引起那么大的反响，大概是成年人的世界缺少了开解现实的童话！这本书的作者也是一名飞行员，所以……"    #书评
+
 - name: "天长地久：给美君的信"    #书名
   author: "龙应台"    #作者
   translator: "-"    #翻译者
