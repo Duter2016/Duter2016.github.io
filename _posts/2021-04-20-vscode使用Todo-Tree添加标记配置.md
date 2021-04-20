@@ -38,7 +38,7 @@ tags:
         "BUG",
         "HACK",
     ],
-    "todo-tree.regex.regex": "((%|#|//|<!--|^\\s*\\*)\\s*($TAGS)|^\\s*- \\[ \\])",
+    "todo-tree.regex.regex": "((%|#|//|<!--|^\\s*\\*)\\s*($TAGS)|^\\s*- \\[( |x|X)\\])",
     "todo-tree.regex.regexCaseSensitive": true,
     "todo-tree.tree.showScanModeButton": true,
     "todo-tree.highlights.defaultHighlight": {
@@ -86,6 +86,15 @@ tags:
             "rulerColour": "#f90",
             "iconColour ": "#f90"
         }
+```
+
+此正则表达式要求markdown中`[ ]`的todo格式需要为：
+
+```
+如下的格式“- [ ] 测试”
+
+如下的格式“- [x] 测试”
+
 ```
 
 > 注：不要使用默认的配置，默认配置的正则表达式会不匹配开始的符号，造成匹配很多错误的标记！
