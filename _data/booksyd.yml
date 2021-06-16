@@ -1,3 +1,17 @@
+- name: "复盘网飞"    #书名
+  author: "[美]马克·伦道夫"    #作者
+  translator: "尚书"    #翻译者
+  press: "中信出版集团"    #出版社
+  publishdate: "2020-3"    #出版日期
+  price: "69.00元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/s/public/s33706316.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/34978664/"    #豆瓣书单地址
+  readdate: "2021-04"    #阅读日期
+  booktag: "传记"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "不错的一本书，如果你处于创业期，或许会有一些感触，推荐读一读。"    #书评
+
 - name: "风沙星辰"    #书名
   author: "[法] 安东尼·德·圣-埃克苏佩里"    #作者
   translator: "梅思繁"    #翻译者
