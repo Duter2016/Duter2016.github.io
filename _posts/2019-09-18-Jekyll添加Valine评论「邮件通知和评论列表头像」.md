@@ -82,6 +82,8 @@ valine:
   # path: window.location.pathname #  v1.4.0+不要使用参数“app_key: '{{ site.valine.appkey }}',”
   recordIP: true # 是否记录评论者IP
   enableQQ: true # 是否启用昵称框自动获取QQ昵称和QQ头像, 默认关闭
+  avatar_cdn: https://sdn.geekzu.org/avatar/    # gravatar头像镜像
+  serverURLs: https://xxxxxxxx.api.lncldglobal.com # 把前8位字符xxxxxxxx替换成你自己AppID的前8位字符，leancloud国际版添加该参数，国内版无需
 ```
 
 以上的 appid和appkey为本文开始在Leancloud创建应用的 App ID 和 App Key。  
@@ -93,9 +95,12 @@ valine:
 <h4 align="left">「游客及非Github用户留言」：</h4>    
 <div id="comments"></div>
     <!--Leancloud 操作库:-->
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src='//cdn1.lncld.net/static/js/3.0.4/av-min.js'></script> -->
+    <!-- <script src='//cdn1.lncld.net/static/js/3.15.0/av-min.js'></script> -->
+    <script src="//code.bdstatic.com/npm/leancloud-storage@4.12.0/dist/av-min.js"></script>
     <!--Valine 的核心代码库:-->
-    <script src='//lib.baomitu.com/valine/latest/Valine.min.js'></script>
+    <!-- <script src='//lib.baomitu.com/valine/latest/Valine.min.js'></script> -->
+    <script src='//lib.baomitu.com/valine/1.4.16/Valine.min.js'></script>
     <script>
          new Valine([
             av: AV,
@@ -107,6 +112,9 @@ valine:
             verify: '[[ site.valine.verify ]]',
 	    recordIP: '{{ site.valine.recordIP }}',
             enableQQ: '{{ site.valine.enableQQ }}',
+            avatar: '{{ site.valine.avatar }}',
+            avatar_cdn: '{{ site.valine.avatar_cdn }}',
+            serverURLs: '{{ site.valine.serverURLs }}',
         ])
     </script>
 ```
@@ -120,6 +128,9 @@ valine:
            [% endif %]
 	       <!-- Valine 评论框 end -->
 ```
+
+**国际版用户注意** valine1.4.16版本开始，serverURLs参数参考：[国际版域名问题导致评论无法显示和评论](https://github.com/xCss/Valine/issues/340)。
+自定义服务器的URL需要到LeanCloud后台查看。打开后台之后进入`设置` -`应用凭证` ，找到`域名白名单Domain whitelist`，里面的Request domain里面的那个xxxxxxxx.api.lncldglobal.com就是你需要指定的服务器URL。其中xxxxxxxx就是各位的AppID的前8位字符。
 
 ## 4、评论模块验证
 
