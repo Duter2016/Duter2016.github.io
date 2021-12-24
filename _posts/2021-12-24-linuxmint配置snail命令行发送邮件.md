@@ -2,7 +2,7 @@
 layout:     post
 title:      linuxmint配置snail命令行发送邮件
 subtitle:   原heirloom-mailx已不可用
-date:       2021-12-25
+date:       2021-12-24
 author:     Duter2016
 header-img: img/post-bg-debug.png
 catalog: true
