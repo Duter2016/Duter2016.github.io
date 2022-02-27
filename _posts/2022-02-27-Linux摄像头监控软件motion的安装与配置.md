@@ -15,13 +15,13 @@ tags:
 
 > motion可以用来探测运动，并将探测到的运动录下视频，并邮件提醒；在未探测到运动时，实现在摄像头静止情况下，对视场的监控。
 
-> 本片文章基于Linuxmint 20.2 mate
+> 本篇文章基于Linuxmint 20.2 mate
 
 ## 一、安装motion
 
 在linuxmint下安装Motion相当简单，直接在终端下运行：
 
-``` apt-get install motion```
+``` sudo apt-get install motion```
 
 ## 二 、配置motion
 
