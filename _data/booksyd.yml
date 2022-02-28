@@ -1,3 +1,59 @@
+- name: "晚婚"    #书名
+  author: "辽京"    #作者
+  translator: "-"    #翻译者
+  press: "中信出版集团"    #出版社
+  publishdate: "2021-1"    #出版日期
+  price: "49.80元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/s/public/s33789487.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/35275524/"    #豆瓣书单地址
+  readdate: "2022-2"    #阅读日期
+  booktag: "中国文学"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "这本书还行吧。读完，感觉全书就三个人物：婉丝，大龄未婚女青年，找不到安全感，情感多疑；凌青，大龄女强人，活得比较洒脱，不婚主义者；李芸，职场腹心黑，自私，为自己无底线，爱拍马屁，比较爱装！"    #书评
+
+- name: "美国生活中的反智主义"    #书名
+  author: "[美] 理查德·霍夫施塔特"    #作者
+  translator: "何博超"    #翻译者
+  press: "译林出版社"    #出版社
+  publishdate: "2021-3"    #出版日期
+  price: "68.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/s/public/s33967027.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/35334792/"    #豆瓣书单地址
+  readdate: "2021-12"    #阅读日期
+  booktag: "社会学"    #书的分类标签
+  stars: "★★☆☆☆"    #评价星级
+  rate: "较差"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "我读的是何博超翻译的版本的，说实话翻译的很烂很烂，翻译的晦涩难懂，好多句子不通顺！另外，感觉这本书的观点大概也已经过时了，也不推荐读，如果想读，建议找一些别的翻译版本的。"    #书评
+
+- name: "人性的枷锁"    #书名
+  author: "[英] 威廉·萨默塞特·毛姆"    #作者
+  translator: "张乐"    #翻译者
+  press: "江西人民出版社"    #出版社
+  publishdate: "2016-5"    #出版日期
+  price: "68.00元"    #价格
+  bookimg: "https://img2.doubanio.com/view/subject/s/public/s28758331.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/26803714/"    #豆瓣书单地址
+  readdate: "2021-07"    #阅读日期
+  booktag: "外国文学"    #书的分类标签
+  stars: "★★★★☆"    #评价星级
+  rate: "推荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "说实话，这本书看的比较纠结，因为全书中把菲利普的生活写的比较偏于消极，为了一个女人把自己最美好的年龄段的情感过的一塌糊涂。不喜欢这种书籍，如果你读过《月亮与六便士》，大概就是那个消极的感觉。但是作为文学作品，这本书还是写的不错的，起码比国内当下的一些新书要好多了！推荐读一读吧！"    #书评
+
+- name: "不拘一格 : 网飞的自由与责任工作法"    #书名
+  author: "[美] 里德·哈斯廷斯 / [美] 艾琳·迈耶"    #作者
+  translator: "杨占"    #翻译者
+  press: "中信出版社"    #出版社
+  publishdate: "2021-1-1"    #出版日期
+  price: "69.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/s/public/s33784858.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/35102294/"    #豆瓣书单地址
+  readdate: "2021-05"    #阅读日期
+  booktag: "管理"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "与《复盘网飞》算是姊妹图书吧，先读《复盘网飞》，在读《不拘一格》，会对里面提及的管理方法理解更为深刻。"    #书评
+
 - name: "复盘网飞"    #书名
   author: "[美]马克·伦道夫"    #作者
   translator: "尚书"    #翻译者
