@@ -3386,7 +3386,7 @@ function browserRedirect() {
   });
  
 // 默认搜索引擎的内容，如果界面修改了需要同步修改
-var thisSearch = 'https://go-xyz.xyz/search?q=';
+var thisSearch = 'https://www.yandex.com/search/?text=';
 
 $('#txt').keydown(function(ev){
     // 回车键的处理
@@ -3400,7 +3400,11 @@ $(function(){
   // 搜索引擎列表，样式一行五个内容，自动换行
   var search = {
     data: [{
-      name: 'Moruy',
+      name: 'Yandex',
+      url: 'https://www.yandex.com/search/?text='
+    },{
+    {
+      name: 'XYZ',
       url: 'https://go-xyz.xyz/search?q='
     },{
       name: 'Magi',
