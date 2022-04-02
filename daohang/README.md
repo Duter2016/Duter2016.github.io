@@ -43,6 +43,9 @@
 https://cdnjs.cloudflare.com/ajax/libs/zui/1.8.1/css/zui.min.css
 替换为猫云的CDN加速服务
 https://cdn.bootcdn.net/ajax/libs/zui/1.8.1/css/zui.min.css
+
+猫云CDN暂时遇到解析问题，更替为360的CDN加速服务
+https://lib.baomitu.com/zui/1.8.1/css/zui.min.css
 ```
 
 ### license
