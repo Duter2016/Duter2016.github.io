@@ -803,7 +803,7 @@ input::-webkit-input-placeholder {
             <section class="sousuo">
             <div class="search">
                 <div class="search-box">
-                    <button class="search-engine-name" id="search-engine-name">Yandex</button>
+                    <button class="search-engine-name" id="search-engine-name">WebCrawler</button>
                     <input type="text" id="txt" class="search-input" placeholder="选择引擎，输入关键字，回车/Enter搜索"/>
                     <button class="search-btn" id="search-btn">搜索</button>
                 </div>
@@ -3440,7 +3440,7 @@ function browserRedirect() {
   });
  
 // 默认搜索引擎的内容，如果界面修改了需要同步修改
-var thisSearch = 'https://www.yandex.com/search/?text=';
+var thisSearch = 'https://www.webcrawler.com/serp?q=';
 
 $('#txt').keydown(function(ev){
     // 回车键的处理
@@ -3457,8 +3457,8 @@ $(function(){
       name: 'Yandex',
       url: 'https://www.yandex.com/search/?text='
     },{
-      name: 'XYZ',
-      url: 'https://go-xyz.xyz/search?q='
+      name: 'WebCrawler',
+      url: 'https://www.webcrawler.com/serp?q='
     },{
       name: 'Magi',
       url: 'https://magi.com/search?q='
