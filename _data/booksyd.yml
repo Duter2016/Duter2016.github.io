@@ -1,3 +1,17 @@
+- name: "人心至上：杜月笙"    #书名
+  author: "雾满拦江"    #作者
+  translator: "-"    #翻译者
+  press: "台海出版社"    #出版社
+  publishdate: "2017-2"    #出版日期
+  price: "49.00元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/s/public/s29355015.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/26978375/"    #豆瓣书单地址
+  readdate: "2022-4"    #阅读日期
+  booktag: "人物传记"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "杜月笙人物传记，关于杜月笙的书之一，了解民国时期上海滩，比较流水账式记述，还可以！"    #书评
+
 - name: "晚婚"    #书名
   author: "辽京"    #作者
   translator: "-"    #翻译者
