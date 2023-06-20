@@ -6797,5 +6797,5 @@ End Function
 
 * [Excel技巧—两招轻松搞定汉字转拼音](https://zhuanlan.zhihu.com/p/336623568)
 
-
+* [fcitx5 五笔输入法大字符集定制字库](https://zhuanlan.zhihu.com/p/570629859?utm_id=0)
 
