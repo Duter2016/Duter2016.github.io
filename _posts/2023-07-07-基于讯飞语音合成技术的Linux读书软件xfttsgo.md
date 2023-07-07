@@ -108,19 +108,19 @@ xfttsgo [选项] [文件或目录]
 
 ② 新建文本文件`/home/user/下载/xfttsgo/web/1.txt`，然后通过如下命令将剪贴板内容保存至文本文件`/home/user/下载/xfttsgo/web/1.txt`：
 
-`echo $(parcellite --clipboard) > /home/dh/下载/xfttsgo/web/1.txt`
+`echo $(parcellite --clipboard) > /home/user/下载/xfttsgo/web/1.txt`
 
 PS.我系统中使用的剪贴板工具是Parcellite，如果你使用的是xclip或者xsel等，把上述命令中的`parcellite`更改为`xclip`者`xsel`。
 
 ③ 用如下命令阅读刚保存的文本内容：
 
-`xfttsgo /home/dh/下载/xfttsgo/web/1.txt`
+`xfttsgo /home/user/下载/xfttsgo/web/1.txt`
 
 **（2）整合成快速执行的命令**
 
 我们把上述的思路整合一下就是：
 ```
-echo $(parcellite --clipboard) > /home/dh/下载/xfttsgo/web/1.txt && xfttsgo /home/dh/下载/xfttsgo/web/1.txt
+echo $(parcellite --clipboard) > /home/user/下载/xfttsgo/web/1.txt && xfttsgo /home/user/下载/xfttsgo/web/1.txt
 ```
 
 整合后命令太长了，不方便终端输入，我们可以将这条命令通过如下两种方法快速执行命令：
@@ -130,7 +130,7 @@ echo $(parcellite --clipboard) > /home/dh/下载/xfttsgo/web/1.txt && xfttsgo /h
 打开用户配置文件 `~/.bash_profile` ， 在文件最后添加如下 alias（注意是英文半角单引号，xfw名字可以自定义）：
 
 ```
-alias xfw='echo $(parcellite --clipboard) > /home/dh/下载/xfttsgo/web/1.txt && xfttsgo /home/dh/下载/xfttsgo/web/1.txt'
+alias xfw='echo $(parcellite --clipboard) > /home/user/下载/xfttsgo/web/1.txt && xfttsgo /home/user/下载/xfttsgo/web/1.txt'
 ```
 保存后回到命令行执行以下命令使其生效：
 
@@ -150,7 +150,7 @@ alias xfw='echo $(parcellite --clipboard) > /home/dh/下载/xfttsgo/web/1.txt &&
 
 keyword：`xfw`
 
-phrase：`echo $(parcellite --clipboard) > /home/dh/下载/xfttsgo/web/1.txt && xfttsgo /home/dh/下载/xfttsgo/web/1.txt`
+phrase：`echo $(parcellite --clipboard) > /home/user/下载/xfttsgo/web/1.txt && xfttsgo /home/user/下载/xfttsgo/web/1.txt`
 
 然后一路确定保存就行了。
 
