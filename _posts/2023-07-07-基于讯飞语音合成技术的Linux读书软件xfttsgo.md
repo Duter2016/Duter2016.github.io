@@ -100,7 +100,69 @@ xfttsgo [选项] [文件或目录]
 
 非常好用！
 
+### 4.调用xfttsgo阅读网页内容
 
+**（1）思路**
+
+① 先选取浏览器网页想阅读的内容范围，然后快捷键“CTRl+C”（或右键复制）复制到剪贴板
+
+② 新建文本文件`/home/user/下载/xfttsgo/web/1.txt`，然后通过如下命令将剪贴板内容保存至文本文件`/home/user/下载/xfttsgo/web/1.txt`：
+
+`echo $(parcellite --clipboard) > /home/dh/下载/xfttsgo/web/1.txt`
+
+PS.我系统中使用的剪贴板工具是Parcellite，如果你使用的是xclip或者xsel等，把上述命令中的`parcellite`更改为`xclip`者`xsel`。
+
+③ 用如下命令阅读刚保存的文本内容：
+
+`xfttsgo /home/dh/下载/xfttsgo/web/1.txt`
+
+**（2）整合成快速执行的命令**
+
+我们把上述的思路整合一下就是：
+```
+echo $(parcellite --clipboard) > /home/dh/下载/xfttsgo/web/1.txt && xfttsgo /home/dh/下载/xfttsgo/web/1.txt
+```
+
+整合后命令太长了，不方便终端输入，我们可以将这条命令通过如下两种方法快速执行命令：
+
+① 命令别名 alias 方法：
+
+打开用户配置文件 `~/.bash_profile` ， 在文件最后添加如下 alias（注意是英文半角单引号，xfw名字可以自定义）：
+
+```
+alias xfw='echo $(parcellite --clipboard) > /home/dh/下载/xfttsgo/web/1.txt && xfttsgo /home/dh/下载/xfttsgo/web/1.txt'
+```
+保存后回到命令行执行以下命令使其生效：
+
+`source ~/.bash_profile`
+
+命令行使用方法：
+
+这里我们假设已经在网页复制了文本到剪贴板中，则在终端执行如下命令就可以立即阅读了：
+
+`xfw`
+
+② 利用fcitx5的快速输入功能：
+
+如果你使用的fcitx4输入法，就使用方法①就可以了，如果你使用的fcitx5输入法，你还可以使用fcitx5的快速输入功能执行上述的整合后的长命令：
+
+依次打开“fcitx5 设置-->选中当前输入法-->quick phrase -->添加”
+
+keyword：`xfw`
+
+phrase：`echo $(parcellite --clipboard) > /home/dh/下载/xfttsgo/web/1.txt && xfttsgo /home/dh/下载/xfttsgo/web/1.txt`
+
+然后一路确定保存就行了。
+
+![](https://cdn.jsdelivr.net/gh/Duter2016/GitNote-images/Images/2023/07/xfttsgo.png)
+
+命令行使用方法：
+
+这里我们假设已经在网页复制了文本到剪贴板中，则在fcitx5输入法输入`；xfw`，就出来上述整合命令的候选项了，直接选择上屏回车执行就好了
+
+![](https://cdn.jsdelivr.net/gh/Duter2016/GitNote-images/Images/2023/07/xfttsgo_01.png)
+
+又简单了一大步！
 
 ## 参考
 
