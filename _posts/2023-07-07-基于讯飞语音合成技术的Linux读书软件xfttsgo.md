@@ -110,7 +110,7 @@ xfttsgo [选项] [文件或目录]
 
 `echo $(parcellite --clipboard) > /home/user/下载/xfttsgo/web/1.txt`
 
-PS.我系统中使用的剪贴板工具是Parcellite，如果你使用的是xclip或者xsel等，把上述命令中的`parcellite`更改为`xclip`者`xsel`。
+PS.我系统中使用的剪贴板工具是Parcellite，如果你使用的是xclip或者xsel等，把上述命令中的`parcellite`更改为`xclip`者`xsel`。如果你是使用的Plasma KDE桌面，并且使用的其剪贴板插件，你需要把上述的`$(parcellite --clipboard)`替换为`$(qdbus org.kde.klipper /klipper org.kde.klipper.klipper.getClipboardContents)`。
 
 ③ 用如下命令阅读刚保存的文本内容：
 

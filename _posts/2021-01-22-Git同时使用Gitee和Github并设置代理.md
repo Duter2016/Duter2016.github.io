@@ -221,6 +221,17 @@ ssh -T git@gitee.com
 *   Gitee -> successfully
 ```
 
+如果结果出现如下错误提示：
+
+```
+Bad owner or permissions on /home/username/.ssh/config
+```
+表示文件权限出现问题，需要运行如下命令就行修改权限就可以了：
+```
+sudo chmod 700 ~/.ssh
+sudo chmod 600 ~/.ssh/*
+```
+
 **测试 clone 项目**
 
     $ git clone git@gitlab.com:d-d-u/java-xxx.git
