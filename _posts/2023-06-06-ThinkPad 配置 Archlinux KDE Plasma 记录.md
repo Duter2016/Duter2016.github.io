@@ -454,8 +454,17 @@ manjaro的**GUI驱动管理工具**是Driver Manager，在AUR仓库中没有。
 
 不知风险，暂未安装。
 
+### 11.轻松搞定 Linux+Win 双系统时间差异
 
+在 Linux 下系统时间是正确的,转到 Windows 下,系统时间整整慢了 8 个小时。这是因为 Linux 默认使用网络时间,而不是读取本机硬件时钟。打开终端,输入如下命令(不需要管理员权限)：
 
+`timedatectl set-local-rtc 1`
+
+然后输入不加参数的时间控制命令,查看状态:
+
+`Timedatectl`
+
+这就设置好了。无论你在 Linux 还是 Windows,系统时间都是正确的了。
 ## 二、系统类软件配置及美化
 
 ### 1.安装及配置输入法fcitx5
