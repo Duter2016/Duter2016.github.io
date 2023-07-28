@@ -112,6 +112,15 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 
 **注意：不要添加AUR国内源！原来仅有清华大学提供AUR的国内镜像源，后因种种原因，已经取消了AUR的国内镜像源。**
 
+#### （5）启用multilib仓库源
+
+编辑 `/etc/pacman.conf`，去掉下面两行前面的 # 号： 
+
+```
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+```
+
 ### 2.安装update-grub
 
 **注意：图形界面不可用`grub-customizer`，会导致引导出错。**
@@ -808,11 +817,11 @@ clash 是一款非常强大的上网神器，现在在 Linux 平台下也推出�
 
 ### 2.浏览器类
 
-（1）Firefox
+#### （1）Firefox
 
 `sudo pacman -Syu firefox`
 
-（2）Edge 
+#### （2）Edge 
 
 稳定版stable：
 
@@ -822,7 +831,7 @@ clash 是一款非常强大的上网神器，现在在 Linux 平台下也推出�
 
 `yay -S microsoft-edge-dev-bin` 
 
-（3）Chrome
+#### （3）Chrome
 
 `yay -S google-chrome`
 
