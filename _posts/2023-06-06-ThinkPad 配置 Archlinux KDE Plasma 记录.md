@@ -1347,43 +1347,6 @@ Type=Application
 
 
 
-
-
-
-
-
-
-
-
-
-
-## pacman（yay）常用命令
-
-记录一下 pacman 与 yay 的常用命令，都是通用的：
-
-```
-Sy：从远程镜像获取软件包更新信息
-Syy：强制获取更新信息
-Syyu：更新软件包
-Sc：删除以下载的过时安装包
-Syyw：下载较新的软件包，但不安装
-Ss：从远程仓库中搜索软件包
-R：删除软件
-Rs：删除软件及其依赖文件
-Rns：删除软件和依赖文件及其配置文件
-Qe：显示用户安装的软件包
-Qq：不输出软件的版本信息
-Qn：显示从官方镜像中下载的软件
-Qm：显示从 AUR 中下载的软件
-Qdt：显示孤包
-Qs：显示本地库的包
-```
-
-最后记得常运行 -Syu 进行系统更新，太久不更新容易滚挂。
-
-
-
-
 ## 附件部分
 
 ### 1.thinkfan 的 thinkfan.conf文件内容
@@ -1460,4 +1423,20 @@ hwmon /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
 
 ```
 
-### 2.
+### 2.切换到其它内核（可选）
+
+Arch Linux 和 AUR 上可选的内核可以参考以下网址：
+
+[Kernel -- ArchWiki](https://wiki.archlinuxcn.org/wiki/%E5%86%85%E6%A0%B8)
+
+以 linux-lts 为例，首先下载 linux-lts 内核：
+
+`sudo pacman -S linux-lts`
+
+可以选择保留或删除原有内核，若保留内核，重启后可以选择从任何一个内核启动
+
+之后重新生成 GRUB 文件：
+
+`sudo grub-mkconfig -o /boot/grub/grub.cfg`
+
+如果不重新生成 GRUB 文件会因为找不到内核而无法启动
