@@ -48,7 +48,7 @@ Server = https://fastmirror.pp.ua/endeavouros/repo/$repo/$arch
 Server = https://mirror.albony.xyz/endeavouros/repo/$repo/$arch
 ```
 
-#### （2）切换国内Arch主镜像源
+#### （2）切换国内Arch官方镜像源
 
 `sudo gedit /etc/pacman.d/mirrorlist`
 
@@ -108,6 +108,17 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 
 **注意：ArchLinuxcn 中文社区仓库源，只能添加一个！**
 
+其他备选源：
+
+```
+# 只能添加一个
+[archlinuxcn]
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch # 中国科学技术大学开源镜像站
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch # 清华大学开源软件镜像站
+Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch # 哈尔滨工业大学开源镜像站
+Server = https://repo.huaweicloud.com/archlinuxcn/$arch # 华为开源镜像站
+```
+
 #### （4）关于添加AUR源
 
 **注意：不要添加AUR国内源！原来仅有清华大学提供AUR的国内镜像源，后因种种原因，已经取消了AUR的国内镜像源。**
@@ -125,9 +136,14 @@ Include = /etc/pacman.d/mirrorlist
 
 **注意：图形界面不可用`grub-customizer`，会导致引导出错。**
 
+安装系统探测器，便于添加已有的EFI系统引导项（如果你其他系统使用的BIOS引导，可以不用安装）。
+
+`pacman -S os-prober`
+
 安装update-grub：
 
 ```
+sudo pacman -Syu grub
 yay update-grub
 sudo update-grub
 ```
@@ -723,7 +739,15 @@ PS1='\[\e[1;35m\]\u@\h:\[\e[0m\]\[\e[1;33m\]\w\[\e[1;35m\]\[\e[0m\]\[\e[1;34m\]\
 
 ### 8.压缩归档工具
 
-`sudo pacman -Syu unace p7zip sharutils arj zip lzip`
+`sudo pacman -Syu ark unace p7zip sharutils arj zip lzip unarchiver`
+
+Dolphin 文件管理器默认使用的 ark 包右键压缩包直接解压。其可选依赖提供了各个压缩格式的支持，可以自行选择安装。
+
+但是ark方法解压 Windows 下的压缩包可能会乱码。使用 Unarchiver 可以避免这个问题。
+
+Unarchiver解压压缩包：
+
+`unar xxx.zip`
 
 ### 9.杀毒软件 clamtk
 
@@ -796,6 +820,10 @@ sudo pacman -Syu parcellite
 ### 13.温度查看工具psensor
 
 `sudo pacman -Syu psensor`
+
+### 14.磁盘空间分析baobab
+
+`sudo pacman -Syu baobab`
 
 ## 三、互联网类软件配置
 
@@ -967,6 +995,10 @@ URI：http://localhost:6800/jsonrpc
 #### （8）优麒麟wine Photoshop
 
 下载后，使用debtap安装。
+
+#### （9）图片查看器gwenview（系统已默认安装）
+
+`sudo pacman -S gwenview`
 
 ### 2.影音类
 
