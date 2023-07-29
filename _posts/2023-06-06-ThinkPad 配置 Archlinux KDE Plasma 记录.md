@@ -132,13 +132,25 @@ Server = https://repo.huaweicloud.com/archlinuxcn/$arch # 华为开源镜像站
 Include = /etc/pacman.d/mirrorlist
 ```
 
-### 2.安装update-grub
+### 2.安装update-grub及os-prober
 
 **注意：图形界面不可用`grub-customizer`，会导致引导出错。**
 
-安装系统探测器，便于添加已有的EFI系统引导项（如果你其他系统使用的BIOS引导，可以不用安装）。
+（1）安装 os-prober
+
+安装系统探测器os-prober，便于添加已有的EFI系统的引导项，如果不安装可能会探测不到其他系统（如果你其他系统使用的BIOS引导，可以不用安装）。
 
 `pacman -S os-prober`
+
+然后修改`/etc/default/grub`文件：
+
+```
+# 找到如下一行
+# GRUB_DISABLE_OS_PROBER="false
+
+去掉`GRUB_DISABLE_OS_PROBER="false"`的`#`。
+```
+（2）安装update-grub
 
 安装update-grub：
 
@@ -147,6 +159,10 @@ sudo pacman -Syu grub
 yay update-grub
 sudo update-grub
 ```
+目前，我的linuxmint+Archlinux+windows通过上述步骤，成功完成引导！
+
+（3）如果探测不到其他系统
+
 如果两个Linux系统，其中一个不能通过`sudo update-grub`加载，比如Archlinux不能引导Linuxmint，就把两个系统的grub引导文件`/boot/grub/grub.cfg`复制出来，然后进行整合（注意两个系统的引导部分的语句的不同的地方）。
 
 如我把Linuxmint系统的引导部分加入Archlinux的grub引导中，就是在Archlinux的`/boot/grub/grub.cfg`文件中添加如下引导部分：
@@ -172,7 +188,67 @@ menuentry 'Linux Mint MATE' --class linuxmint --class gnu-linux --class gnu --cl
 ### END /etc/grub.d/10_linux ###
 ```
 
-### 3.给kde文件管理器Dolphin添加右键“以管理员身份打开”
+### 3.切换到其它内核（可选）
+
+Arch Linux 和 AUR 上可选的内核可以参考以下网址：
+
+[Kernel -- ArchWiki](https://wiki.archlinuxcn.org/wiki/%E5%86%85%E6%A0%B8)
+
+（1）
+
+① 先使用`uname -a`查看一下当前内核版本，如果不是你需要的，那就更换！
+
+`uname -a`
+
+输出
+
+`Linux dh-ThinkPad-X240 6.4.7-arch1-1 #1 SMP PREEMPT_DYNAMIC Thu, ... x86_64 GNU/Linux`
+
+② 以 linux-lts 为例，首先下载 linux-lts 内核：
+
+`sudo pacman -S linux-lts linux-lts-headers`
+
+可以选择保留或删除原有内核，若保留内核，重启后可以选择从任何一个内核启动。（建议保留）
+
+``
+（2）**重点更新grub，否则启动失败**
+
+①不太必要的一步（这步我没改）
+
+> 多内核时，grub生成的默认开机引导中，advanced项是折叠菜单，启动其他内核多点一次菜单。我们把advanced折叠菜单关掉：
+
+编辑grub：
+
+`sudo gedit /etc/default/grub`
+
+然后修改如下三行，将子菜单展开，这样不用点击 advanced 进去了：
+
+```
+# 未修改前
+GRUB_DISABLE_SUBMENU="false"
+GRUB_DEFAULT="0"
+GRUB_SAVEDEFAULT=true
+
+# 修改后
+GRUB_DISABLE_SUBMENU="true"
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+```
+② 重点：重新生成 GRUB 文件：
+
+`sudo grub-mkconfig -o /boot/grub/grub.cfg`
+
+或者
+
+`sudo update-grub`
+
+如果不重新生成 GRUB 文件会因为找不到内核而无法启动！
+
+**注意：回到`2`添加多系统linux！**
+
+
+
+### 4.给kde文件管理器Dolphin添加右键“以管理员身份打开”
 
 kde文件管理器Dolphin属于用户使用的安全考虑，已经取消了右键“以管理员身份打开”菜单。经过查询，仍然有以root身份运行Dolphin解决方法，终端输入如下命令即可：
 
@@ -241,7 +317,7 @@ Name[zh_TW]=以管理员身份打开
 
 如果新建无误后显示不出来的话， 执行一下`kbuildsycoca5`如果有错误会有提示。
 
-### 4.使用 thinkfan 控制 thinkpad 风扇转速
+### 5.使用 thinkfan 控制 thinkpad 风扇转速
 
 （1） 安装 thinkfan 风扇控制器软件
 
@@ -426,21 +502,21 @@ hwmon /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
 
 完成！
 
-### 5.显示 Intel CPU 频率（可选）不可安装，会让风扇启动失败
+### 6.显示 Intel CPU 频率（可选）不可安装，会让风扇启动失败
 
 **安装thinkfan的用户万万不可安装[Intel P-state and CPU-Freq Manager]，其依赖libsmbios是Dell's Thermal Management Feature，会破坏thinkfan的thinkpad_hwmon温度感应**
 
 KDE 小部件：[Intel P-state and CPU-Freq Manager](https://github.com/frankenfruity/plasma-pstate)
 
-### 6.Thinkpad 笔记本安装硬盘保护模块
+### 7.Thinkpad 笔记本安装硬盘保护模块
 
 因thinkpad_ec原因，安装后启动不了服务。
 
-### 7.Thinkpad 笔记本电源管理模块
+### 8.Thinkpad 笔记本电源管理模块
 
 Archlinux系统的KDE Plama桌面的电源管理模块已经可以进行电源阀值的设置，以及节能设置，无需另外安装tlp。
 
-### 8.软件管理器pamac
+### 9.软件管理器pamac
 
 pamac是Manjaro系统中的软件管理器，可以通过AUR安装在Arch系的系统中。
 
@@ -468,7 +544,7 @@ yay -S pamac-tray-icon-plasma
 
 以下所有的 `yay -S` 都可以用 `pamac build`替代，或者在“**添加/删除软件**”搜索安装。
 
-### 9.安装KDE Plasma桌面的系统监视器 ksysguard
+### 10.安装KDE Plasma桌面的系统监视器 ksysguard
 
 系统监视器（KSysGuard），即KDE系统监视器，设计简单，无需特别设置即可进行简单的进程控制。它包含两张工作表：①系统负载（上面是图表）和②进程表。
 
@@ -478,7 +554,7 @@ yay -S pamac-tray-icon-plasma
 
 `sudo pacman -Syu ksysguard`
 
-### 10.manjaro的GUI内核和驱动管理工具
+### 11.manjaro的GUI内核和驱动管理工具
 
 manjaro的**GUI内核管理工具**在AUR仓库中是garuda-settings-manager-git，即manjaro的Manjaro settings manager。
 
@@ -486,7 +562,7 @@ manjaro的**GUI驱动管理工具**是Driver Manager，在AUR仓库中没有。
 
 不知风险，暂未安装。
 
-### 11.轻松搞定 Linux+Win 双系统时间差异
+### 12.轻松搞定 Linux+Win 双系统时间差异
 
 在 Linux 下系统时间是正确的,转到 Windows 下,系统时间整整慢了 8 个小时。这是因为 Linux 默认使用网络时间,而不是读取本机硬件时钟。打开终端,输入如下命令(不需要管理员权限)：
 
@@ -1423,20 +1499,3 @@ hwmon /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
 
 ```
 
-### 2.切换到其它内核（可选）
-
-Arch Linux 和 AUR 上可选的内核可以参考以下网址：
-
-[Kernel -- ArchWiki](https://wiki.archlinuxcn.org/wiki/%E5%86%85%E6%A0%B8)
-
-以 linux-lts 为例，首先下载 linux-lts 内核：
-
-`sudo pacman -S linux-lts`
-
-可以选择保留或删除原有内核，若保留内核，重启后可以选择从任何一个内核启动
-
-之后重新生成 GRUB 文件：
-
-`sudo grub-mkconfig -o /boot/grub/grub.cfg`
-
-如果不重新生成 GRUB 文件会因为找不到内核而无法启动
