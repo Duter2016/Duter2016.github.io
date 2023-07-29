@@ -190,21 +190,37 @@ Name[zh_TW]=以管理员身份打开
 **说明：**
 
 > `[Desktop Entry]`
+
 >> `Actions`: 在该菜单中的菜单项，多个用英文分号隔开
+
 >> `MimeType`: 在指定的文件类型中启动该菜单
+
 >>> `inode/directory` ：在目录中启用
+
 >>> `image/png` 只在png图片启用
+
 >>> `all/allfiles`：在所有文件中启用（不包括文件夹）
+
 >>> `image/allfiles`： 在所有图片启用
+
 >> `Type=Service`: 表示服务，不会在开始菜单中显示， 改为Application表示应用，会显示在开始菜单
+
 >> `X-KDE-ServiceTypes=KonqPopupMenu/Plugin`: 只在kde中支持， 表示显示在右键-动作下边
+
 >> `X-KDE-Priority=TopLevel`： 表示显示在顶级菜单中，右键直接显示
+
 >> `Icon Type=Service` 时图标不会显示
+
 >> `Name`菜单项名称
+
 >> `Name[zh_CN]`中文菜单项名称
+
 >> `Icon`菜单显示图标
+
 >> `Exec`点击菜单时执行的命令
+
 >>> `%f` 文件列表。用于可一次打开多个本地文件的应用程序。每个文件都作为单独的参数传递给可执行程序。
+
 >>> `%F` 即使选择了多个文件，也只有一个文件名（包括路径）。读取桌面条目的系统应认识到所讨论的程序无法处理多个文件参数，并且如果该程序无法处理其他文件参数，则应该为每个选定文件生成并执行该程序的多个副本。如果文件不在本地文件系统上（即，在HTTP或FTP位置），则文件将被复制到本地文件系统，%f并将展开以指向临时文件。用于不了解URL语法的程序。
 
 如果新建无误后显示不出来的话， 执行一下`kbuildsycoca5`如果有错误会有提示。
@@ -642,8 +658,8 @@ PS1='\[\e[1;35m\]\u@\h:\[\e[0m\]\[\e[1;33m\]\w\[\e[1;35m\]\[\e[0m\]\[\e[1;34m\]\
 这条语句，然后保存，就可以永久性的改变终端命令行格式了。
 
 参考：
-* [https://blog.csdn.net/apollo_miracle/article/details/116007968]
-* [https://www.ancii.com/adj83v55p/]
+* [1]:https://blog.csdn.net/apollo_miracle/article/details/116007968
+* [2]:https://www.ancii.com/adj83v55p/
 
 ### 4.安装 debtab
 
@@ -1136,6 +1152,35 @@ yay wps-office
 
 `yay anki ` (有文件冲突，暂未安装)
 
+#### （4）词典Goldendict
+
+`yay goldendict` 
+
+**① 离线字典安装**
+
+离线字典下载地址： <http://abloz.com/huzheng/stardict-dic/>
+
+下载完成后进入文件所在目录执行下面命令：
+
+```
+tar -xjvf filename.tar.bz2
+mv directory(目录名) /usr/share/goldendict/dic
+```
+
+或则执行：
+
+`tar -xjvf filename.tar.bz2 -C /usr/share/goldendict/dic`
+
+**② 在线字典配置**
+
+然后， 添加有道、 Bing、 汉词、 海词等在线翻译词典（建议只添加有道在线翻译词典， 一个足矣） 。
+
+```
+在线词典： 有道词典 http://dict.youdao.com/search?q=%GDWORD%&ue=utf8
+海词 http://dict.cn/%GDWORD%
+汉典 http://www.zdic.net/sousuo/?q=%GDWORD%
+bing http://cn.bing.com/dict/search?q=%GDWORD%
+```
 
 ### 4.会议类
 
