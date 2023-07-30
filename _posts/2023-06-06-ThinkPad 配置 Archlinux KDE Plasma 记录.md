@@ -1414,6 +1414,10 @@ sudo pacman -Syu code
 
 `yay git-cola`   //有依赖错误，暂时未安装
 
+可以暂用smartgit：
+
+`sudo pacman -S smartgit`
+
 ### 6.数据库管理 sqlitebrowser
 
 `sudo pacman -Syu sqlitebrowser`
@@ -1587,6 +1591,5 @@ hwmon /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
 (5,	59,	63)
 (6,	63,	65)
 (7,	65,	32767)
-
 
 ```
