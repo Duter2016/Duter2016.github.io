@@ -1412,7 +1412,7 @@ sudo pacman -Syu code
 
 ### 5.安装git-cola
 
-`yay git-cola`   //有依赖错误，暂时未安装
+`yay git-cola`   //有依赖冲突，暂时未安装
 
 可以暂用smartgit：
 
