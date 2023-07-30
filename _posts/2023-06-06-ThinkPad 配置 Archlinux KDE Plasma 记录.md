@@ -282,7 +282,6 @@ Name[zh_TW]=以管理员身份打开
 **说明：**
 
 > `[Desktop Entry]`
-
 >> `Actions`: 在该菜单中的菜单项，多个用英文分号隔开
 
 >> `MimeType`: 在指定的文件类型中启动该菜单
@@ -750,8 +749,8 @@ PS1='\[\e[1;35m\]\u@\h:\[\e[0m\]\[\e[1;33m\]\w\[\e[1;35m\]\[\e[0m\]\[\e[1;34m\]\
 这条语句，然后保存，就可以永久性的改变终端命令行格式了。
 
 参考：
-* [1]:https://blog.csdn.net/apollo_miracle/article/details/116007968
-* [2]:https://www.ancii.com/adj83v55p/
+* [https://blog.csdn.net/apollo_miracle/article/details/116007968]
+* [https://www.ancii.com/adj83v55p/]
 
 ### 4.安装 debtab
 
@@ -900,6 +899,45 @@ sudo pacman -Syu parcellite
 ### 14.磁盘空间分析baobab
 
 `sudo pacman -Syu baobab`
+
+### 15.配置插入鼠标禁用触摸板功能
+
+Archlinux在刚安装好，时默认是安装了xf86-input-libinput和libinput的，一般不需要手动安装。并且可以在`设置>>系统设置>>输入设备>>触摸板`中设置很多项，如“打字时禁用”等。
+
+如果没有安装，用以下命令安装一下：
+
+```
+sudo pacman -S xf86-input-libinput
+sudo pacman -S libinput
+```
+
+其默认的配置文件安装在 `/usr/share/X11/xorg.conf.d/40-libinput.conf`。
+
+用编辑器打开该文件，找到包含`MatchIsTouchpad "on"`的section部分：
+```
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+```
+添加当检测到 USB 鼠标时，它将禁用触摸板的option：
+
+`Option "SendEventsMode" "disabled-on-external-mouse"
+
+即：
+```
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+        Option "SendEventsMode" "disabled-on-external-mouse"
+EndSection
+```
+
+然后重启或注销一下就可以了！
 
 ## 三、互联网类软件配置
 
@@ -1303,6 +1341,59 @@ bing http://cn.bing.com/dict/search?q=%GDWORD%
 
 `yay sublime-text-4`
 
+（1）设置markdown实时预览
+
+使用package control安装插件，快捷键Ctrl+Shift+P调出命令面板，找到 `Install Package`选项并回车，稍微等待几秒，然后在出现的列表中搜索安装`MarkdownEditing`、`MarkdownPreview`、`MarkdownLivePreview`、`sync view scroll`四个插件，选中后回车即可安装，安装完成后会弹出“Package Control Messages”的文件。
+
+（2）解决MarkdownEditing 去除左侧空白+更改主题等
+
+MarkdownEditing	:一个提高Sublime中Markdown编辑特性的插件。进入 `Preferences -> Package Settings -> Markdown Editting -> Markdow GFM Settings - Default & Markdow GFM Settings - User` ，修改为如下内容：
+
+```
+{
+	"color_scheme": "Packages/Color Scheme - Legacy/Cobalt.tmTheme",  //"color_scheme"
+
+	// Layout
+	"draw_centered": false,  //决定两侧是否留白，默认为true，修改为false去除左侧空白
+	"word_wrap": true, //自动换行
+	"wrap_width": 0, //决定每行最大字数，默认设定为80，0为自动切换
+
+	// Line
+	"line_numbers": true, //显示行号，默认为false
+
+	//修改Markdown关联文件
+	"extensions":
+	[
+		"md",
+		"mdown",
+		//"txt"
+	],
+
+	//修改光标样式
+	"caret_extra_top" : 1, //超出光标上方的额外距离
+	"caret_extra_bottom" : 1, //超出光标下方的额外距离
+	"caret_extra_width" : 1, //超出光标宽度
+
+}
+
+```
+
+（3）设置预览和同步滚动热键
+
+Sublime Text支持自定义快捷键，syncviewscroll、MarkdownPreview和MarkdownLivePreview默认没有快捷键，我们可以自己置快捷键。方法是在Preferences -> Key Bindings-user打开的文件中的括号中添加代码：
+```
+    //MarkdownPreview 热键
+    { "keys": ["alt+b"], "command": "markdown_preview", "args": {"target": "browser", "parser":"markdown"}  },
+    // MarkdownLivePreview 热键
+    {
+        "keys": ["alt+m"],
+        "command": "open_markdown_preview"
+    },
+    //Sync View Scroll 热键
+    { "keys": ["alt+s"], "command": "toggle_sync_scroll" }
+```
+这样"alt+b" 可在浏览器中预览，"alt+m" 可在sublime中分栏预览，"alt+s" 可在sublime中打开分栏预览后，再同步滚动。
+
 ### 2.汉化文件编译poedit
 
 `sudo pacman -Syu poedit`
@@ -1419,6 +1510,7 @@ Type=Application
 ```
 最后，加入开始菜单即可！
 
+
 ### 4.
 
 
@@ -1498,4 +1590,3 @@ hwmon /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
 
 
 ```
-
