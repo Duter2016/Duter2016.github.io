@@ -1208,21 +1208,37 @@ yay wps-office
 
 #### （5）安装 tinytex
 
-**暂时安装失败，使用的从linuxmint系统安装后复制过来的文件！**
-
-① 从 CTAN mirrors 选择一个镜像， 然后用 options 参数来指定， 如在终端执行如下命令，清华大学的镜像（推荐） ：
-
-`export CTAN_REPO="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet"`
-
-官方源是[http://mirror.ctan.org/systems/texlive/tlnet]
-
-然后按照谢大神写的教程 [https://yihui.org/tinytex/#for-other-users]， 执行下一步操作， 即终端继续执行如下命令：
+① 按照谢大神写的教程 [https://yihui.org/tinytex/#for-other-users]， 终端执行如下命令：
 
 `wget -qO- "http://yihui.org/gh/tinytex/tools/install-unx.sh" | sh`
 
 安装过程比较漫长， 慢慢等待安装完成即可。
 
 在安装过程中如果意外中断， 或者安装完后报错`.TinyTeX/bin/*/tlmgr: not found`， 一般也是网络问题导致的安装不完全， 重新安装即可。
+
+安装过程中，输出有如下几行：
+
+```
+tlmgr: setting option sys_bin to /home/dh/.local/bin.
+tlmgr: updating /home/dh/.TinyTeX/tlpkg/texlive.tlpdb
+tlmgr: setting default package repository to https://mirror.ctan.org/systems/texlive/tlnet
+tlmgr: updating /home/dh/.TinyTeX/tlpkg/texlive.tlpdb
+```
+
+从输出中信息，CTAN默认使用的官方源[http://mirror.ctan.org/systems/texlive/tlnet]，速度相当慢！
+可以从 CTAN mirrors 选择一个镜像， 然后用 options 参数来指定， 如在终端执行如下命令，清华大学的镜像（推荐） ：
+
+`export CTAN_REPO="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet"`
+
+或者可以使用 TeXLive 包管理器 tlmgr 更改：
+
+```
+# 更改到清华大学镜像需要在命令行中执行: 
+tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet
+
+# 更改到上海交大镜像需要在命令行中执行: 
+tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/tlnet/
+```
 
 ② 将其添加到 path(这里如果你用的是 zsh,把 bashrc 改成 zshrc， 其他类推),方法如下：
 
@@ -1238,7 +1254,11 @@ yay wps-office
 
 `source ~/.bashrc`
 
-③ 安装 XeLaTeX 中文编译引擎。 终端执行：
+③ 先安装perl环境
+
+`sudo pacman -S perl`
+
+安装 XeLaTeX 中文编译引擎。 终端执行：
 
 `sudo pacman -Syu texlive-xetex`
 
@@ -1253,6 +1273,55 @@ yay wps-office
 `tlmgr install xecjk`
 
 `tlmgr install ctex`
+
+⑤ 使用维护
+
+维护命令可以通过“`tlmgr --help`” 命令获取。
+
+1） 使用如下命令查找组件信息， 如终端运行：
+
+`tlmgr search --file --global "/xecjk"`
+
+2） 显示本机已安装的 Texlive 组件， 终端运行：
+
+`tlmgr info --list --only-installed --data name,size`
+
+3） 报错“File xxx not found.”
+
+出现类似如下提示：
+`! LaTeX Error: File `xeCJK.sty' not found.`
+
+出现类似上面的报错时， 不要慌， 这就是有些你需要的包没导入， 可以通过如下步骤解决：
+
+(A) 进行缺失模块搜索， 终端执行：
+
+`tlmgr search --global --file "/xeCJK.sty"`
+
+出现如下类似信息：
+```
+tlmgr: package repository http://mirror.las.iastate.edu/tex-archive/systems/texlive/tlnet (verified)
+xecjk:
+texmf-dist/tex/xelatex/xecjk/xeCJK.sty
+```
+这表明缺失的模块是 xecjk。 下面安装
+
+(B) 进行安装缺失模块， 终端执行
+
+`tlmgr install xecjk`
+
+卸载就是“`tlmgr remove [模块]`” 了。 基本碰到包缺失的问题， 这么做就没事了。
+
+4） 列示需要更新的包， 终端执行：
+
+`tlmgr update --list`
+
+更新全部
+
+`tlmgr update --self --all`
+
+5） 使用图形界面， 终端执行：
+
+`tlmgr gui`
 
 #### （6）
 
