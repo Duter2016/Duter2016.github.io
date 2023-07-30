@@ -1153,12 +1153,21 @@ URI：http://localhost:6800/jsonrpc
 
 #### （1）安装wps
 
-执行：
+安装中文版wps-office-cn执行：
 
 ``` 
 yay wps-office
 # 选择三个包：wps-office-cn wps-office-mui-zh-cn wps-office-mime-cn
 ```
+① 如果选择安装中文版的wps-office-cn，则在wps-office-cn每次使用退出后，在后台都会驻留一个云服务进程wpscloudsvr，使用如下命令去掉wpscloudsvr的可执行权限就可以禁止该进程启动了：
+
+`sudo chmod -x /usr/lib/office6/wpscloudsvr`
+
+该方法本来是wpsoffice软件包里wps官方写在某个文件中的禁用后台驻留进程的方法，并且官方声明：该方法在解决驻留进程的同时，也会导致wpsoffice无法登录帐号。所以请权衡之后再决定是否使用。
+
+② 如果你是使用的国际版的wps-office，则在wps-office每次使用退出后，在后台都会驻留一个wpsoffice进程，使用如下命令去掉wpsoffice的可执行权限就可以了：
+
+`sudo chmod -x /usr/lib/office6/wpsoffice`
 
 #### （2）在 Arch Linux 上安装 LibreOffice
 
