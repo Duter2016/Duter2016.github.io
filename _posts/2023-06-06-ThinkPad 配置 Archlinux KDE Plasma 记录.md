@@ -1169,6 +1169,10 @@ yay wps-office
 
 `sudo chmod -x /usr/lib/office6/wpsoffice`
 
+③ 没有桌面右键新建wps格式文档菜单
+
+debian系deb包安装完，wps 会在`/usr/share/templates/`下生成模板文件，如果没有这些模板文件，桌面右键新建是没有新建wps文档的选项的。Archlinux安装后，右键新建没有wps文档菜单，只需要解压别的桌面版复制出来模板文件，放到`/usr/share/templates/`目录即可。
+
 #### （2）在 Arch Linux 上安装 LibreOffice
 
 可能需要 hsqldb2-java 启用 LibreOffice Base 中的某些模块。 使用命令安装它：
