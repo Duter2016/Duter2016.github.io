@@ -244,11 +244,11 @@ sudo chmod 600 ~/.ssh/*
 
 ## 7.操作过程出现的问题或报错
 
-```tilde\_expand\_filename: No such user```
+
 
 检查是否成功的时候，报错：
 
-```tilde_expand_filename: No such user .```
+`tilde_expand_filename: No such user .`
 
 解决方法：
 
@@ -281,6 +281,124 @@ git config --global https.proxy socks5://127.0.0.1:1080
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
+
+### 3)将“设置github代理”做成脚本：
+
+在`/home/opt/githubproxy/` 目录下新建如下几个文件：
+
+① StartGithubProxy.sh：
+
+```
+#!/bin/sh
+# 这个只设置了github的git服务走代理通道，不会对国内仓库gitee使用代理。
+
+# 开启 github 代理 start
+git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
+git config --global https.https://github.com.proxy socks5://127.0.0.1:1080
+# 开启 github 代理 end
+
+#任意键
+get_char()
+{
+    SAVEDSTTY=`stty -g`
+    stty -echo
+    stty cbreak
+    dd if=/dev/tty bs=1 count=1 2> /dev/null
+    stty -raw
+    stty echo
+    stty $SAVEDSTTY
+}
+#任意键
+
+#任意键退出 开始
+echo "已设置了github的git服务走代理通道！"
+echo ""
+echo "不会对国内仓库gitee使用代理！"
+echo ""
+echo "git 的配置文件在~/.gitconfig"
+echo ""
+# echo "组合键 CTRL+C 终止运行脚本命令! ..."
+echo "按任意键退出对话框..."
+char=`get_char`
+#任意键退出 结束
+```
+
+② StopGithubProxy.sh sh：
+
+```
+#!/bin/sh
+# 这个只设置关闭github的git服务走代理通道，不会对国内仓库gitee代理进行设置。
+
+# 关闭 github 代理 start
+git config --global --unset http.https://github.com.proxy
+git config --global --unset https.https://github.com.proxy
+# 关闭 github 代理 end
+
+#任意键
+get_char()
+{
+    SAVEDSTTY=`stty -g`
+    stty -echo
+    stty cbreak
+    dd if=/dev/tty bs=1 count=1 2> /dev/null
+    stty -raw
+    stty echo
+    stty $SAVEDSTTY
+}
+#任意键
+
+#任意键退出 开始
+echo "已关闭了github的git服务走代理通道！"
+echo ""
+echo "不会对国内仓库gitee代理进行设置！"
+echo ""
+echo "git 的配置文件在~/.gitconfig"
+echo ""
+# echo "组合键 CTRL+C 终止运行脚本命令! ..."
+echo "按任意键退出对话框..."
+char=`get_char`
+#任意键退出 结束
+```
+
+③ StartGithubProxy.desktop：
+
+```
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=StartGithubProxy
+Name[zh_CN]=开启Github代理
+Exec=sh /home/dh/opt/githubproxy/StartGithubProxy.sh 
+Type=Application
+Terminal=true
+Comment[zh_CN]=设置开启github的git服务走代理通道
+Icon=/home/dh/opt/githubproxy/github2.png
+Name[zh_CN]=StartGithubProxy.desktop
+Categories=Network;
+```
+
+④ StopGithubProxy.desktop：
+
+```
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=StopGithubProxy
+Name[zh_CN]=关闭Github代理
+Exec=sh /home/dh/opt/githubproxy/StopGithubProxy.sh 
+Type=Application
+Terminal=true
+Comment[zh_CN]=设置关闭github的git服务走代理通道
+Icon=/home/dh/opt/githubproxy/github.png
+Name[zh_CN]=StopGithubProxy.desktop
+Categories=Network;
+```
+
+**注意：最好使用两个不同颜色的图标区分两个desktop文件，容易识别。**
+
+把两个desktop文件拖进开始菜单就可以了！
 
 ## 9.git其他参数配置
 

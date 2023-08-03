@@ -711,7 +711,11 @@ sudo fc-cache -fv
 
 重启电脑,这样系统就知道这些字体了。
 
-（3）设置系统字体
+（3）安装emoji字体
+
+`sudo pacman -S noto-fonts-emoji`
+
+（4）设置系统字体
 
 重启后,`开始>>设置>>系统设置>>外观>>字体`，设置系统中你想使用的字体,参考如下:
 
@@ -1133,6 +1137,14 @@ URI：http://localhost:6800/jsonrpc
 `sudo pacman -S youtube-dl mpv`
 
 有视频链接（网页地址也可以）的话，装好 youtube-dl和MPV，直接 用命令`mpv url` 就可以播放视频了，比如油管、B站都支持。
+
+**附加：**也可安装支持B站、油管、虎牙的[revda](https://github.com/THMonster/Revda)
+
+`yay -S revda-git`
+
+revda也是调用的mpv,并且支持弹幕。只需要获取视频播放地址的代码就可以，当想要打开bilibili视频时，它支持av号、bv号、ep号、ss号或直接输入链接，多p视频如果想通过av、bv号或者ss号打开，请在编号后加上:n（n为视频p数）打开，例如：你想打开av123456的第三p，请输入av123456:3，bv号与ss号同理。。比如三国演义的一集播放地址为“https://www.bilibili.com/bangumi/play/ep327612?from_spmid=666.25.episode.0&from_outer_spmid=..0.0”，那么播放代码就是“ep327612”。
+
+详细使用方法见[Revda wiki](https://github.com/THMonster/Revda/wiki/1-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)
 
 #### （5）资源播放器zyplayer
 
