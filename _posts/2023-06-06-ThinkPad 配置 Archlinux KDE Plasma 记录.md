@@ -316,7 +316,227 @@ Name[zh_TW]=以管理员身份打开
 
 如果新建无误后显示不出来的话， 执行一下`kbuildsycoca5`如果有错误会有提示。
 
-### 5.使用 thinkfan 控制 thinkpad 风扇转速
+### 5.Archlinux 安装及配置 TLP 高级电源管理工具
+
+
+#### 1）tlp 与 power-profiles-daemon的选择问题
+
+现在如果桌面环境（如KDE Plasma、Gnome等）都已经默认安装了power-profiles-daemon作为系统的电源及CPU管理软件。而TLP是老牌优秀的高级电源管理工具，需要用户自己安装配置。从使用来看，TLP对CPU的管控能力更胜一筹。
+
+（1）然而，tlp 与 power-profiles-daemon 是相互冲突的，不能同时安装使用。至于tlp 与 power-profiles-daemon怎么选择，分析如下：
+
+① 假如你是SandyBridge或IvyBridge架构的CPU，可以启动Intel_pstate驱动，来取代现在默认的Intel_cpufreq、Acpi_cpufreq驱动，以获得较好的效能与省电平衡。此时，tlp 与 power-profiles-daemon都可以使用，当然如果不怕麻烦可以使用更好的TLP。
+
+② 假如你的CPU架构比较老，通过设置`/etc/default/grub`文件中`GRUB_CMDLINE_LINUX_DEFAULT="intel_pstate=enable"`更新内核，仍然不能启动Intel_pstate驱动，只能使用Intel_cpufreq、Acpi_cpufreq驱动，那么就只能选择使用TLP了。
+
+（2）如何识别启用的是Intel_pstate驱动，还是Intel_cpufreq、Acpi_cpufreq驱动？
+
+① 通过下面的命令检查intel_pstate是否开启：
+
+`cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_driver`
+
+此命令将会返回"`intel_pstate`"，就表示你的CPU使用的intel_pstate驱动，如果返回"`intel_cpufreq`
+"，就表示你的CPU使用的intel_cpufreq驱动。
+
+② 另外一种检查方式是使用下面的命令（需要安装cpupower）：
+
+`cpupower frequency-info`
+
+其输出将会是类似下面这样的信息：
+```
+analyzing CPU 0:
+driver: intel_pstate
+```
+表示你的CPU使用的intel_pstate驱动。
+
+（3）如果你选择使用power-profiles-daemon
+
+thermald仅适用于英特尔CPU，并且非常专注于允许最大性能基于系统的“最高温度”。因此，它可以被视为对 power-profiles-daemon 的补充。所以如果你选择使用power-profiles-daemon，就选择同时安装上thermald，以提供更好的电源管理模式：
+```
+sudo pacman -S thermald
+yay -S dptfxtract-bin
+```
+
+如果你选择使用TLP,安装步骤如下：
+
+
+#### 2）安装TLP
+
+##### （1）卸载与tlp冲突的power-profiles-daemon
+
+如果系统中默认安装了power-profiles-daemon。那么先禁用power-profiles-daemon.service服务，执行以下命令：
+
+`sudo systemctl mask power-profiles-daemon.service`
+
+然后卸载有冲突的 power-profiles-daemon 软件包：
+
+`sudo pacman -Rs power-profiles-daemon`
+
+或者安装TLP时，根据提示卸载也可以。
+
+##### （2）开始安装TLP
+
+① 对于基于 Archlinux 的系统，使用 Pacman 命令 安装 TLP：
+
+`sudo pacman -S tlp tlp-rdw`
+
+tlp是节能主模块，tlp-rdw（选装）是无线电设备（如wifi、蓝牙）管理模块。
+
+② 处理器性能与节能策略（x86_energy_perf_policy）是红帽提供设置intel cpu节能模式的工具，TLP的功能需要此软件加持。安装CPU性能与节能策略：
+
+`sudo pacman -S x86_energy_perf_policy`
+
+③ 安装 smartmontool 以显示 tlp-stat 中 S.M.A.R.T. 数据。
+
+`$ sudo pacman -S smartmontools`
+
+SMART的目的是监控硬盘的可靠性、预测磁盘故障和执行各种类型的磁盘自检。smartmontools为Linux平台提供对磁盘退化和故障的高级警告，预防硬件突然崩溃造成数据丢失。它通过使用自我监控(Self-Monitoring)、分析(Analysis)和报告(Reporting)三种技术（缩写为S.M.A.R.T或SMART）来管理和监控存储硬件。如今大部分的ATA/SATA、SCSI/SAS和固态硬盘都搭载内置的SMART系统。
+
+④ ThinkPad 需要一些附加软件包。(**只对Thinkpad有用的功能**)
+
+如果使用Thinkpad笔记本，且需要更优化的电池管理功能，比如充电阈值控制以及电池校准，安装下列软件包：
+
+* tp_smapi - 电池充电阈值控制，电池校准和特殊的tlp-stat输出需要tp-smapi。
+
+* acpi_call包 - 在Sandy Bridge及更新型号（X220/T420,X230/T430等）的电池充电阈值控制和电池校准需要acpi-call。
+
+`sudo pacman -S tp_smapi acpi_call`
+
+`sudo pacman -S tp_smapi-lts acpi_call-lts`
+
+> 如果你使用的内核是`linux`内核，选择安装上面的tp_smapi和acpi_call；如果你使用的`linux-lts`内核，就选择安装tp_smapi-lts和acpi_call-lts。我在系统中同时安装了linux和linux-lts内核，我两组都安装了！
+
+⑤ 安装threshy及其Qt图形界面 (**只对Thinkpad有用的功能**)
+
+使用threshy(AUR)及其Qt图形界面threshy-gui(AUR)可在不使用Root权限的情况下用D-Bus控制电池充电阈值。安装命令如下：
+
+`yay -S threshy`
+
+`yay -S threshy-gui`
+
+**注意：** threshy以及KDE Plasma设置中心中的充电阈值修改均不会更改/etc/tlp.conf文件中的充电阈值设置。
+**threshy以及KDE Plasma设置中心中的充电阈值单次修改仅单次生效，重启、再次设置、或再次插拔电源后均会重新变为/etc/tlp.conf中的设置。**
+
+⑥ 部分平台无法使用tp_smapi控制电池充电阈值的情况
+
+部分2013 新出的几款 Ivy Bridge 平台的 thinkpad(X230,T430,T530), 可能会遇到无法使用 tp_smapi控制电池充电阈值的情况，例如tp_smapi 可能无法支持 T430, 但是我们还有 tpacpi-bat 可以使用控制其充电阀值：
+
+`sudo pacman -S tpacpi-bat`
+
+#### 3） 配置TLP
+
+##### (1) 设置开机启动tlp服务
+
+对于基于 Archlinux 的系统，在启动时启用 TLP 和 TLP-Sleep 服务：
+
+```
+sudo systemctl enable tlp.service
+sudo systemctl enable tlp-sleep.service    //我的提示Unit file tlp-sleep.service does not exist.
+```
+
+##### （2）设置tlp-rdw服务
+
+在使用(tlp-rdw包)之前需要使用NetworkManager并且需要启用NetworkManager-dispatcher.service:
+
+`sudo systemctl enable NetworkManager-dispatcher.service`
+
+也应该屏蔽 systemd 服务systemd-rfkill.service 以及套接字 systemd-rfkill.socket 来防止冲突，保证TLP无线设备的开关选项可以正确运行:
+
+```
+sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket
+```
+
+##### （3）安装图形化界面工具 TLPUI 管理工具
+
+TLPUI（https://github.com/d4nj1/TLPUI）是用Python和GTK编写的TLP的图形界面，可以读取和显示TLP配置，显示默认值和未保存的更改以及加载tlp-stat以查看简单而完整的统计信息。
+
+`yay -S tlpui`
+
+##### （4）配置tlp.conf文件
+
+配置文件位于 `/etc/tlp.conf` 并默认提供高度优化的省电方案。对选项的全部解释请访问:[TLP configuration](https://linrunner.de/en/tlp/docs/tlp-configuration.html)。
+
+我正在使用的`/etc/tlp.conf`完整文件内容，在文末的附件部分提供。
+
+**下面是配置文件中部分要注意的部分设置选项：**
+
+① 默认电源模式设为 BAT ，没有接通电源时采用 BAT 电源模式
+
+`TLP_DEFAULT_MODE=BAT`
+
+② 默认持续模式设为 0 ，根据是否接通电源来决定电源模式，若设为 1 则总是使用 TLP_DEFAULT_MODE
+
+`TLP_PERSISTENT_DEFAULT=0`
+
+③ CPU 性能模式设置
+
+```
+CPU_SCALING_GOVERNOR_ON_AC=performance
+CPU_SCALING_GOVERNOR_ON_BAT=schedutil
+```
+接通电源时，性能优先，无电源时使用 schedutil 模式(似乎是近几年出的省电又顺畅的调度模式，推荐)，另外也有 ondemand(按需，推荐)，powersave(节能)，conservative(保守供电)可选
+
+④ CPU 相对节能模式
+
+```
+CPU_ENERGY_PERF_POLICY_ON_AC=performance
+CPU_ENERGY_PERF_POLICY_ON_BAT=power
+```
+接通电源时使用性能模式，否则省电模式，另外也有 balance_performance 和 balance_power 可选。
+
+⑤ 硬盘设置
+
+`DISK_DEVICES="nvme0n1"`
+
+使用 `sudo fdisk -l`查看你的硬盘名称，向我只有一块 NVMe 的固态硬盘就只需要写一个”nvme0n1”，如果你还有一块 SATA 固态，那么就应该写 “`nvme0n1 sda`”，以 fdisk 指令的结果为准。
+
+⑥ 硬盘空闲速度设置
+```
+DISK_APM_LEVEL_ON_AC="254"
+DISK_APM_LEVEL_ON_BAT="128"
+```
+设置范围是`[1,255]`，`[1,127]`会使硬盘降速，所以电源模式设置为 128 就好，注意如果你有两块硬盘，就要分别对每块硬盘设置，比如写成”`254 254`”和”`254 128`”
+
+##### （5）关于设置后键盘灯自动亮起的问题
+
+**注意：** Thinkpad x 系列等笔记本已经有键盘灯， 但是通过上述设置后， 还有一个问题没有解决： 就是在使用电源供电时，如果在很短的时间内不操作键盘或者鼠标（即进入空闲状态后），键盘灯总是会自动亮起！对着这个问题可以通过“系统设置-电源管理-节能”，然后点击三个选项卡，将“降低屏幕亮度”、“屏幕节能”前面的勾去掉既可以解决问题。 
+
+
+
+#### 4）TLP常用命令
+
+|功能|命令|
+|-|-|
+|①查看TLP运行状态：|`tlp-stat -s`|
+|②显示电池信息 |`sudo tlp-stat -b`或`sudo tlp-stat --battery` |
+|③显示磁盘信息 |`sudo tlp-stat -d`或`sudo tlp-stat --disk` |
+|④ 显示 PCI 设备信息 |`sudo tlp-stat -e`或`sudo tlp-stat --pcie` |
+|⑤显示图形卡信息 | `sudo tlp-stat -g`或`sudo tlp-stat --graphics`|
+|⑥显示处理器信息 | `sudo tlp-stat -p`或`sudo tlp-stat --processor`|
+|⑦ 显示系统数据信息 | `sudo tlp-stat -s`或`sudo tlp-stat --system`|
+|⑧显示温度和风扇速度信息 | `sudo tlp-stat -t`或`sudo tlp-stat --temp`|
+|⑨显示 USB 设备数据信息|`sudo tlp-stat -u`或`sudo tlp-stat --usb`|
+|⑩ 显示警告信息 |`sudo tlp-stat -w`或`sudo tlp-stat --warn` |
+|⑪ 状态报告及配置和所有活动的设置 |`sudo tlp-stat` |
+|⑫ 查看使用的CPu驱动模式和调频控制器 |`sudo tlp-stat -p` |
+
+在linux 2.6以后的内核就支持cpu频率的动态调整，有下面5种模式：
+
+* performance将CPU频率设定在支持的最高频率,而不动态调节.
+* powersave将CPU频率设置为最低
+* ondemand快速动态调整CPU频率, Pentuim M的CPU可以使用
+* conservative与ondemand不同,平滑地调整CPU频率,适合于用电池工作时.
+* userspace用户模式，也就是长期以来都在用的那个模式。可以通过手动编辑配置文件进行配置
+
+**参考：**
+
+* [使用 tlp 来为 linux 省电](https://fly.meow-2.com/post/records/tlp-for-power-saving.html)
+* [TLP：一个可以延长 Linux 笔记本电池寿命的高级电源管理工具](https://linux.cn/article-10848-1.html)
+* [TLP wiki](https://linrunner.de/tlp/installation/arch.html)
+* [Archlinux TLP wiki](https://wiki.archlinuxcn.org/wiki/TLP)
+
+### 6.使用 thinkfan 控制 thinkpad 风扇转速
 
 （1） 安装 thinkfan 风扇控制器软件
 
@@ -501,19 +721,15 @@ hwmon /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
 
 完成！
 
-### 6.显示 Intel CPU 频率（可选）不可安装，会让风扇启动失败
+### 7.显示 Intel CPU 频率（可选）不可安装，会让风扇启动失败
 
 **安装thinkfan的用户万万不可安装[Intel P-state and CPU-Freq Manager]，其依赖libsmbios是Dell's Thermal Management Feature，会破坏thinkfan的thinkpad_hwmon温度感应**
 
 KDE 小部件：[Intel P-state and CPU-Freq Manager](https://github.com/frankenfruity/plasma-pstate)
 
-### 7.Thinkpad 笔记本安装硬盘保护模块
+### 8.Thinkpad 笔记本安装硬盘保护模块
 
 因thinkpad_ec原因，安装后启动不了服务。
-
-### 8.Thinkpad 笔记本电源管理模块
-
-Archlinux系统的KDE Plama桌面的电源管理模块已经可以进行电源阀值的设置，以及节能设置，无需另外安装tlp。
 
 ### 9.软件管理器pamac
 
@@ -572,6 +788,7 @@ manjaro的**GUI驱动管理工具**是Driver Manager，在AUR仓库中没有。
 `Timedatectl`
 
 这就设置好了。无论你在 Linux 还是 Windows,系统时间都是正确的了。
+
 ## 二、系统类软件配置及美化
 
 ### 1.安装及配置输入法fcitx5
@@ -682,6 +899,24 @@ fcitx5-rime用户配置目录(这个与fcitx-rime的目录位置相同)：
 这时仅迁移过去了rime的dict词典，但是用户日常使用中积累下来的词库还没有生效，需要右键点击状态栏的输入法图标，点击“同步”，然后就可以了。
 
 fcitx5-rime的其他配置的设置（如同步、恢复词库）基本与fcitx-rime相同。
+
+#### 4）解决 Fcitx5 中文输入法无法输入全角中括号【】
+
+新安装的 fcitx5， 在中文输入法状态时， `[`和`]`打出的字符为`·` 和`「 」` 。
+
+编辑`/usr/share/fcitx5/punctuation/punc.mb.zh_CN` 文件。 将
+
+```
+[ ·
+] 「 」
+```
+改成
+
+```
+[ 【
+] 】
+```
+然后， 保存后重启 fcitx5 即可。
 
 ### 2.安装windows字体及等宽字体
 
@@ -1685,5 +1920,578 @@ hwmon /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
 (5,	59,	63)
 (6,	63,	65)
 (7,	65,	32767)
+
+```
+
+### 2. TLP 的 tlp.conf文件内容
+
+```
+# ------------------------------------------------------------------------------
+# /etc/tlp.conf - TLP user configuration (version 1.4)
+# See full explanation: https://linrunner.de/tlp/settings
+#
+# Settings are read in the following order:
+#
+# 1. Intrinsic defaults
+# 2. /etc/tlp.d/*.conf - Drop-in customization snippets
+# 3. /etc/tlp.conf     - User configuration (this file)
+#
+# Notes:
+# - In case of identical parameters, the last occurence has precedence
+# - This also means, parameters enabled here will override anything else
+# - However you may append values to a parameter already defined as intrinsic
+#   default or in a previously read file: use PARAMETER+="add values"
+# - IMPORTANT: all parameters here are disabled; remove the leading '#' if you
+#   like to enable a feature without default or have a value different from the
+#   default
+# - Default *: intrinsic default that is effective when the parameter is missing
+#     or disabled by a leading '#'; use PARAM="" to disable an intrinsic default
+# - Default <none>: do nothing or use kernel/hardware defaults
+# -
+# ------------------------------------------------------------------------------
+# tlp - Parameters for power saving
+
+# Set to 0 to disable, 1 to enable TLP.
+# Default: 1
+
+TLP_ENABLE=1
+
+# Control how warnings about invalid settings are issued:
+#   0=disabled,
+#   1=background tasks (boot, resume, change of power source) report to syslog,
+#   2=shell commands report to the terminal (stderr),
+#   3=combination of 1 and 2
+# Default: 3
+
+TLP_WARN_LEVEL=3
+
+# Operation mode when no power supply can be detected: AC, BAT.
+# Concerns some desktop and embedded hardware only.
+# Default: <none>
+
+TLP_DEFAULT_MODE=BAT
+
+# Operation mode select: 0=depend on power source, 1=always use TLP_DEFAULT_MODE
+# Note: use in conjunction with TLP_DEFAULT_MODE=BAT for BAT settings on AC.
+# Default: 0
+
+TLP_PERSISTENT_DEFAULT=0
+
+# Power supply classes to ignore when determining operation mode: AC, USB, BAT.
+# Separate multiple classes with spaces.
+# Note: try on laptops where operation mode AC/BAT is incorrectly detected.
+# Default: <none>
+
+#TLP_PS_IGNORE="BAT"
+
+# Seconds laptop mode has to wait after the disk goes idle before doing a sync.
+# Non-zero value enables, zero disables laptop mode.
+# Default: 0 (AC), 2 (BAT)
+
+DISK_IDLE_SECS_ON_AC=0
+DISK_IDLE_SECS_ON_BAT=2
+
+# Dirty page values (timeouts in secs).
+# Default: 15 (AC), 60 (BAT)
+
+MAX_LOST_WORK_SECS_ON_AC=15
+MAX_LOST_WORK_SECS_ON_BAT=60
+
+# Select a CPU frequency scaling governor.
+# Intel processor with intel_pstate driver:
+#   performance, powersave(*).
+# Intel processor with intel_cpufreq driver (aka intel_pstate passive mode):
+#   conservative, ondemand, userspace, powersave, performance, schedutil(*).
+# Intel and other processor brands with acpi-cpufreq driver:
+#   conservative, ondemand(*), userspace, powersave, performance, schedutil(*).
+# Use tlp-stat -p to show the active driver and available governors.
+# Important:
+#   Governors marked (*) above are power efficient for *almost all* workloads
+#   and therefore kernel and most distributions have chosen them as defaults.
+#   You should have done your research about advantages/disadvantages *before*
+#   changing the governor.
+# Default: <none>
+
+CPU_SCALING_GOVERNOR_ON_AC=powersave
+CPU_SCALING_GOVERNOR_ON_BAT=conservative
+
+# Set the min/max frequency available for the scaling governor.
+# Possible values depend on your CPU. For available frequencies see
+# the output of tlp-stat -p.
+# Notes:
+# - Min/max frequencies must always be specified for both AC *and* BAT
+# - Not recommended for use with the intel_pstate scaling driver, use
+#   CPU_MIN/MAX_PERF_ON_AC/BAT below instead
+# Default: <none>
+
+CPU_SCALING_MIN_FREQ_ON_AC=1
+CPU_SCALING_MAX_FREQ_ON_AC=1
+#CPU_SCALING_MIN_FREQ_ON_BAT=0
+#CPU_SCALING_MAX_FREQ_ON_BAT=0
+
+# Set Intel CPU energy/performance policies HWP.EPP and EPB:
+#   performance, balance_performance, default, balance_power, power.
+# Values are given in order of increasing power saving.
+# Notes:
+# - HWP.EPP: requires kernel 4.10, intel_pstate scaling driver and Intel Core i
+#   6th gen. or newer CPU
+# - EPB: requires kernel 5.2 or module msr and x86_energy_perf_policy from
+#   linux-tools, intel_pstate or intel_cpufreq scaling driver and Intel Core i
+#   2nd gen. or newer CPU
+# - When HWP.EPP is available, EPB is not set
+# Default: balance_performance (AC), balance_power (BAT)
+# !!!!!!!! Warning !!!!!!!!!
+# When use power-profiles-daemon, Default will be not set,
+# please use below items in /var/lib/power-profiles-daemon/state.ini
+#    1) "balanced" means "balance_performance" in tlp
+#    2) "power-saver" means "power" in tlp
+#    3) "performance" means "performance" in tlp
+# Default: <none>
+# !!!!!!!!!!!!!!!!!!!!!!!!!!
+# My thinkpad X 240 is EPB.
+
+CPU_ENERGY_PERF_POLICY_ON_AC=balance_performance
+CPU_ENERGY_PERF_POLICY_ON_BAT=power
+
+# Set Intel CPU P-state performance: 0..100 (%).
+# Limit the max/min P-state to control the power dissipation of the CPU.
+# Values are stated as a percentage of the available performance.
+# Requires intel_pstate or intel_cpufreq driver and Intel Core i 2nd gen. or
+# newer CPU.
+# Default: <none>
+
+#CPU_MIN_PERF_ON_AC=0
+#CPU_MAX_PERF_ON_AC=100
+#CPU_MIN_PERF_ON_BAT=0
+#CPU_MAX_PERF_ON_BAT=30
+
+# Set the CPU "turbo boost" (Intel) or "turbo core" (AMD) feature:
+#   0=disable, 1=allow.
+# Note: a value of 1 does *not* activate boosting, it just allows it.
+# Default: <none>
+
+CPU_BOOST_ON_AC=1
+#CPU_BOOST_ON_BAT=0
+
+# Set the Intel CPU HWP dynamic boost feature:
+#   0=disable, 1=enable.
+# Requires intel_pstate scaling driver in 'active' mode and Intel Core i
+# 6th gen. or newer CPU.
+# Default: <none>
+
+#CPU_HWP_DYN_BOOST_ON_AC=1
+#CPU_HWP_DYN_BOOST_ON_BAT=0
+
+# Minimize number of used CPU cores/hyper-threads under light load conditions:
+#   0=disable, 1=enable.
+# Default: 0 (AC), 1 (BAT)
+
+SCHED_POWERSAVE_ON_AC=0
+SCHED_POWERSAVE_ON_BAT=1
+
+# Kernel NMI Watchdog:
+#   0=disable (default, saves power), 1=enable (for kernel debugging only).
+# Default: 0
+
+#NMI_WATCHDOG=0
+
+# Select platform profile:
+#   performance, balanced, low-power.
+# Controls system operating characteristics around power/performance levels,
+# thermal and fan speed. Values are given in order of increasing power saving.
+# Note: check the output of tlp-stat -p to determine availability on your
+# hardware and additional profiles such as: balanced-performance, quiet, cool.
+# Default: <none>
+# !!!!!!!! Warning !!!!!!!!!
+# When use power-profiles-daemon, please use below items in
+# /var/lib/power-profiles-daemon/state.ini
+#    1) "balanced" is default mode
+#    2) "power-saver" mode means "low-power" in ppd
+#    3) "performance" mode
+# !!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+#PLATFORM_PROFILE_ON_AC=performance
+#PLATFORM_PROFILE_ON_BAT=low-power
+
+# Define disk devices on which the following DISK/AHCI_RUNTIME parameters act.
+# Separate multiple devices with spaces.
+# Devices can be specified by disk ID also (lookup with: tlp diskid).
+# Default: "nvme0n1 sda"
+
+#DISK_DEVICES="nvme0n1 sda"
+
+# Disk advanced power management level: 1..254, 255 (max saving, min, off).
+# Levels 1..127 may spin down the disk; 255 allowable on most drives.
+# Separate values for multiple disks with spaces. Use the special value 'keep'
+# to keep the hardware default for the particular disk.
+# Default: 254 (AC), 128 (BAT)
+
+DISK_APM_LEVEL_ON_AC="254 254"
+DISK_APM_LEVEL_ON_BAT="128 128"
+
+# Exclude disk classes from advanced power management (APM):
+#   sata, ata, usb, ieee1394.
+# Separate multiple classes with spaces.
+# CAUTION: USB and IEEE1394 disks may fail to mount or data may get corrupted
+# with APM enabled. Be careful and make sure you have backups of all affected
+# media before removing 'usb' or 'ieee1394' from the denylist!
+# Default: "usb ieee1394"
+
+#DISK_APM_CLASS_DENYLIST="usb ieee1394"
+
+# Hard disk spin down timeout:
+#   0:        spin down disabled
+#   1..240:   timeouts from 5s to 20min (in units of 5s)
+#   241..251: timeouts from 30min to 5.5 hours (in units of 30min)
+# See 'man hdparm' for details.
+# Separate values for multiple disks with spaces. Use the special value 'keep'
+# to keep the hardware default for the particular disk.
+# Default: <none>
+
+#DISK_SPINDOWN_TIMEOUT_ON_AC="0 0"
+#DISK_SPINDOWN_TIMEOUT_ON_BAT="0 0"
+
+# Select I/O scheduler for the disk devices.
+# Multi queue (blk-mq) schedulers:
+#   mq-deadline(*), none, kyber, bfq
+# Single queue schedulers:
+#   deadline(*), cfq, bfq, noop
+# (*) recommended.
+# Separate values for multiple disks with spaces. Use the special value 'keep'
+# to keep the kernel default scheduler for the particular disk.
+# Notes:
+# - Multi queue (blk-mq) may need kernel boot option 'scsi_mod.use_blk_mq=1'
+#   and 'modprobe mq-deadline-iosched|kyber|bfq' on kernels < 5.0
+# - Single queue schedulers are legacy now and were removed together with
+#   the old block layer in kernel 5.0
+# Default: keep
+
+#DISK_IOSCHED="mq-deadline mq-deadline"
+
+# AHCI link power management (ALPM) for SATA disks:
+#   min_power, med_power_with_dipm(*), medium_power, max_performance.
+# (*) Kernel 4.15 (or newer) required, then recommended.
+# Multiple values separated with spaces are tried sequentially until success.
+# Default:
+#  - "med_power_with_dipm max_performance" (AC)
+#  - "med_power_with_dipm min_power" (BAT)
+
+#SATA_LINKPWR_ON_AC="med_power_with_dipm max_performance"
+#SATA_LINKPWR_ON_BAT="med_power_with_dipm min_power"
+
+# Exclude SATA links from AHCI link power management (ALPM).
+# SATA links are specified by their host. Refer to the output of
+# tlp-stat -d to determine the host; the format is "hostX".
+# Separate multiple hosts with spaces.
+# Default: <none>
+
+#SATA_LINKPWR_DENYLIST="host1"
+
+# Runtime Power Management for NVMe, SATA, ATA and USB disks
+# as well as SATA ports:
+#   on=disable, auto=enable.
+# Note: SATA controllers are PCIe bus devices and handled by RUNTIME_PM further
+# down.
+
+# Default: on (AC), auto (BAT)
+
+#AHCI_RUNTIME_PM_ON_AC=on
+#AHCI_RUNTIME_PM_ON_BAT=auto
+
+# Seconds of inactivity before disk is suspended.
+# Note: effective only when AHCI_RUNTIME_PM_ON_AC/BAT is activated.
+# Default: 15
+
+#AHCI_RUNTIME_PM_TIMEOUT=15
+
+# Power off optical drive in UltraBay/MediaBay: 0=disable, 1=enable.
+# Drive can be powered on again by releasing (and reinserting) the eject lever
+# or by pressing the disc eject button on newer models.
+# Note: an UltraBay/MediaBay hard disk is never powered off.
+# Default: 0
+
+#BAY_POWEROFF_ON_AC=0
+#BAY_POWEROFF_ON_BAT=0
+
+# Optical drive device to power off
+# Default: sr0
+
+#BAY_DEVICE="sr0"
+
+# Set the min/max/turbo frequency for the Intel GPU.
+# Possible values depend on your hardware. For available frequencies see
+# the output of tlp-stat -g.
+# Default: <none>
+
+#INTEL_GPU_MIN_FREQ_ON_AC=0
+#INTEL_GPU_MIN_FREQ_ON_BAT=0
+#INTEL_GPU_MAX_FREQ_ON_AC=0
+#INTEL_GPU_MAX_FREQ_ON_BAT=0
+#INTEL_GPU_BOOST_FREQ_ON_AC=0
+#INTEL_GPU_BOOST_FREQ_ON_BAT=0
+
+# AMD GPU power management.
+# Performance level (DPM): auto, low, high; auto is recommended.
+# Note: requires amdgpu or radeon driver.
+# Default: auto
+
+#RADEON_DPM_PERF_LEVEL_ON_AC=auto
+#RADEON_DPM_PERF_LEVEL_ON_BAT=auto
+
+# Dynamic power management method (DPM): balanced, battery, performance.
+# Note: radeon driver only.
+# Default: <none>
+
+#RADEON_DPM_STATE_ON_AC=performance
+#RADEON_DPM_STATE_ON_BAT=battery
+
+# Graphics clock speed (profile method): low, mid, high, auto, default;
+# auto = mid on BAT, high on AC.
+# Note: radeon driver on legacy ATI hardware only (where DPM is not available).
+# Default: default
+
+#RADEON_POWER_PROFILE_ON_AC=default
+#RADEON_POWER_PROFILE_ON_BAT=default
+
+# Wi-Fi power saving mode: on=enable, off=disable.
+# Default: off (AC), on (BAT)
+
+#WIFI_PWR_ON_AC=off
+#WIFI_PWR_ON_BAT=on
+
+# Disable Wake-on-LAN: Y/N.
+# Default: Y
+
+WOL_DISABLE=Y
+
+# Enable audio power saving for Intel HDA, AC97 devices (timeout in secs).
+# A value of 0 disables, >= 1 enables power saving.
+# Note: 1 is recommended for Linux desktop environments with PulseAudio,
+# systems without PulseAudio may require 10.
+# Default: 1
+
+#SOUND_POWER_SAVE_ON_AC=1
+#SOUND_POWER_SAVE_ON_BAT=1
+
+# Disable controller too (HDA only): Y/N.
+# Note: effective only when SOUND_POWER_SAVE_ON_AC/BAT is activated.
+# Default: Y
+
+#SOUND_POWER_SAVE_CONTROLLER=Y
+
+# PCIe Active State Power Management (ASPM):
+#   default(*), performance, powersave, powersupersave.
+# (*) keeps BIOS ASPM defaults (recommended)
+# Default: <none>
+
+#PCIE_ASPM_ON_AC=default
+#PCIE_ASPM_ON_BAT=default
+
+# Runtime Power Management for PCIe bus devices: on=disable, auto=enable.
+# Default: on (AC), auto (BAT)
+
+#RUNTIME_PM_ON_AC=on
+#RUNTIME_PM_ON_BAT=auto
+
+# Exclude listed PCIe device adresses from Runtime PM.
+# Note: this preserves the kernel driver default, to force a certain state
+# use RUNTIME_PM_ENABLE/DISABLE instead.
+# Separate multiple addresses with spaces.
+# Use lspci to get the adresses (1st column).
+# Default: <none>
+
+#RUNTIME_PM_DENYLIST="11:22.3 44:55.6"
+
+# Exclude PCIe devices assigned to the listed drivers from Runtime PM.
+# Note: this preserves the kernel driver default, to force a certain state
+# use RUNTIME_PM_ENABLE/DISABLE instead.
+# Separate multiple drivers with spaces.
+# Default: "mei_me nouveau radeon", use "" to disable completely.
+
+#RUNTIME_PM_DRIVER_DENYLIST="mei_me nouveau radeon"
+
+# Permanently enable/disable Runtime PM for listed PCIe device addresses
+# (independent of the power source). This has priority over all preceding
+# Runtime PM settings. Separate multiple addresses with spaces.
+# Use lspci to get the adresses (1st column).
+# Default: <none>
+
+#RUNTIME_PM_ENABLE="11:22.3"
+#RUNTIME_PM_DISABLE="44:55.6"
+
+# Set to 0 to disable, 1 to enable USB autosuspend feature.
+# Default: 1
+
+#USB_AUTOSUSPEND=1
+
+# Exclude listed devices from USB autosuspend (separate with spaces).
+# Use lsusb to get the ids.
+# Note: input devices (usbhid) and libsane-supported scanners are excluded
+# automatically.
+# Default: <none>
+
+#USB_DENYLIST="1111:2222 3333:4444"
+
+# Exclude audio devices from USB autosuspend:
+#   0=do not exclude, 1=exclude.
+# Default: 1
+
+#USB_EXCLUDE_AUDIO=1
+
+# Exclude bluetooth devices from USB autosuspend:
+#   0=do not exclude, 1=exclude.
+# Default: 0
+
+#USB_EXCLUDE_BTUSB=0
+
+# Exclude phone devices from USB autosuspend:
+#   0=do not exclude, 1=exclude (enable charging).
+# Default: 0
+
+#USB_EXCLUDE_PHONE=0
+
+# Exclude printers from USB autosuspend:
+#   0=do not exclude, 1=exclude.
+# Default: 1
+
+#USB_EXCLUDE_PRINTER=1
+
+# Exclude WWAN devices from USB autosuspend:
+#   0=do not exclude, 1=exclude.
+# Default: 0
+
+#USB_EXCLUDE_WWAN=0
+
+# Allow USB autosuspend for listed devices even if already denylisted or
+# excluded above (separate with spaces). Use lsusb to get the ids.
+# Default: 0
+
+#USB_ALLOWLIST="1111:2222 3333:4444"
+
+# Set to 1 to disable autosuspend before shutdown, 0 to do nothing
+# Note: use as a workaround for USB devices that cause shutdown problems.
+# Default: 0
+
+#USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN=0
+
+# Restore radio device state (Bluetooth, WiFi, WWAN) from previous shutdown
+# on system startup: 0=disable, 1=enable.
+# Note: the parameters DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN below
+# are ignored when this is enabled.
+# Default: 0
+
+#RESTORE_DEVICE_STATE_ON_STARTUP=0
+
+# Radio devices to disable on startup: bluetooth, nfc, wifi, wwan.
+# Separate multiple devices with spaces.
+# Default: <none>
+
+#DEVICES_TO_DISABLE_ON_STARTUP="bluetooth nfc wifi wwan"
+
+# Radio devices to enable on startup: bluetooth, nfc, wifi, wwan.
+# Separate multiple devices with spaces.
+# Default: <none>
+
+#DEVICES_TO_ENABLE_ON_STARTUP="wifi"
+
+# Radio devices to disable on shutdown: bluetooth, nfc, wifi, wwan.
+# Note: use as a workaround for devices that are blocking shutdown.
+# Default: <none>
+
+#DEVICES_TO_DISABLE_ON_SHUTDOWN="bluetooth nfc wifi wwan"
+
+# Radio devices to enable on shutdown: bluetooth, nfc, wifi, wwan.
+# (to prevent other operating systems from missing radios).
+# Default: <none>
+
+#DEVICES_TO_ENABLE_ON_SHUTDOWN="wwan"
+
+# Radio devices to enable on AC: bluetooth, nfc, wifi, wwan.
+# Default: <none>
+
+#DEVICES_TO_ENABLE_ON_AC="bluetooth nfc wifi wwan"
+
+# Radio devices to disable on battery: bluetooth, nfc, wifi, wwan.
+# Default: <none>
+
+#DEVICES_TO_DISABLE_ON_BAT="bluetooth nfc wifi wwan"
+
+# Radio devices to disable on battery when not in use (not connected):
+#   bluetooth, nfc, wifi, wwan.
+# Default: <none>
+
+#DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE="bluetooth nfc wifi wwan"
+
+# Battery Care -- Charge thresholds
+# Charging starts when the charge level is below the START_CHARGE_THRESH value
+# when the charger is connected. It stops when the STOP_CHARGE_THRESH value is
+# reached.
+# Required hardware: Lenovo ThinkPads and select other laptop brands are driven
+# via specific plugins, the actual support status is shown by tlp-stat -b.
+# For more explanations and vendor specific details refer to
+#   https://linrunner.de/tlp/settings/battery.html
+# Notes:
+# - ThinkPads may require external kernel module(s), refer to the output of
+#   tlp-stat -b
+# - Vendor specific parameter value ranges are shown by tlp-stat -b
+# - If your hardware supports a start *and* a stop threshold, you must
+#   specify both, otherwise TLP will refuse to apply the single threshold
+# - If your hardware supports only a stop threshold, set the start value to 0
+
+# BAT0: Primary / Main / Internal battery (values in %)
+# Note: also use for batteries BATC, BATT and CMB0
+# Default: <none>
+
+START_CHARGE_THRESH_BAT0=46
+STOP_CHARGE_THRESH_BAT0=50
+
+# BAT1: Secondary / Ultrabay / Slice / Replaceable battery (values in %)
+# Note: primary on some laptops
+# Default: <none>
+
+START_CHARGE_THRESH_BAT1=46
+STOP_CHARGE_THRESH_BAT1=50
+
+# Restore charge thresholds when AC is unplugged: 0=disable, 1=enable.
+# Default: 0
+
+RESTORE_THRESHOLDS_ON_BAT=1
+
+# Control battery care drivers: 0=disable, 1=enable.
+# Default: 1 (all)
+
+#NATACPI_ENABLE=1
+#TPACPI_ENABLE=1
+#TPSMAPI_ENABLE=1
+
+# ------------------------------------------------------------------------------
+# tlp-rdw - Parameters for the radio device wizard
+
+# Possible devices: bluetooth, wifi, wwan.
+# Separate multiple radio devices with spaces.
+# Default: <none> (for all parameters below)
+
+# Radio devices to disable on connect.
+
+#DEVICES_TO_DISABLE_ON_LAN_CONNECT="wifi wwan"
+#DEVICES_TO_DISABLE_ON_WIFI_CONNECT="wwan"
+#DEVICES_TO_DISABLE_ON_WWAN_CONNECT="wifi"
+
+# Radio devices to enable on disconnect.
+
+#DEVICES_TO_ENABLE_ON_LAN_DISCONNECT="wifi wwan"
+#DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT=""
+#DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT=""
+
+# Radio devices to enable/disable when docked.
+
+#DEVICES_TO_ENABLE_ON_DOCK=""
+#DEVICES_TO_DISABLE_ON_DOCK=""
+
+# Radio devices to enable/disable when undocked.
+
+#DEVICES_TO_ENABLE_ON_UNDOCK="wifi"
+#DEVICES_TO_DISABLE_ON_UNDOCK=""
 
 ```
