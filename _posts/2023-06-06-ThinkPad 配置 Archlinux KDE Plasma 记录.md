@@ -1856,9 +1856,37 @@ Type=Application
 最后，加入开始菜单即可！
 
 
-### 4.
+### 4.启动时grub界面报错vconsole
 
+启动时grub界面报错：“systemctl status systemd-vconsole-setup.service”
 
+进入系统后，修改`/etc/vconsole.conf`文件内容，将如下内容：
+
+```
+KEYMAP=cn
+FONT=
+FONT_MAP=
+```
+
+修改为如下即可：
+
+```
+KEYMAP=us
+FONT=
+FONT_MAP=
+```
+
+### 5.启动时grub报错systemd-modules-load.service
+
+启动时grub界面报错：“systemctl status systemd-modules-load.service”，然后进入系统后，运行`sudo systemctl status systemd-modules-load.service`，报错详细信息为：
+
+`systemd-modules-load[604]: Failed to insert module 'tp_smapi': No such device`
+
+原因是我使用了linux和linux-lts双内核，并同时安装了tp_smapi和tp_smapi-lts，当我从linux-lts内核进入系统时，就会报 “Failed to insert module 'tp_smapi'”。如果从我从linux内核进入系统时，就会报 “Failed to insert module 'tp_smapi-lts'”。
+
+因此，此错误忽略即可。
+
+### 6.
 
 ## 附件部分
 
