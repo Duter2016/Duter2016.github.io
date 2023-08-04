@@ -459,10 +459,22 @@ TLPUI（https://github.com/d4nj1/TLPUI）是用Python和GTK编写的TLP的图形
 ③ CPU 性能模式设置
 
 ```
-CPU_SCALING_GOVERNOR_ON_AC=performance
-CPU_SCALING_GOVERNOR_ON_BAT=schedutil
+CPU_SCALING_GOVERNOR_ON_AC=schedutil
+CPU_SCALING_GOVERNOR_ON_BAT=powersave
 ```
-接通电源时，性能优先，无电源时使用 schedutil 模式(似乎是近几年出的省电又顺畅的调度模式，推荐)，另外也有 ondemand(按需，推荐)，powersave(节能)，conservative(保守供电)可选
+接通电源时，性能优先，无电源时使用 schedutil 模式(似乎是近几年出的省电又顺畅的调度模式，推荐)，另外也有 ondemand(按需，推荐)，powersave(节能)，conservative(保守供电)可选。
+
+intel_cpufreq驱动模式下，Linux 内部共有6种对频率的管理策略conservative, ondemand, userspace, powersave, performance, schedutil(*)。
+
+|调速器|描述|
+|-|-|
+|performance|运行于最大频率, 数值通过 `/sys/devices/system/cpu/cpuX/cpufreq/scaling_max_freq`.|
+|powersave|运行于最小频率，数值值通过 `/sys/devices/system/cpu/cpuX/cpufreq/scaling_min_freq` 查看。|
+|userspace|运行于用户指定的频率，通过 `/sys/devices/system/cpu/cpuX/cpufreq/scaling_setspeed` 配置。|
+|ondemand|按需快速动态调整CPU频率， 一有cpu计算量的任务，就会立即达到最大频率运行，空闲时间增加就降低频率|
+|conservative|按需快速动态调整CPU频率， 比 ondemand 的调整更保守。Ondemand 降频更加激进，conservative 降频比较缓慢保守，事实使用 ondemand 的效果也是比较好的。|
+|schedutil|基于调度程序调整 CPU 频率.根据资料，schedutil的CPU调频速度比ondemand更快，调频速度`schedutil>ondemand>conservative`|
+> 参考：[Archlinux CPU调频wiki](https://wiki.archlinuxcn.org/wiki/CPU_%E8%B0%83%E9%A2%91)
 
 ④ CPU 相对节能模式
 
@@ -472,13 +484,25 @@ CPU_ENERGY_PERF_POLICY_ON_BAT=power
 ```
 接通电源时使用性能模式，否则省电模式，另外也有 balance_performance 和 balance_power 可选。
 
-⑤ 硬盘设置
+⑤CPU最大、最小调频范围设置
+
+```
+CPU_SCALING_MIN_FREQ_ON_AC=800000
+CPU_SCALING_MAX_FREQ_ON_AC=2900000
+```
+安装cpupower(pacman)和cpupower-gui(yay),然后使用如下命令可以查看：
+
+`cpupower frequency-info`
+
+比如我的输出是`hardware limits: 800 MHz - 2.90 GHz`，然后换算成tlp.conf中的单位khz，就是`800000khz-2900000khz`。
+
+⑥ 硬盘设置
 
 `DISK_DEVICES="nvme0n1"`
 
 使用 `sudo fdisk -l`查看你的硬盘名称，向我只有一块 NVMe 的固态硬盘就只需要写一个”nvme0n1”，如果你还有一块 SATA 固态，那么就应该写 “`nvme0n1 sda`”，以 fdisk 指令的结果为准。
 
-⑥ 硬盘空闲速度设置
+⑦ 硬盘空闲速度设置
 ```
 DISK_APM_LEVEL_ON_AC="254"
 DISK_APM_LEVEL_ON_BAT="128"
@@ -1999,8 +2023,8 @@ MAX_LOST_WORK_SECS_ON_BAT=60
 #   changing the governor.
 # Default: <none>
 
-CPU_SCALING_GOVERNOR_ON_AC=powersave
-CPU_SCALING_GOVERNOR_ON_BAT=conservative
+CPU_SCALING_GOVERNOR_ON_AC=schedutil
+CPU_SCALING_GOVERNOR_ON_BAT=powersave
 
 # Set the min/max frequency available for the scaling governor.
 # Possible values depend on your CPU. For available frequencies see
@@ -2011,8 +2035,8 @@ CPU_SCALING_GOVERNOR_ON_BAT=conservative
 #   CPU_MIN/MAX_PERF_ON_AC/BAT below instead
 # Default: <none>
 
-CPU_SCALING_MIN_FREQ_ON_AC=1
-CPU_SCALING_MAX_FREQ_ON_AC=1
+CPU_SCALING_MIN_FREQ_ON_AC=800000
+CPU_SCALING_MAX_FREQ_ON_AC=2900000
 #CPU_SCALING_MIN_FREQ_ON_BAT=0
 #CPU_SCALING_MAX_FREQ_ON_BAT=0
 
@@ -2047,8 +2071,8 @@ CPU_ENERGY_PERF_POLICY_ON_BAT=power
 # newer CPU.
 # Default: <none>
 
-#CPU_MIN_PERF_ON_AC=0
-#CPU_MAX_PERF_ON_AC=100
+CPU_MIN_PERF_ON_AC=0
+CPU_MAX_PERF_ON_AC=100
 #CPU_MIN_PERF_ON_BAT=0
 #CPU_MAX_PERF_ON_BAT=30
 
@@ -2480,5 +2504,6 @@ RESTORE_THRESHOLDS_ON_BAT=1
 
 #DEVICES_TO_ENABLE_ON_UNDOCK="wifi"
 #DEVICES_TO_DISABLE_ON_UNDOCK=""
-
 ```
+
+
