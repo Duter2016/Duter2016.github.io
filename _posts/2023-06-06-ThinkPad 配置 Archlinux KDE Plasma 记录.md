@@ -466,14 +466,15 @@ CPU_SCALING_GOVERNOR_ON_BAT=powersave
 
 intel_cpufreq驱动模式下，Linux 内部共有6种对频率的管理策略conservative, ondemand, userspace, powersave, performance, schedutil(*)。
 
-|调速器|描述|
+| 调速器 | 描述 |
 |-|-|
-|performance|运行于最大频率, 数值通过 `/sys/devices/system/cpu/cpuX/cpufreq/scaling_max_freq`.|
-|powersave|运行于最小频率，数值值通过 `/sys/devices/system/cpu/cpuX/cpufreq/scaling_min_freq` 查看。|
-|userspace|运行于用户指定的频率，通过 `/sys/devices/system/cpu/cpuX/cpufreq/scaling_setspeed` 配置。|
-|ondemand|按需快速动态调整CPU频率， 一有cpu计算量的任务，就会立即达到最大频率运行，空闲时间增加就降低频率|
-|conservative|按需快速动态调整CPU频率， 比 ondemand 的调整更保守。Ondemand 降频更加激进，conservative 降频比较缓慢保守，事实使用 ondemand 的效果也是比较好的。|
-|schedutil|基于调度程序调整 CPU 频率.根据资料，schedutil的CPU调频速度比ondemand更快，调频速度`schedutil>ondemand>conservative`|
+|performance |运行于最大频率, 数值通过 `/sys/devices/system/cpu/cpuX/cpufreq/scaling_max_freq`.|
+|powersave |运行于最小频率，数值值通过 `/sys/devices/system/cpu/cpuX/cpufreq/scaling_min_freq` 查看。|
+|userspace |运行于用户指定的频率，通过 `/sys/devices/system/cpu/cpuX/cpufreq/scaling_setspeed` 配置。|
+|ondemand |按需快速动态调整CPU频率，一有cpu计算量的任务，就会立即达到最大频率运行，空闲时间增加就降低频率|
+|conservative |按需快速动态调整CPU频率， 比 ondemand 的调整更保守。Ondemand 降频更加激进，conservative 降频比较缓慢保守，事实使用 ondemand 的效果也是比较好的。|
+|schedutil |基于调度程序调整CPU频率.据资料，schedutil的CPU调频速度比ondemand更快，调频速度`schedutil>ondemand>conservative`|
+
 > 参考：[Archlinux CPU调频wiki](https://wiki.archlinuxcn.org/wiki/CPU_%E8%B0%83%E9%A2%91)
 
 ④ CPU 相对节能模式
