@@ -471,11 +471,11 @@ intel_cpufreq驱动模式下，Linux 内部共有6种对频率的管理策略con
 |performance |运行于最大频率, 数值通过 `/sys/devices/system/cpu/cpuX/cpufreq/scaling_max_freq`.|
 |powersave |运行于最小频率，数值值通过 `/sys/devices/system/cpu/cpuX/cpufreq/scaling_min_freq` 查看。|
 |userspace |运行于用户指定的频率，通过 `/sys/devices/system/cpu/cpuX/cpufreq/scaling_setspeed` 配置。|
-|ondemand |按需快速动态调整CPU频率，一有cpu计算量的任务，就会立即达到最大频率运行，空闲时间增加就降低频率|
-|conservative |按需快速动态调整CPU频率， 比 ondemand 的调整更保守。Ondemand 降频更加激进，conservative 降频比较缓慢保守，事实使用 ondemand 的效果也是比较好的。|
-|schedutil |基于调度程序调整CPU频率.据资料，schedutil的CPU调频速度比ondemand更快，调频速度`schedutil>ondemand>conservative`|
+|ondemand |根据CPU的当前使用率，动态的调节CPU频率。scheduler通过调用ondemand注册进来的钩子函数来触发系统负载的估算（异步的）。它以一定的时间间隔对系统负载情况进行采样。按需动态调整CPU频率，如果的CPU当前使用率超过设定阈值，就会立即达到最大频率运行，等执行完毕就立即回到最低频率。好处是调频速度快，但问题是调的不够精确。|
+|conservative |类似Ondemand，不过频率调节的会平滑一下，不会有忽然调整为最大值又忽然调整为最小值的现象。区别在于：当系统CPU 负载超过一定阈值时，Conservative的目标频率会以某个步长步伐递增；当系统CPU负载低于一定阈值时，目标频率会以某个步长步伐递减。同时也需要周期性地去计算系统负载。|
+|schedutil |相比其他governor的改进点如下：基于scheduler的CPU调频策略，它直接使用来自scheduler的负载数据，之所以能做到这样，是因为在此之前内核有了负载变化回调机制（mechanism for registering utilization update callbacks），schedutil的通过将自己的调频策略注册到hook，在负载变化时候会回调该hook，此时就可以进行调频决策和甚至于执行调频动作。而ondemand、conservation都需要定期采样以计算CPU负载，具有一定的滞后性，精度也有限。实际上scheduler已经可以用PELT或者WALT去较为准确的追踪Task负载和CPU负载，现在可以直接去利用其中的CPU负载，省去了采样，使调频能更快速。支持从中断上下文直接切换频率机制，可以进一步缩短调频的时延。该特性需要driver能够支fast_switch功能。一句话总结就是：通过它，让scheduler和调频建立起更加紧密的联系，同时提升了性能和功耗表现（调频上升和下降的曲线都更加陡峭，频率更快的上升或者下降到目标频率）。调频速度`schedutil>ondemand>conservative`。|
 
-> 参考：[Archlinux CPU调频wiki](https://wiki.archlinuxcn.org/wiki/CPU_%E8%B0%83%E9%A2%91)
+> 参考：[Archlinux CPU调频wiki](https://wiki.archlinuxcn.org/wiki/CPU_%E8%B0%83%E9%A2%91)、[CPU调速器schedutil原理分析](https://deepinout.com/android-system-analysis/android-cpu-related/principle-analysis-of-cpu-governor-schedutil.html)
 
 ④ CPU 相对节能模式
 
