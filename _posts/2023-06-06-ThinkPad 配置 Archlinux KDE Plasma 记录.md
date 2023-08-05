@@ -393,6 +393,16 @@ SMART的目的是监控硬盘的可靠性、预测磁盘故障和执行各种类
 
 > 如果你使用的内核是`linux`内核，选择安装上面的tp_smapi和acpi_call；如果你使用的`linux-lts`内核，就选择安装tp_smapi-lts和acpi_call-lts。我在系统中同时安装了linux和linux-lts内核，我两组都安装了！
 
+注意：[tp_smapi](https://github.com/linux-thinkpad/tp_smapi)冲突声明：
+```
+Conflict with HDAPS
+-------------------
+The extended battery status function conflicts with the "hdaps" kernel module
+(they use the same IO ports).
+You can use HDAPS=1 (see Installation) to get a patched version of hdaps which
+is compatible with tp_smapi.
+```
+
 ⑤ 安装threshy及其Qt图形界面 (**只对Thinkpad有用的功能**)
 
 使用threshy(AUR)及其Qt图形界面threshy-gui(AUR)可在不使用Root权限的情况下用D-Bus控制电池充电阈值。安装命令如下：
@@ -406,9 +416,15 @@ SMART的目的是监控硬盘的可靠性、预测磁盘故障和执行各种类
 
 ⑥ 部分平台无法使用tp_smapi控制电池充电阈值的情况
 
-部分2013 新出的几款 Ivy Bridge 平台的 thinkpad(X230,T430,T530), 可能会遇到无法使用 tp_smapi控制电池充电阈值的情况，例如tp_smapi 可能无法支持 T430, 但是我们还有 tpacpi-bat 可以使用控制其充电阀值：
+部分2013 新出的几款 Ivy Bridge 平台的 thinkpad(X230,T430,T530), 可能会遇到无法使用 tp_smapi控制电池充电阈值的情况，例如tp_smapi 可能无法支持 T430, 但是我们还有 tpacpi-bat 可以使用控制其充电阀值（安装acpi_call和tpacpi-bat）：
+
+`sudo pacman -S acpi_call`
+
+`sudo pacman -S acpi_call-lts`
 
 `sudo pacman -S tpacpi-bat`
+
+后面进行配置。
 
 #### 3） 配置TLP
 
@@ -440,7 +456,71 @@ TLPUI（https://github.com/d4nj1/TLPUI）是用Python和GTK编写的TLP的图形
 
 `yay -S tlpui`
 
-##### （4）配置tlp.conf文件
+##### （4）配置tpacpi-bat文件
+
+**设置开机启动服务：**
+
+`sudo systemctl enable tpacpi-bat.service`
+
+**设置电池充电阀值：**
+
+阅读 [README (tpacpi-bat)](https://github.com/teleshoes/tpacpi-bat)， 根据提示可以进行阀值设置了：
+
+格式：`tpacpi-bat [-v] -s ST <bat{1,2,0}> <percent{0,1-99}>`
+
+注意：tpacpi-bat与tp_smapi中电池编号不同：
+```
+# tpacpi-bat中`<bat>` 
+1 for main, 2 for secondary, 0 for either/both
+
+# tp_smapi中`<bat>` 
+0 for main/内置电池, 1 for secondary/可更换电池
+```
+
+① 电池 1 开始充电阀值设置， 终端输入：
+
+`sudo tpacpi-bat -v -s ST 1 45`
+
+batt1 is going to change the start threshold to 45%.
+
+② 电池 2 开始充电阀值设置， 终端输入：
+
+`sudo tpacpi-bat -v -s ST 2 45`
+
+batt2 is going to change the start threshold to 45%.
+
+③ 同理， 电池 1 和 2 的停止充电阀值设置， 在终端输入：
+
+`sudo tpacpi-bat -v -s SP 1 50`
+
+`sudo tpacpi-bat -v -s SP 2 50`
+
+changes the stop at 50%.
+
+> 注意：通过以上四个命令设置的充电阈值不能写进tlp.conf，这里四个命令只能本次开机中使用。长期设置仍然需要到tlp.conf或TLPUI中设置。
+
+重启， 生效！
+
+**查看结果：**
+
+查看单个阈值设置：
+
+`sudo tpacpi-bat -v -g ST 1`
+
+输出结果如下：
+```
+Call    : \_SB.PCI0.LPC.EC.HKEY.BCTG 0x1
+Response: 0x32e
+46 (relative percent)
+```
+
+查看全部阈值设置（其他命令同tlp）：
+
+`sudo tlp-stat -b`
+
+在 X240 上测试有效！ 
+
+##### （5）配置tlp.conf文件
 
 配置文件位于 `/etc/tlp.conf` 并默认提供高度优化的省电方案。对选项的全部解释请访问:[TLP configuration](https://linrunner.de/en/tlp/docs/tlp-configuration.html)。
 
@@ -510,17 +590,15 @@ DISK_APM_LEVEL_ON_BAT="128"
 ```
 设置范围是`[1,255]`，`[1,127]`会使硬盘降速，所以电源模式设置为 128 就好，注意如果你有两块硬盘，就要分别对每块硬盘设置，比如写成”`254 254`”和”`254 128`”
 
-##### （5）关于设置后键盘灯自动亮起的问题
+##### （6）关于设置后键盘灯自动亮起的问题
 
 **注意：** Thinkpad x 系列等笔记本已经有键盘灯， 但是通过上述设置后， 还有一个问题没有解决： 就是在使用电源供电时，如果在很短的时间内不操作键盘或者鼠标（即进入空闲状态后），键盘灯总是会自动亮起！对着这个问题可以通过“系统设置-电源管理-节能”，然后点击三个选项卡，将“降低屏幕亮度”、“屏幕节能”前面的勾去掉既可以解决问题。 
-
-
 
 #### 4）TLP常用命令
 
 |功能|命令|
 |-|-|
-|①查看TLP运行状态：|`tlp-stat -s`|
+|①查看TLP运行状态：|`sudo tlp-stat -s`|
 |②显示电池信息 |`sudo tlp-stat -b`或`sudo tlp-stat --battery` |
 |③显示磁盘信息 |`sudo tlp-stat -d`或`sudo tlp-stat --disk` |
 |④ 显示 PCI 设备信息 |`sudo tlp-stat -e`或`sudo tlp-stat --pcie` |
@@ -741,7 +819,31 @@ KDE 小部件：[Intel P-state and CPU-Freq Manager](https://github.com/frankenf
 
 ### 8.Thinkpad 笔记本安装硬盘保护模块
 
-因thinkpad_ec原因，安装后启动不了服务。
+**hdaps在我的笔记本上不能运行，提示“Could not find a suitable interface”，经项目主页查看，是因为hdapsd目前不支持较新的笔记本型号。如果你想尝试一下，可以安装下面的步骤安装一下！**
+
+安装hdapsd：
+
+`sudo pacman -S hdapsd`
+
+安装图形界面工具hdaps-gl：
+
+`yay -S hdaps-gl`
+
+显示hdapsd状态,通过它们你很容易知道发生了些什么.
+
+启动hdapsd：
+
+`sudo hdapsd`
+
+启动hdaps-gl：
+
+`hdaps-gl`
+
+安装hdapsd包后,通过 hdapsd@device.service 来启动 hdapsd 守护进程，但是不需要设置为开机启动:
+
+```
+sudo systemctl start hdapsd@device.service
+```
 
 ### 9.软件管理器pamac
 
@@ -1860,6 +1962,8 @@ Type=Application
 
 启动时grub界面报错：“systemctl status systemd-vconsole-setup.service”
 
+
+
 进入系统后，修改`/etc/vconsole.conf`文件内容，将如下内容：
 
 ```
@@ -1882,9 +1986,18 @@ FONT_MAP=
 
 `systemd-modules-load[604]: Failed to insert module 'tp_smapi': No such device`
 
-原因是我使用了linux和linux-lts双内核，并同时安装了tp_smapi和tp_smapi-lts，当我从linux-lts内核进入系统时，就会报 “Failed to insert module 'tp_smapi'”。如果从我从linux内核进入系统时，就会报 “Failed to insert module 'tp_smapi-lts'”。
+原因是我使用了thinkpad的电源管理模块tp_smapi，但是[tp_smapi](https://github.com/linux-thinkpad/tp_smapi)声明：
 
-因此，此错误忽略即可。
+```
+tp_smapi Does not work on:
+* X230 and newer
+* T430 and newer
+* Any ThinkPad Edge
+* Any ThinkPad Yoga
+* Any ThinkPad L series
+* Any ThinkPad P series
+```
+我安装后电池阈值设置生效，却报错。也就是说tp_smapi在我的X240上部分生效，但不完全能运行，所以报错 “Failed to insert module 'tp_smapi-lts'”。可以更换使用受支持的tpapi-bat。
 
 ### 6.
 
