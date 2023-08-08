@@ -920,6 +920,27 @@ sudo pacman -Syu fcitx5-pinyin-zhwiki
 yay fcitx5-pinyin-moegirl
 ```
 
+然后，设置输入法集成环境：
+
+编辑 `/etc/environment` 并添加以下几行，然后重新登录：
+```
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+SDL_IM_MODULE=fcitx
+GLFW_IM_MODULE=ibus
+```
+
+或者在`/home/<username>/`目录下， 于隐藏文件“`.xprofile`” （若没有自己建一个） 里， 添加如下命令：
+```
+export LC_ALL=zh_CN.utf-8
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+export SDL_IM_MODULE=fcitx
+export GLFW_IM_MODULE=ibus
+```
+
 #### 2）安装主题
 
 下面为`fcitx5-material-color`主题的安装及设置。`fcitx5-material-color` 提供了类似微软拼音的外观。
@@ -1054,15 +1075,13 @@ sudo mkfontdir
 sudo fc-cache -fv
 ```
 
-（2）安装jetbrains-mono 等宽字体
+（2）安装jetbrains-mono 等宽、emoji字体等
 
 `sudo pacman -Syu ttf-jetbrains-mono`
 
-重启电脑,这样系统就知道这些字体了。
+（3）安装字体渲染
 
-（3）安装emoji字体
-
-`sudo pacman -S noto-fonts-emoji`
+`sudo pacman -S freetype2`
 
 （4）设置系统字体
 
@@ -1292,9 +1311,60 @@ EndSection
 
 然后重启或注销一下就可以了！
 
+### 16.Linux 终端命令补全及 Bashmarks 命令书签功能
+
+**常规技巧：**
+
+在 linux 的 shell 命令行中， 当输入字符后， 按`两次 Tab 键`， shell 会列出一输入字符打头的所有可用命令， 如果匹配的命令只有一个时， 按`一次 Tab 键`就自动将该命令补齐。
+
+除了命令补全之外， 还有路径、 文件名、 目录名补全， 比如使用 `cd` 切换到指定的目录和 `ls`查看指定的文件等。 但我们找到文件夹或文件时， 需要使用完整的路径， 不高效， 常见的定位一个目录的步骤是， 先执行一下 `cd`， 再执行`ls`，然后来回在这两个命令中切换，当记忆卡壳的时候，还会使用`find`命令。我们在使用浏览器时，会使用书签来解决“寻址”的问题，那为什么不能把这种方法用在 shell 中呢？
+
+这时我们可以使用 [Bashmarks](https://github.com/bachya/bashmarks) 。 Bashmarks 是一个bash shell脚本，它可以帮你保存经常使用的目录，并在它们之间跳转。更奇妙的是，它还支持tab自动补全，以及它只有5个简单的命令，所以你根本不需要去记忆它。
+
+（1） 在终端依次执行如下命令， 安装 Bashmarks：
+
+```
+mkdir temp && cd temp
+git clone git://github.com/huyng/bashmarks.git
+cd bashmarks
+make install
+echo "source ~/.local/bin/bashmarks.sh" >> ~/.bash_profile
+source ~/.bash_profile
+```
+
+（2） 安装完成后，可以使用，但重启后，Bashmarks 会无效，并且命令 BS 的“l” 和系统默认的命令“l” 冲突，我们需要做如下修改：
+
+① 将文件 `/home/username/.local/bin/bashmarks.sh` 内的内容复制粘贴到文件`/home/username/.bashrc` 的最后， 使 Bashmarks 命令生效；
+
+②将文件`/home/username/.bashrc` 中如下命令注释掉，
+
+`alias l='ls -CF'`
+
+即修改为
+
+`# alias l='ls -CF'`
+
+保存即可。 重启启动终端窗口就生效了！
+
+（3） 可用命令：
+
+```
+s <bookmark_name> - 将当前目录的书签名保存为"bookmark_name"
+g <bookmark_name> - 切换到书签为 "bookmark_name"的目录下
+p <bookmark_name> - 打印出"bookmark_name"对应的目录
+d <bookmark_name> - 删除指定的目录书签
+l - 列出所有的书签
+```
+
+先 `cd` 到一个目录后， `s` 命令保存该目录为书签后， 才能使用其他命令哦！
+
+### 17.安装 Guake 下拉终端
+
+`sudo pacman -S guake`
+
 ## 三、互联网类软件配置
 
-### 1.安装SS、SSR、v2ray、clash
+### 1.安装SS、SSR、v2ray、clash、goflyway
 
 #### （1）SS
 `sudo pacman -Syu shadowsocks`
@@ -1334,6 +1404,46 @@ clash 是一款非常强大的上网神器，现在在 Linux 平台下也推出�
 可以直接通过 yay 安装，也可以手动安装：
 
 `yay -S clash-for-windows-bin`
+
+#### (5)Goflyway
+
+1）下载Goflyway
+
+到项目主页下载Goflyway文件“goflyway_linux_amd64.tar.gz”：
+
+[https://github.com/coyove/goflyway/releases](https://github.com/coyove/goflyway/releases)
+
+下载后，将下载的文件解压到`/home/<username>/opt/goflyway/`目录，终端下`chmod a+x`或者用文件管理器给予可执行权限：
+
+`chmod a+x goflyway`
+
+2）启动goflyway有两种方法：
+
+A.第一种：直接显示运行状态
+
+①` /goflyway`目录下，右键启动终端，执行如下命令（直接显示运行状态）：
+
+`./goflyway -up="cf://服务器地址:端口" -k="密码" -l="127.0.0.1:1080"`
+
+在服务器地址、端口、密码的位置换成你要设定的服务器地址、端口和密码。
+
+② 如果想停止运行：快捷键组合Ctrl+C
+
+B.第二种：单独查看运行状态
+
+①执行如下命令（单独查看运行状态）：
+
+`./goflyway -up="cf://服务器地址:端口" -k="密码" -l="127.0.0.1:1080" > /tmp/goflyway.log 2>&1 &`
+
+在服务器地址、端口、密码的位置换成你要设定的服务器地址、端口和密码。
+
+②如果想查看软件运行状况，就看日志：
+
+`tail -f /tmp/goflyway.log`
+
+③如果想停止运行：
+
+`kill -9 $(ps -ef|grep "goflyway"|grep -v grep|awk '{print $2}')`
 
 ### 2.浏览器类
 
@@ -1425,6 +1535,32 @@ URI：http://localhost:6800/jsonrpc
 
 哪个新用哪个！
 
+#### （3）邮箱客户端 Imap 协议下“已删除” 及“已发送” 目录的设置
+
+以Thunderbird为例，其他邮箱客户端大同小异。
+
+在 Thunderbird 中使用 QQ 邮箱的 Imap 服务时（使用 POP3 的，可忽略） ， 要注意一下“已删除” 及“已发送” 邮件在 Thunderbird 中的配置，Thunderbird 默认是把删除的邮件放在“垃圾” 文件夹下面， 但是这样删除的邮件无法同步到QQ 邮箱中。 这时， 你需要把如下图所示的“服务器设置” 中的“在删除消息时” ——“将之移到此文件夹中” 选择为“****的 Deleted Messages” 即可。 这样， 就可以同步到 QQ 邮箱服务器了！
+
+同样， 及“已发送” 邮件的目录需要选择“Sent Messages” 目录， 而不是默认的“sent” 目录。
+
+#### （4）IRC 通信软件 Hexchat
+
+`sudo pacman -S hexchat`
+
+给 IRC 通信软件 Hexchat 配置脚本:
+
+插件或脚本可以在如下项目地址进行下载： [https://github.com/hexchat/hexchat-addons](https://github.com/hexchat/hexchat-addons)。
+
+然后，在如下目录`/home/username/.config/hexchat/`下新建文件夹`addons` ， 即`/home/username/.config/hexchat/addons`。 然后把你需要的脚本放在这个文件夹里， 重启 Hexchat 就加载上了！ 我使用的脚本主要为如下几个：
+
+```
+alias.lua           filter.py           keepdialogs.lua  onoticeformat.py   shortnicks.py
+at.py               follow.py           match.lua        passwordmask.py    slap.py
+blinkonprivate.py   input-r-search.lua  nicenicks.py     quotes.py          statusmsg.py
+clones.lua          isbanned.py         nickspy.py       rainbow.pl         twitch_enhancements.py
+emoji-slack-fix.py  joinparttab.py      nignore.py       sharedchannels.py  url_highlight.pl
+```
+
 ## 四、影音类软件配置
 
 ### 1.图像处理类
@@ -1504,6 +1640,26 @@ revda也是调用的mpv,并且支持弹幕。只需要获取视频播放地址�
 
 `sudo pacman -Syu rhythmbox`
 
+**解决 Rhythmbox 中文乱码问题:**
+
+Rhythmbox 是一款很优秀的音乐播放器， 但是在处理中文时却不太友好， 导入歌曲时中文会变成乱码。这个问题也是很好解决的。
+Ctrl+Alt+T打开终端，输入以下内容:
+
+`sudo gedit /etc/profile`
+
+在打开文件最后输入一下内容:
+
+```
+export GST_ID3_TAG_ENCODING=GBK:UTF-8:GB18030
+export GST_ID3V2_TAG_ENCODING=GBK:UTF-8:GB18030
+```
+
+保存修改， 终端输入一下内容使修改生效:
+
+`source /etc/profile`
+
+重启 Rhythmbox， 重新导入歌曲即可。
+
 #### （7）音频剪辑audacity
 
 `sudo pacman -Syu audacity`
@@ -1582,7 +1738,7 @@ debian系deb包安装完，wps 会在`/usr/share/templates/`下生成模板文�
 
 #### （5）安装 tinytex
 
-① 按照谢大神写的教程 [https://yihui.org/tinytex/#for-other-users]， 终端执行如下命令：
+1）按照谢大神写的教程 [https://yihui.org/tinytex/#for-other-users]， 终端执行如下命令：
 
 `wget -qO- "http://yihui.org/gh/tinytex/tools/install-unx.sh" | sh`
 
@@ -1614,7 +1770,7 @@ tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texliv
 tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/tlnet/
 ```
 
-② 将其添加到 path(这里如果你用的是 zsh,把 bashrc 改成 zshrc， 其他类推),方法如下：
+2）将其添加到 path(这里如果你用的是 zsh,把 bashrc 改成 zshrc， 其他类推),方法如下：
 
 终端执行命令
 
@@ -1628,7 +1784,7 @@ tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/t
 
 `source ~/.bashrc`
 
-③ 先安装perl环境
+3）先安装perl环境
 
 `sudo pacman -S perl`
 
@@ -1638,7 +1794,7 @@ tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/t
 
 至此， 支持环境已经完成， 如果你不要使用 Latex 进行高级编辑，后面的可以不安装了。 如果需要， 那么就继续下面的操作！
 
-④ 安装中文支持包， 使用的是 xeCJK， 中文处理技术也有很多， xeCJK 是成熟且稳定的一种。
+4）安装中文支持包， 使用的是 xeCJK， 中文处理技术也有很多， xeCJK 是成熟且稳定的一种。
 
 `sudo pacman -Syu texlive-langchinese`
 
@@ -1648,19 +1804,19 @@ tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/t
 
 `tlmgr install ctex`
 
-⑤ 使用维护
+5）使用维护
 
 维护命令可以通过“`tlmgr --help`” 命令获取。
 
-1） 使用如下命令查找组件信息， 如终端运行：
+① 使用如下命令查找组件信息， 如终端运行：
 
 `tlmgr search --file --global "/xecjk"`
 
-2） 显示本机已安装的 Texlive 组件， 终端运行：
+② 显示本机已安装的 Texlive 组件， 终端运行：
 
 `tlmgr info --list --only-installed --data name,size`
 
-3） 报错“File xxx not found.”
+③ 报错“File xxx not found.”
 
 出现类似如下提示：
 `! LaTeX Error: File `xeCJK.sty' not found.`
@@ -1685,7 +1841,7 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 卸载就是“`tlmgr remove [模块]`” 了。 基本碰到包缺失的问题， 这么做就没事了。
 
-4） 列示需要更新的包， 终端执行：
+④ 列示需要更新的包， 终端执行：
 
 `tlmgr update --list`
 
@@ -1693,9 +1849,27 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 `tlmgr update --self --all`
 
-5） 使用图形界面， 终端执行：
+⑤ 使用图形界面， 终端执行：
 
 `tlmgr gui`
+
+6）Latex 文档转 word 格式
+
+目前 Latex 格式文档还没有十分完美的方法转换为 word 格式。目前，转换效果比较好的方法，是使用 pandoc 软件。
+
+`sudo pacman -S haskell-pandoc`
+
+ Pandoc 的使用方法可以参考[https://www.jianshu.com/p/dc62b915920e](https://www.jianshu.com/p/dc62b915920e)。 
+
+以下为两个常用转换命令：
+
+① 常规不指定格式转换：
+
+`pandoc 测试文件.tex -o 测试文件.docx`
+
+② 指定 docx 模板样式并转 docx：
+
+`pandoc -s m.tex -S --reference-docx reference.docx -o m.docx`
 
 #### （6）
 
@@ -1747,7 +1921,7 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 **① 离线字典安装**
 
-离线字典下载地址： <http://abloz.com/huzheng/stardict-dic/>
+离线字典下载地址： [http://abloz.com/huzheng/stardict-dic/](http://abloz.com/huzheng/stardict-dic/)
 
 下载完成后进入文件所在目录执行下面命令：
 
@@ -1784,11 +1958,92 @@ bing http://cn.bing.com/dict/search?q=%GDWORD%
 
 `yay sublime-text-4`
 
-（1）设置markdown实时预览
+（1）禁用sublime检测更新及注册码
+
+在 hosts 文件中添加如下内容：
+
+```
+#sublime license
+127.0.0.1 sublimetext.com
+127.0.0.1 sublimehq.com
+0.0.0.0 license.sublimehq.com
+0.0.0.0 45.55.255.55
+0.0.0.0 45.55.41.223
+127.0.0.1 www.sublimetext.com
+127.0.0.1 telemetry.sublimehq.com
+#sublime license
+```
+
+安装 sublime后，在菜单栏中选择 `help>>enter license`，把许可证复制到出现的框里， 点击 use license 就可以了， 破解之后就不会显示 unregistered字样。
+
+禁用 Sublime检测新版本， 设置 `Preferences >> Settings-User`：添加`"update_check": false`。然后，再以root用户模式下如（sudo） 启动 sublime， 再输入一次激活码进行激活（否则， root模式下 sublime 仍为未激活） 。
+
+（2）使用 Package Control 组件
+
+安装 package control 组件， 然后直接在线安装：
+按 `Ctrl+ '(此符号为 tab 按键上面的按键)` 调出 console（注： 避免热键冲突），粘贴以下代码到命令行并回车：
+
+`import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())`
+
+上面的代码复制到红线地方，按回车键，会看到下面出现东西在左右摆动，说明正在下载。
+
+（3）安装插件
+
+A.菜单栏点击 `Preferences >> Package Control >> Add Channel`, 输入这个地址回车：
+
+`https://raw.githubusercontent.com/wilon/sublime/master/download/channel_v3.json`
+
+会自动添加一行"channels"字段：
+
+```
+"channels":
+[
+	"https://raw.githubusercontent.com/wilon/sublime/master/download/channel_v3.json"
+],
+```
+
+此包每日更新。
+
+B.加载更快的办法
+
+如果还是太慢您可以指定本地channel_v3.json地址，方法如下：
+
+①下载json文件，GitHub下载地址：
+
+[https://raw.githubusercontent.com/wilon/sublime/master/download/channel_v3.json](https://raw.githubusercontent.com/wilon/sublime/master/download/channel_v3.json)
+
+②菜单栏点击并打开：`Preferences: Package Settings >> Package Control >> sublime Settings - User`
+添加一行"channels"字段：
+
+```
+"channels":
+[
+	"channel_v3.json所在目录/channel_v3.json"
+],
+```
+
+（4）安装一些推荐扩展
+
+①MarkDown Editing   ②ColorPicker颜色选择器   ③SublimeREPL 在 Sublime Text 中运行各种语言  
+④SublimeLinter高亮提示编写代码不规范和错误   ⑤SideBarEnhancements右键菜单增强插件   ⑥Alignment 代码对齐 
+⑦SublimeTmpl 快速生成文件模板     ⑧ConvertToUTF8    ⑨Bracket Highlighter 匹配括号引号和html标签
+⑩ Emmet(Zen Coding)快速生成HTML代码段 ⑪ Sublime CodeIntel 代码自动提示
+
+（5）汉化
+
+在进行 Sublime Text 的汉化之前，首先需要前往 Github 上去下载一下 Sublime 的汉化包。Sublime Text 汉化包：
+
+[https://github.com/MRLP0524/Sublime-Text-Chinesize](https://github.com/MRLP0524/Sublime-Text-Chinesize)
+
+点击下载后，我们将其解压缩，得到一个文件 Default.sublime-package。
+
+之后我们需要去找到目录 `/home/用户名/.config/sublime-text/Installed Packages` 以及目录`/root/.config/sublime-text/Installed Packages` 下。并将我们的汉化包直接拖进 Installed Packages 文件夹即可。这时候我们的Submlie汉化就完成了。汉化完成后，也可以输入中文了！
+
+（6）设置markdown实时预览
 
 使用package control安装插件，快捷键Ctrl+Shift+P调出命令面板，找到 `Install Package`选项并回车，稍微等待几秒，然后在出现的列表中搜索安装`MarkdownEditing`、`MarkdownPreview`、`MarkdownLivePreview`、`sync view scroll`四个插件，选中后回车即可安装，安装完成后会弹出“Package Control Messages”的文件。
 
-（2）解决MarkdownEditing 去除左侧空白+更改主题等
+（7）解决MarkdownEditing 去除左侧空白+更改主题等
 
 MarkdownEditing	:一个提高Sublime中Markdown编辑特性的插件。进入 `Preferences -> Package Settings -> Markdown Editting -> Markdow GFM Settings - Default & Markdow GFM Settings - User` ，修改为如下内容：
 
@@ -1821,7 +2076,7 @@ MarkdownEditing	:一个提高Sublime中Markdown编辑特性的插件。进入 `P
 
 ```
 
-（3）设置预览和同步滚动热键
+（8）设置预览和同步滚动热键
 
 Sublime Text支持自定义快捷键，syncviewscroll、MarkdownPreview和MarkdownLivePreview默认没有快捷键，我们可以自己置快捷键。方法是在Preferences -> Key Bindings-user打开的文件中的括号中添加代码：
 ```
@@ -1836,6 +2091,32 @@ Sublime Text支持自定义快捷键，syncviewscroll、MarkdownPreview和Markdo
     { "keys": ["alt+s"], "command": "toggle_sync_scroll" }
 ```
 这样"alt+b" 可在浏览器中预览，"alt+m" 可在sublime中分栏预览，"alt+s" 可在sublime中打开分栏预览后，再同步滚动。
+
+（9）在终端中通过命令使用sublime编辑文本
+
+打开用户配置文件 `~/.bash_profile` ，添加如下alias：
+
+`alias subl="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"`
+
+如果不添加别名，也可以选择将路径添加到环境变量下。这里的路径根据实际情况可能会有所不同。
+
+保存后回到命令行执行以下命令使其生效：
+
+`source ~/.bash_profile`
+
+命令行使用方法：
+
+这里我们假设在命令行用SublimeText打开book.txt，则执行如下：
+
+`subl book.txt`
+
+以后在命令行下查看或编辑文本文件，如果不想使用vim就可以直接使用"subl"命令将其在SublimeText编辑器打开了。
+
+（10）报错处理
+
+打开时报错：`Error trying to parse file:Invalid escape in  Packages\Pser\Default(windows).sublime-keymap:2:1`
+
+菜单 `Preferences>>Key Bindings（按键绑定-用户）`打开文件`/User/Default ().sublime-keymap`，然后用“`//`”把第二行注释掉即可。
 
 ### 2.汉化文件编译poedit
 
@@ -1873,6 +2154,84 @@ sudo pacman -Syu code
 
 `sudo pacman -Syu sqlitebrowser`
 
+### 7.Python 安装第三方模块（pip3）
+
+确保已安装 python-pip 和 python-setuptools：
+
+`sudo pacman -S python-pip python-setuptools`
+
+（1）然后终端中执行如下命令安装第三方常用模块：
+
+```
+sudo pip3 install send2trash
+sudo pip3 install requests
+sudo pip3 install beautifulsoup4
+sudo pip3 install selenium
+sudo pip3 install openpyxl
+sudo pip3 install PyPDF2
+sudo pip3 install python-docx（安装 python-docx， 而不是 docx）
+sudo pip3 install imapclient
+sudo pip3 install pyzmail
+sudo pip3 install twilio
+sudo pip3 install pillow
+sudo pip3 install python3-xlib（仅在 Linux 上）
+sudo pip3 install pyautogui
+sudo pip3 install pyperclip
+```
+
+（2）python-pip或pip3源使用国内镜像，提升模块下载速度。
+
+对于 python 开发，pip3 安装软件包国外的源下载速度实在太慢， 且常出现下载后安装出错问题。 所以把pip3 安装源替换成国内镜像， 可以大幅提升下载速度， 还可以提高安装成功率。
+
+**国内源：**
+
+```
+#  现在基本要求使用 https 源，要注意。
+清华： https://pypi.tuna.tsinghua.edu.cn/simple
+阿里云： http://mirrors.aliyun.com/pypi/simple/
+中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
+华中理工大学： http://pypi.hustunique.com/
+山东理工大学： http://pypi.sdutlinux.org/
+豆瓣： http://pypi.douban.com/simple/
+```
+
+① 临时使用：
+
+可以在使用 pip3 的时候加参数`-i https://pypi.tuna.tsinghua.edu.cn/simple`，例如： 
+
+`pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pyspider`
+
+这样就会从清华这边的镜像去安装 pyspider 库。
+
+② 永久修改， 一劳永逸：
+
+Linux 下，如果你使用的为 pip 9.0 及更新的版本， 那么配置文件为` ~/.config/pip/pip.conf`。 修改 `~/.config/pip/pip.conf`， 内容如下：
+
+```
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host=pypi.douban.com
+```
+
+已测试可用、 有效。
+
+如果你使用的为 pip 8.x.x 或更老的版本， 那么配置文件目录为 `$HOME/.pip/pip.conf` (没有就创建一个文件夹及文件。 文件夹要加“.” ， 表示是隐藏文件夹)
+
+（3）小补充：
+
+使用如下命令查看 pip 的版本：
+
+`pacman -Q python-pip`
+
+使用以下命令， 它会告诉你 pip 配置文件的不同位置:
+
+`pip config -v list`
+
+如果使用非 HTTPS 加密源（如豆瓣源） ， 在执行命令发生错误， 在命令最后加上`--trusted-host pypi.douban.com`，即
+
+`pip install django -i http://pypi.douban.com/simple --trusted-host pypi.douban.com`
+
 ## 七、工具类软件配置
 
 
@@ -1885,9 +2244,9 @@ sudo pacman -Syu code
 
 ## 常见问题
 
-### 系统级常见问题
+### (一)系统级常见问题
 
-### 1.sudo: service：找不到命令
+#### 1.sudo: service：找不到命令
 
 在执行 sudo service 命令时遇到 `command not found` 的错误提示，可以尝试使用 systemctl 命令来代替，或者安装相应的支持包来获得 service 命令的支持。
 
@@ -1897,7 +2256,7 @@ sudo pacman -Syu code
 
 `sudo systemctl start bluetooth`
 
-### 2.关于很久没有更新系统，再次更新系统提示错误
+#### 2.关于很久没有更新系统，再次更新系统提示错误
 
 先更新 archlinux-keyring 这个包：
 
@@ -1911,7 +2270,7 @@ sudo pacman -Syu code
 
 `pacman -Syyu`
 
-### 3.启动blueman提示“bulez守护进程没有运行”
+#### 3.启动blueman提示“bulez守护进程没有运行”
 
 已经安装了bluez、 bluez-utils、 blueman,每次重启后再次打开blueman 都会提示“bulez守护进程没有运行”。不想使用`sudo systemctl enable bluetooth`添加开机启动项，因为添加后都会启动后自动打开蓝牙。
 
@@ -1961,16 +2320,12 @@ Name[zh_CN]=启动Bluez
 Name=StartBluez
 Terminal=true
 Type=Application
-
 ```
 最后，加入开始菜单即可！
 
-
-### 4.启动时grub界面报错vconsole
+#### 4.启动时grub界面报错vconsole
 
 启动时grub界面报错：“systemctl status systemd-vconsole-setup.service”
-
-
 
 进入系统后，修改`/etc/vconsole.conf`文件内容，将如下内容：
 
@@ -1988,7 +2343,7 @@ FONT=
 FONT_MAP=
 ```
 
-### 5.启动时grub报错systemd-modules-load.service
+#### 5.启动时grub报错systemd-modules-load.service
 
 启动时grub界面报错：“systemctl status systemd-modules-load.service”，然后进入系统后，运行`sudo systemctl status systemd-modules-load.service`，报错详细信息为：
 
@@ -2007,7 +2362,27 @@ tp_smapi Does not work on:
 ```
 我安装后电池阈值设置生效，却报错。也就是说tp_smapi在我的X240上部分生效，但不完全能运行，所以报错 “Failed to insert module 'tp_smapi-lts'”。可以更换使用受支持的tpapi-bat。
 
-### 6.
+#### 6.
+
+### (二)应用软件常见问题
+
+#### 1.软件不能输入中文，或输入汉字时跳字母
+
+在相关软件启动命令中加入输入法环境变量即可。以下以Chrome浏览器为例。
+
+修改Chrome浏览器的desktop快捷方式文件：
+
+把 `/usr/share/applications` 目录下的 `google-chrome.desktop` 复制到`/home/dh/.local/share/applications` 下，同时，把 `google-chrome.desktop` 中的如下内容：
+
+`Exec=chromium-browser %U`
+
+修改为
+
+`Exec=env QT_IM_MODULE=fcitx chromium-browser %U`
+
+即，给`Exec=`添加上参数：`env QT_IM_MODULE=fcitx`
+
+#### 2.
 
 ## 附件部分
 
