@@ -1857,9 +1857,17 @@ sudo pacman -Syu code
 
 `yay git-cola`   //有依赖冲突，暂时未安装
 
-可以暂用smartgit：
+注意：上述从Archlinux的AUR中安装git-cola编译过程中存在冲突，无法正常安装，可以在[pkgs.org](https://pkgs.org/download/git-cola)下载Archlinux的zst离线安装包，比如我下载的【Chaotic AUR x86_64 Third-Party】的[git-cola-4.2.1-3-any.pkg.tar.zst](https://archlinux.pkgs.org/rolling/chaotic-aur-x86_64/git-cola-4.2.1-3-any.pkg.tar.zst.html),下载后，使用如下命令安装即可：
 
-`sudo pacman -S smartgit`
+`sudo pacman -U git-cola-4.2.1-3-any.pkg.tar.zst`
+
+实测可用！
+
+也可以暂用gitg、smartgit等：
+
+`sudo pacman -S gitg`   //免费
+
+`sudo pacman -S smartgit`  //非完全免费，需注册
 
 ### 6.数据库管理 sqlitebrowser
 
