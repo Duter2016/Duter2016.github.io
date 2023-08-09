@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      ThinkPad 配置 Archlinux KDE Plasma 记录
-subtitle:   个人笔记本安装记录
+title:      ThinkPad 安装配置 Arch Linux记录
+subtitle:   基于KDE Plasma桌面
 date:       2023-06-06
 author:     Duter2016
 header-img: img/post-bg-debug.png
