@@ -9,7 +9,7 @@ catalog: true
 music-id: 
 music-idfull: 
 tags:
-    - ArchLinux
+    - Arch Linux
     - Linux
 ---
 

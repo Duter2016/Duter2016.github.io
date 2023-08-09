@@ -19,11 +19,11 @@ tags:
 
 > Thinkpad 安装 基于Arch Linux 的 EndeavourOS
 
-## 一、系统基础配置
+# 一、系统基础配置
 
-### 1. 配置镜像源
+## 1.1 配置镜像源
 
-#### （1）EndeavourOS镜像源
+### 1.1.1 EndeavourOS镜像源
 
 `sudo gedit /etc/pacman.d/endeavouros-mirrorlist`
 
@@ -48,7 +48,7 @@ Server = https://fastmirror.pp.ua/endeavouros/repo/$repo/$arch
 Server = https://mirror.albony.xyz/endeavouros/repo/$repo/$arch
 ```
 
-#### （2）切换国内Arch官方镜像源
+### 1.1.2 切换国内Arch官方镜像源
 
 `sudo gedit /etc/pacman.d/mirrorlist`
 
@@ -90,7 +90,7 @@ Server = https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch
 ```
 
 
-#### （3）添加 ArchLinuxcn 中文社区仓库 
+### 1.1.3 添加 ArchLinuxcn 中文社区仓库 
 
 `sudo gedit /etc/pacman.conf`
 
@@ -119,11 +119,11 @@ Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch # 哈尔滨工业大学开
 Server = https://repo.huaweicloud.com/archlinuxcn/$arch # 华为开源镜像站
 ```
 
-#### （4）关于添加AUR源
+### 1.1.4 关于添加AUR源
 
 **注意：不要添加AUR国内源！原来仅有清华大学提供AUR的国内镜像源，后因种种原因，已经取消了AUR的国内镜像源。**
 
-#### （5）启用multilib仓库源
+### 1.1.5 启用multilib仓库源
 
 编辑 `/etc/pacman.conf`，去掉下面两行前面的 # 号： 
 
@@ -132,7 +132,7 @@ Server = https://repo.huaweicloud.com/archlinuxcn/$arch # 华为开源镜像站
 Include = /etc/pacman.d/mirrorlist
 ```
 
-### 2.安装update-grub及os-prober
+## 1.2 安装update-grub及os-prober
 
 **注意：图形界面不可用`grub-customizer`，会导致引导出错。**
 
@@ -188,7 +188,7 @@ menuentry 'Linux Mint MATE' --class linuxmint --class gnu-linux --class gnu --cl
 ### END /etc/grub.d/10_linux ###
 ```
 
-### 3.切换到其它内核（可选）
+## 1.3 切换到其它内核（可选）
 
 Arch Linux 和 AUR 上可选的内核可以参考以下网址：
 
@@ -248,7 +248,7 @@ GRUB_SAVEDEFAULT=true
 
 
 
-### 4.给kde文件管理器Dolphin添加右键“以管理员身份打开”
+## 1.4 给文件管理器Dolphin添加右键“以管理员身份打开”
 
 kde文件管理器Dolphin属于用户使用的安全考虑，已经取消了右键“以管理员身份打开”菜单。经过查询，仍然有以root身份运行Dolphin解决方法，终端输入如下命令即可：
 
@@ -303,10 +303,10 @@ Name[zh_TW]=以管理员身份打开
 
 如果新建无误后显示不出来的话， 执行一下`kbuildsycoca5`如果有错误会有提示。
 
-### 5.Arch Linux 安装及配置 TLP 高级电源管理工具
+## 1.5 Arch Linux 安装及配置 TLP 高级电源管理工具
 
 
-#### 1）tlp 与 power-profiles-daemon的选择问题
+### 1.5.1 tlp 与 power-profiles-daemon的选择
 
 现在如果桌面环境（如KDE Plasma、Gnome等）都已经默认安装了power-profiles-daemon作为系统的电源及CPU管理软件。而TLP是老牌优秀的高级电源管理工具，需要用户自己安装配置。从使用来看，TLP对CPU的管控能力更胜一筹。
 
@@ -347,9 +347,9 @@ yay -S dptfxtract-bin
 如果你选择使用TLP,安装步骤如下：
 
 
-#### 2）安装TLP
+### 1.5.2 安装TLP
 
-##### （1）卸载与tlp冲突的power-profiles-daemon
+#### （1）卸载与tlp冲突的power-profiles-daemon
 
 如果系统中默认安装了power-profiles-daemon。那么先禁用power-profiles-daemon.service服务，执行以下命令：
 
@@ -361,7 +361,7 @@ yay -S dptfxtract-bin
 
 或者安装TLP时，根据提示卸载也可以。
 
-##### （2）开始安装TLP
+#### （2）开始安装TLP
 
 ① 对于基于 Arch Linux 的系统，使用 Pacman 命令 安装 TLP：
 
@@ -426,9 +426,9 @@ is compatible with tp_smapi.
 
 后面进行配置。
 
-#### 3） 配置TLP
+### 1.5.3  配置TLP
 
-##### (1) 设置开机启动tlp服务
+#### （1） 设置开机启动tlp服务
 
 对于基于 Arch Linux 的系统，在启动时启用 TLP 和 TLP-Sleep 服务：
 
@@ -437,7 +437,7 @@ sudo systemctl enable tlp.service
 sudo systemctl enable tlp-sleep.service    //我的提示Unit file tlp-sleep.service does not exist.
 ```
 
-##### （2）设置tlp-rdw服务
+#### （2）设置tlp-rdw服务
 
 在使用(tlp-rdw包)之前需要使用NetworkManager并且需要启用NetworkManager-dispatcher.service:
 
@@ -450,13 +450,13 @@ sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket
 ```
 
-##### （3）安装图形化界面工具 TLPUI 管理工具
+#### （3）安装图形化界面工具 TLPUI 管理工具
 
 TLPUI（https://github.com/d4nj1/TLPUI）是用Python和GTK编写的TLP的图形界面，可以读取和显示TLP配置，显示默认值和未保存的更改以及加载tlp-stat以查看简单而完整的统计信息。
 
 `yay -S tlpui`
 
-##### （4）配置tpacpi-bat文件
+#### （4）配置tpacpi-bat文件
 
 **设置开机启动服务：**
 
@@ -520,7 +520,7 @@ Response: 0x32e
 
 在 X240 上测试有效！ 
 
-##### （5）配置tlp.conf文件
+#### （5）配置tlp.conf文件
 
 配置文件位于 `/etc/tlp.conf` 并默认提供高度优化的省电方案。对选项的全部解释请访问:[TLP configuration](https://linrunner.de/en/tlp/docs/tlp-configuration.html)。
 
@@ -590,11 +590,11 @@ DISK_APM_LEVEL_ON_BAT="128"
 ```
 设置范围是`[1,255]`，`[1,127]`会使硬盘降速，所以电源模式设置为 128 就好，注意如果你有两块硬盘，就要分别对每块硬盘设置，比如写成”`254 254`”和”`254 128`”
 
-##### （6）关于设置后键盘灯自动亮起的问题
+#### （6）关于设置后键盘灯自动亮起的问题
 
 **注意：** Thinkpad x 系列等笔记本已经有键盘灯， 但是通过上述设置后， 还有一个问题没有解决： 就是在使用电源供电时，如果在很短的时间内不操作键盘或者鼠标（即进入空闲状态后），键盘灯总是会自动亮起！对着这个问题可以通过“系统设置-电源管理-节能”，然后点击三个选项卡，将“降低屏幕亮度”、“屏幕节能”前面的勾去掉既可以解决问题。 
 
-#### 4）TLP常用命令
+### 1.5.4 TLP常用命令
 
 |功能|命令|
 |-|-|
@@ -626,7 +626,7 @@ DISK_APM_LEVEL_ON_BAT="128"
 * [TLP wiki](https://linrunner.de/tlp/installation/arch.html)
 * [Arch Linux TLP wiki](https://wiki.archlinuxcn.org/wiki/TLP)
 
-### 6.使用 thinkfan 控制 thinkpad 风扇转速
+## 1.6 使用 thinkfan 控制 thinkpad 风扇转速
 
 （1） 安装 thinkfan 风扇控制器软件
 
@@ -811,13 +811,13 @@ hwmon /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
 
 完成！
 
-### 7.显示 Intel CPU 频率（可选）不可安装，会让风扇启动失败
+## 1.7 显示 Intel CPU 频率（可选）不可安装，会让风扇启动失败
 
 **安装thinkfan的用户万万不可安装[Intel P-state and CPU-Freq Manager]，其依赖libsmbios是Dell's Thermal Management Feature，会破坏thinkfan的thinkpad_hwmon温度感应**
 
 KDE 小部件：[Intel P-state and CPU-Freq Manager](https://github.com/frankenfruity/plasma-pstate)
 
-### 8.Thinkpad 笔记本安装硬盘保护模块
+## 1.8 Thinkpad 笔记本安装硬盘保护模块
 
 **hdaps在我的笔记本上不能运行，提示“Could not find a suitable interface”，经项目主页查看，是因为hdapsd目前不支持较新的笔记本型号。如果你想尝试一下，可以安装下面的步骤安装一下！**
 
@@ -845,7 +845,7 @@ KDE 小部件：[Intel P-state and CPU-Freq Manager](https://github.com/frankenf
 sudo systemctl start hdapsd@device.service
 ```
 
-### 9.软件管理器pamac
+## 1.9 软件管理器pamac
 
 pamac是Manjaro系统中的软件管理器，可以通过AUR安装在Arch系的系统中。
 
@@ -873,7 +873,7 @@ yay -S pamac-tray-icon-plasma
 
 以下所有的 `yay -S` 都可以用 `pamac build`替代，或者在“**添加/删除软件**”搜索安装。
 
-### 10.安装KDE Plasma桌面的系统监视器 ksysguard
+## 1.10 安装系统监视器 ksysguard
 
 系统监视器（KSysGuard），即KDE系统监视器，设计简单，无需特别设置即可进行简单的进程控制。它包含两张工作表：①系统负载（上面是图表）和②进程表。
 
@@ -883,7 +883,7 @@ yay -S pamac-tray-icon-plasma
 
 `sudo pacman -Syu ksysguard`
 
-### 11.manjaro的GUI内核和驱动管理工具
+## 1.11 manjaro的GUI内核和驱动管理工具
 
 manjaro的**GUI内核管理工具**在AUR仓库中是garuda-settings-manager-git，即manjaro的Manjaro settings manager。
 
@@ -891,7 +891,7 @@ manjaro的**GUI驱动管理工具**是Driver Manager，在AUR仓库中没有。
 
 不知风险，暂未安装。
 
-### 12.轻松搞定 Linux+Win 双系统时间差异
+## 1.12 轻松搞定 Linux+Win 双系统时间差异
 
 在 Linux 下系统时间是正确的,转到 Windows 下,系统时间整整慢了 8 个小时。这是因为 Linux 默认使用网络时间,而不是读取本机硬件时钟。打开终端,输入如下命令(不需要管理员权限)：
 
@@ -903,11 +903,11 @@ manjaro的**GUI驱动管理工具**是Driver Manager，在AUR仓库中没有。
 
 这就设置好了。无论你在 Linux 还是 Windows,系统时间都是正确的了。
 
-## 二、系统类软件配置及美化
+# 二、系统类软件配置及美化
 
-### 1.安装及配置输入法fcitx5
+## 2.1 安装及配置输入法fcitx5
 
-#### 1）安装输入法 fcitx5
+### 2.1.1 安装输入法 fcitx5
 
 命令如下：
 
@@ -941,7 +941,7 @@ export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
 ```
 
-#### 2）安装主题
+### 2.1.2 安装主题
 
 下面为`fcitx5-material-color`主题的安装及设置。`fcitx5-material-color` 提供了类似微软拼音的外观。
 
@@ -1009,7 +1009,7 @@ git pull
 在拼音输入法（或者 Rime 输入法）的设置中，启用“ 在程序中显示预编辑文本 ”即可启用单行模式。
 
 
-#### 3）fcitx5-rime用户配置
+### 2.1.3 fcitx5-rime用户配置
 
 **（1）fcitx5配置目录**
 
@@ -1035,7 +1035,7 @@ fcitx5-rime用户配置目录(这个与fcitx-rime的目录位置相同)：
 
 fcitx5-rime的其他配置的设置（如同步、恢复词库）基本与fcitx-rime相同。
 
-#### 4）解决 Fcitx5 中文输入法无法输入全角中括号【】
+### 2.1.4 解决 Fcitx5 中文输入法无法输入全角中括号【】
 
 新安装的 fcitx5， 在中文输入法状态时， `[`和`]`打出的字符为`·` 和`「 」` 。
 
@@ -1053,7 +1053,7 @@ fcitx5-rime的其他配置的设置（如同步、恢复词库）基本与fcitx-
 ```
 然后， 保存后重启 fcitx5 即可。
 
-### 2.安装windows字体及等宽字体
+## 2.2 安装windows字体及等宽字体
 
 （1）安装windows字体
 
@@ -1102,7 +1102,10 @@ sudo fc-cache -fv
 
 ```
 
-### 3.Arch Linux 终端文字颜色设置
+## 2.3 系统美化及优化
+
+
+### 2.3.1 Arch Linux 终端文字颜色设置
 
 默认情况下，Arch Linux的终端显示是黑白的，如命令提示行（即`root@host:~#`）、`ls`显示的结果等，下面描述设置方法。
 
@@ -1124,194 +1127,7 @@ PS1='\[\e[1;35m\]\u@\h:\[\e[0m\]\[\e[1;33m\]\w\[\e[1;35m\]\[\e[0m\]\[\e[1;34m\]\
 * [https://blog.csdn.net/apollo_miracle/article/details/116007968]
 * [https://www.ancii.com/adj83v55p/]
 
-### 4.安装 debtab
-
-* 参考： [《arch/manjaro安装deb包》](https://www.jianshu.com/p/3eee333687a4)
-
-（1）首先查看电脑上是否安装过
-
-`sudo pacman -Q debtap`
-
-（2）安装yay工具，记得配置arch
-
-`sudo pacman -S yay`
-
-（3）安装解包打包工具debtap
-
-`yay -S debtap`
-
- 修改debtap源为国内镜像源：
-
-```
-# 打开`/usr/bin/debtap`
-
-替换：http://ftp.debian.org/debian/dists
-为：https://mirrors.ustc.edu.cn/debian/dists
-
-替换：http://archive.ubuntu.com/ubuntu/dists
-为：https://mirrors.ustc.edu.cn/ubuntu/dists/
-```
-
-（4）升级debtap
-
-`sudo debtap -u`
-
-（5）解包
-
-`sudo debtap  xxxx.deb`
-
-（6）安装
-
-`sudo pacman -U x.tar.xz`
-
-### 5.安装Dock栏latte
-
-`sudo pacman -Syu latte-dock`
-
-启动 dock ：
-
-`latte-dock`
-
-### 6.安装icon theme
-
-图标推荐的是Papirus-Dark，仿steam的图标：
-
-`sudo pacman -S papirus-icon-theme`
-
-### 7.屏幕色温调节 redshift
-
-注意，使用**plasma kde桌面不需要安装redshift**,kde自带“夜间颜色控制”组件。
-
-`sudo pacman -Syu redshift`
-
-### 8.压缩归档工具
-
-`sudo pacman -Syu ark unace p7zip sharutils arj zip lzip unarchiver`
-
-Dolphin 文件管理器默认使用的 ark 包右键压缩包直接解压。其可选依赖提供了各个压缩格式的支持，可以自行选择安装。
-
-但是ark方法解压 Windows 下的压缩包可能会乱码。使用 Unarchiver 可以避免这个问题。
-
-Unarchiver解压压缩包：
-
-`unar xxx.zip`
-
-### 9.杀毒软件 clamtk
-
-`sudo pacman -Syu clamtk`
-
-### 10.高漫M5数位板
-
-**1）安装软件**
-
-高漫M5数位板官方驱动是支持Win/Mac/Android的， 然而没有提供Linux驱动。
-
-但是已有高手发现Huion(绘王)和Gaomon(高漫)数位板某些型号是相互对应的，驱动也能通用，于是乎相关软件就有了。这就好办了!
-
-先安装几个软件，命令安装：
-
-`sudo pacman -S xf86-input-wacom kcm-wacomtablet libwacom switchboard-plug-wacom`
- 
-**2）检查数位板设备**
-
-目前的Linux内核大部分都能识别出高漫数位板了。
-
-> 下面以高漫M5为例！
-
-（1）首先查看设备id，终端运行:
-
-`lsusb`
-
-显示：
-
-`Bus 002 Device 013: ID 256c:0064 GAOMON Gaomon Tablet`
-
-设备id是256c:0064。也就是
-
-```
-idVendor           256c
-idProduct          0064
-```
-
-（2）终端运行命令：
-
-`sudo usbhid-dump -es -m 256c:0064 | tee frame_wheel_srolling.txt`
-
-查看设备是否能正常上报，发现能正常上报数据，说明设备本身没有问题。
-
-（3）在`/etc/X11/xorg.conf.d`目录下添加文件`50-digimend.conf`， 内容如下：
-
-```
-Section "InputClass"
-        Identifier "Tablet"
-        MatchUSBID "256c:0064"
-        MatchDevicePath "/dev/input/event*"
-        Driver "wacom"
-EndSection
-```
-
-上面就完成了驱动适配。
-
-拔下数位板USB连线，重启或注销一下系统，在开始菜单打开“**wacom数位板扫描工具**”就可以正常使用数位板了。
-
-### 11.安装新版TrueCrypt加密盘软件veracrypt
-
-veracrypt是TrueCrypt的升级版，可以使用TrueCrypt建立的加密盘的：
-
-`sudo pacman -Syu veracrypt`
-
-### 12.剪切板管理工具parcellite（也可不安装，plasma kde 默认使用klipper接口）
-
-sudo pacman -Syu parcellite
-
-### 13.温度查看工具psensor
-
-`sudo pacman -Syu psensor`
-
-### 14.磁盘空间分析baobab
-
-`sudo pacman -Syu baobab`
-
-### 15.配置插入鼠标禁用触摸板功能
-
-Arch Linux在刚安装好，时默认是安装了xf86-input-libinput和libinput的，一般不需要手动安装。并且可以在`设置>>系统设置>>输入设备>>触摸板`中设置很多项，如“打字时禁用”等。
-
-如果没有安装，用以下命令安装一下：
-
-```
-sudo pacman -S xf86-input-libinput
-sudo pacman -S libinput
-```
-
-其默认的配置文件安装在 `/usr/share/X11/xorg.conf.d/40-libinput.conf`。
-
-用编辑器打开该文件，找到包含`MatchIsTouchpad "on"`的section部分：
-```
-Section "InputClass"
-        Identifier "libinput touchpad catchall"
-        MatchIsTouchpad "on"
-        MatchDevicePath "/dev/input/event*"
-        Driver "libinput"
-EndSection
-```
-添加当检测到 USB 鼠标时，它将禁用触摸板的option：
-
-`Option "SendEventsMode" "disabled-on-external-mouse"
-
-即：
-```
-Section "InputClass"
-        Identifier "libinput touchpad catchall"
-        MatchIsTouchpad "on"
-        MatchDevicePath "/dev/input/event*"
-        Driver "libinput"
-        Option "SendEventsMode" "disabled-on-external-mouse"
-EndSection
-```
-
-然后重启或注销一下就可以了！
-
-### 16.Linux 终端命令补全及 Bashmarks 命令书签功能
+### 2.3.2 Linux 终端命令补全及 Bashmarks 命令书签功能
 
 **常规技巧：**
 
@@ -1358,15 +1174,208 @@ l - 列出所有的书签
 
 先 `cd` 到一个目录后， `s` 命令保存该目录为书签后， 才能使用其他命令哦！
 
-### 17.安装 Guake 下拉终端
+### 2.3.3 安装Dock栏latte
+
+`sudo pacman -Syu latte-dock`
+
+启动 dock ：
+
+`latte-dock`
+
+### 2.3.4 安装icon theme
+
+图标推荐的是Papirus-Dark，仿steam的图标：
+
+`sudo pacman -S papirus-icon-theme`
+
+### 2.3.5 屏幕色温调节 redshift
+
+注意，使用**plasma kde桌面不需要安装redshift**,kde自带“夜间颜色控制”组件。
+
+`sudo pacman -Syu redshift`
+
+## 2.4 系统辅助工具
+
+### 2.4.1 安装 debtab
+
+* 参考： [《arch/manjaro安装deb包》](https://www.jianshu.com/p/3eee333687a4)
+
+（1）首先查看电脑上是否安装过
+
+`sudo pacman -Q debtap`
+
+（2）安装yay工具，记得配置arch
+
+`sudo pacman -S yay`
+
+（3）安装解包打包工具debtap
+
+`yay -S debtap`
+
+ 修改debtap源为国内镜像源：
+
+```
+# 打开`/usr/bin/debtap`
+
+替换：http://ftp.debian.org/debian/dists
+为：https://mirrors.ustc.edu.cn/debian/dists
+
+替换：http://archive.ubuntu.com/ubuntu/dists
+为：https://mirrors.ustc.edu.cn/ubuntu/dists/
+```
+
+（4）升级debtap
+
+`sudo debtap -u`
+
+（5）解包
+
+`sudo debtap  xxxx.deb`
+
+（6）安装
+
+`sudo pacman -U x.tar.xz`
+
+### 2.4.2 压缩归档工具
+
+`sudo pacman -Syu ark unace p7zip sharutils arj zip lzip unarchiver`
+
+Dolphin 文件管理器默认使用的 ark 包右键压缩包直接解压。其可选依赖提供了各个压缩格式的支持，可以自行选择安装。
+
+但是ark方法解压 Windows 下的压缩包可能会乱码。使用 Unarchiver 可以避免这个问题。
+
+Unarchiver解压压缩包：
+
+`unar xxx.zip`
+
+### 2.4.3 杀毒软件 clamtk
+
+`sudo pacman -Syu clamtk`
+
+### 2.4.4 剪切板管理工具parcellite
+
+**（也可不安装，plasma kde 默认使用klipper接口）**
+
+sudo pacman -Syu parcellite
+
+### 2.4.5 温度查看工具psensor
+
+`sudo pacman -Syu psensor`
+
+### 2.4.6 磁盘空间分析baobab
+
+`sudo pacman -Syu baobab`
+
+### 2.4.7 安装 Guake 下拉终端
 
 `sudo pacman -S guake`
 
-## 三、互联网类软件配置
+## 2.5 系统外设硬件设置
 
-### 1.安装SS、SSR、v2ray、clash、goflyway
+### 2.5.1 高漫M5数位板
 
-#### （1）SS
+**（1）安装软件**
+
+高漫M5数位板官方驱动是支持Win/Mac/Android的， 然而没有提供Linux驱动。
+
+但是已有高手发现Huion(绘王)和Gaomon(高漫)数位板某些型号是相互对应的，驱动也能通用，于是乎相关软件就有了。这就好办了!
+
+先安装几个软件，命令安装：
+
+`sudo pacman -S xf86-input-wacom kcm-wacomtablet libwacom switchboard-plug-wacom`
+ 
+**（2）检查数位板设备**
+
+目前的Linux内核大部分都能识别出高漫数位板了。
+
+> 下面以高漫M5为例！
+
+① 首先查看设备id，终端运行:
+
+`lsusb`
+
+显示：
+
+`Bus 002 Device 013: ID 256c:0064 GAOMON Gaomon Tablet`
+
+设备id是256c:0064。也就是
+
+```
+idVendor           256c
+idProduct          0064
+```
+
+② 终端运行命令：
+
+`sudo usbhid-dump -es -m 256c:0064 | tee frame_wheel_srolling.txt`
+
+查看设备是否能正常上报，发现能正常上报数据，说明设备本身没有问题。
+
+③ 在`/etc/X11/xorg.conf.d`目录下添加文件`50-digimend.conf`， 内容如下：
+
+```
+Section "InputClass"
+        Identifier "Tablet"
+        MatchUSBID "256c:0064"
+        MatchDevicePath "/dev/input/event*"
+        Driver "wacom"
+EndSection
+```
+
+上面就完成了驱动适配。
+
+拔下数位板USB连线，重启或注销一下系统，在开始菜单打开“**wacom数位板扫描工具**”就可以正常使用数位板了。
+
+### 2.5.2 配置插入鼠标禁用触摸板功能
+
+Arch Linux在刚安装好，时默认是安装了xf86-input-libinput和libinput的，一般不需要手动安装。并且可以在`设置>>系统设置>>输入设备>>触摸板`中设置很多项，如“打字时禁用”等。
+
+如果没有安装，用以下命令安装一下：
+
+```
+sudo pacman -S xf86-input-libinput
+sudo pacman -S libinput
+```
+
+其默认的配置文件安装在 `/usr/share/X11/xorg.conf.d/40-libinput.conf`。
+
+用编辑器打开该文件，找到包含`MatchIsTouchpad "on"`的section部分：
+```
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+```
+添加当检测到 USB 鼠标时，它将禁用触摸板的option：
+
+`Option "SendEventsMode" "disabled-on-external-mouse"
+
+即：
+```
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+        Option "SendEventsMode" "disabled-on-external-mouse"
+EndSection
+```
+
+然后重启或注销一下就可以了！
+
+### 2.5.3 安装新版TrueCrypt加密盘软件veracrypt
+
+veracrypt是TrueCrypt的升级版，可以使用TrueCrypt建立的加密盘的：
+
+`sudo pacman -Syu veracrypt`
+
+# 三、互联网类软件配置
+
+## 3.1 安装SS、SSR、v2ray、clash、goflyway
+
+### 3.1.1 SS
 `sudo pacman -Syu shadowsocks`
 
 `sudo pacman -Syu shadowsocks-v2ray-plugin`
@@ -1377,7 +1386,7 @@ l - 列出所有的书签
 
 `ssserver -c /etc/shadowsocks/config.json`
 
-#### （2）SSR
+### 3.1.2 SSR
 
 用如下命令通过AUR安装electron-ssr，**一直编译失败，安装不上**：
 
@@ -1387,7 +1396,7 @@ l - 列出所有的书签
 
 **目前使用星火应用商店在linuxmint安装后的文件，复制到Arch Linux可以启动！**
 
-#### （3）v2ray
+### 3.1.3 v2ray
 
 安装主体：
 
@@ -1397,7 +1406,7 @@ l - 列出所有的书签
 
 `yay nekoray`
 
-#### （4）clash GUI
+### 3.1.4 clash GUI
 
 clash 是一款非常强大的上网神器，现在在 Linux 平台下也推出了 GUI 版本。
 
@@ -1405,9 +1414,9 @@ clash 是一款非常强大的上网神器，现在在 Linux 平台下也推出�
 
 `yay -S clash-for-windows-bin`
 
-#### (5)Goflyway
+### 3.1.5 Goflyway
 
-1）下载Goflyway
+（1）下载Goflyway
 
 到项目主页下载Goflyway文件“goflyway_linux_amd64.tar.gz”：
 
@@ -1417,7 +1426,7 @@ clash 是一款非常强大的上网神器，现在在 Linux 平台下也推出�
 
 `chmod a+x goflyway`
 
-2）启动goflyway有两种方法：
+（2）启动goflyway有两种方法：
 
 A.第一种：直接显示运行状态
 
@@ -1445,13 +1454,13 @@ B.第二种：单独查看运行状态
 
 `kill -9 $(ps -ef|grep "goflyway"|grep -v grep|awk '{print $2}')`
 
-### 2.浏览器类
+## 3.2 浏览器类
 
-#### （1）Firefox
+### 3.2.1 Firefox
 
 `sudo pacman -Syu firefox`
 
-#### （2）Edge 
+### 3.2.2 Edge 
 
 稳定版stable：
 
@@ -1461,27 +1470,27 @@ B.第二种：单独查看运行状态
 
 `yay -S microsoft-edge-dev-bin` 
 
-#### （3）Chrome
+### 3.2.3 Chrome
 
 `yay -S google-chrome`
 
-### 3.云盘及下载类
+## 3.3 云盘及下载类
 
-#### （1）安装百度网盘
+### 3.3.1 安装百度网盘
 
 选择第 2 个基于 electron 的版本：
 
 `yay -S baidunetdisk-electron`
 
-#### （2）安装迅雷：
+### 3.3.2 安装迅雷：
 
 `yay -S xunlei-bin`
 
-#### （3）安装deluge：
+### 3.3.3 安装deluge：
 
 `sudo pacman -Syu deluge`
 
-#### （4）安装aria2和uget
+### 3.3.4 安装aria2和uget
 
 ```
 sudo pacman -Syu uget
@@ -1513,17 +1522,17 @@ URI：http://localhost:6800/jsonrpc
 ③关闭设置界面后选择主界面左边的“home”然后依次打开:`分类——右键属性`,打开属性设置窗口,切换到“新下载的`默认一般设置`”这里可以设置默认的下载路径。
 然后调整最大连接数(建议 16)。
 
-#### (5) 坚果云
+### 3.3.5 坚果云
 
 `yay nutstore`
 
-### 4.社交及新闻类
+## 3.4 社交及新闻类
 
-#### （1）安装腾讯QQ：
+### 3.4.1 安装腾讯QQ：
 
 `yay -S linuxqq`
 
-#### （2）微信
+### 3.4.2 微信
 
 星火应用商店的修改的官方wechat-uos微信：
 
@@ -1535,7 +1544,7 @@ URI：http://localhost:6800/jsonrpc
 
 哪个新用哪个！
 
-#### （3）邮箱客户端 Imap 协议下“已删除” 及“已发送” 目录的设置
+### 3.4.3 邮箱客户端 Imap 协议下“已删除” 及“已发送” 目录的设置
 
 以Thunderbird为例，其他邮箱客户端大同小异。
 
@@ -1543,7 +1552,7 @@ URI：http://localhost:6800/jsonrpc
 
 同样， 及“已发送” 邮件的目录需要选择“Sent Messages” 目录， 而不是默认的“sent” 目录。
 
-#### （4）IRC 通信软件 Hexchat
+### 3.4.4 IRC 通信软件 Hexchat
 
 `sudo pacman -S hexchat`
 
@@ -1561,63 +1570,65 @@ clones.lua          isbanned.py         nickspy.py       rainbow.pl         twit
 emoji-slack-fix.py  joinparttab.py      nignore.py       sharedchannels.py  url_highlight.pl
 ```
 
-## 四、影音类软件配置
+# 四、影音类软件配置
 
-### 1.图像处理类
+## 4.1 图像处理类
 
-#### （1）安装火焰截图
+### 4.1.1 安装火焰截图
 
 `sudo pacman -Syu flameshot`
 
-#### （2）深度OCR
+### 4.1.2 深度OCR
 
 **编译一直出错，尚未安装**
 
 `yay deepin-ocr-git`
 
-#### （3）录屏软件kazam
+### 4.1.3 录屏软件kazam
 
 `yay kazam`
 
-#### （4）画图工具 mypaint
+### 4.1.4 画图工具 mypaint
 
 `sudo pacman -Syu mypaint`
 
-#### （5）安装 peek录制 GIF：
+### 4.1.5 安装 peek录制 GIF：
 
 `sudo pacman -Syu peek`
 
-#### （6）屏幕量尺 kruler
+### 4.1.6 屏幕量尺 kruler
 
 `sudo pacman -Syu kruler`
 
-#### （7）GIMP
+### 4.1.7 GIMP
 
 `sudo pacman -Syu gimp`
 
-#### （8）优麒麟wine Photoshop
+### 4.1.8 优麒麟wine Photoshop
 
 下载后，使用debtap安装。
 
-#### （9）图片查看器gwenview（系统已默认安装）
+### 4.1.9 图片查看器gwenview
+
+（系统已默认安装）
 
 `sudo pacman -S gwenview`
 
-### 2.影音类
+## 4.2 影音类
 
-#### （1）安装网易云音乐：
+### 4.2.1 安装网易云音乐：
 
 `yay netease-cloud-music`
 
-#### （2）洛雪音乐助手
+### 4.2.2 洛雪音乐助手
 
 `yay lx-music-desktop-bin`
 
-#### （3）视频剪辑 kdenlive
+### 4.2.3 视频剪辑 kdenlive
 
 `sudo pacman -Syu kdenlive`
 
-#### （4）安装MPV
+### 4.2.4 安装MPV
 
 `sudo pacman -S youtube-dl mpv`
 
@@ -1631,12 +1642,16 @@ revda也是调用的mpv,并且支持弹幕。只需要获取视频播放地址�
 
 详细使用方法见[Revda wiki](https://github.com/THMonster/Revda/wiki/1-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)
 
-#### （5）资源播放器zyplayer
+### 4.2.5 资源播放器zyplayer
 
-`yay -S zyplayer-appimage`
+`yay -S zy-player-appimage`
+
+或者
+
+`yay -S zy-player-bin`
 
 建议到[项目主页](https://github.com/Hunlongyu/ZY-Player)下载安装`v2.8.5`版，新版本`v2.8.8`有功能阉割（没有影视推荐模块了）！
-#### （6）rhythmbox
+### 4.2.6 rhythmbox
 
 `sudo pacman -Syu rhythmbox`
 
@@ -1660,15 +1675,15 @@ export GST_ID3V2_TAG_ENCODING=GBK:UTF-8:GB18030
 
 重启 Rhythmbox， 重新导入歌曲即可。
 
-#### （7）音频剪辑audacity
+### 4.2.7 音频剪辑audacity
 
 `sudo pacman -Syu audacity`
 
-## 五、办公类软件配置
+# 五、办公类软件配置
 
-### 1.office编辑类
+## 5.1 office编辑类
 
-#### （1）安装wps
+### 5.1.1 安装wps
 
 安装中文版wps-office-cn执行：
 
@@ -1690,7 +1705,7 @@ yay wps-office
 
 debian系deb包安装完，wps 会在`/usr/share/templates/`下生成模板文件，如果没有这些模板文件，桌面右键新建是没有新建wps文档的选项的。Arch Linux安装后，右键新建没有wps文档菜单，只需要解压别的桌面版复制出来模板文件，放到`/usr/share/templates/`目录即可。
 
-#### （2）在 Arch Linux 上安装 LibreOffice
+### 5.1.2 安装 LibreOffice
 
 可能需要 hsqldb2-java 启用 LibreOffice Base 中的某些模块。 使用命令安装它：
 
@@ -1728,17 +1743,17 @@ debian系deb包安装完，wps 会在`/usr/share/templates/`下生成模板文�
 
 `$ yay libreoffice-extension-languagetool`
 
-#### （3）retext
+### 5.1.3 retext
 
 `sudo pacman -Syu retext`
 
-#### （4）安装texstudio
+### 5.1.4 安装texstudio
 
 `sudo pacman -Syu texstudio`
 
-#### （5）安装 tinytex
+### 5.1.5 安装 tinytex
 
-1）按照谢大神写的教程 [https://yihui.org/tinytex/#for-other-users]， 终端执行如下命令：
+（1）按照谢大神写的教程 [https://yihui.org/tinytex/#for-other-users]， 终端执行如下命令：
 
 `wget -qO- "http://yihui.org/gh/tinytex/tools/install-unx.sh" | sh`
 
@@ -1770,7 +1785,7 @@ tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texliv
 tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/tlnet/
 ```
 
-2）将其添加到 path(这里如果你用的是 zsh,把 bashrc 改成 zshrc， 其他类推),方法如下：
+（2）将其添加到 path(这里如果你用的是 zsh,把 bashrc 改成 zshrc， 其他类推),方法如下：
 
 终端执行命令
 
@@ -1784,7 +1799,7 @@ tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/t
 
 `source ~/.bashrc`
 
-3）先安装perl环境
+（3）先安装perl环境
 
 `sudo pacman -S perl`
 
@@ -1794,7 +1809,7 @@ tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/t
 
 至此， 支持环境已经完成， 如果你不要使用 Latex 进行高级编辑，后面的可以不安装了。 如果需要， 那么就继续下面的操作！
 
-4）安装中文支持包， 使用的是 xeCJK， 中文处理技术也有很多， xeCJK 是成熟且稳定的一种。
+（4）安装中文支持包， 使用的是 xeCJK， 中文处理技术也有很多， xeCJK 是成熟且稳定的一种。
 
 `sudo pacman -Syu texlive-langchinese`
 
@@ -1804,7 +1819,7 @@ tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/t
 
 `tlmgr install ctex`
 
-5）使用维护
+（5）使用维护
 
 维护命令可以通过“`tlmgr --help`” 命令获取。
 
@@ -1853,7 +1868,7 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 `tlmgr gui`
 
-6）Latex 文档转 word 格式
+（6）Latex 文档转 word 格式
 
 目前 Latex 格式文档还没有十分完美的方法转换为 word 格式。目前，转换效果比较好的方法，是使用 pandoc 软件。
 
@@ -1871,51 +1886,51 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 `pandoc -s m.tex -S --reference-docx reference.docx -o m.docx`
 
-#### （6）
+### 5.1.6
 
-### 2.阅读类
+## 5.2 阅读类
 
-#### （1）安装xournalpp
+### 5.2.1 安装xournalpp
 
 `sudo pacman -Syu xournalpp`
 
-#### （2）电子书calibre
+### 5.2.2 电子书calibre
 
 如果使用如下命令通过Arch源安装：
 
 `sudo pacman -Syu calibre`
 
-#### （3）福昕PDF阅读器
+### 5.2.3 福昕PDF阅读器
 
 直接到官网下载linux amd64版本的安装包解压，双击安装即可！
 
-#### （4）pdf 分割工具
+### 5.2.4 pdf 分割工具
 
 `sudo pacman -Syu pdfarranger`
 
-#### （5）文献阅读 cajviewer
+### 5.2.5 文献阅读 cajviewer
 
 `yay cajviewer`
 
-### 3.笔记及记忆类
+## 5.3 笔记及记忆类
 
-#### （1）安装vnote
+### 5.3.1 安装vnote
 
 `yay vnote`
 
-#### （2）思维导图xmind
+### 5.3.2 思维导图xmind
 
 `yay xmind`
 
-#### （3）anki
+### 5.3.3 anki
 
 `yay anki `
 
-#### （4）词典Goldendict
+### 5.3.4 词典Goldendict
 
 `yay goldendict` 
 
-**① 离线字典安装**
+**（1） 离线字典安装**
 
 离线字典下载地址： [http://abloz.com/huzheng/stardict-dic/](http://abloz.com/huzheng/stardict-dic/)
 
@@ -1930,7 +1945,7 @@ mv directory(目录名) /usr/share/goldendict/dic
 
 `tar -xjvf filename.tar.bz2 -C /usr/share/goldendict/dic`
 
-**② 在线字典配置**
+**（2） 在线字典配置**
 
 然后， 添加有道、 Bing、 汉词、 海词等在线翻译词典（建议只添加有道在线翻译词典， 一个足矣） 。
 
@@ -1941,16 +1956,16 @@ mv directory(目录名) /usr/share/goldendict/dic
 bing http://cn.bing.com/dict/search?q=%GDWORD%
 ```
 
-### 4.会议类
+## 5.4 会议类
 
-#### （1）安装腾讯会议：
+### 5.4.1 安装腾讯会议：
 
 `yay -S wemeet`
 
 
-## 六、开发类软件配置
+# 六、开发类软件配置
 
-### 1.sublime-text-4
+## 6.1 sublime-text
 
 `yay sublime-text-4`
 
@@ -2114,11 +2129,11 @@ Sublime Text支持自定义快捷键，syncviewscroll、MarkdownPreview和Markdo
 
 菜单 `Preferences>>Key Bindings（按键绑定-用户）`打开文件`/User/Default ().sublime-keymap`，然后用“`//`”把第二行注释掉即可。
 
-### 2.汉化文件编译poedit
+## 6.2 汉化文件编译poedit
 
 `sudo pacman -Syu poedit`
 
-### 3.python-pip
+## 6.3 python-pip
 
 `sudo pacman -Syu python-pip python-setuptools`
 
@@ -2126,31 +2141,7 @@ Sublime Text支持自定义快捷键，syncviewscroll、MarkdownPreview和Markdo
 
 `sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED`
 
-### 4.安装开源版vscodium
-
-sudo pacman -Syu code
-
-### 5.安装git-cola
-
-`yay git-cola`
-
-注意：上述从Arch Linux的AUR中安装git-cola编译过程中如果存在冲突，无法正常安装，是python模块使用sudo权限安装造成的（即`sudo pip3`），先用sudo权限卸载相关模块，然后pip3安装即可。也可以在[pkgs.org](https://pkgs.org/download/git-cola)下载Arch Linux的zst离线安装包，比如我下载的【Chaotic AUR x86_64 Third-Party】的[git-cola-4.2.1-3-any.pkg.tar.zst](https://archlinux.pkgs.org/rolling/chaotic-aur-x86_64/git-cola-4.2.1-3-any.pkg.tar.zst.html),下载后，使用如下命令安装即可：
-
-`sudo pacman -U git-cola-4.2.1-3-any.pkg.tar.zst`
-
-实测可用！
-
-也可以暂用gitg、smartgit等：
-
-`sudo pacman -S gitg`   //免费
-
-`sudo pacman -S smartgit`  //非完全免费，需注册
-
-### 6.数据库管理 sqlitebrowser
-
-`sudo pacman -Syu sqlitebrowser`
-
-### 7.Python 安装第三方模块（pip3）
+## 6.4 Python 安装第三方模块（pip3）
 
 确保已安装 python-pip 和 python-setuptools：
 
@@ -2237,21 +2228,40 @@ trusted-host=pypi.douban.com
 
 `pip install django -i http://pypi.douban.com/simple --trusted-host pypi.douban.com`
 
-## 七、工具类软件配置
+## 6.5 安装开源版vscodium
+
+`sudo pacman -Syu code`
+
+## 6.6 安装git-cola
+
+`yay git-cola`
+
+注意：上述从Arch Linux的AUR中安装git-cola编译过程中如果存在冲突，无法正常安装，是python模块使用sudo权限安装造成的（即`sudo pip3`），先用sudo权限卸载相关模块，然后pip3安装即可。也可以在[pkgs.org](https://pkgs.org/download/git-cola)下载Arch Linux的zst离线安装包，比如我下载的【Chaotic AUR x86_64 Third-Party】的[git-cola-4.2.1-3-any.pkg.tar.zst](https://archlinux.pkgs.org/rolling/chaotic-aur-x86_64/git-cola-4.2.1-3-any.pkg.tar.zst.html),下载后，使用如下命令安装即可：
+
+`sudo pacman -U git-cola-4.2.1-3-any.pkg.tar.zst`
+
+实测可用！
+
+也可以暂用gitg、smartgit等：
+
+`sudo pacman -S gitg`   //免费
+
+`sudo pacman -S smartgit`  //非完全免费，需注册
+
+## 6.7 数据库管理 sqlitebrowser
+
+`sudo pacman -Syu sqlitebrowser`
+
+# 七、游戏类软件配置
 
 
 
 
-## 八、游戏类软件配置
+# 常见问题
 
+## (一)系统级常见问题
 
-
-
-## 常见问题
-
-### (一)系统级常见问题
-
-#### 1.sudo: service：找不到命令
+### 1. sudo: service：找不到命令
 
 在执行 sudo service 命令时遇到 `command not found` 的错误提示，可以尝试使用 systemctl 命令来代替，或者安装相应的支持包来获得 service 命令的支持。
 
@@ -2261,7 +2271,7 @@ trusted-host=pypi.douban.com
 
 `sudo systemctl start bluetooth`
 
-#### 2.关于很久没有更新系统，再次更新系统提示错误
+### 2. 关于很久没有更新系统，再次更新系统提示错误
 
 先更新 archlinux-keyring 这个包：
 
@@ -2275,7 +2285,7 @@ trusted-host=pypi.douban.com
 
 `pacman -Syyu`
 
-#### 3.启动blueman提示“bulez守护进程没有运行”
+### 3. 启动blueman提示“bulez守护进程没有运行”
 
 已经安装了bluez、 bluez-utils、 blueman,每次重启后再次打开blueman 都会提示“bulez守护进程没有运行”。不想使用`sudo systemctl enable bluetooth`添加开机启动项，因为添加后都会启动后自动打开蓝牙。
 
@@ -2328,7 +2338,7 @@ Type=Application
 ```
 最后，加入开始菜单即可！
 
-#### 4.启动时grub界面报错vconsole
+### 4. 启动时grub界面报错vconsole
 
 启动时grub界面报错：“systemctl status systemd-vconsole-setup.service”
 
@@ -2348,7 +2358,7 @@ FONT=
 FONT_MAP=
 ```
 
-#### 5.启动时grub报错systemd-modules-load.service
+### 5. 启动时grub报错systemd-modules-load.service
 
 启动时grub界面报错：“systemctl status systemd-modules-load.service”，然后进入系统后，运行`sudo systemctl status systemd-modules-load.service`，报错详细信息为：
 
@@ -2367,11 +2377,11 @@ tp_smapi Does not work on:
 ```
 我安装后电池阈值设置生效，却报错。也就是说tp_smapi在我的X240上部分生效，但不完全能运行，所以报错 “Failed to insert module 'tp_smapi-lts'”。可以更换使用受支持的tpapi-bat。
 
-#### 6.
+### 6.
 
-### (二)应用软件常见问题
+## (二)应用软件常见问题
 
-#### 1.软件不能输入中文，或输入汉字时跳字母
+### 1. 软件不能输入中文，或输入汉字时跳字母
 
 在相关软件启动命令中加入输入法环境变量即可。以下以Chrome浏览器为例。
 
@@ -2387,11 +2397,11 @@ tp_smapi Does not work on:
 
 即，给`Exec=`添加上参数：`env QT_IM_MODULE=fcitx`
 
-#### 2.
+### 2.
 
-## 附件部分
+# 附件部分
 
-### 1.thinkfan 的 thinkfan.conf文件内容
+## 1. thinkfan 的 thinkfan.conf文件内容
 
 ```
 ######################################################################
@@ -2464,7 +2474,7 @@ hwmon /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
 
 ```
 
-### 2. TLP 的 tlp.conf文件内容
+## 2. TLP 的 tlp.conf文件内容
 
 ```
 # ------------------------------------------------------------------------------
