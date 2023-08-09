@@ -1881,13 +1881,9 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 #### （2）电子书calibre
 
-如果使用如下命令通过Arch源安装，会提示文件冲突，**暂不使用Arch源安装**。
+如果使用如下命令通过Arch源安装：
 
-`sudo pacman -Syu calibre`   //有文件冲突，暂未安装
-
-我们**使用官方命令安装**，可以正常使用：
-
-`sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin`
+`sudo pacman -Syu calibre`
 
 #### （3）福昕PDF阅读器
 
@@ -1895,7 +1891,7 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 #### （4）pdf 分割工具
 
-`sudo pacman -Syu pdfarranger`  //有文件冲突，暂未安装
+`sudo pacman -Syu pdfarranger`
 
 #### （5）文献阅读 cajviewer
 
@@ -1913,7 +1909,7 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 #### （3）anki
 
-`yay anki ` (有文件冲突，暂未安装)
+`yay anki `
 
 #### （4）词典Goldendict
 
@@ -2136,9 +2132,9 @@ sudo pacman -Syu code
 
 ### 5.安装git-cola
 
-`yay git-cola`   //有依赖冲突，暂时未安装
+`yay git-cola`
 
-注意：上述从Archlinux的AUR中安装git-cola编译过程中存在冲突，无法正常安装，可以在[pkgs.org](https://pkgs.org/download/git-cola)下载Archlinux的zst离线安装包，比如我下载的【Chaotic AUR x86_64 Third-Party】的[git-cola-4.2.1-3-any.pkg.tar.zst](https://archlinux.pkgs.org/rolling/chaotic-aur-x86_64/git-cola-4.2.1-3-any.pkg.tar.zst.html),下载后，使用如下命令安装即可：
+注意：上述从Archlinux的AUR中安装git-cola编译过程中如果存在冲突，无法正常安装，是python模块使用sudo权限安装造成的（即`sudo pip3`），先用sudo权限卸载相关模块，然后pip3安装即可。也可以在[pkgs.org](https://pkgs.org/download/git-cola)下载Archlinux的zst离线安装包，比如我下载的【Chaotic AUR x86_64 Third-Party】的[git-cola-4.2.1-3-any.pkg.tar.zst](https://archlinux.pkgs.org/rolling/chaotic-aur-x86_64/git-cola-4.2.1-3-any.pkg.tar.zst.html),下载后，使用如下命令安装即可：
 
 `sudo pacman -U git-cola-4.2.1-3-any.pkg.tar.zst`
 
@@ -2162,21 +2158,30 @@ sudo pacman -Syu code
 
 （1）然后终端中执行如下命令安装第三方常用模块：
 
+注意：不要使用sudo权限安装，使用类如`sudo pip3 install send2trash`模式安装python模块，会导致安装软件时，出现大量的python模块冲突报错。
+
 ```
-sudo pip3 install send2trash
-sudo pip3 install requests
-sudo pip3 install beautifulsoup4
-sudo pip3 install selenium
-sudo pip3 install openpyxl
-sudo pip3 install PyPDF2
-sudo pip3 install python-docx（安装 python-docx， 而不是 docx）
-sudo pip3 install imapclient
-sudo pip3 install pyzmail
-sudo pip3 install twilio
-sudo pip3 install pillow
-sudo pip3 install python3-xlib（仅在 Linux 上）
-sudo pip3 install pyautogui
-sudo pip3 install pyperclip
+pip3 install send2trash
+pip3 install requests
+pip3 install beautifulsoup4
+pip3 install selenium
+pip3 install openpyxl
+pip3 install PyPDF2
+pip3 install python-docx（安装 python-docx， 而不是 docx）
+pip3 install imapclient
+pip3 install pyzmail
+pip3 install twilio
+pip3 install pillow
+pip3 install python3-xlib（仅在 Linux 上）
+pip3 install pyautogui
+pip3 install pyperclip
+pip3 install urllib3
+pip3 install pytz
+pip3 install soupsieve
+pip3 install certifi
+pip3 install jeepney
+pip3 install lxml
+pip3 install pysocks
 ```
 
 （2）python-pip或pip3源使用国内镜像，提升模块下载速度。
