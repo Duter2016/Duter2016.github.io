@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Archlinux 常用命令总结
+title:      Arch Linux 常用命令总结
 subtitle:   pacman yay等命令使用方法
 date:       2023-06-09
 author:     Duter2016

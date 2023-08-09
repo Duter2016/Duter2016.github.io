@@ -9,7 +9,7 @@ catalog: true
 music-id: 
 music-idfull: 
 tags:
-    - ArchLinux
+    - Arch Linux
     - Linux
 ---
 
@@ -17,7 +17,7 @@ tags:
 
 
 
-> Thinkpad 安装 基于Archlinux 的 EndeavourOS
+> Thinkpad 安装 基于Arch Linux 的 EndeavourOS
 
 ## 一、系统基础配置
 
@@ -159,13 +159,13 @@ sudo pacman -Syu grub
 yay update-grub
 sudo update-grub
 ```
-目前，我的linuxmint+Archlinux+windows通过上述步骤，成功完成引导！
+目前，我的linuxmint+Arch Linux+windows通过上述步骤，成功完成引导！
 
 （3）如果探测不到其他系统
 
-如果两个Linux系统，其中一个不能通过`sudo update-grub`加载，比如Archlinux不能引导Linuxmint，就把两个系统的grub引导文件`/boot/grub/grub.cfg`复制出来，然后进行整合（注意两个系统的引导部分的语句的不同的地方）。
+如果两个Linux系统，其中一个不能通过`sudo update-grub`加载，比如Arch Linux不能引导Linuxmint，就把两个系统的grub引导文件`/boot/grub/grub.cfg`复制出来，然后进行整合（注意两个系统的引导部分的语句的不同的地方）。
 
-如我把Linuxmint系统的引导部分加入Archlinux的grub引导中，就是在Archlinux的`/boot/grub/grub.cfg`文件中添加如下引导部分：
+如我把Linuxmint系统的引导部分加入Arch Linux的grub引导中，就是在Arch Linux的`/boot/grub/grub.cfg`文件中添加如下引导部分：
 
 ```
 ### BEGIN /etc/grub.d/10_linux ###
@@ -303,7 +303,7 @@ Name[zh_TW]=以管理员身份打开
 
 如果新建无误后显示不出来的话， 执行一下`kbuildsycoca5`如果有错误会有提示。
 
-### 5.Archlinux 安装及配置 TLP 高级电源管理工具
+### 5.Arch Linux 安装及配置 TLP 高级电源管理工具
 
 
 #### 1）tlp 与 power-profiles-daemon的选择问题
@@ -363,7 +363,7 @@ yay -S dptfxtract-bin
 
 ##### （2）开始安装TLP
 
-① 对于基于 Archlinux 的系统，使用 Pacman 命令 安装 TLP：
+① 对于基于 Arch Linux 的系统，使用 Pacman 命令 安装 TLP：
 
 `sudo pacman -S tlp tlp-rdw`
 
@@ -430,7 +430,7 @@ is compatible with tp_smapi.
 
 ##### (1) 设置开机启动tlp服务
 
-对于基于 Archlinux 的系统，在启动时启用 TLP 和 TLP-Sleep 服务：
+对于基于 Arch Linux 的系统，在启动时启用 TLP 和 TLP-Sleep 服务：
 
 ```
 sudo systemctl enable tlp.service
@@ -555,7 +555,7 @@ intel_cpufreq驱动模式下，Linux 内部共有6种对频率的管理策略con
 |conservative |类似Ondemand，不过频率调节的会平滑一下，不会有忽然调整为最大值又忽然调整为最小值的现象。区别在于：当系统CPU 负载超过一定阈值时，Conservative的目标频率会以某个步长步伐递增；当系统CPU负载低于一定阈值时，目标频率会以某个步长步伐递减。同时也需要周期性地去计算系统负载。|
 |schedutil |相比其他governor的改进点如下：基于scheduler的CPU调频策略，它直接使用来自scheduler的负载数据，之所以能做到这样，是因为在此之前内核有了负载变化回调机制（mechanism for registering utilization update callbacks），schedutil的通过将自己的调频策略注册到hook，在负载变化时候会回调该hook，此时就可以进行调频决策和甚至于执行调频动作。而ondemand、conservation都需要定期采样以计算CPU负载，具有一定的滞后性，精度也有限。实际上scheduler已经可以用PELT或者WALT去较为准确的追踪Task负载和CPU负载，现在可以直接去利用其中的CPU负载，省去了采样，使调频能更快速。支持从中断上下文直接切换频率机制，可以进一步缩短调频的时延。该特性需要driver能够支fast_switch功能。一句话总结就是：通过它，让scheduler和调频建立起更加紧密的联系，同时提升了性能和功耗表现（调频上升和下降的曲线都更加陡峭，频率更快的上升或者下降到目标频率）。调频速度`schedutil>ondemand>conservative`。|
 
-> 参考：[Archlinux CPU调频wiki](https://wiki.archlinuxcn.org/wiki/CPU_%E8%B0%83%E9%A2%91)、[CPU调速器schedutil原理分析](https://deepinout.com/android-system-analysis/android-cpu-related/principle-analysis-of-cpu-governor-schedutil.html)
+> 参考：[Arch Linux CPU调频wiki](https://wiki.archlinuxcn.org/wiki/CPU_%E8%B0%83%E9%A2%91)、[CPU调速器schedutil原理分析](https://deepinout.com/android-system-analysis/android-cpu-related/principle-analysis-of-cpu-governor-schedutil.html)
 
 ④ CPU 相对节能模式
 
@@ -624,7 +624,7 @@ DISK_APM_LEVEL_ON_BAT="128"
 * [使用 tlp 来为 linux 省电](https://fly.meow-2.com/post/records/tlp-for-power-saving.html)
 * [TLP：一个可以延长 Linux 笔记本电池寿命的高级电源管理工具](https://linux.cn/article-10848-1.html)
 * [TLP wiki](https://linrunner.de/tlp/installation/arch.html)
-* [Archlinux TLP wiki](https://wiki.archlinuxcn.org/wiki/TLP)
+* [Arch Linux TLP wiki](https://wiki.archlinuxcn.org/wiki/TLP)
 
 ### 6.使用 thinkfan 控制 thinkpad 风扇转速
 
@@ -1102,9 +1102,9 @@ sudo fc-cache -fv
 
 ```
 
-### 3.ArchLinux 终端文字颜色设置
+### 3.Arch Linux 终端文字颜色设置
 
-默认情况下，ArchLinux的终端显示是黑白的，如命令提示行（即`root@host:~#`）、`ls`显示的结果等，下面描述设置方法。
+默认情况下，Arch Linux的终端显示是黑白的，如命令提示行（即`root@host:~#`）、`ls`显示的结果等，下面描述设置方法。
 
 要修改 linux 终端命令行颜色，我们需要用到`PS1`，`PS1`是 Linux 终端用户的一个环境变量，用来说明命令行提示符的设置。在终端输入命令`：set`，即可在输出中找到关于`PS1`的定义。
 
@@ -1274,7 +1274,7 @@ sudo pacman -Syu parcellite
 
 ### 15.配置插入鼠标禁用触摸板功能
 
-Archlinux在刚安装好，时默认是安装了xf86-input-libinput和libinput的，一般不需要手动安装。并且可以在`设置>>系统设置>>输入设备>>触摸板`中设置很多项，如“打字时禁用”等。
+Arch Linux在刚安装好，时默认是安装了xf86-input-libinput和libinput的，一般不需要手动安装。并且可以在`设置>>系统设置>>输入设备>>触摸板`中设置很多项，如“打字时禁用”等。
 
 如果没有安装，用以下命令安装一下：
 
@@ -1371,7 +1371,7 @@ l - 列出所有的书签
 
 `sudo pacman -Syu shadowsocks-v2ray-plugin`
 
-但是，shadowsocks图形界面用appimage版的shadpwsocks-qt5，在Archlinux上安装不上(**暂不可用图形界面**)！
+但是，shadowsocks图形界面用appimage版的shadpwsocks-qt5，在Arch Linux上安装不上(**暂不可用图形界面**)！
 
 于是乎，只能手动改配置文件`/etc/shadowsocks/config.json`，然后运行如下命令启动SS：
 
@@ -1385,7 +1385,7 @@ l - 列出所有的书签
 
 尚未安装
 
-**目前使用星火应用商店在linuxmint安装后的文件，复制到Archlinux可以启动！**
+**目前使用星火应用商店在linuxmint安装后的文件，复制到Arch Linux可以启动！**
 
 #### （3）v2ray
 
@@ -1688,7 +1688,7 @@ yay wps-office
 
 ③ 没有桌面右键新建wps格式文档菜单
 
-debian系deb包安装完，wps 会在`/usr/share/templates/`下生成模板文件，如果没有这些模板文件，桌面右键新建是没有新建wps文档的选项的。Archlinux安装后，右键新建没有wps文档菜单，只需要解压别的桌面版复制出来模板文件，放到`/usr/share/templates/`目录即可。
+debian系deb包安装完，wps 会在`/usr/share/templates/`下生成模板文件，如果没有这些模板文件，桌面右键新建是没有新建wps文档的选项的。Arch Linux安装后，右键新建没有wps文档菜单，只需要解压别的桌面版复制出来模板文件，放到`/usr/share/templates/`目录即可。
 
 #### （2）在 Arch Linux 上安装 LibreOffice
 
@@ -2134,7 +2134,7 @@ sudo pacman -Syu code
 
 `yay git-cola`
 
-注意：上述从Archlinux的AUR中安装git-cola编译过程中如果存在冲突，无法正常安装，是python模块使用sudo权限安装造成的（即`sudo pip3`），先用sudo权限卸载相关模块，然后pip3安装即可。也可以在[pkgs.org](https://pkgs.org/download/git-cola)下载Archlinux的zst离线安装包，比如我下载的【Chaotic AUR x86_64 Third-Party】的[git-cola-4.2.1-3-any.pkg.tar.zst](https://archlinux.pkgs.org/rolling/chaotic-aur-x86_64/git-cola-4.2.1-3-any.pkg.tar.zst.html),下载后，使用如下命令安装即可：
+注意：上述从Arch Linux的AUR中安装git-cola编译过程中如果存在冲突，无法正常安装，是python模块使用sudo权限安装造成的（即`sudo pip3`），先用sudo权限卸载相关模块，然后pip3安装即可。也可以在[pkgs.org](https://pkgs.org/download/git-cola)下载Arch Linux的zst离线安装包，比如我下载的【Chaotic AUR x86_64 Third-Party】的[git-cola-4.2.1-3-any.pkg.tar.zst](https://archlinux.pkgs.org/rolling/chaotic-aur-x86_64/git-cola-4.2.1-3-any.pkg.tar.zst.html),下载后，使用如下命令安装即可：
 
 `sudo pacman -U git-cola-4.2.1-3-any.pkg.tar.zst`
 
