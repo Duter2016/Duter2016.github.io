@@ -210,7 +210,6 @@ Arch Linux 和 AUR 上可选的内核可以参考以下网址：
 
 可以选择保留或删除原有内核，若保留内核，重启后可以选择从任何一个内核启动。（建议保留）
 
-``
 （2）**重点更新grub，否则启动失败**
 
 ①不太必要的一步（这步我没改）
@@ -1350,7 +1349,7 @@ EndSection
 ```
 添加当检测到 USB 鼠标时，它将禁用触摸板的option：
 
-`Option "SendEventsMode" "disabled-on-external-mouse"
+`Option "SendEventsMode" "disabled-on-external-mouse"`
 
 即：
 ```
@@ -1452,7 +1451,7 @@ B.第二种：单独查看运行状态
 
 ③如果想停止运行：
 
-`kill -9 $(ps -ef|grep "goflyway"|grep -v grep|awk '{print $2}')`
+`{% raw %} kill -9 $(ps -ef|grep "goflyway"|grep -v grep|awk '{print $2}') {% endraw %}`
 
 ## 3.2 浏览器类
 
