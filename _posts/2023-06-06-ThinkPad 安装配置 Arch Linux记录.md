@@ -1899,9 +1899,39 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 ### 5.2.2 电子书calibre
 
-如果使用如下命令通过Arch源安装：
+（1）通过Arch Linux 官方源安装
+
+使用如下命令通过Arch源安装：
 
 `sudo pacman -Syu calibre`
+
+**注意：**通过Arch Linux 官方源安装的calibre无法启动“ebook-viewer”。报错原因是（html5-parser与lxml的依赖库libxml2版本不一致。）：
+
+`RuntimeError: html5-parser and lxml are using different versions of libxml2. This happens commonly when using pip installed versions of lxml. Use pip install --no-binary lxml lxml instead. libxml2 versions: html5-parser: (2, 11, 4) != lxml: (2, 10, 3)`
+
+（2）使用calibre官方二进制包安装
+
+calibre 的二进制安装包括了其所有依赖项的私有版本。它可以在32位和64位英特尔兼容计算机上运行。要安装或升级，只需将以下命令复制粘贴到终端并按Enter键即可：
+
+`sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin`
+
+当您在等待下载完成时，请考虑为 calibre 的开发提供支持。
+
+通过二进制包安装的calibre卸载方法为在终端运行如下卸载脚本：
+
+`/usr/bin/calibre-uninstall`
+
+（3）用calibre阅读电子书如何调整行间距
+
+打开你想阅读的电子书，在calibre电子书查看器中，依次“`右键 - 首选项 - 样式`”，然后， 在css样式框里添加自定义样式，如下：
+
+`body{line-height:36px}`
+
+如果以上代码对样式无效，就换下面的代码：
+
+`p{line-height:36px}`
+
+总有一个适合你！另外，把36px换成行倍2em也可以！
 
 ### 5.2.3 福昕PDF阅读器
 
