@@ -1451,7 +1451,11 @@ B.第二种：单独查看运行状态
 
 ③如果想停止运行：
 
-`{% raw %} kill -9 $(ps -ef|grep "goflyway"|grep -v grep|awk '{print $2}') {% endraw %}`
+```
+{% raw %} 
+kill -9 $(ps -ef|grep "goflyway"|grep -v grep|awk '{print $2}')
+{% endraw %}
+```
 
 ## 3.2 浏览器类
 
