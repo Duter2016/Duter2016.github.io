@@ -1905,7 +1905,9 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 ### 5.2.3 福昕PDF阅读器
 
-直接到官网下载linux amd64版本的安装包解压，双击安装即可！
+直接到官网下载linux amd64版本的安装包解压，双击安装即可！也可以从AUR安装构建包（但反馈bug比较多，不如直接安装官方的二进制包）：
+
+`yay -S foxitreader`
 
 ### 5.2.4 pdf 分割工具
 
@@ -1919,19 +1921,19 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 ### 5.3.1 安装vnote
 
-`yay vnote`
+`yay -S vnote`
 
 ### 5.3.2 思维导图xmind
 
-`yay xmind`
+`yay -S xmind`
 
 ### 5.3.3 anki
 
-`yay anki `
+`yay -S anki `
 
 ### 5.3.4 词典Goldendict
 
-`yay goldendict` 
+`yay -S goldendict` 
 
 **（1） 离线字典安装**
 
