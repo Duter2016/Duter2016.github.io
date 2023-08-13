@@ -1076,7 +1076,9 @@ sudo fc-cache -fv
 
 （2）安装jetbrains-mono 等宽、emoji字体等
 
-`sudo pacman -Syu ttf-jetbrains-mono`
+`sudo pacman -S ttf-jetbrains-mono`
+
+`sudo pacman -S noto-fonts-emoji`
 
 （3）安装字体渲染
 
