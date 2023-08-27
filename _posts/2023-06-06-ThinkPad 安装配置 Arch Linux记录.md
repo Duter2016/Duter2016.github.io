@@ -1239,7 +1239,9 @@ l - 列出所有的书签
 
 ### 2.4.2 压缩归档工具
 
-`sudo pacman -Syu ark unace p7zip sharutils arj zip lzip unarchiver`
+`sudo pacman -Syu tar gzip ark unace p7zip sharutils arj zip unzip lzip unarchiver`
+
+`yay -S p7zip-gui`
 
 Dolphin 文件管理器默认使用的 ark 包右键压缩包直接解压。其可选依赖提供了各个压缩格式的支持，可以自行选择安装。
 
@@ -1248,6 +1250,8 @@ Dolphin 文件管理器默认使用的 ark 包右键压缩包直接解压。其�
 Unarchiver解压压缩包：
 
 `unar xxx.zip`
+
+**参考：**[Arch wiki 归档与压缩](https://wiki.archlinuxcn.org/wiki/%E5%BD%92%E6%A1%A3%E4%B8%8E%E5%8E%8B%E7%BC%A9)
 
 ### 2.4.3 杀毒软件 clamtk
 
