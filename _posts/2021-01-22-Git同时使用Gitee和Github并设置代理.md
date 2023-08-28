@@ -270,6 +270,8 @@ git config --global --unset http.https://github.com.proxy
 git config --global --unset https.https://github.com.proxy
 ```
 
+**注意：**如果你使用的是shadowsocks或shadowsocksR代理，上面是`socks5://127.0.0.1:1080`, 如果用的是http代理协议的软件(比如goflyway多数情况下默认是http客户端协议)，将`socks5://127.0.0.1:1080`改`http://127.0.0.1:1080`即可。
+
 ### 2)设置git全面代理：
 
 包括github、gitee等git服务全部走代理通道。
