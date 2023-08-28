@@ -194,7 +194,7 @@ Arch Linux 和 AUR 上可选的内核可以参考以下网址：
 
 [Kernel -- ArchWiki](https://wiki.archlinuxcn.org/wiki/%E5%86%85%E6%A0%B8)
 
-（1）
+（1）安装需要的内核
 
 ① 先使用`uname -a`查看一下当前内核版本，如果不是你需要的，那就更换！
 
@@ -245,7 +245,31 @@ GRUB_SAVEDEFAULT=true
 
 **注意：回到`2`添加多系统linux！**
 
+（3）删除不用的旧内核
 
+通常情况下，如果没有安装内核模块钩子kernel-modules-hook，如果有新的内核可更新时，如果更新了内核，当前在使用的旧内核模块更新时也被删除，如果不重启，将有很多模块功能不能使用。如果安装并启用了内核模块钩子kernel-modules-hook服务，那么在更新内核时，当前在用的旧内核会被备份一份供重启之前正常使用，重启使用新内核后，该服务会自动删除不再使用的旧内核。
+
+先查看一下系统中是否安装了内核模块钩子kernel-modules-hook：
+
+`pacman -Q kernel-modules-hook`
+
+如果没有安装，使用如下命令安装：
+
+`sudo pacman -S kernel-modules-hook`
+
+查看kernel-modules-hook服务是否运行：
+
+`sudo systemctl status linux-modules-cleanup.service`
+
+如果没有运行，下面设置开机自启动kernel-modules-hook服务：
+
+`sudo systemctl enable linux-modules-cleanup.service`
+
+**注意：**我同时安装了linux和linux-lts内核，启用kernel-modules-hook服务后，同时保留了linux和linux-lts内核的最新版本。
+
+**如果想在升级内核后，保留旧内核不删除，禁用kernel-modules-hook服务即可：**
+
+`sudo systemctl disable linux-modules-cleanup.service`
 
 ## 1.4 给文件管理器Dolphin添加右键“以管理员身份打开”
 
