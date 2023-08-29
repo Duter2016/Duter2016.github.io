@@ -1669,9 +1669,33 @@ emoji-slack-fix.py  joinparttab.py      nignore.py       sharedchannels.py  url_
 
 ### 4.2.4 安装MPV
 
+（1）安装MPV基础功能
+
 `sudo pacman -S youtube-dl mpv`
 
+也可以同时安装上youtube-dl的带有附加特性和修复的fork版yt-dlp(支持设置一些参数)：
+
+`sudo pacman -S yt-dlp`
+
+> 测试发现，如果仅安装youtube-dl，播放B站视频时，使用的AVC1（H264）解码，安装yt-dlp后，使用了HEVC解码，CPU占用骤降！
+
 有视频链接（网页地址也可以）的话，装好 youtube-dl和MPV，直接 用命令`mpv url` 就可以播放视频了，比如油管、B站都支持。
+
+（2）为MPV添加丰富的UI控件、画质选择菜单、高性能动态缩略图
+
+① 为MPV添加丰富的UI控件
+
+按照项目[UOSC](https://github.com/tomasklaen/uosc)进行设置。
+
+② 为MPV添加画质选择菜单
+
+按照项目[mpv-quality-menu](https://github.com/christoph-heinrich/mpv-quality-menu)进行设置。
+
+③ 为MPV添加高性能动态缩略图
+
+按照项目[thumbfast](https://github.com/po5/thumbfast)进行设置。注意，动态缩略图默认只对本地视频有效，对在线视频大部分不支持，如果想要支持在线视频动态缩略图，需将`.config/mpv/script-opts/thumbfast.conf`中参数`network=no`改为`network=yes`。
+
+（3）安装方便调用MPV的revda
 
 **附加：**也可安装支持B站、油管、虎牙的[revda](https://github.com/THMonster/Revda)
 
@@ -1680,6 +1704,51 @@ emoji-slack-fix.py  joinparttab.py      nignore.py       sharedchannels.py  url_
 revda也是调用的mpv,并且支持弹幕。只需要获取视频播放地址的代码就可以，当想要打开bilibili视频时，它支持av号、bv号、ep号、ss号或直接输入链接，多p视频如果想通过av、bv号或者ss号打开，请在编号后加上:n（n为视频p数）打开，例如：你想打开av123456的第三p，请输入av123456:3，bv号与ss号同理。。比如三国演义的一集播放地址为“https://www.bilibili.com/bangumi/play/ep327612?from_spmid=666.25.episode.0&from_outer_spmid=..0.0”，那么播放代码就是“ep327612”。
 
 详细使用方法见[Revda wiki](https://github.com/THMonster/Revda/wiki/1-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)
+
+（4）为MPV设置代理
+
+在 mpv.conf 写入这些，并根据注释自行更改。
+
+```
+# 你应该将下面的 http://localhost:3128 自行更改为你的代理地址
+# 我只不过是将官方的示例换了一种写法而已
+
+# 让 mpv 使用 http(s) 代理
+http-proxy=http://127.0.0.1:1080
+# 让 yt-dlp 使用 http(s) 代理
+ytdl-raw-options-append=proxy=http://127.0.0.1:1080
+# 虽然 yt-dlp 支持 socks，但由于 FFmpeg 的原因还是无法使用
+```
+
+注意！如果设置了 `--http-proxy` ，环境变量 `http_proxy` 将被忽略。
+
+（5）使用yt-dlp增强mpv流媒体解析能力、解锁登陆用户分辨率
+
+① 使用cookie
+
+现如今各大视频平台纷纷限制了非登陆用户的观看清晰度，直接拖链接到mpv中往往只有480p甚至360p，使用cookie可以解锁限制。
+
+参照[yt-dlp#configuration](https://github.com/yt-dlp/yt-dlp#configuration)，创yt-dlp配置目录及config文件`.config/yt-dlp/config`，添加一行`--cookies-from-browser [浏览器名称]`，意思是使用某浏览器的cookies。这样就视为使用你在该浏览器的登陆信息观看了，可以解锁登陆用户可使用的最高分辨率。
+
+支持的浏览器包括但不限于（可通过`yt-dlp --help`获得）：brave, chrome, chromium, Edge, firefox,opera, safari, vivaldi。
+
+比如使用firefox的cookies：`--cookies-from-browser firefox`
+
+使用Edge的cookies：`--cookies-from-browser Edge`
+
+②选择视频解码格式
+
+参见：[https://github.com/yt-dlp/yt-dlp#sorting-formats](https://github.com/yt-dlp/yt-dlp#sorting-formats)
+
+通过`.config/yt-dlp/config`中使用`--format-sort`参数设置。
+
+vcodec默认视频编码选择优先级：`AV01>vp9.2>vp9>h265>h264`
+
+如果改为avc(h264)优先,`+`反转优先级列表，可组合使用，`.config/yt-dlp/config`中使用如下参数：
+
+`--format-sort +vcodec:avc`
+
+将优先级改为`h264 > h265 > vp9 > vp9.2 > AV01`
 
 ### 4.2.5 资源播放器zyplayer
 
