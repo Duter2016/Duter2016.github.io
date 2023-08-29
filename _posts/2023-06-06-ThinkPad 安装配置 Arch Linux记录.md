@@ -1433,7 +1433,13 @@ veracrypt是TrueCrypt的升级版，可以使用TrueCrypt建立的加密盘的�
 
 安装图形界面工具nekoray：
 
-`yay nekoray`
+`yay -S nekoray`
+
+默认使用Xray核心，如果想使用sing-box核心，还需要安装sing-geosite 和 sing-geoip：
+
+`yay -S sing-geosite sing-geoip`
+
+不过推荐使用Xray核心，因为sing-box核心对部分协议存在兼容性问题。
 
 ### 3.1.4 clash GUI
 
