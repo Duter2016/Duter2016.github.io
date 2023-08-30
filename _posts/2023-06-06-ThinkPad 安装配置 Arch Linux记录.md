@@ -1720,11 +1720,16 @@ emoji-slack-fix.py  joinparttab.py      nignore.py       sharedchannels.py  url_
 脚本选项设置`/home/<username>/.config/mpv/script-opts/autoload.conf`，可以比较方便修改自动加载哪一类文件：
 
 ```
-disabled=no 		#禁用autoload脚本
-images=no 			#图片
-videos=yes 			#视频
-audio=yes 			#音频
-ignore_hidden=yes 	#忽略隐藏文件
+#禁用autoload脚本
+disabled=no
+#图片
+images=no
+#视频
+videos=yes
+#音频
+audio=yes
+#忽略隐藏文件
+ignore_hidden=yes
 ```
 
 （3）安装方便调用MPV的revda
