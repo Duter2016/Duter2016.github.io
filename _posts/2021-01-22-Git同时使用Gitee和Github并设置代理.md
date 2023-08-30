@@ -288,16 +288,46 @@ git config --global --unset https.proxy
 
 在`/home/opt/githubproxy/` 目录下新建如下几个文件：
 
-① StartGithubProxy.sh：
+① GithubProxy.sh：
 
 ```
-#!/bin/sh
+#!/bin/bash
 # 这个只设置了github的git服务走代理通道，不会对国内仓库gitee使用代理。
 
-# 开启 github 代理 start
-git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
-git config --global https.https://github.com.proxy socks5://127.0.0.1:1080
-# 开启 github 代理 end
+echo "开始设置 github 代理，输入数字选择要运行的命令："
+echo "1 - 开启 github 代理"
+echo "2 - 关闭 github 代理"
+read -p "输入你的选择（输入数字1-2）：" CHOICE
+
+case $CHOICE in
+    1)
+        echo ""
+        # 开启 github 代理 start
+        git config --global http.https://github.com.proxy http://127.0.0.1:1080
+        git config --global https.https://github.com.proxy http://127.0.0.1:1080
+        # 开启 github 代理 end
+        echo "已设置了github的git服务走代理通道！"
+        echo ""
+        echo "不会对国内仓库gitee使用代理！"
+        echo ""
+        echo "git 的配置文件在~/.gitconfig"
+        ;;
+    2)
+        echo ""
+        # 关闭 github 代理 start
+        git config --global --unset http.https://github.com.proxy
+        git config --global --unset https.https://github.com.proxy
+        # 关闭 github 代理 end
+        echo "已关闭了github的git服务走代理通道！"
+        echo ""
+        echo "不会对国内仓库gitee代理进行设置！"
+        echo ""
+        echo "git 的配置文件在~/.gitconfig"
+        ;;
+    *)
+        echo "无效的输入！"
+        ;;
+esac
 
 #任意键
 get_char()
@@ -313,11 +343,6 @@ get_char()
 #任意键
 
 #任意键退出 开始
-echo "已设置了github的git服务走代理通道！"
-echo ""
-echo "不会对国内仓库gitee使用代理！"
-echo ""
-echo "git 的配置文件在~/.gitconfig"
 echo ""
 # echo "组合键 CTRL+C 终止运行脚本命令! ..."
 echo "按任意键退出对话框..."
@@ -325,82 +350,24 @@ char=`get_char`
 #任意键退出 结束
 ```
 
-② StopGithubProxy.sh sh：
-
-```
-#!/bin/sh
-# 这个只设置关闭github的git服务走代理通道，不会对国内仓库gitee代理进行设置。
-
-# 关闭 github 代理 start
-git config --global --unset http.https://github.com.proxy
-git config --global --unset https.https://github.com.proxy
-# 关闭 github 代理 end
-
-#任意键
-get_char()
-{
-    SAVEDSTTY=`stty -g`
-    stty -echo
-    stty cbreak
-    dd if=/dev/tty bs=1 count=1 2> /dev/null
-    stty -raw
-    stty echo
-    stty $SAVEDSTTY
-}
-#任意键
-
-#任意键退出 开始
-echo "已关闭了github的git服务走代理通道！"
-echo ""
-echo "不会对国内仓库gitee代理进行设置！"
-echo ""
-echo "git 的配置文件在~/.gitconfig"
-echo ""
-# echo "组合键 CTRL+C 终止运行脚本命令! ..."
-echo "按任意键退出对话框..."
-char=`get_char`
-#任意键退出 结束
-```
-
-③ StartGithubProxy.desktop：
+② GithubProxy.desktop：
 
 ```
 #!/usr/bin/env xdg-open
 
 [Desktop Entry]
 Encoding=UTF-8
-Name=StartGithubProxy
-Name[zh_CN]=开启Github代理
-Exec=sh /home/dh/opt/githubproxy/StartGithubProxy.sh 
+Name=GithubProxy
+Name[zh_CN]=开关Github代理
+Exec=sh /home/dh/opt/githubproxy/GithubProxy.sh 
 Type=Application
 Terminal=true
-Comment[zh_CN]=设置开启github的git服务走代理通道
-Icon=/home/dh/opt/githubproxy/github2.png
-Name[zh_CN]=StartGithubProxy.desktop
-Categories=Network;
-```
-
-④ StopGithubProxy.desktop：
-
-```
-#!/usr/bin/env xdg-open
-
-[Desktop Entry]
-Encoding=UTF-8
-Name=StopGithubProxy
-Name[zh_CN]=关闭Github代理
-Exec=sh /home/dh/opt/githubproxy/StopGithubProxy.sh 
-Type=Application
-Terminal=true
-Comment[zh_CN]=设置关闭github的git服务走代理通道
+Comment[zh_CN]=开关github的git服务走代理通道
 Icon=/home/dh/opt/githubproxy/github.png
-Name[zh_CN]=StopGithubProxy.desktop
 Categories=Network;
 ```
 
-**注意：最好使用两个不同颜色的图标区分两个desktop文件，容易识别。**
-
-把两个desktop文件拖进开始菜单就可以了！
+把desktop文件拖进开始菜单就可以了！
 
 ## 9.git其他参数配置
 

@@ -1744,6 +1744,8 @@ revda也是调用的mpv,并且支持弹幕。只需要获取视频播放地址�
 
 （4）为MPV设置代理
 
+① 修改配置文件mpv.conf
+
 在 mpv.conf 写入这些，并根据注释自行更改。
 
 ```
@@ -1758,6 +1760,84 @@ ytdl-raw-options-append=proxy=http://127.0.0.1:1080
 ```
 
 注意！如果设置了 `--http-proxy` ，环境变量 `http_proxy` 将被忽略。
+
+② 用sh脚本控制mpv代理的开关
+
+参考[《sed在匹配行前面添加注释，或者取消注释》](https://blog.csdn.net/qq_39677803/article/details/121899559)和[《基于输入数字选择运行命令的Linux Shell脚本编程指南》]（https://www.bunian.cn/11681.html）写一个sh脚本控制代理的开关，如下是思路：
+
+```
+# 取消以“1080”结尾的行前面的注释符
+sed -i "/^#.*1080$/s/^#//" mpv.conf
+
+# 给以“1080”结尾的行前面全部加上注释符
+sed -i "s/^[^#].*1080$/#&/g" mpv.conf
+```
+
+在目录`/home/<username>/.config/mpv/`下新建脚本文件`mpv_proxy.sh`”，脚本内容如下：
+
+```
+#!/bin/bash
+
+echo "开始设置mpv代理，输入数字选择要运行的命令："
+echo "1 - 开启mpv和yt-dlp的 proxy 代理"
+echo "2 - 关闭mpv和yt-dlp的 proxy 代理"
+read -p "输入你的选择（输入数字1-2）：" CHOICE
+
+case $CHOICE in
+    1)
+        echo ""
+        sed -i "/^#.*1080$/s/^#//" /home/dh/.config/mpv/mpv.conf
+        echo "已开启mpv和yt-dlp的 proxy 代理！"
+        ;;
+    2)
+        echo ""
+        sed -i "s/^[^#].*1080$/#&/g" /home/dh/.config/mpv/mpv.conf
+        echo "已关闭mpv和yt-dlp的 proxy 代理！"
+        ;;
+    *)
+        echo "无效的输入！"
+        ;;
+esac
+
+#任意键
+get_char()
+{
+    SAVEDSTTY=`stty -g`
+    stty -echo
+    stty cbreak
+    dd if=/dev/tty bs=1 count=1 2> /dev/null
+    stty -raw
+    stty echo
+    stty $SAVEDSTTY
+}
+#任意键
+
+#任意键退出 开始
+echo ""
+# echo "组合键 CTRL+C 终止运行脚本命令! ..."
+echo "按任意键退出对话框..."
+char=`get_char`
+#任意键退出 结束
+```
+
+然后，再在目录`/home/<username>/.config/mpv/`下建立一个desktop快捷方式`MpvProxy.desktop`，内容如下：
+
+```
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=MpvProxy
+Name[zh_CN]=mpv代理
+Exec=sh /home/<username>/.config/mpv/mpv_proxy.sh
+Type=Application
+Terminal=true
+Comment[zh_CN]=开关mpv和yt-dlp的代理通道
+Icon=/home/<username>/.config/mpv/mpvproxy.png
+Categories=Network;
+```
+
+最后，把`MpvProxy.desktop`加入开始菜单就可以了！
 
 （5）使用yt-dlp增强mpv流媒体解析能力、解锁登陆用户分辨率
 
