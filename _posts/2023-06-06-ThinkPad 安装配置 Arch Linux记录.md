@@ -1450,6 +1450,12 @@ clash 是一款非常强大的上网神器，现在在 Linux 平台下也推出�
 
 `yay -S clash-for-windows-bin`
 
+安装的clash-for-windows-bin是原始未汉化的。可以在Clash for Windows原版汉化项目[Clash_Chinese_Patch](https://github.com/BoyceLig/Clash_Chinese_Patch/releases)下载汉化补丁文件`app.7z` 或 `app.zip` 文件(两个压缩包内容一样)后，解压压缩包，请自行替换下列路径中的 app.asar 文件即可：
+
+`/opt/clash-for-windows-bin/resources/app.asar`
+
+**注意：**使用的Clash_Chinese_Patch汉化补丁版本号必须与安装的clash-for-windows-bin版本号一致。
+
 ### 3.1.5 Goflyway
 
 （1）下载Goflyway
