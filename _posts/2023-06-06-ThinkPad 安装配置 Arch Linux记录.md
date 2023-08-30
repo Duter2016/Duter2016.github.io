@@ -1681,7 +1681,7 @@ emoji-slack-fix.py  joinparttab.py      nignore.py       sharedchannels.py  url_
 
 有视频链接（网页地址也可以）的话，装好 youtube-dl和MPV，直接 用命令`mpv url` 就可以播放视频了，比如油管、B站都支持。
 
-（2）为MPV添加丰富的UI控件、画质选择菜单、高性能动态缩略图
+（2）为MPV添加播放器常用lua脚本
 
 ① 为MPV添加丰富的UI控件
 
@@ -1694,6 +1694,38 @@ emoji-slack-fix.py  joinparttab.py      nignore.py       sharedchannels.py  url_
 ③ 为MPV添加高性能动态缩略图
 
 按照项目[thumbfast](https://github.com/po5/thumbfast)进行设置。注意，动态缩略图默认只对本地视频有效，对在线视频大部分不支持，如果想要支持在线视频动态缩略图，需将`.config/mpv/script-opts/thumbfast.conf`中参数`network=no`改为`network=yes`。
+
+④ 为MPV添加最近播放
+
+按照项目[recent](https://github.com/hacel/recent)进行设置。然后将`/home/<username>/.config/mpv/script-opts/recent.conf`中设置`auto_save_skip_past=100`。
+
+**最近播放菜单控制:**
+
+* 默认显示热键 **`` ` ``**
+* 键盘操作:
+    * `UP`/`DOWN` 上下选择
+    * `ENTER` 打开高亮媒体
+    * `DEL` 删除高亮记录
+    * `0`-`9` 快速选择
+    * `ESC` 退出
+* 鼠标操作:
+    * `WHEEL_UP`/`WHEEL_DOWN` 滚动选择
+    * `MBTN_MID` 打开高亮媒体（默认是中键打开，如果是从github获取可在脚本中搜索MBTN_MID修改）
+    * `MBTN_RIGHT` 退出
+
+⑤ 将同目录播放媒体文件自动载入playlist
+
+自动载入当前播放媒体文件所在目录下的所有同类型媒体文件，依名称排序。下载文件[autoload.lua](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/autoload.lua)放在`/home/<username>/.config/mpv/scripts`目录下。
+
+脚本选项设置`/home/<username>/.config/mpv/script-opts/autoload.conf`，可以比较方便修改自动加载哪一类文件：
+
+```
+disabled=no 		#禁用autoload脚本
+images=no 			#图片
+videos=yes 			#视频
+audio=yes 			#音频
+ignore_hidden=yes 	#忽略隐藏文件
+```
 
 （3）安装方便调用MPV的revda
 
