@@ -6,6 +6,7 @@ date:       2023-06-06
 author:     Duter2016
 header-img: img/post-bg-debug.png
 catalog: true
+istop: true           # 设为true可把文章设置为置顶文章
 music-id: 
 music-idfull: 
 tags:
