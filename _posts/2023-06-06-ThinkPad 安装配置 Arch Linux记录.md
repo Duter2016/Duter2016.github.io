@@ -1685,7 +1685,7 @@ emoji-slack-fix.py  joinparttab.py      nignore.py       sharedchannels.py  url_
 
 ① 为MPV添加丰富的UI控件
 
-按照项目[UOSC](https://github.com/tomasklaen/uosc)进行设置。
+按照项目[UOSC](https://github.com/tomasklaen/uosc)进行设置。如果还想使用mpv原始的外观窗口边框，按照项目指引设置时，注意mpv.conf中参数设置`border=no`即可。
 
 ② 为MPV添加画质选择菜单
 
