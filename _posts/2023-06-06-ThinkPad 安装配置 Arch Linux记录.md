@@ -1690,6 +1690,19 @@ emoji-slack-fix.py  joinparttab.py      nignore.py       sharedchannels.py  url_
 
 （2）为MPV添加播放器常用lua脚本
 
+mpv可使用的Lua脚本信息汇总：[Lua Scripts](https://github.com/mpv-player/mpv/wiki/User-Scripts)
+
+MPV脚本配置目录为`/home/<username>/.config/mpv/`，其下面相关目录及文件说明：
+
+```
+mpv.conf 用户配置文件
+input.conf 键盘快捷键
+fonts.conf 字体配置文件
+fonts 存放字幕需要使用的字体
+scrpits 存放用户外挂脚本插件
+scrpit-opts 存放外挂脚本插件配置文件
+```
+
 ① 为MPV添加丰富的UI控件
 
 按照项目[UOSC](https://github.com/tomasklaen/uosc)进行设置。如果还想使用mpv原始的外观窗口边框，按照项目指引设置时，注意mpv.conf中参数设置`border=no`即可。
@@ -1702,9 +1715,32 @@ emoji-slack-fix.py  joinparttab.py      nignore.py       sharedchannels.py  url_
 
 按照项目[thumbfast](https://github.com/po5/thumbfast)进行设置。注意，动态缩略图默认只对本地视频有效，对在线视频大部分不支持，如果想要支持在线视频动态缩略图，需将`.config/mpv/script-opts/thumbfast.conf`中参数`network=no`改为`network=yes`。
 
-④ 为MPV添加最近播放
+④ 为MPV添加最近播放、历史播放
 
-按照项目[recent](https://github.com/hacel/recent)进行设置。然后将`/home/<username>/.config/mpv/script-opts/recent.conf`中设置`auto_save_skip_past=100`。
+有两个lua脚本可以使用，任一个都一个：[【memo】](https://github.com/po5/memo)和[【recent】](https://github.com/hacel/recent)。
+
+A.【memo】:
+
+推荐使用这个mome脚本！这个脚本附带了一个简单的菜单，可以与 uosc 整合界面，在界面上添加历史播放控件按钮，也可以使用默认的热键`h`打开历史播放菜单。按照项目[memo](https://github.com/po5/memo)进行设置即可：
+
+首先，将`memo.lua`放到`/home/<username>/.config/mpv/scripts/`目录下，将`memo.conf`放到`/home/<username>/.config/mpv/script-opts/`目录下。
+
+然后，为uosc添加memo菜单或按钮（二选一即可）：
+
+**添加按钮：**在时间线上方添加一个历史按钮，编辑`/home/<username>/.config/mpv/script-opts/uosc.conf`文件，找到`controls=`代码行，在`controls=`行最后添加如下代码（注意用英文逗号分割）：
+
+`command:history:script-binding memo-history?History` 
+
+**添加菜单：**编辑`/home/<username>/.config/mpv/input.conf`文件，添加如下一行代码即可（点击左下角三道线即是）：
+
+```
+# script-binding memo-history #! History
+```
+也可以使用[recent-menu](https://github.com/natural-harmonia-gropius/recent-menu)，可以与uosc集成，添加菜单或按钮。
+
+B.【recent】:
+
+如果没有使用UOSC,可以recent。按照项目[recent](https://github.com/hacel/recent)进行设置。然后将`/home/<username>/.config/mpv/script-opts/recent.conf`中设置`auto_save_skip_past=100`。
 
 **最近播放菜单控制:**
 
@@ -1738,6 +1774,42 @@ audio=yes
 #忽略隐藏文件
 ignore_hidden=yes
 ```
+
+⑥ 为MPV添加右键菜单脚本
+
+这个稍微比较麻烦，需要tcl支持，上面下载好之后放到环境变量文件夹。
+
+下载脚本文件夹[MPV_lazy](https://github.com/hooke007/MPV_lazy/tree/main/portable_config/scripts/contextmenu_gui)到mpv的配置目录`/home/<username>/.config/mpv/scripts/contextmenu_gui`，即 contextmenu_gui 文件夹位于 scripts 内。
+
+在[MPV_lazy_script-opts](https://github.com/hooke007/MPV_lazy/tree/main/portable_config/script-opts)下载如下两个脚本配置文件放在`/home/<username>/.config/mpv/script-opts`目录下：A.`contextmenu_gui_engine.conf` 该文件设定菜单所用的默认字体，其中，必须保证 tcltkBin 指向你实际下载使用的tcl/tk二进制文件 默认值为 tclsh。B.`contextmenu_gui.conf` 提供了可自定义的空档位滤镜/着色器各十个，可以根据示例和说明进行适配你的本机修改。
+
+编辑`.config/mpv/input.conf`键盘快捷键配置，添加如下代码，将鼠标右键设置为菜单（原默认右键为暂停）、回车键为全屏、鼠标左键双击为暂停：
+
+```
+#右键唤起菜单，也可以根据自己的喜好换成别的按键。
+MOUSE_BTN2   script-message-to contextmenu_gui contextmenu_tk
+# 全屏切换(回车键及小键盘确认键)
+Enter    cycle fullscreen
+KP_ENTER  cycle fullscreen
+# 双击左键 播放/暂停
+MBTN_LEFT_DBL  cycle pause
+```
+
+⑦ mpv窗口置顶插件
+
+下载[ontop-playback.lua](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/ontop-playback.lua)脚本文件放在`/home/<username>/.config/mpv/scripts/`目录下，然后在`/home/<username>/.config/mpv/mpv.conf`中添加如下参数：
+
+```
+#设置置顶播放
+ontop=yes
+```
+其作用如下：使 MPV 在暂停时禁用置顶，并在恢复播放时重新启用置顶；请注意，如果在暂停之前没有启用 ontop，那么它将不会执行任何操作。
+
+⑧ 控制Youtube视频加载画质
+
+使用mpv播放youtube视频时，默认是直接自动播放youtube可以加载的最高画质的视频格式，但是我们如果不想自动加载最高画质，而是自动加载我们指定的画质，就要使用[mpv-ytdlautoformat](https://github.com/Samillion/mpv-ytdlautoformat)。把文件`ytdlautoformat.lua`放到`/home/<username>/.config/mpv/scripts/`目录下即可。
+
+其默认设置是如果URL是Youtube或Twitch, ytdl-format 设置是: `480p, 30 FPS and no VP9 codec` 。no VP9 codec是脚本默认的，但可修改，编辑`ytdlautoformat.lua` 文件`local enableVP9 = true`，即可允许使用VP9 codec。
 
 （3）安装方便调用MPV的revda
 
@@ -1873,6 +1945,55 @@ vcodec默认视频编码选择优先级：`AV01>vp9.2>vp9>h265>h264`
 `--format-sort +vcodec:avc`
 
 将优先级改为`h264 > h265 > vp9 > vp9.2 > AV01`
+
+（6）个人配置参数分享
+
+仅供参考，有些配置是个人习惯，看注释修改。
+
+mpv.conf：
+
+```
+# required so that the 2 UIs don't fight with uosc each other
+osc=no
+# uosc provides its own seeking/volume indicators, so you also don't need this
+osd-bar=no
+# uosc will draw its own window controls if you disable window border，是否关闭窗口装饰（边框）
+border=yes
+# 设置置顶播放
+ontop=yes
+# 开启gpu渲染
+#profile=gpu-hq
+# 关闭软解
+#hwdec=no
+# 硬解
+#hwdec=auto-safe
+# 记忆上次播放的位置
+save-position-on-quit
+
+
+# 你应该将下面的 http://127.0.0.1:1080 自行更改为你的代理地址
+# 我只不过是将官方的示例换了一种写法而已
+# 让 mpv 使用 http(s) 代理
+#http-proxy=http://127.0.0.1:1080
+# 让 yt-dlp 使用 http(s) 代理
+#ytdl-raw-options-append=proxy=http://127.0.0.1:1080
+# 虽然 yt-dlp 支持 socks，但由于 FFmpeg 的原因还是无法使用
+```
+
+input.conf:
+
+```
+F     script-binding quality_menu/video_formats_toggle #! Stream Quality > Video
+Alt+f script-binding quality_menu/audio_formats_toggle #! Stream Quality > Audio
+
+#右键唤起菜单，也可以根据自己的喜好换成别的按键。
+MOUSE_BTN2   script-message-to contextmenu_gui contextmenu_tk
+# 全屏切换(回车键及小键盘确认键)
+Enter    cycle fullscreen
+KP_ENTER  cycle fullscreen
+# 双击左键 播放/暂停
+MBTN_LEFT_DBL  cycle pause
+```
 
 ### 4.2.5 资源播放器zyplayer
 
