@@ -2641,7 +2641,47 @@ tp_smapi Does not work on:
 ```
 我安装后电池阈值设置生效，却报错。也就是说tp_smapi在我的X240上部分生效，但不完全能运行，所以报错 “Failed to insert module 'tp_smapi-lts'”。可以更换使用受支持的tpapi-bat。
 
-### 6.
+### 6.pip3 install 模块提示 error
+
+当使用`pip3 install 模块`时，提示如下错误：
+
+```
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─> To install Python packages system-wide, try 'pacman -S
+    python-xyz', where xyz is the package you are trying to
+    install.
+    
+    If you wish to install a non-Arch-packaged Python package,
+    create a virtual environment using 'python -m venv path/to/venv'.
+    Then use path/to/venv/bin/python and path/to/venv/bin/pip.
+    
+    If you wish to install a non-Arch packaged Python application,
+    it may be easiest to use 'pipx install xyz', which will manage a
+    virtual environment for you. Make sure you have python-pipx
+    installed via pacman.
+
+note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+hint: See PEP 668 for the detailed specification.
+```
+
+临时解决办法有如下两种：
+
+**第一种方法：**
+
+将如下目录文件`/usr/lib/python3.11/EXTERNALLY-MANAGED`重命名为`EXTERNALLY-MANAGED_backup`。这种方法可能在再次升级python主程序后，还要再次修改。
+
+**第二种方法：**
+
+在如下目录文件`/home/dh/.config/pip/pip.conf`中添加如下参数：
+
+```
+[global]
+break-system-packages = true
+```
+
+### 7.
 
 ## (二)应用软件常见问题
 
