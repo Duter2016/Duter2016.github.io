@@ -1811,13 +1811,27 @@ ontop=yes
 
 其默认设置是如果URL是Youtube或Twitch, ytdl-format 设置是: `480p, 30 FPS and no VP9 codec` 。no VP9 codec是脚本默认的，但可修改，编辑`ytdlautoformat.lua` 文件`local enableVP9 = true`，即可允许使用VP9 codec。
 
+⑨ 让mpv播放B站视频弹幕更平滑、不模糊
+
+默认情况下，mpv加载B站视频弹幕，大概使用的30帧，弹幕视觉效果上一跳一跳的，看起来有点模糊。如果没有安装补帧插件，可以将下列配置直接粘贴到`/home/<username>/.config/mpv/mpv.conf`中，可以让弹幕更清楚一些：
+
+```
+# 让弹幕更平滑
+# 与补帧插件冲突，启用补帧插件就不用加这个
+# 注意这行尽量放配置文件的前面，最好放第一个
+vf=lavfi="fps=fps=60:round=down"
+```
+
+关于加载B站弹幕还没找到相对于方便的方式。但只要知道所看视频的cid就行了，在播放界面查看源码，Ctrl+F搜索`cid=`，后面的数字就是了。
+弹幕下载地址为`http://comment.bilibili.com/<cid>.xml`，这就是B站的xml弹幕文件。mpv加载弹幕需要转ASS格式，转ASS格式可用[【bilibili ASS 弹幕在线转换】](https://tiansh.github.io/us-danmaku/bilibili/)或者是离线的[【Danmuku2Ass】](https://github.com/m13253/danmaku2ass)，转换后加载就可以了。
+
 （3）安装方便调用MPV的revda
 
 **附加：**也可安装支持B站、油管、虎牙的[revda](https://github.com/THMonster/Revda)
 
 `yay -S revda-git`
 
-revda也是调用的mpv,并且支持弹幕。只需要获取视频播放地址的代码就可以，当想要打开bilibili视频时，它支持av号、bv号、ep号、ss号或直接输入链接，多p视频如果想通过av、bv号或者ss号打开，请在编号后加上:n（n为视频p数）打开，例如：你想打开av123456的第三p，请输入av123456:3，bv号与ss号同理。。比如三国演义的一集播放地址为“https://www.bilibili.com/bangumi/play/ep327612?from_spmid=666.25.episode.0&from_outer_spmid=..0.0”，那么播放代码就是“ep327612”。
+revda也是调用的mpv,并且支持弹幕。只需要获取视频播放地址的代码就可以，当想要打开bilibili视频时，它支持av号、bv号、ep号、ss号或直接输入链接，多p视频如果想通过av、bv号或者ss号打开，请在编号后加上:n（n为视频p数）打开，例如：你想打开av123456的第三p，请输入av123456:3，bv号与ss号同理。。比如三国演义的一集播放地址为“`https://www.bilibili.com/bangumi/play/ep327612?from_spmid=666.25.episode.0&from_outer_spmid=..0.0`”，那么播放代码就是“ep327612”。
 
 详细使用方法见[Revda wiki](https://github.com/THMonster/Revda/wiki/1-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)
 
