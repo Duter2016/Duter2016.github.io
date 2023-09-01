@@ -1813,7 +1813,7 @@ ontop=yes
 
 ⑨ 让mpv播放B站视频弹幕更平滑、不模糊
 
-默认情况下，mpv加载B站视频弹幕，大概使用的30帧，弹幕视觉效果上一跳一跳的，看起来有点模糊。如果没有安装补帧插件，可以将下列配置直接粘贴到`/home/<username>/.config/mpv/mpv.conf`中，可以让弹幕更清楚一些：
+默认情况下，mpv加载B站视频弹幕，视频大概使用的30帧，弹幕视觉效果上一跳一跳的，看起来有点模糊。如果没有安装补帧插件，可以将下列配置直接粘贴到`/home/<username>/.config/mpv/mpv.conf`中，可以让弹幕更清楚一些(通过帧采样强制视频以指定帧率输出)：
 
 ```
 # 让弹幕更平滑
@@ -1834,6 +1834,10 @@ vf=lavfi="fps=fps=60:round=down"
 revda也是调用的mpv,并且支持弹幕。只需要获取视频播放地址的代码就可以，当想要打开bilibili视频时，它支持av号、bv号、ep号、ss号或直接输入链接，多p视频如果想通过av、bv号或者ss号打开，请在编号后加上:n（n为视频p数）打开，例如：你想打开av123456的第三p，请输入av123456:3，bv号与ss号同理。。比如三国演义的一集播放地址为“`https://www.bilibili.com/bangumi/play/ep327612?from_spmid=666.25.episode.0&from_outer_spmid=..0.0`”，那么播放代码就是“ep327612”。
 
 详细使用方法见[Revda wiki](https://github.com/THMonster/Revda/wiki/1-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)
+
+另外，安装revda时，同时安装了cli程序dmlive,这样也可以直接使用-u参数后接http链接可播放该链接所指向的直播间或视频（**带B站弹幕**）：
+
+`dmlive -u <url>`
 
 （4）为MPV设置代理
 
@@ -1944,7 +1948,9 @@ Categories=Network;
 
 比如使用firefox的cookies：`--cookies-from-browser firefox`
 
-使用Edge的cookies：`--cookies-from-browser Edge`
+使用Edge的cookies：`--cookies-from-browser Edge`。
+
+**注意：**yt-dlp默认是稳定版的浏览器，比如稳定版Edge浏览器默认cookie目录为`~/.config/microsoft-edge`，上述参数是有效的，但如说使用的是dev开发版Edge,cookie目录就变为`~/.config/microsoft-edge-dev`了，上述参数要修改为`--cookies-from-browser Edge:~/.config/microsoft-edge-dev`。
 
 ②选择视频解码格式
 
@@ -1967,6 +1973,11 @@ vcodec默认视频编码选择优先级：`AV01>vp9.2>vp9>h265>h264`
 mpv.conf：
 
 ```
+# 让弹幕更平滑
+# 与补帧插件冲突，启用补帧插件就不用加这个
+# 注意这行尽量放配置文件的前面，最好放第一个
+vf=lavfi="fps=fps=60:round=down"
+
 # required so that the 2 UIs don't fight with uosc each other
 osc=no
 # uosc provides its own seeking/volume indicators, so you also don't need this
