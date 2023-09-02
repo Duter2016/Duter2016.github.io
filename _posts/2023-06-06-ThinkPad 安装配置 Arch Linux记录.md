@@ -1811,7 +1811,39 @@ ontop=yes
 
 其默认设置是如果URL是Youtube或Twitch, ytdl-format 设置是: `480p, 30 FPS and no VP9 codec` 。no VP9 codec是脚本默认的，但可修改，编辑`ytdlautoformat.lua` 文件`local enableVP9 = true`，即可允许使用VP9 codec。
 
-⑨ 让mpv播放B站视频弹幕更平滑、不模糊
+⑨ 使用mpv自动下载B站弹幕并加载
+
+linux系统下使用方法如下：
+
+在[MPV-Play-BiliBili-Comments-Plus](https://github.com/Duter2016/MPV-Play-BiliBili-Comments-Plus)下载`scripts/bilibiliAssert`下面的三个脚本文件到mpv的配置目录`/home/<username>/.config/mpv/scripts/bilibiliAssert`，然后修改如下两个文件：
+
+将`～/.config/mpv/scripts/bilibiliAssert/main.lua`中如下代码中`dh`替换为你的`<pc username>`
+
+`bilicidnum=ingest("/home/dh/.config/mpv/scripts/bilibiliAssert/bilicid")`
+
+将`～/.config/mpv/scripts/bilibiliAssert/GetBiliDanmuCID.py`中如下代码中`dh`替换为你的`<pc username>`
+
+`file = open("/home/dh/.config/mpv/scripts/bilibiliAssert/bilicid", 'w')`
+
+然后，命令别名 alias：
+
+打开用户配置文件 `~/.bash_profile` ， 在文件最后添加如下 alias（注意是英文半角单引号，mpvd名字可以自定义）：
+```
+# mpv带弹幕播放在线视频
+alias mpvd='python /home/dh/.config/mpv/scripts/bilibiliAssert/GetBiliDanmuCID.py && mpv $(qdbus org.kde.klipper /klipper org.kde.klipper.klipper.getClipboardContents)'
+```
+保存后回到命令行执行以下命令使其生效：
+`source ~/.bash_profile`
+
+**使用方法：**
+
+这里我们假设已经在网页复制了B站视频网址到剪贴板中，则在终端执行如下命令就可以立即播放了：
+
+`mpvd`
+
+mpv播放后将会自动加载弹幕，按下按键`b`会重新载入弹幕,弹幕以字幕方式加载，如需隐藏按下`v`即可。如果希望更改快捷键，在main.lua中最后一行修改想要的快捷键。
+
+⑩ 让mpv播放视频弹幕更平滑、不模糊
 
 默认情况下，mpv加载B站视频弹幕，视频大概使用的30帧，弹幕视觉效果上一跳一跳的，看起来有点模糊。如果没有安装补帧插件，可以将下列配置直接粘贴到`/home/<username>/.config/mpv/mpv.conf`中，可以让弹幕更清楚一些(通过帧采样强制视频以指定帧率输出)：
 
@@ -1822,7 +1854,7 @@ ontop=yes
 vf=lavfi="fps=fps=60:round=down"
 ```
 
-关于加载B站弹幕还没找到相对于方便的方式。但只要知道所看视频的cid就行了，在播放界面查看源码，Ctrl+F搜索`cid=`，后面的数字就是了。
+关于加载B站弹幕，只要知道所看视频的cid就行了，在播放界面查看源码，Ctrl+F搜索`cid=`，后面的数字就是了。
 弹幕下载地址为`http://comment.bilibili.com/<cid>.xml`，这就是B站的xml弹幕文件。mpv加载弹幕需要转ASS格式，转ASS格式可用[【bilibili ASS 弹幕在线转换】](https://tiansh.github.io/us-danmaku/bilibili/)或者是离线的[【Danmuku2Ass】](https://github.com/m13253/danmaku2ass)，转换后加载就可以了。
 
 （3）安装方便调用MPV的revda
