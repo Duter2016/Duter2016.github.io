@@ -1994,7 +1994,8 @@ ontop=yes
 #hwdec=auto-safe
 # 记忆上次播放的位置
 save-position-on-quit
-
+#后面数字是字幕轨 不用的时候就注释掉
+#secondary-sid=2
 
 # 你应该将下面的 http://127.0.0.1:1080 自行更改为你的代理地址
 # 我只不过是将官方的示例换了一种写法而已
