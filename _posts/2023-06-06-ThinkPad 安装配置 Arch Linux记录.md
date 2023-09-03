@@ -1817,10 +1817,6 @@ linux系统下使用方法如下：
 
 在[MPV-Play-BiliBili-Comments-Plus](https://github.com/Duter2016/MPV-Play-BiliBili-Comments-Plus)下载`scripts/bilibiliAssert`下面的三个脚本文件到mpv的配置目录`/home/<username>/.config/mpv/scripts/bilibiliAssert`，然后修改如下两个文件：
 
-将`～/.config/mpv/scripts/bilibiliAssert/main.lua`中如下代码中`dh`替换为你的`<pc username>`
-
-`bilicidnum=ingest("/home/dh/.config/mpv/scripts/bilibiliAssert/bilicid")`
-
 将`～/.config/mpv/scripts/bilibiliAssert/GetBiliDanmuCID.py`中如下代码中`dh`替换为你的`<pc username>`
 
 `file = open("/home/dh/.config/mpv/scripts/bilibiliAssert/bilicid", 'w')`
@@ -1830,7 +1826,7 @@ linux系统下使用方法如下：
 打开用户配置文件 `~/.bash_profile` ， 在文件最后添加如下 alias（注意是英文半角单引号，mpvb名字可以自定义）：
 ```
 # mpv带弹幕播放在线视频
-alias mpvb='python /home/dh/.config/mpv/scripts/bilibiliAssert/GetBiliDanmuCID.py && mpv $(qdbus org.kde.klipper /klipper org.kde.klipper.klipper.getClipboardContents)'
+alias mpvb='mpv $(qdbus org.kde.klipper /klipper org.kde.klipper.klipper.getClipboardContents)'
 ```
 上面剪贴板参数根据你使用的剪贴板工具，自己修改为以下可参考的对应参数：
 
