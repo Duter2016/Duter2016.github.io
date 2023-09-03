@@ -1844,6 +1844,10 @@ alias mpvb='mpv $(qdbus org.kde.klipper /klipper org.kde.klipper.klipper.getClip
 
 `mpvb`
 
+或者用mpv原始的命令也可以：
+
+`mpv <url>`
+
 mpv播放后将会自动加载弹幕，按下按键`b`会重新载入弹幕,弹幕以字幕方式加载，如需隐藏按下`v`即可。如果希望更改快捷键，在main.lua中最后一行修改想要的快捷键。
 
 ⑩ 让mpv播放视频弹幕更平滑、不模糊
