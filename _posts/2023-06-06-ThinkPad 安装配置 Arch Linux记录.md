@@ -869,7 +869,50 @@ KDE 小部件：[Intel P-state and CPU-Freq Manager](https://github.com/frankenf
 sudo systemctl start hdapsd@device.service
 ```
 
-## 1.9 软件管理器pamac
+## 1.9 安装硬件加速驱动
+
+使用mpv等一些播放器时，如果开启了播放器的硬件加速功能，需要系统安装硬件加速驱动。尤其如果播放视频时CPU温度比较高，开启硬件加速可以有明显改善。
+
+我当前使用的机器是**intel核显**，使用如下命令安装硬件加速驱动：
+
+`sudo pacman -S libvdpau-va-gl`
+
+查看硬件加速是否有效的软件：
+
+`sudo pacman -S intel-gpu-tools`
+
+运行intel-gpu-tools的命令为`intel_gpu_top`
+
+**注意：**使用intel核显硬件加速驱动时，如果使用MPV等播放器播放视频时，提示如下信息`[ffmpeg] AVHWDeviceContext: Cannot load libcuda.so.1 [ffmpeg] AVHWDeviceContext: Could not dynamically load CUDA`，不用处理，CUDA驱动是NVIDIA驱动，与intel核显硬件加速驱动无关。
+
+**如果你使用的是其他显卡（NVIDIA/AMD），那么[参考下面的分析信息进行配置](https://blog.ddosolitary.org/posts/configure-hardware-video-acceleration-on-arch-linux/)**：
+
+Linux配置显卡驱动相关是很麻烦的（尤其闭源驱动容易搞崩系统，其实开源驱动还好），这里仅提及开源驱动的配置，不涉及专有驱动。
+
+目前Linux下的广泛使用的硬件加速API有两个：VA-API和VDPAU，不同应用程序的支持情况不同。
+
+可能需要安装的相关驱动信息：
+
+**VA-API**
+- `libva-intel-driver`提供Intel核显的驱动。
+- `libva-mesa-driver`提供NVIDIA和AMD的驱动。
+- `libva-vdpau-driver`提供支持所有显卡的驱动，但实际上底层调用的是VDPAU，只是对API进行了翻译，所以需要配置好VDPAU才能使用。
+
+**VDPAU**
+- `mesa-vdpau`提供NVIDIA和AMD的驱动（但对于NVIDIA显卡需要安装提取自专有驱动的AUR包`nouveau-fw`）。
+- `libvdpau-va-gl`提供支持所有显卡的驱动，但和`libva-vdpau-driver`相反，底层调用VA-API。
+
+对于三种Intel/NVIDIA/AMD显卡，由上面简单分析发现各类显卡都有对应的VA-API驱动，**但Intel核显没有对应VDPAU驱动，需要`libvdpau-va-gl`调用VA-API来支持VDPAU**。安装驱动后，系统会自动选用对应的驱动，然而有时自动识别的效果不是很好（尤其是对于核显+独显的机器，系统会默认使用性能较差的核显），可以用环境变量指定使用的驱动：（下面的优先配置驱动仅供参考）
+
+| 显卡 | LIBVA_DRIVER_NAME | VDPAU_DRIVER |
+| :---: | :---: | :---: |
+| Intel | i965 | va_gl |
+| NVIDIA | nouveau | nouveau |
+| AMD | radeonsi | radeonsi |
+
+同时，如果是核显+独显的机器要使用独显驱动的话，还需要设置`DRI_PRIME=1`。注意这不只是针对硬件加速的设置，也会强制其他所有调用显卡的程序使用独显，所以笔记本的话会相当耗电。
+
+## 1.10 软件管理器pamac
 
 pamac是Manjaro系统中的软件管理器，可以通过AUR安装在Arch系的系统中。
 
@@ -897,7 +940,7 @@ yay -S pamac-tray-icon-plasma
 
 以下所有的 `yay -S` 都可以用 `pamac build`替代，或者在“**添加/删除软件**”搜索安装。
 
-## 1.10 安装系统监视器 ksysguard
+## 1.11 安装系统监视器 ksysguard
 
 系统监视器（KSysGuard），即KDE系统监视器，设计简单，无需特别设置即可进行简单的进程控制。它包含两张工作表：①系统负载（上面是图表）和②进程表。
 
@@ -907,7 +950,7 @@ yay -S pamac-tray-icon-plasma
 
 `sudo pacman -Syu ksysguard`
 
-## 1.11 manjaro的GUI内核和驱动管理工具
+## 1.12 manjaro的GUI内核和驱动管理工具
 
 manjaro的**GUI内核管理工具**在AUR仓库中是garuda-settings-manager-git，即manjaro的Manjaro settings manager。
 
@@ -915,7 +958,7 @@ manjaro的**GUI驱动管理工具**是Driver Manager，在AUR仓库中没有。
 
 不知风险，暂未安装。
 
-## 1.12 轻松搞定 Linux+Win 双系统时间差异
+## 1.13 轻松搞定 Linux+Win 双系统时间差异
 
 在 Linux 下系统时间是正确的,转到 Windows 下,系统时间整整慢了 8 个小时。这是因为 Linux 默认使用网络时间,而不是读取本机硬件时钟。打开终端,输入如下命令(不需要管理员权限)：
 
@@ -2025,15 +2068,17 @@ osd-bar=no
 border=yes
 # 设置置顶播放
 ontop=yes
-# 开启gpu渲染
+# 开启gpu渲染,使用一个内置的画质方案预设
 #profile=gpu-hq
-# 关闭软解
+# 指定应使用的硬件视频解码API，默认值 no 为始终使用软解。
 #hwdec=no
-# 硬解
-#hwdec=auto-safe
+# 启用任何在白名单中的硬件解码器，auto-safe不像 auto，该模式不会尝试启用未知或已知不良的解码方案，但不支持部分设置滤镜。
+hwdec=auto-safe
+# 对限定范围内的编码尝试硬解，特殊值 all 即任意格式都尝试硬解，当前版本默认值 h264,vc1,hevc,vp8,vp9,av1,prores
+hwdec-codecs="h264,vc1,hevc,vp8,vp9,av1,prores"
 # 记忆上次播放的位置
 save-position-on-quit
-#后面数字是字幕轨 不用的时候就注释掉
+# 后面数字是字幕轨，不用的时候就注释掉
 #secondary-sid=2
 
 # 你应该将下面的 http://127.0.0.1:1080 自行更改为你的代理地址
