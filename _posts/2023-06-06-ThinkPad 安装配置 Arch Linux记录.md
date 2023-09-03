@@ -1827,11 +1827,18 @@ linux系统下使用方法如下：
 
 然后，命令别名 alias：
 
-打开用户配置文件 `~/.bash_profile` ， 在文件最后添加如下 alias（注意是英文半角单引号，mpvd名字可以自定义）：
+打开用户配置文件 `~/.bash_profile` ， 在文件最后添加如下 alias（注意是英文半角单引号，mpvb名字可以自定义）：
 ```
 # mpv带弹幕播放在线视频
-alias mpvd='python /home/dh/.config/mpv/scripts/bilibiliAssert/GetBiliDanmuCID.py && mpv $(qdbus org.kde.klipper /klipper org.kde.klipper.klipper.getClipboardContents)'
+alias mpvb='python /home/dh/.config/mpv/scripts/bilibiliAssert/GetBiliDanmuCID.py && mpv $(qdbus org.kde.klipper /klipper org.kde.klipper.klipper.getClipboardContents)'
 ```
+上面剪贴板参数根据你使用的剪贴板工具，自己修改为以下可参考的对应参数：
+
+* Plasma KDE桌面默认剪切板工具为`$(qdbus org.kde.klipper /klipper org.kde.klipper.klipper.getClipboardContents)`
+* Parcellite 为 `$(parcellite --clipboard)`
+* xclip 为 `$(xclip --clipboard)`
+* xsel 为 `$(xsel --clipboard)`
+
 保存后回到命令行执行以下命令使其生效：
 `source ~/.bash_profile`
 
@@ -1839,7 +1846,7 @@ alias mpvd='python /home/dh/.config/mpv/scripts/bilibiliAssert/GetBiliDanmuCID.p
 
 这里我们假设已经在网页复制了B站视频网址到剪贴板中，则在终端执行如下命令就可以立即播放了：
 
-`mpvd`
+`mpvb`
 
 mpv播放后将会自动加载弹幕，按下按键`b`会重新载入弹幕,弹幕以字幕方式加载，如需隐藏按下`v`即可。如果希望更改快捷键，在main.lua中最后一行修改想要的快捷键。
 
@@ -1863,11 +1870,11 @@ vf=lavfi="fps=fps=60:round=down"
 
 `yay -S revda-git`
 
-revda也是调用的mpv,并且支持弹幕。只需要获取视频播放地址的代码就可以，当想要打开bilibili视频时，它支持av号、bv号、ep号、ss号或直接输入链接，多p视频如果想通过av、bv号或者ss号打开，请在编号后加上:n（n为视频p数）打开，例如：你想打开av123456的第三p，请输入av123456:3，bv号与ss号同理。。比如三国演义的一集播放地址为“`https://www.bilibili.com/bangumi/play/ep327612?from_spmid=666.25.episode.0&from_outer_spmid=..0.0`”，那么播放代码就是“ep327612”。
+revda也是调用的mpv,并且支持弹幕。只需要获取视频播放地址的代码就可以，当想要打开bilibili视频时，它支持av号、bv号、ep号、ss号，多p视频如果想通过av、bv号或者ss、ep号打开，请在编号后加上:n（n为视频p数）打开，例如：你想打开av123456的第三p，请输入av123456:3，bv号与ss号同理。。比如三国演义的播放地址为“`https://www.bilibili.com/bangumi/play/ep327612?from_spmid=666.25.episode.0&from_outer_spmid=..0.0`”，那么播放播放第三集代码就是“ep327612:3”。
 
 详细使用方法见[Revda wiki](https://github.com/THMonster/Revda/wiki/1-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95)
 
-另外，安装revda时，同时安装了cli程序dmlive,这样也可以直接使用-u参数后接http链接可播放该链接所指向的直播间或视频（**带B站弹幕**）：
+另外，安装revda时，同时安装了cli程序dmlive,这样也可以直接使用-u参数、后接https链接可播放该链接所指向的直播间或视频（**带B站弹幕，支持ss、ep号**）：
 
 `dmlive -u <url>`
 
