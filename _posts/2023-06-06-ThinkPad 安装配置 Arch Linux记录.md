@@ -873,21 +873,36 @@ sudo systemctl start hdapsd@device.service
 
 使用mpv等一些播放器时，如果开启了播放器的硬件加速功能，需要系统安装硬件加速驱动。尤其如果播放视频时CPU温度比较高，开启硬件加速可以有明显改善。
 
-我当前使用的机器是**intel核显**，使用如下命令安装硬件加速驱动：
+（1）我当前使用的机器是**intel核显4400**（型号不同，驱动不同，参考[Arch wiki 硬件视频加速](https://wiki.archlinuxcn.org/wiki/%E7%A1%AC%E4%BB%B6%E8%A7%86%E9%A2%91%E5%8A%A0%E9%80%9F)），使用如下命令安装硬件加速驱动：
+
+① 安装驱动：
+`sudo pacman -S libva-intel-driver`
+
+② 安装驱动翻译层：
+
+`sudo pacman -S libva-vdpau-driver`
 
 `sudo pacman -S libvdpau-va-gl`
 
-查看硬件加速是否有效的软件：
+③ 查看硬件加速是否有效的软件：
 
 `sudo pacman -S intel-gpu-tools`
 
 运行intel-gpu-tools的命令为`intel_gpu_top`
 
+安装libva-utils包提供命令`vainfo` 来检查 VA-API 的设置：
+
+`sudo pacman -S libva-utils`
+
+安装vdpauinfo包提供命令`vdpauinfo` 来检查 VA-API 的设置：
+
+`sudo pacman -S vdpauinfo`
+
 安装硬件加速驱动后，mpv使用硬解播放时，Xorg进程cpu占用从15%左右降至3%左右！
 
 **注意：**使用intel核显硬件加速驱动时，如果使用MPV等播放器播放视频时，提示如下信息`[ffmpeg] AVHWDeviceContext: Cannot load libcuda.so.1 [ffmpeg] AVHWDeviceContext: Could not dynamically load CUDA`，不用处理，CUDA驱动是NVIDIA驱动，与intel核显硬件加速驱动无关。
 
-**如果你使用的是其他显卡（NVIDIA/AMD），那么[参考下面的分析信息进行配置](https://blog.ddosolitary.org/posts/configure-hardware-video-acceleration-on-arch-linux/)**：
+（2）**如果你使用的是其他显卡（NVIDIA/AMD），那么[参考下面的分析信息进行配置](https://blog.ddosolitary.org/posts/configure-hardware-video-acceleration-on-arch-linux/)**：
 
 Linux配置显卡驱动相关是很麻烦的（尤其闭源驱动容易搞崩系统，其实开源驱动还好），这里仅提及开源驱动的配置，不涉及专有驱动。
 
