@@ -900,7 +900,7 @@ sudo systemctl start hdapsd@device.service
 
 安装硬件加速驱动后，mpv使用硬解播放时，Xorg进程cpu占用从15%左右降至3%左右！
 
-**注意：**使用intel核显硬件加速驱动时，如果使用MPV等播放器播放视频时，提示如下信息`[ffmpeg] AVHWDeviceContext: Cannot load libcuda.so.1 [ffmpeg] AVHWDeviceContext: Could not dynamically load CUDA`，不用处理，CUDA驱动是NVIDIA驱动，与intel核显硬件加速驱动无关。
+**注意：**使用intel核显硬件加速驱动时，如果使用MPV等播放器播放视频时，提示如下信息`[ffmpeg] AVHWDeviceContext: Cannot load libcuda.so.1 [ffmpeg] AVHWDeviceContext: Could not dynamically load CUDA`、`Cannot load libcuda.so.1`等cuda相关提示，不用处理，CUDA驱动是NVIDIA硬件驱动，与intel核显硬件加速驱动无关。
 
 （2）**如果你使用的是其他显卡（NVIDIA/AMD），那么[参考下面的分析信息进行配置](https://blog.ddosolitary.org/posts/configure-hardware-video-acceleration-on-arch-linux/)**：
 
