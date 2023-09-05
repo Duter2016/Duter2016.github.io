@@ -1910,6 +1910,14 @@ alias mpvb='mpv $(qdbus org.kde.klipper /klipper org.kde.klipper.klipper.getClip
 
 mpv播放后将会自动加载弹幕，按下按键`b`会重新载入弹幕,弹幕以字幕方式加载，如需隐藏按下`v`即可。如果希望更改快捷键，在main.lua中最后一行修改想要的快捷键。
 
+也可以为uosc添加memo菜单：
+
+编辑`/home/<username>/.config/mpv/input.conf`文件，添加如下一行代码即可（点击左下角三道线即是）：
+
+```
+# script-binding reLoadDanmaku #! ReLoadDanmaku
+```
+
 ⑩ 让mpv播放视频弹幕更平滑、不模糊
 
 默认情况下，mpv加载B站视频弹幕，视频大概使用的30帧，弹幕视觉效果上一跳一跳的，看起来有点模糊。如果没有安装补帧插件，可以将下列配置直接粘贴到`/home/<username>/.config/mpv/mpv.conf`中，可以让弹幕更清楚一些(通过帧采样强制视频以指定帧率输出)：
