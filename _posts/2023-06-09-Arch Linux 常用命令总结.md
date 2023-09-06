@@ -362,10 +362,253 @@ systemctl daemon-reload dhcpcd # 重新载入 systemd 配置。扫描新增或�
 ```
 
 
+## 六、一些有用的命令总结
 
+### 1.获取设备信息
 
+**（1）简要信息**
 
-## 六、常见命令错误
+可以使用能显示系统图标的 `neofetch`，在终端中输入：（需要下载 `neofetch` 软件包）
+
+```bash
+neofetch
+```
+
+或者使用功能更强大的 `inxi`：（需要在 AUR 中下载 `inxi` 软件包）
+
+```bash
+sudo inxi -b
+```
+
+**（2）详细信息**
+
+在终端中输入：
+
+```bash
+sudo inxi -Fa
+```
+
+**（3）内核版本**
+
+在终端中输入：
+
+```bash
+uname -a
+```
+
+**（4）操作系统版本**
+
+在终端中输入：（需要 `lsb-release` 软件包）
+
+```bash
+lsb_release -a
+```
+
+### 2.进程、内存、日志管理
+
+**（1）命令行进程查看器**
+
+在终端中输入：（需要 `htop` 软件包）
+
+```bash
+htop
+```
+
+**（2）内存使用情况**
+
+`free` 显示系统中已用和未用的物理内存和交换内存、共享内存和内核使用的缓冲区的总和
+
+在终端中输入：（默认单位是 KiB，即 1024 字节）
+
+```bash
+free
+```
+
+**Linux 的内存策略和使用指南可以参考这个网站：[Linux ate my RAM](https://www.linuxatemyram.com/)**
+
+**（2）上一次关机的系统日志**
+
+```bash
+journalctl -rb -1
+```
+
+### 3.文件权限与属性
+
+**（1）查看文件权限与属性**
+
+查看当前目录下所有文件（包括目录文件，即文件夹）的权限与属性：
+
+```bash
+ls -l
+```
+
+输出部分开头由 10 位字母或 `-` 符号组成，如 `drwxr-xr-x`
+
+第一个字母代表文件类型，`d` 表示目录文件，`-` 表示普通文件
+
+后面 9 个字母代表文件的权限：第 1-3 个字母代表所有者对文件的权限，第 4-6 个字母代表用户组对该文件的权限，第 7-9 个字母代表所有其他用户对该文件的权限
+
+其中 `r` 代表读取权限，`w` 代表修改权限，`x` 代表执行权限（非可执行文件，如文本文件，本身就没有执行权限），`-` 代表没有该类型的权限
+
+**（2）修改文件权限**
+
+在终端里使用 `chmod` 命令可以修改文件权限：
+
+```bash
+chmod (who)=(permissions) (file_name)
+```
+
+其中的 `(who)` 是一个或者多个字母，可以是 `u`（所有者）、`g`（用户组）、`o`（所有其他用户）、`a`（以上所有，等价于 `ugo`）
+
+权限 `(permissions)` 用 `r`、`w`、`x` 表示
+
+中间的 `=` 符号是覆盖性的，`chmod` 命令允许使用 `+` 或 `-` 从现有集合中添加和减去权限，例如：
+
+```bash
+chmod u+x (file_name)
+```
+
+可以给文件添加所有者的可执行权限
+
+`chmod` 也可以用数字来设置权限，此时 `r=4`、`w=2`、`x=1`，如 `rwxr-xr-x` 等于 `755`，这样可以同时编辑所有者、用户组和其他用户的权限：
+
+```bash
+chmod 755 (file_name)
+```
+
+大多数目录被设置为 `755`，以允许所有者读取、写入和执行，但拒绝被其他所有人写入
+
+非可执行的文件通常是 `644`，以允许所有者读取和写入，但允许其他所有人读取，可执行文件则为 `744`
+
+如果要递归修改，可以加入 `-R` 参数
+
+更多设置和用法参考以下网址：
+
+[File permissions and attributes -- ArchWiki](https://wiki.archlinux.org/title/File_permissions_and_attributes)
+
+**（3）修改文件用户组**
+
+在终端里使用 `chgrp` 命令可以修改文件所属的用户组：
+
+```bash
+chgrp (group_name) (file_name)
+```
+
+如果要递归修改，可以加入 `-R` 参数
+
+**（4）修改文件所有者**
+
+在终端里使用 `chown` 命令可以修改文件所有者：
+
+```bash
+chown (user_name) (file_name)
+```
+
+如果要递归修改，可以加入 `-R` 参数
+
+也可以同时修改所有者和用户组：
+
+```bash
+chown (user_name):(group_name) (file_name)
+```
+
+### 4.文件操作命令
+
+**（1）查看并转换编码**
+
+查看编码的命令为：
+
+```bash
+file -i (file_name)
+```
+
+其中 `charset` 一栏的输出即为文件编码
+
+转换编码可以使用系统预装的 `iconv`，方法为：
+
+```bash
+iconv -f (from_encoding) -t (to_encoding) (from_file_name) -o (to_file_name)
+```
+
+该方法适合对文本文件转换编码，对 ZIP 压缩包和 PDF 文件等二进制文件则无法使用
+
+`iconv` 支持的编码格式可以用 `iconv -l` 查看
+
+**（2）转换图片格式**
+
+这需要 `imagemagick` 软件包，它提供了 `convert` 等命令
+
+例如批量将图片从 PNG 格式转换为 JPG 格式：
+
+```bash
+ls -1 *.png | xargs -n 1 bash -c 'convert "$0" "${0%.png}.jpg"'
+```
+
+**（3）查找命令**
+
+`grep` 命令的用法为在文件或命令输出中查找字符串，例如：
+
+```bash
+grep (pattern) (file_pattern)
+```
+
+即为在当前目录文件名符合 `file_pattern` 的文件中查找字符串 `pattern`
+
+又例如：
+
+```bash
+pamac list | grep (pattern)
+```
+
+可以查询已安装的软件包中名字含有 `pattern` 的软件包
+
+**（4）获取命令执行的时间**
+
+使用 `time` 命令在任何命令前面可以获取命令执行的时间：
+
+```bash
+time (command)
+```
+
+输出有三行：`real` 一行是命令执行的总时间，`user` 一行是指令执行时在用户态（user mode）所花费的时间，`sys` 一行是指令执行时在内核态（kernel mode）所花费的时间
+
+**（5）命令行比较两个文件**
+
+可以用 Linux 自带的 `diff` 命令，它可以逐行比较两个文件（如果是二进制文件则直接输出是否存在差异）：
+
+```bash
+diff (file_name_1) (file_name_2)
+```
+
+这里的文件也可以换成路径，详细用法可以用 `diff --help` 查询
+
+**（6）批量更改文件名**
+
+可以用 Linux 自带的 `rename` 命令：
+
+```bash
+rename -- "(old_name)" "(new_name)" (files)
+```
+
+这里的参数 `--` 是为了防止在 `"old_name"` 中出现连字符导致识别错误（将其识别为参数）而添加的
+
+例如将本文件夹下所有文件的文件名中空格改为下划线，即执行：
+
+```bash
+rename -- " " "_" ./*
+```
+
+详细用法可以用 `rename --help` 查询
+
+**（7）批量更改文件**
+
+推荐使用 `sed` 命令处理：
+
+```bash
+sed -ie 's/(old_string)/(new_string)/g' (files)
+```
+
+## 七、常见命令错误
 
 ### 1.pacman 排除常见错误
 
