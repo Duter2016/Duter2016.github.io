@@ -2105,6 +2105,9 @@ hwdec-codecs="h264,vc1,hevc,vp8,vp9,av1,prores"
 save-position-on-quit
 # 后面数字是字幕轨，不用的时候就注释掉
 #secondary-sid=2
+# 当播放视频时，在终端显示视频或歌曲标题及艺术家名字
+term-playing-msg='Title: ${media-title}'
+
 
 # 你应该将下面的 http://127.0.0.1:1080 自行更改为你的代理地址
 # 我只不过是将官方的示例换了一种写法而已
@@ -2128,6 +2131,8 @@ Enter    cycle fullscreen
 KP_ENTER  cycle fullscreen
 # 双击左键 播放/暂停
 MBTN_LEFT_DBL  cycle pause
+
+# script-binding reLoadDanmaku #! ReLoadDanmaku
 ```
 
 ### 4.2.5 资源播放器zyplayer
