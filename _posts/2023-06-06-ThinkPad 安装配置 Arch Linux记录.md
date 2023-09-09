@@ -754,7 +754,7 @@ sudo modprobe -v thinkpad_acpi
 好啦,我们可以手动去开启 thinkfan 啦,敲命令.停止就是把后面的 `start` 变为 `stop` 咯。
 开启 thinkfan 服务的命令：
 
-`sudo /etc/init.d/thinkfan start`
+`sudo systemctl start thinkfan.service`
 
 （5） 温度显示,接下来我们要查看当前的温度值啦.对于 ThinkPad 笔记本电脑显示所有温度传感器的值,我们敲击下面命令：
 
@@ -812,6 +812,12 @@ hwmon /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
 `sudo gedit /etc/thinkfan.conf`
 
 将上面这段内容 copy 到`/etc/thinkfan.conf` 文件中。
+
+其上一行有类似如下代码，表示温度值的修正：
+
+`tp_thermal /proc/acpi/ibm/thermal (0, 10, 15, 2, 10, 5, 0, 3, 0, 3)`
+
+上面的温度修正数字排序和Thinkpad型号有关，各个数字表示的部件温度也各不相同，在[thinkwiki](https://www.thinkwiki.org/wiki/Thermal_Sensors)上可以查到部分型号机器的资料（比如我的x240只能探测到cpu温度，其他硬件传感器探测不到，就没有必要设置了，其他型号可以正常探测各硬件温度的，可以设置一下）。因为thinkfan根据读取到的最高温度来控制风扇。而部件温度和承受力是不一致的。比如CPU在80度下也能正常工作，而硬盘此时就会挂掉。所以对于读取到的温度值需要修正，这个括号里的数字会直接加到响应的thermal的数字上，一一对应。然后用其中修正过最大温度值进行控制。
 
 （7）使用方法
 
