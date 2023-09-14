@@ -25,6 +25,14 @@ sudo apt update
 sudo apt install s-nail
 ```
 
+
+Arch Linux下安装如下两个软件：
+
+```
+sudo pacman -S s-nail
+yay -S sendmail
+```
+
 ## 配置 s-nail
 
 ```
@@ -51,6 +59,8 @@ echo "邮件内容" | s-nail  -s "邮件主题" xxx@nicholas_ksd.com
 s-nail  -s "邮件主题" xxx@nicholas_ksd.com  < result.txt
 ```
 
+注意：Arch Linux下把s-nail修改为mailx。
+
 示例1中，`echo`后写文件正文内容，`-s`后为邮件标题，后面为邮件接收人。
 
 示例2中，为邮件正文从文档读取。
@@ -66,4 +76,4 @@ s-nail  -s "邮件主题" xxx@nicholas_ksd.com  < result.txt
 
 更详细的s-nail命令参数可以查阅以下链接：
 
-* [http://manpages.ubuntu.com/manpages/focal/en/man1/s-nail.1.html]
+* [http://manpages.ubuntu.com/manpages/focal/en/man1/s-nail.1.html](http://manpages.ubuntu.com/manpages/focal/en/man1/s-nail.1.html)
