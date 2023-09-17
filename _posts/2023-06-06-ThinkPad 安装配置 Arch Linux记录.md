@@ -2114,6 +2114,29 @@ save-position-on-quit
 # 当播放视频时，在终端显示视频或歌曲标题及艺术家名字
 term-playing-msg='Title: ${media-title}'
 
+# s 视频截图，包含字幕，S 视频截图，不带字幕
+# <默认 jpg|(同前)jpeg|png|webp|jxl|avif>
+screenshot-format             = jpg
+# <0-100> JPEG的质量，默认 90
+screenshot-jpeg-quality       = 90
+# 用与源视频相同的色度半采样写入JPEG，默认 yes
+screenshot-jpeg-source-chroma = yes
+# <0-9> PNG压缩等级，过高的等级影响性能，默认 7
+#screenshot-png-compression    = 7
+# <0-5> PNG的压缩过滤器。默认值 5 即可实现最佳压缩率
+#screenshot-png-filter         = 5
+# <0-15> JXL的视觉模型距离，0为质量无损，0.1为视觉无损，默认值 1 相当于JPEG的90质量
+#screenshot-jxl-distance       = 1
+# <1-9> JXL压缩等级，过高的等级影响性能，默认 4
+#screenshot-jxl-effort         = 4
+# 使用适当的色彩空间标记屏幕截图（并非所有格式受支持）默认 yes
+#screenshot-tag-colorspace     = yes
+# 尽可能使用高位深作截屏，可能导致巨大的文件体积（并非所有格式受支持），默认 yes
+#screenshot-high-bit-depth     = yes
+# 示例即默认值。可额外选填路径，例值 "~~desktop/MPV-%P-N%n"
+screenshot-template           = "mpv-shot%n"
+# 截图保存路径。默认为空，例值（保存截图在桌面）"~~desktop/"
+screenshot-directory          = "~/图片/"
 
 # 你应该将下面的 http://127.0.0.1:1080 自行更改为你的代理地址
 # 我只不过是将官方的示例换了一种写法而已
