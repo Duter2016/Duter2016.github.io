@@ -415,7 +415,7 @@ SMART的目的是监控硬盘的可靠性、预测磁盘故障和执行各种类
 
 `sudo pacman -S tp_smapi-lts acpi_call-lts`
 
-> 如果你使用的内核是`linux`内核，选择安装上面的tp_smapi和acpi_call；如果你使用的`linux-lts`内核，就选择安装tp_smapi-lts和acpi_call-lts。我在系统中同时安装了linux和linux-lts内核，我两组都安装了！
+> 如果你使用的内核是`linux`内核，选择安装上面的tp_smapi和acpi_call；如果你使用的`linux-lts`内核，就选择安装tp_smapi-lts和acpi_call-lts。我在系统中同时安装了linux和linux-lts内核，我两组都安装了！x240不用安装tp_smapi、tp_smapi-lts,换用tpacpi-bat。
 
 注意：[tp_smapi](https://github.com/linux-thinkpad/tp_smapi)冲突声明：
 ```
@@ -440,7 +440,7 @@ is compatible with tp_smapi.
 
 ⑥ 部分平台无法使用tp_smapi控制电池充电阈值的情况
 
-部分2013 新出的几款 Ivy Bridge 平台的 thinkpad(X230,T430,T530), 可能会遇到无法使用 tp_smapi控制电池充电阈值的情况，例如tp_smapi 可能无法支持 T430, 但是我们还有 tpacpi-bat 可以使用控制其充电阀值（安装acpi_call和tpacpi-bat）：
+部分2013 新出的几款 Ivy Bridge 平台的 thinkpad(X230,X240,T430,T530), 可能会遇到无法使用 tp_smapi控制电池充电阈值的情况，例如tp_smapi 可能无法支持 T430, 但是我们还有 tpacpi-bat 可以使用控制其充电阀值（安装acpi_call和tpacpi-bat）：
 
 `sudo pacman -S acpi_call`
 
@@ -685,12 +685,12 @@ sudo modprobe -v thinkpad_acpi
 
 添加'coretemp'内核模块以在开机引导时加载：
 
-`$ sudo sh -c 'echo coretemp >> /etc/modules'`
+`sudo sh -c 'echo coretemp >> /etc/modules'`
 
 如果这对你来说看起来很神秘， 但这是一个在文件末尾添加'coretemp'非常简单的命令。 如果您愿意， 您可以使用自己喜欢的文本编辑器打开“模块”并自行添加“coretemp”。
 由于您的更改不会在您重新启动计算机之前生效， 因此我们手动加载'coretemp'以继续配置我们的配置：
 
-`$ sudo modprobe coretemp`
+`sudo modprobe coretemp`
 
 （4）设置风扇转速等级 
 
@@ -837,7 +837,7 @@ hwmon /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
 
 ④ 但是， 无论是查看运行状态后， 还是刚编辑过 thinkfan.conf 后， 都要重新运行一次开启 thinkfan服务的命令：
 
-`sudo /etc/init.d/thinkfan start`
+`sudo systemctl start thinkfan.service`
 
 完成！
 
@@ -2113,6 +2113,8 @@ save-position-on-quit
 #secondary-sid=2
 # 当播放视频时，在终端显示视频或歌曲标题及艺术家名字
 term-playing-msg='Title: ${media-title}'
+# 仅播放音频流时，显示窗口
+force-window=yes
 
 # s 视频截图，包含字幕，S 视频截图，不带字幕
 # <默认 jpg|(同前)jpeg|png|webp|jxl|avif>
