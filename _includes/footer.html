@@ -93,7 +93,7 @@
                 <p class="copyright text-muted">
                     Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}
                     <br>
-                    Theme on <a href="{{ site.github_repo }}" target="_blank">GitHub</a> |<a href="https://tongji.baidu.com/web/welcome/ico?s=6b745afaf4056010d2a874cb474bfedf" target="_blank">百度统计</a> |
+                    Theme on <a href="{{ site.github_repo }}" target="_blank">GitHub</a> |<a target="_blank" title="51la网站统计" href="https://v6.51.la/land/3G2JgG2bhkE9Z9n5"><img src="https://sdk.51.la/icon/2-1.png"></a> |
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="100px" height="20px"
@@ -211,6 +211,7 @@
 
 
 <!-- Baidu Tongji -->
+<!--
 {% if site.ba_track_id %}
 <script>
     // dynamic User by Hux
@@ -226,7 +227,11 @@
     })();
 </script>
 {% endif %}
+-->
 
+
+<!-- 51la Tongji -->
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js?id=3G2JgG2bhkE9Z9n5&ck=3G2JgG2bhkE9Z9n5"></script>
 
 
 <!-- Jekyll-Search -->
