@@ -2279,7 +2279,54 @@ debian系deb包安装完，wps 会在`/usr/share/templates/`下生成模板文�
 
 （1）按照谢大神写的教程 [https://yihui.org/tinytex/#for-other-users]， 终端执行如下命令：
 
-`wget -qO- "http://yihui.org/gh/tinytex/tools/install-unx.sh" | sh`
+`wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh`
+
+老版本文章中使用的旧版本的tinytex,使用的`wget -qO- "http://yihui.org/gh/tinytex/tools/install-unx.sh" | sh`进行安装（老版本中自带镜像加速），现在改用上面的命令脚本安装新版的tinytex。但是新版的sh脚本中下载安装包直接使用的github的原始地址，没有代理的情况下，安装十分满或无法下载安装。如果你直接使用上面的命令下载不动，使用下面的方法修改一下sh脚本，使用github下载镜像：
+
+**① 规范修改镜像下载地址**
+
+使用如下链接`https://yihui.org/tinytex/install-bin-unix.sh`下载脚本install-bin-unix.sh。然后用你使用的文本编辑器打开，找到：
+
+```
+if [ -z $TINYTEX_VERSION ]; then
+  TINYTEX_URL="https://github.com/rstudio/tinytex-releases/releases/download/daily/$TINYTEX_INSTALLER"
+else
+  TINYTEX_URL="https://github.com/rstudio/tinytex-releases/releases/download/v$TINYTEX_VERSION/$TINYTEX_INSTALLER-v$TINYTEX_VERSION"
+fi
+```
+
+在如上两个链接前加上`https://ghproxy.com/`修改为：
+
+```
+if [ -z $TINYTEX_VERSION ]; then
+  TINYTEX_URL="https://ghproxy.com/https://github.com/rstudio/tinytex-releases/releases/download/daily/$TINYTEX_INSTALLER"
+else
+  TINYTEX_URL="https://ghproxy.com/https://github.com/rstudio/tinytex-releases/releases/download/v$TINYTEX_VERSION/$TINYTEX_INSTALLER-v$TINYTEX_VERSION"
+fi
+```
+ 注意，如上链接地址下载的是`TinyTeX-1`，只包含约90个 LaTeX packages，我们可以选择修改如下代码，下载`TinyTeX`，其包含更多的LaTeX packages（详细介绍见[tinytex-releases](https://github.com/rstudio/tinytex-releases)）：
+
+` TINYTEX_INSTALLER=${TINYTEX_INSTALLER:-"TinyTeX-1"}`修改为` TINYTEX_INSTALLER=${TINYTEX_INSTALLER:-"TinyTeX"}`
+
+**② 规范修改镜像下载地址**
+
+①的修改有点麻烦，我们直接修改如下代码，直接安装`TinyTeX`：
+
+```
+if [ -z $TINYTEX_VERSION ]; then
+  TINYTEX_URL="https://ghproxy.com/https://github.com/rstudio/tinytex-releases/releases/download/daily/$TINYTEX_INSTALLER"
+else
+  TINYTEX_URL="https://ghproxy.com/https://github.com/rstudio/tinytex-releases/releases/download/v$TINYTEX_VERSION/$TINYTEX_INSTALLER-v$TINYTEX_VERSION"
+fi
+```
+为
+```
+if [ -z $TINYTEX_VERSION ]; then
+  TINYTEX_URL="https://ghproxy.com/https://github.com/rstudio/tinytex-releases/releases/download/daily/TinyTeX"
+else
+  TINYTEX_URL="https://ghproxy.com/https://github.com/rstudio/tinytex-releases/releases/download/daily/TinyTeX"
+fi
+```
 
 安装过程比较漫长， 慢慢等待安装完成即可。
 
@@ -2308,6 +2355,10 @@ tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texliv
 # 更改到上海交大镜像需要在命令行中执行: 
 tlmgr option repository https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/tlnet/
 ```
+
+如果tlmgr修改镜像时报错，就需要先执行一下如下命令：
+
+`export PATH=$PATH:/home/usename/.TinyTeX/bin/x86_64-linux`
 
 （2）将其添加到 path(这里如果你用的是 zsh,把 bashrc 改成 zshrc， 其他类推),方法如下：
 
