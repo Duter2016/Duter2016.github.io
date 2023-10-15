@@ -2308,7 +2308,7 @@ fi
 
 ` TINYTEX_INSTALLER=${TINYTEX_INSTALLER:-"TinyTeX-1"}`修改为` TINYTEX_INSTALLER=${TINYTEX_INSTALLER:-"TinyTeX"}`
 
-**② 规范修改镜像下载地址**
+**② 暴力修改镜像下载地址**
 
 ①的修改有点麻烦，我们直接修改如下代码，直接安装`TinyTeX`：
 
