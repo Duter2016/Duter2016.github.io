@@ -1,3 +1,17 @@
+- name: "芯片战争"    #书名
+  author: "余盛"    #作者
+  translator: "-"    #翻译者
+  press: "华中科技大学出版社"    #出版社
+  publishdate: "2022-1"    #出版日期
+  price: "59.80元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/s/public/s34413327.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/35659418/"    #豆瓣书单地址
+  readdate: "2022-6"    #阅读日期
+  booktag: "科普"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "自从华为被美国制裁，芯片信息陡然走热。这本书对于了解芯片的制造发展史、芯片制造工艺以及中国发展现状都有很大的帮助。里面也涉及了复杂指令集、精简指令集等相关概念，对于了解x86、x64、arm、risc-V的发展脉络有很多的阐释！"    #书评
+
 - name: "人心至上：杜月笙"    #书名
   author: "雾满拦江"    #作者
   translator: "-"    #翻译者
