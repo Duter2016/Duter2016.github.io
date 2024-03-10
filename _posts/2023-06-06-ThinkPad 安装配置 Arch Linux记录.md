@@ -274,6 +274,14 @@ GRUB_SAVEDEFAULT=true
 
 ## 1.4 给文件管理器Dolphin添加右键“以管理员身份打开”
 
+（1）适用于kde5的方法
+
+① 方法一：安装` kf5-servicemenus-rootactions-git`
+
+`yay -S kf5-servicemenus-rootactions-git`
+
+② 手动添加dolphin右键菜单
+
 kde文件管理器Dolphin属于用户使用的安全考虑，已经取消了右键“以管理员身份打开”菜单。经过查询，仍然有以root身份运行Dolphin解决方法，终端输入如下命令即可：
 
 ```
@@ -326,6 +334,12 @@ Name[zh_TW]=以管理员身份打开
 | `%F`| 即使选择了多个文件，也只有一个文件名（包括路径）。读取桌面条目的系统应认识到所讨论的程序无法处理多个文件参数，并且如果该程序无法处理其他文件参数，则应该为每个选定文件生成并执行该程序的多个副本。如果文件不在本地文件系统上（即，在HTTP或FTP位置），则文件将被复制到本地文件系统，%f并将展开以指向临时文件。用于不了解URL语法的程序。|
 
 如果新建无误后显示不出来的话， 执行一下`kbuildsycoca5`如果有错误会有提示。
+
+（2）适用于KDE6的方法
+
+现在kde版本已经升级到`6`版本,上面的方法已经无法使用。需要单独安装适用于KDE6的软件：`kf6-servicemenus-rootactions`
+
+`yay -S kf6-servicemenus-rootactions`
 
 ## 1.5 Arch Linux 安装及配置 TLP 高级电源管理工具
 
@@ -1510,6 +1524,8 @@ veracrypt是TrueCrypt的升级版，可以使用TrueCrypt建立的加密盘的�
 
 ### 3.1.4 clash GUI
 
+(1)clash-for-windows-bin （已停止维护，但已安装的仍可用）
+
 clash 是一款非常强大的上网神器，现在在 Linux 平台下也推出了 GUI 版本。
 
 可以直接通过 yay 安装，也可以手动安装：
@@ -1521,6 +1537,12 @@ clash 是一款非常强大的上网神器，现在在 Linux 平台下也推出�
 `/opt/clash-for-windows-bin/resources/app.asar`
 
 **注意：**使用的Clash_Chinese_Patch汉化补丁版本号必须与安装的clash-for-windows-bin版本号一致。
+
+（2）`clash-meta` + `clash-verge`（推荐使用，一直维护更新中）
+
+`clash-verge`是clash的内核，`clash-verge`是`clash-meta`的GUI界面程序。
+
+`yay -S clash-meta clash-verge`
 
 ### 3.1.5 Goflyway
 
