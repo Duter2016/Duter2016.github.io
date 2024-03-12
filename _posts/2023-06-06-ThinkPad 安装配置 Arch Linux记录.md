@@ -2260,6 +2260,20 @@ yay wps-office
 
 debian系deb包安装完，wps 会在`/usr/share/templates/`下生成模板文件，如果没有这些模板文件，桌面右键新建是没有新建wps文档的选项的。Arch Linux安装后，右键新建没有wps文档菜单，只需要解压别的桌面版复制出来模板文件，放到`/usr/share/templates/`目录即可。
 
+④ 修正当`freetype2 版本号 > 2.13.0`时，WPS字体加粗时，渲染问题变成一坨黑的问题。两种方法：
+
+a.降级freetype2版本号为 `2.13.0-1`(可以使用，但使用b方案更好)。
+
+`sudo downgrade freetype2`
+
+然后会列出一系列freetype2的版本，用数字选择需要的版本`2.13.0-1`即可。
+
+b.安装wps的专用补丁`freetype2-wps`。该方法思路是将旧版 freetype2 动态链接库复制到 `/usr/lib/office6` 目录下即可。
+
+```
+yay -S freetype2-wps
+```
+
 ### 5.1.2 安装 LibreOffice
 
 可能需要 hsqldb2-java 启用 LibreOffice Base 中的某些模块。 使用命令安装它：
