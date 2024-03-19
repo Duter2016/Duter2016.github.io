@@ -3089,7 +3089,53 @@ break-system-packages = true
 
 即，给`Exec=`添加上参数：`env QT_IM_MODULE=fcitx`
 
-### 2.
+### 2.wayland下，系统垃圾清理软件Bleachbit不能以root模式运行
+
+尝试在 Wayland桌面环境中通过 su、sudo 或 pkexec 以 root 身份运行图形应用程序Bleachbit，将失败并出现类似以下的错误：
+
+```
+Traceback (most recent call last):
+  File "/usr/bin/bleachbit", line 40, in <module>
+    bleachbit.Unix.is_display_protocol_wayland_and_root_not_allowed()
+  File "/usr/share/bleachbit/Unix.py", line 748, in is_display_protocol_wayland_and_root_not_allowed
+    bleachbit.Unix.root_is_not_allowed_to_X_session()
+  File "/usr/share/bleachbit/Unix.py", line 739, in root_is_not_allowed_to_X_session
+    result = General.run_external(['xhost'], clean_env=False)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/share/bleachbit/General.py", line 147, in run_external
+    p = subprocess.Popen(args, stdout=stdout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.11/subprocess.py", line 1953, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'xhost'
+```
+
+**错误提示分析：**
+
+这是因为在 Wayland 之前，可以通过创建 Polkit 策略来正确实现具有提升权限的 GUI 应用程序，或者更危险的方法是通过在命令前面加上 sudo 在终端中运行命令来完成。但在 （X）Wayland 下，这不再起作用，因为默认设置为只允许启动 X 服务器的用户将客户端连接到它。
+
+**解决方法：**
+
+一种通用但不安全的解决方法，使用xhost来允许任何图形应用程序在wayland下以 root 身份运行。安装`xorg-xhost`：
+
+```
+sudo pacman -S xorg-xhost
+```
+
+然后，如果你在启动程序添加了参数`pkexec`，那么直接点击启动图标就可以了。如果你使用`sudo <程序>`命令运行程序，那么就需要继续下面的操作：
+使用如下命令添加允许root用户访问本地用户的X会话权限，请以当前（非特权）用户身份执行以下命令：
+
+```
+xhost si:localuser:root
+```
+
+若要在应用程序关闭后删除此访问权限，请执行以下操作：
+
+```
+xhost -si:localuser:root
+```
 
 # 附件部分
 
