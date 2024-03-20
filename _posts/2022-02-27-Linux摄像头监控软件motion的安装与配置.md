@@ -21,7 +21,9 @@ tags:
 
 在linuxmint下安装Motion相当简单，直接在终端下运行：
 
-``` sudo apt-get install motion```
+``` 
+sudo apt-get install motion
+```
 
 ## 二 、配置motion
 
@@ -249,7 +251,7 @@ echo "$DATE" > $ALARM_TIME
 
 但是，由于程序运动效率原因，有时会出现，记录的时间同开始录mkv的时间差1秒的情况，虽然只有一秒，但是足以导致找不到mkv文件，无法正确发出监控视频。由于我们设置了gap为10，即10秒内最多只有一个视频。所以，解决这个问题的办法可以是，去寻找videotime中所记录时间及其上一秒，连续两秒的视频，找到哪个发哪个。当然，结果永远是只会找到一个。
 
-on_motion_end这个shell脚本文件如下：
+on_motion_end这个shell脚本文件如下（**注意：Arch Linux下把s-nail修改为mailx。**）：
 
 ```
 #!/bin/bash
@@ -289,8 +291,15 @@ echo $MAILBODY | s-nail -s $TIME -a $DIRC*$TIME.mkv xxxxx@foxmail.com
 echo $MAILBODY | s-nail -s $TIME -a $DIRC*$TIME.mkv xxxxx@foxmail.com
 ```
 
+**注意：Arch Linux下把命令中s-nail修改为mailx。**
+
 你如果使用的其他邮件发送软件，改为你相应的命令即可。如果你也想用s-nail，可以参照我的另一篇文章进行配置：
 [《linuxmint配置snail命令行发送邮件》](https://duter2016.github.io/2021/12/24/linuxmint%E9%85%8D%E7%BD%AEsnail%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/)
+
+**重要一步：**
+
+一定要赋予`当前linux普通用户`（不是root用户和组）两个文件`/etc/motion/on_motion_detected`和`/etc/motion/on_motion_end`的可执行权限，否则会导致只能录像，但无法发出邮件的bug（会提示类似如下错误: `line 1: /etc/motion/on_motion_end: Permission denied`
+）！
 
 这样就安装并配置好了！
 

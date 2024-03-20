@@ -35,6 +35,8 @@ yay -S sendmail
 
 ## 配置 s-nail
 
+**早期版本设置（2022-03-26之后的s-nail版本已无效）**
+
 ```
 vi /etc/s-nail.rc
 ```
@@ -50,6 +52,24 @@ set smtp-auth-password="xxx" # QQ邮箱设置->账户->开启“POP3/SMTP服务�
 set smtp-auth=login
 ```
 
+**新版本设置（2022-03-26之后的s-nail版本-有效）**
+
+```
+vi /etc/mail.rc
+```
+
+添加如下内容;
+
+```
+# 文件最后附加：
+set from="username@qq.com"
+set smtp-auth=login
+set mta=smtps://username:password@smtp.qq.com:465   #smtp服务器端口是465
+set v15-compat  #必须要
+```
+
+注意：这里`mta=smtps`后面是`username`，不是`username@qq.com`；`password`是`QQ邮箱设置->账户->开启“POP3/SMTP服务”生成授权码`。
+
 ## 测试
 
 ```
@@ -59,7 +79,7 @@ echo "邮件内容" | s-nail  -s "邮件主题" xxx@nicholas_ksd.com
 s-nail  -s "邮件主题" xxx@nicholas_ksd.com  < result.txt
 ```
 
-注意：Arch Linux下把s-nail修改为mailx。
+**注意：Arch Linux下把代码中s-nail修改为mailx。**
 
 示例1中，`echo`后写文件正文内容，`-s`后为邮件标题，后面为邮件接收人。
 
