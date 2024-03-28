@@ -1022,6 +1022,10 @@ sudo pacman -S xcb-imdkit fcitx5 fcitx5-chinese-addons fcitx5-rime fcitx5-qt fci
 # 下面两个是词库
 sudo pacman -Syu fcitx5-pinyin-zhwiki
 yay fcitx5-pinyin-moegirl
+
+# 启用英文输入提示功能，需要开启英语键盘输入法中的拼写检查和提示功能，
+# 此时需要安装英文拼写检查语言包aspell-en
+sudo pacman -S aspell-en
 ```
 
 然后，设置输入法集成环境：
