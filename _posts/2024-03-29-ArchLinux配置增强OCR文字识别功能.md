@@ -52,10 +52,10 @@ tesseract支持60多种语言的识别，使用之前需要先下载对应语言
 
 完整字库项目地址：[https://github.com/tesseract-ocr/tessdata](https://github.com/tesseract-ocr/tessdata)  
 
-这里我们只使用简体中文、繁体中文、英文三种字库：`tesseract-data-chi_sim`（简体中文字库）、`tesseract-data-chi_sim_vert`（简体中文垂直方向字库）、`tesseract-data-chi_tra`（繁体中文字库）、`tesseract-data-chi_tra_vert`（繁体中文字库垂直方向字库）、`tesseract-data-eng`（英文字库）。安装命令如下：
+这里我们只使用简体中文、繁体中文、英文三种字库：`tesseract-data-chi_sim`（简体中文字库）、`tesseract-data-chi_sim_vert`（简体中文垂直方向字库）、`tesseract-data-chi_tra`（繁体中文字库）、`tesseract-data-chi_tra_vert`（繁体中文字库垂直方向字库）、`tesseract-data-eng`（英文字库）、tesseract-data-osd（方向和脚本检测）、tesseract-data-equ（数学、等式检测）。安装命令如下：
 
 ```
-sudo pacman -S tesseract-data-chi_sim tesseract-data-chi_sim_vert tesseract-data-chi_tra tesseract-data-chi_tra_vert tesseract-data-eng
+sudo pacman -S tesseract-data-chi_sim tesseract-data-chi_sim_vert tesseract-data-chi_tra tesseract-data-chi_tra_vert tesseract-data-eng tesseract-data-osd tesseract-data-equ
 ```
 
 ## 三、制作[shell脚本]一键识别，并输出到文件和剪切板
@@ -87,7 +87,8 @@ mogrify -modulate 100,0 -resize 400% $SCR.png
 # should increase detection rate
 
 # OCR by tesseract
-tesseract $SCR.png $SCR &> /dev/null -l eng+chi_sim+chi_tra+chi_sim_vert+chi_tra_vert
+tesseract $SCR.png $SCR &> /dev/null -l eng+chi_sim+chi_sim_vert+osd+equ   # 简体中文+英文
+#tesseract $SCR.png $SCR &> /dev/null -l eng+chi_sim+chi_tra+chi_sim_vert+chi_tra_vert+osd+equ   # 简体中文+繁体中文+英文
 
 # get the text and copy to clipboard
 
