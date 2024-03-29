@@ -117,7 +117,17 @@ cat $SCR.txt  | sed -r 's/([^0-9a-z])?\s+([^0-9a-z])/\1\2/ig'>$SCR2.txt  # 解�
 getSCR2=$(cat $SCR2.txt)
 qdbus org.kde.klipper /klipper setClipboardContents "$getSCR2"
 
-exit
+# 设置一个陷阱来捕获EXIT信号  
+on_exit() {  
+    # 在这里发送通知  
+    notify-send "识别结束" "你截取的图片已OCR识别完毕！"  
+}
+
+# 使用trap命令注册on_exit函数，以便在脚本退出时调用它  
+trap on_exit EXIT 
+
+# 使用exit命令退出脚本，这将触发on_exit函数并发送通知  
+exit 0  # 0表示成功退出
 ```
 
 > 注意：中文识别情况下，有可能每个字之间都有空格，所以在脚本里添加了去除空格的代码。
