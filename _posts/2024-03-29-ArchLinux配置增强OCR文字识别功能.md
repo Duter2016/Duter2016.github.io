@@ -120,7 +120,7 @@ qdbus org.kde.klipper /klipper setClipboardContents "$getSCR2"
 # 设置一个陷阱来捕获EXIT信号  
 on_exit() {  
     # 在这里发送通知  
-    notify-send "识别结束" "你截取的图片已OCR识别完毕！"  
+    notify-send "OCR识别结束" "已OCR识别完毕截取的图片，并已将识别文本复制到剪贴板，Ctrl+V粘贴即可！"
 }
 
 # 使用trap命令注册on_exit函数，以便在脚本退出时调用它  
