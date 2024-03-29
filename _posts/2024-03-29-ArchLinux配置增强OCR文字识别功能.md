@@ -75,16 +75,30 @@ sudo pacman -S tesseract-data-chi_sim tesseract-data-chi_sim_vert tesseract-data
 #Path: /home/Username/...
 
 #you can only scan one character at a time
+SCR_0="/home/dh/opt/tesseractOcr/screenshot/src_origin"
 SCR="/home/dh/opt/tesseractOcr/screenshot/src"
 SCR2="/home/dh/opt/tesseractOcr/screenshot/src2"
-# before take a screenshot, if file "SCR.png" exist, delete this file
-rm -f $SCR.png
-# take a shot what you wana to OCR to text, delay 2 seconds
-flameshot gui -p $SCR.png -d 2000
 
-# increase the png
-mogrify -modulate 100,0 -resize 400% $SCR.png 
+# before take a screenshot, if file "src.png" and "src_origin.png" exist, delete these two files
+rm -f $SCR.png $SCR_0.png
+
+##  截图后，直接放大并覆盖原始文件方法 Start
+# take a shot what you wana to OCR to text, delay 2 seconds
+#flameshot gui -p $SCR.png -d 2000
+# increase the png, 亮度不变，色调重置为中性（即不会偏向红色、绿色或蓝色）
+# mogrify 直接放大并覆盖原始文件
+#mogrify -modulate 100,0 -resize 400% $SCR.png
 # should increase detection rate
+##  截图后，直接放大并覆盖原始文件方法 End
+
+##  截图后，放大原始图像文件后，同时保留原始图像文件和放大后图像文件 Start
+# take a shot what you wana to OCR to text, delay 2 seconds
+flameshot gui -p $SCR_0.png -d 2000
+# increase the png, 亮度不变，色调重置为中性（即不会偏向红色、绿色或蓝色）
+# convert 放大原始文件，创建调整后图像，并保留原始图像
+convert $SCR_0.png -modulate 100,0 -resize 400% $SCR.png
+# should increase detection rate
+##  截图后，放大原始图像文件后，同时保留原始图像文件和放大后图像文件 End
 
 # OCR by tesseract
 tesseract $SCR.png $SCR &> /dev/null -l eng+chi_sim+chi_sim_vert+osd+equ   # 简体中文+英文
