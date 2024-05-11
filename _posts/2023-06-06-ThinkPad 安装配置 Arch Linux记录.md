@@ -2831,6 +2831,7 @@ pip3 install certifi
 pip3 install jeepney
 pip3 install lxml
 pip3 install pysocks
+pip3 install baidu-aip （百度OCR）
 ```
 
 （2）python-pip或pip3源使用国内镜像，提升模块下载速度。
