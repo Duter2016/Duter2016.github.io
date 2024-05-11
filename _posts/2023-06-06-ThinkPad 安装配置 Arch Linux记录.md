@@ -668,9 +668,11 @@ DISK_APM_LEVEL_ON_BAT="128"
 
 （1） 安装 thinkfan 风扇控制器软件
 
-首先，同时安装thinkfan和thinkfan-openrc，单个安装会报错：
+~~首先，同时安装thinkfan和thinkfan-openrc，单个安装会报错：~~
 
-`yay -S thinkfan thinkfan-openrc`
+首先，安装thinkfan：
+
+`yay -S thinkfan`
 
 然后，安装图形界面：
 
