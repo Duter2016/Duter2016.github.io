@@ -1009,6 +1009,18 @@ manjaro的**GUI驱动管理工具**是Driver Manager，在AUR仓库中没有。
 
 这就设置好了。无论你在 Linux 还是 Windows,系统时间都是正确的了。
 
+## 1.14 禁用编译安装软件时生成安装-debug软件包
+
+通常，为了让可执行文件尽可能小，会在编译和链接时移除和运行无关的调试信息。这种可执行文件的栈回溯信息非常少，所以在调试软件或者报告 Bug 的时候，需要安装带调试信息的版本。
+
+如果使用AUR或Pacman（从 4.1 开始）安装软件时进行编译安装，默认会使用 `etc/makepkg.conf` 中的 DEBUG_CFLAGS 和 DEBUG_CXXFLAGS 编译标志，会强制编译调试信息，并在安装软件时（如abc），同时安装软件abc-debug。慢慢积累，会使系统中多出若干软件，占用空间比较大！
+
+可以通过如下方法禁用编译安装软件时生成安装-debug软件包，在 `/etc/makepkg.conf` 中。在以 `OPTIONS=` 开头的行中，将 `debug` 更改为 `！debug`：
+
+```
+OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !debug lto)
+```
+
 # 二、系统类软件配置及美化
 
 ## 2.1 安装及配置输入法fcitx5
