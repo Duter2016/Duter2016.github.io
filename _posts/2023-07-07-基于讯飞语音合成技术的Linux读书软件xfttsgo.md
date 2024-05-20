@@ -123,6 +123,15 @@ PS.我系统中使用的剪贴板工具是Parcellite，如果你使用的是xcli
 echo $(parcellite --clipboard) > /home/user/下载/xfttsgo/web/1.txt && xfttsgo /home/user/下载/xfttsgo/web/1.txt
 ```
 
+或
+
+```
+# 添加qt6的qdbus的PATH，否则klipper的qdbus通信失败
+export PATH=$PATH:/usr/lib/qt6/bin
+
+'echo $(qdbus org.kde.klipper /klipper org.kde.klipper.klipper.getClipboardContents)  > /home/user/下载/xfttsgo/web/1.txt && xfttsgo /home/user/下载/xfttsgo/web/1.txt
+```
+
 整合后命令太长了，不方便终端输入，我们可以将这条命令通过如下两种方法快速执行命令：
 
 ① 命令别名 alias 方法：

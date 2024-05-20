@@ -1940,6 +1940,8 @@ linux系统下使用方法如下：
 
 打开用户配置文件 `~/.bash_profile` ， 在文件最后添加如下 alias（注意是英文半角单引号，mpvb名字可以自定义）：
 ```
+# 添加qt6的qdbus的PATH，否则klipper的qdbus通信失败
+export PATH=$PATH:/usr/lib/qt6/bin
 # mpv带弹幕播放在线视频
 alias mpvb='mpv $(qdbus org.kde.klipper /klipper org.kde.klipper.klipper.getClipboardContents)'
 ```
@@ -2217,6 +2219,12 @@ MBTN_LEFT_DBL  cycle pause
 
 ### 4.2.5 资源播放器zyplayer
 
+（1）新版的资源播放器zyplayer
+
+`yay -S zyplayer-bin`
+
+（2）老版的资源播放器zy-player
+
 `yay -S zy-player-appimage`
 
 或者
@@ -2224,6 +2232,7 @@ MBTN_LEFT_DBL  cycle pause
 `yay -S zy-player-bin`
 
 建议到[项目主页](https://github.com/Hunlongyu/ZY-Player)下载安装`v2.8.5`版，新版本`v2.8.8`有功能阉割（没有影视推荐模块了）！
+
 ### 4.2.6 rhythmbox
 
 `sudo pacman -Syu rhythmbox`
@@ -2598,6 +2607,12 @@ calibre 的二进制安装包括了其所有依赖项的私有版本。它可以
 
 ### 5.3.4 词典Goldendict
 
+新版本的webkit-qt6版本（建议安装这个）：
+
+`yay -S goldendict-ng` 
+
+webkit-qt5版本（很久不更新了，存在icu冲突）：
+
 `yay -S goldendict` 
 
 **（1） 离线字典安装**
@@ -2625,6 +2640,8 @@ mv directory(目录名) /usr/share/goldendict/dic
 汉典 http://www.zdic.net/sousuo/?q=%GDWORD%
 bing http://cn.bing.com/dict/search?q=%GDWORD%
 ```
+
+PS. 另外，还可以考虑安装`pot-translation`,在线翻译功能比较强大！
 
 ## 5.4 会议类
 
@@ -2777,7 +2794,7 @@ Sublime Text支持自定义快捷键，syncviewscroll、MarkdownPreview和Markdo
 
 打开用户配置文件 `~/.bash_profile` ，添加如下alias：
 
-`alias subl="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"`
+`alias subl="'usr/bin/subl'"`
 
 如果不添加别名，也可以选择将路径添加到环境变量下。这里的路径根据实际情况可能会有所不同。
 
