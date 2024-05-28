@@ -650,3 +650,32 @@ Errors occurred, no packages were upgraded.
 `rm /var/lib/pacman/db.lck`
 
 如果你发现 lsof 命令输出了使用锁文件的进程的 PID，请先杀死这个进程，然后删除锁文件。
+
+#### （4）升级提示 “exists on filesystem” 错误（自身文件冲突）
+
+使用 `yay` 或 `sudo pacman -Syu`进行系统升级时，有时会遇到软件自身与其上个版本的软件冲突的情况，提示错误信息类似如下：
+
+```
+error: failed to commit transaction (conflicting files)
+......: /usr/share/...... exists in filesystem
+Errors occurred, no packages were upgraded.
+ -> error installing repo packages
+```
+
+这时，升级和覆盖冲突包的正确方法是使用`--overwrite`：
+
+```
+sudo pacman --overwrite "*" -Syu
+```
+
+如果是在升级某个软件时，遇到类似上述提示错误，使用如下命令强制覆盖升级：
+
+```
+sudo pacman -S --overwrite \* <package_name>
+```
+
+或者
+
+```
+sudo pacman -S --overwrite "*" <package_name>
+```
