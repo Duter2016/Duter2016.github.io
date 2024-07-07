@@ -1745,15 +1745,27 @@ emoji-slack-fix.py  joinparttab.py      nignore.py       sharedchannels.py  url_
 
 `yay deepin-ocr-git`
 
-### 4.1.3 录屏软件kazam
+### 4.1.3 录屏软件
 
-`yay kazam`
+（1）vokoscreenNG
+
+`sudo pacman -S vokoscreen`
+
+（2）kazam （python升级3.12后已无法使用）
+
+`yay -S kazam`
 
 ### 4.1.4 画图工具 mypaint
 
 `sudo pacman -Syu mypaint`
 
-### 4.1.5 安装 peek录制 GIF：
+### 4.1.5 安装GIF录屏软件：
+
+（1）Kooha
+
+`sudo pacman -Syu kooha`
+
+（2）peek （项目已经弃置，无法运行，暂无修复）
 
 `sudo pacman -Syu peek`
 
@@ -3094,7 +3106,7 @@ hint: See PEP 668 for the detailed specification.
 
 **第一种方法：**
 
-将如下目录文件`/usr/lib/python3.11/EXTERNALLY-MANAGED`重命名为`EXTERNALLY-MANAGED_backup`。这种方法可能在再次升级python主程序后，还要再次修改。
+将如下目录文件`/usr/lib/python3.12/EXTERNALLY-MANAGED`重命名为`EXTERNALLY-MANAGED_backup`。这种方法可能在再次升级python主程序后，还要再次修改。
 
 **第二种方法：**
 
@@ -3105,7 +3117,22 @@ hint: See PEP 668 for the detailed specification.
 break-system-packages = true
 ```
 
-### 7.
+### 7.pip3 install 模块提示 error-using the `--user` option
+
+当使用`pip3 install 模块`时，最终提示类似如下错误：
+
+```
+ERROR: Could not install packages due to an OSError: [Errno 13] Permission denied: '/usr/lib/python3.12/site-packages/xxxxx-xx.x.dist-info/LICENSE'
+Consider using the `--user` option or check the permissions.
+```
+
+解决方法就是，给予当前普通用户组（即你的用户名）对`/usr/lib/python3.12/site-packages/`目录的可执行权限：
+
+① 以root权限打开`/usr/lib/python3.12/site-packages/`目录；
+
+② 右键点击`/usr/lib/python3.12/site-packages/`目录，点击“属性”，切到“权限”标签页下，然后在“所有者”下“用户：”、“用户组：”后填写你的用户名和用户组名，例如我的都是“dh”。
+
+③ 再次执行`pip3 install 模块`，一般就可以成功安装模块了！
 
 ## (二)应用软件常见问题
 
