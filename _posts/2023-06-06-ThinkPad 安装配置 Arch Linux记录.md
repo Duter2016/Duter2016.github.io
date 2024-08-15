@@ -2277,7 +2277,7 @@ export GST_ID3V2_TAG_ENCODING=GBK:UTF-8:GB18030
 
 ## 5.1 office编辑类
 
-### 5.1.1 安装wps
+### 5.1.1 安装wps（社区版）
 
 安装中文版wps-office-cn执行：
 
@@ -2313,7 +2313,60 @@ b.安装wps的专用补丁`freetype2-wps`。该方法思路是将旧版 freetype
 yay -S freetype2-wps
 ```
 
-### 5.1.2 安装 LibreOffice
+### 5.1.2 安装wps-office-365
+
+安装中文版wps-office-365执行：
+
+``` 
+yay -S wps-office-365
+```
+① 在wps-office-365每次使用退出后，在后台都会驻留一个云服务进程wpscloudsvr，不想wpscloudsvr后台在主wps进程退出后停留后台，可以使用如下方法：
+
+A.使用如下命令去掉wpscloudsvr的可执行权限就可以禁止该进程启动了：
+
+`sudo chmod -x /opt/kingsoft/wps-office/office6/wpscloudsvr`
+
+该方法本来是wps-office软件包里wps官方写在某个文件中的禁用后台驻留进程的方法，并且官方声明：该方法在解决驻留进程的同时，也会导致wps-office无法登录帐号。所以请权衡之后再决定是否使用。
+
+wps-office-365使用网络上的激活码激活后，同时如果尝试登陆wps账号，在网络抓包中发现key会被读取并传送给服务器，这个过程可能会由于一些原因key被绑定或封杀。所以，一般使用网络上的激活码激活后，最好不登陆wps账号，仅使用wps的离线功能。
+
+B.不想wpscloudsvr后台在主wps进程退出后停留后台，又不想完全禁用wpscloudsvr的话，有以下2种方法：
+
+(a)可以使用 [https://github.com/7Ji/wpscloudsvr-wrapper](https://github.com/7Ji/wpscloudsvr-wrapper) ，这个项目会替换wpscloudsvr，启动后会作为wpscloudsvr的父进程fork启动真正的wpscloudsvr并会在托盘区生成一个图标（名称为 WPS云服务）。所有wps进程退出后，可以点击托盘图标退出，其会将wpscloudsvr正确结束。
+
+(b)可以以 `systemd-run --user -- wps` 的形式启动相应进程，wpscloudsvr会和主进程一起被systemd user套入一个`Type=oneshot`的临时`.service`中，当主进程退出时，wpscloudsvr会作为service的孤儿进程被杀死。这个方案存在问题是wpscloudsvr会和首个主进程绑定，若保留其后启动的wps窗口而关闭首个，则wpscloudsvr会直接退出，不会等待其余wps进程。
+
+② 没有桌面右键新建wps的03格式的`.doc、.xls、.ppt`格式文档菜单
+
+wps-office-365默认只提供的右键新建07格式的文档。debian系社区版的wps-office-cn的deb包安装完，wps 会在`/usr/share/templates/`下生成模板文件，桌面右键新建包含03和07格式的wps文档的选项。Arch Linux安装后，右键新建没有03格式的wps文档菜单，只需要解压别的桌面版复制出来模板文件，放到`/usr/share/templates/`目录即可。
+
+③ wps-office-365 激活
+
+wps-office-365默认只有30天的试用时间。到期后，可以选择如下两种方法继续使用：
+
+A.重置试用时间
+
+`quickstartoffice stop && rm ~/.config/Kingsoft/AuthInfo.conf`
+
+B.使用政企版激活码激活
+
+如果有企业单位提供的政企版的激活码，可以成功激活wps-office-365。但是如果使用的政企版激活码，最好不要登陆账户，防止key被绑定或封杀导致激活失败。例如，我使用的如下政企版wps-365激活码激活成功：`694BF-YUDBG-EAR69-BPRGB-ATQXH`。
+
+另外，参考[ubuntu中文论坛的帖子](https://forum.ubuntu.org.cn/viewtopic.php?t=494609)，替换使用其提供的改造文件后，可以使用常规key进行激活。启动后使用常规key进行激活，整个过程很简单，就是修改oem文件，添加一些键值。这个也是帖子方案附件文件的核心，由于各种情况不保证有效性。最后，一定要保存好激活后的验证文件，方便之后重装或对抗key被封，特殊情况下你需要将验证文件设为特殊权限，阻止被软件修改。同时如果尝试登陆wps账号，在网络抓包中发现key会被读取并传送给服务器，这个过程可能会由于一些原因key被绑定或封杀，所以一般激活后，最好不登陆wps账号，仅使用wps的离线功能。
+
+C.备份激活文件：
+主要激活文件license2.dat在目录`/opt/kingsoft/.auth/` 目录下，备份该目录即可。
+
+④ 最新官方wps-office-365安装包已经同时包含了xiezuo协作和fonts字体，aur已经拆分协作到wps-office-365-xiezuo、拆分字体到wps-office-365-fonts，都是单独的包了！
+
+如果单独安装了wps-office-365-xiezuo，协作默认会开机自动启动，执行`rm ~/.config/autostart/xiezuo.desktop`删除启动项目，即可解决。
+
+【参考】：
+
+* [forum ubuntu](https://forum.ubuntu.org.cn/viewtopic.php?t=494609)
+* [aur wps-office-365](https://aur.archlinux.org/packages/wps-office-365?O=10)
+
+### 5.1.3 安装 LibreOffice
 
 可能需要 hsqldb2-java 启用 LibreOffice Base 中的某些模块。 使用命令安装它：
 
@@ -2351,15 +2404,15 @@ yay -S freetype2-wps
 
 `$ yay libreoffice-extension-languagetool`
 
-### 5.1.3 retext
+### 5.1.4 retext
 
 `sudo pacman -Syu retext`
 
-### 5.1.4 安装texstudio
+### 5.1.5 安装texstudio
 
 `sudo pacman -Syu texstudio`
 
-### 5.1.5 安装 tinytex
+### 5.1.6 安装 tinytex
 
 （1）按照谢大神写的教程 [https://yihui.org/tinytex/#for-other-users]， 终端执行如下命令：
 
@@ -2545,7 +2598,7 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 `pandoc -s m.tex -S --reference-docx reference.docx -o m.docx`
 
-### 5.1.6
+### 5.1.7
 
 ## 5.2 阅读类
 
