@@ -2642,17 +2642,40 @@ calibre 的二进制安装包括了其所有依赖项的私有版本。它可以
 
 总有一个适合你！另外，把36px换成行倍2em也可以！
 
-### 5.2.3 福昕PDF阅读器
+### 5.2.3 PDF阅读器 masterpdfeditor
+
+masterpdfeditor功能十分强大，堪称linux界最强pdf阅读器！安装：
+
+`yay -S masterpdfeditor`
+
+masterpdfeditor5安装后，如果没有激活，在编辑完pdf文档后，保存会有水印。在win下，masterpdfeditor5的keygen注册机激活软件比较多，但是在linux几乎没有可用的破解激活软件可用（曾经在github下有masterpdfeditor的破解项目，但是现在项目已经不存在了）！好在目前还存在masterpdfeditor5在linux下的破解激活版本，新版本使用旧版本的激活文件目前还能使用（只是打开软件后，查看软件版本号，会不一致，但不影响使用）。下面是激活方法：
+
+① 首先，阻断masterpdfeditor的激活联网，修改hosts文件，添加如下内容：
+
+```
+# block masterpdfeditor
+127.0.0.1 reg.code-industry.net
+```
+
+② 下载其他linux下可使用的破解激活版本：
+
+目前，找到的破解激活版本，到页面[《Master PDF Editor 5.9.85 / 5.9.61》](https://www.cybermania.ws/apps/master-pdf-editor/)，找到“(Cracked Linux Installer) Linux64 (Thanks to Team Skyfall )”，点击“[【Download】](https://krakenfiles.com/view/eVlESIlo7a/file.html)”下载“`MasterPDFEditor5.9.10Linux64.7z`”。
+
+③ 替换激活文件：
+
+先备份原启动文件`/opt/master-pdf-editor-5/masterpdfeditor5`为`/opt/master-pdf-editor-5/masterpdfeditor5_BACKUP`。然后，解压下载的“`MasterPDFEditor5.9.10Linux64.7z`”，将解压得到的文件`MasterPDFEditor5.9.10Linux64/crack/masterpdfeditor5`复制到目录`/opt/master-pdf-editor-5/`下。这样再次打开masterpdfeditor，就是已经激活的了！
+
+### 5.2.4 福昕PDF阅读器
 
 直接到官网下载linux amd64版本的安装包解压，双击安装即可！也可以从AUR安装构建包（但反馈bug比较多，不如直接安装官方的二进制包）：
 
 `yay -S foxitreader`
 
-### 5.2.4 pdf 分割工具
+### 5.2.5 pdf 分割工具
 
 `sudo pacman -Syu pdfarranger`
 
-### 5.2.5 文献阅读 cajviewer
+### 5.2.6 文献阅读 cajviewer
 
 `yay cajviewer`
 
