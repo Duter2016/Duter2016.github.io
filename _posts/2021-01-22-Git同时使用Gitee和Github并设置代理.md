@@ -270,7 +270,7 @@ git config --global --unset http.https://github.com.proxy
 git config --global --unset https.https://github.com.proxy
 ```
 
-**注意：**如果你使用的是shadowsocks或shadowsocksR代理，上面是`socks5://127.0.0.1:1080`, 如果用的是http代理协议的软件(比如goflyway多数情况下默认是http客户端协议)，将`socks5://127.0.0.1:1080`改`http://127.0.0.1:1080`即可。
+**注意：**如果你使用的是shadowsocks或shadowsocksR代理，上面是`socks5://127.0.0.1:1080`, 如果用的是http代理协议的软件(比如goflyway多数情况下默认是http客户端协议)，将`socks5://127.0.0.1:1080`改`http://127.0.0.1:1080`即可。注意这里使用`socks5`和`socks5h`都可以，但是区别在于`socks5`使用本地域名解析，但`socks5h`使用代理服务器域名解析。
 
 ### 2)设置git全面代理：
 
