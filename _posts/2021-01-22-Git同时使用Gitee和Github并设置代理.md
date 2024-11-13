@@ -302,9 +302,13 @@ read -p "输入你的选择（输入数字1-2）：" CHOICE
 case $CHOICE in
     1)
         echo ""
-        # 开启 github 代理 start
-        git config --global http.https://github.com.proxy http://127.0.0.1:1080
-        git config --global https.https://github.com.proxy http://127.0.0.1:1080
+        # 开启 github 代理 start （git from goflyway, use "http"）
+#        git config --global http.https://github.com.proxy http://127.0.0.1:1080
+#        git config --global https.https://github.com.proxy http://127.0.0.1:1080
+        # 开启 github 代理 end
+        # 开启 github 代理 start （git from SS or SSR, use "socks5h"）
+        git config --global http.https://github.com.proxy socks5h://127.0.0.1:1080
+        git config --global https.https://github.com.proxy socks5h://127.0.0.1:1080
         # 开启 github 代理 end
         echo "已设置了github的git服务走代理通道！"
         echo ""
