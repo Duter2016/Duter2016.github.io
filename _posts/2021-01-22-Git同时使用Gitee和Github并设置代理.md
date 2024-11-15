@@ -244,8 +244,6 @@ sudo chmod 600 ~/.ssh/*
 
 ## 7.操作过程出现的问题或报错
 
-
-
 检查是否成功的时候，报错：
 
 `tilde_expand_filename: No such user .`
@@ -254,11 +252,13 @@ sudo chmod 600 ~/.ssh/*
 
 此问题是因为`写错了文件路径` 或者 `大小写没写对`，删除重新配置，或者复制我的改好粘贴进去。
 
-## 8.GIT设置代理
+## 8.Github网络加速设置
+
+### 1）方法一：GIT设置proxy代理
 
 如使用 socks5，本地 ip 和端口是 127.0.0.1:1080
 
-### 1)仅设置github代理：
+#### (1)仅设置github代理：
 
 这个只设置了github的git服务走代理通道，不会对国内仓库gitee使用代理。
 
@@ -272,7 +272,7 @@ git config --global --unset https.https://github.com.proxy
 
 **注意：**如果你使用的是shadowsocks或shadowsocksR代理，上面是`socks5://127.0.0.1:1080`, 如果用的是http代理协议的软件(比如goflyway多数情况下默认是http客户端协议)，将`socks5://127.0.0.1:1080`改`http://127.0.0.1:1080`即可。注意这里使用`socks5`和`socks5h`都可以，但是区别在于`socks5`使用本地域名解析，但`socks5h`使用代理服务器域名解析。
 
-### 2)设置git全面代理：
+#### (2)设置git全面代理：
 
 包括github、gitee等git服务全部走代理通道。
 
@@ -284,7 +284,7 @@ git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
 
-### 3)将“设置github代理”做成脚本：
+#### (3)将“设置github代理”做成脚本：
 
 在`/home/opt/githubproxy/` 目录下新建如下几个文件：
 
@@ -372,6 +372,35 @@ Categories=Network;
 ```
 
 把desktop文件拖进开始菜单就可以了！
+
+### 2）方法二：Github使用镜像加速
+
+使用命令替换github原始网址为镜像网址：
+
+```
+git config --global url."https://mirror.ghproxy.com/https://github.com".insteadOf https://github.com`
+```
+
+或直接编辑`~/.gitconfig`添加：
+
+```
+[url "https://mirror.ghproxy.com/https://github.com"]
+    insteadOf = https://github.com
+```
+
+查看git配置信息:
+
+```
+git config --global --list 
+```
+
+取消设置使用如下命令：
+
+```
+git config --global --unset url."https://mirror.ghproxy.com/https://github.com.insteadof" 
+```
+
+**PS.**除了使用`https://mirror.ghproxy.com/https://github.com`镜像加速，还可以使用`https://hub.fastgit.org`。哪个可以使用，用哪个即可！
 
 ## 9.git其他参数配置
 
