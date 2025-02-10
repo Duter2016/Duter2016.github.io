@@ -1378,7 +1378,107 @@ Unarchiver解压压缩包：
 
 ### 2.4.3 杀毒软件 clamtk
 
+安装杀毒软件：
+
 `sudo pacman -Syu clamtk`
+
+**杀毒软件clamTK使用http代理更新病毒库的方法：**
+
+Clamtk在安装完成后，一般情况下，如果不设置一下网络fq，是很难更新病毒库成功的。目前，我还不清楚是什么原因，但是通过努力找到了解决病毒库更新难的办法：通过安装privoxy，通过设置，把SSR的socks5转换为http代理，让clamtk使用http代理更新病毒库。
+
+具体方法如下：
+
+（1）安装并配置[privoxy](https://gist.github.com/xwsg/5ecd015be95a61875d43df87c451aca4)
+
+①安装 privoxy
+
+```
+yay -S privoxy
+```
+
+②配置 privoxy
+
+```
+sudo gedit /etc/privoxy/config 
+```
+
+用`#`注释掉：`listen-address  localhost:8118`
+
+在最后一行添加：
+
+```
+forward-socks5t  /  127.0.0.1:1080 .
+listen-address  127.0.0.1:8118
+```
+
+注：第一行最后有一个英文句号，不要漏了。
+
+`127.0.0.1:1080` 为 socks5代理地址及端口
+
+`127.0.0.1:8118` 为转换为http 代理后的地址及端口，8118如果被占用，可以修改，比如10800， 方便记忆。
+
+③启动 privoxy
+
+```
+sudo systemctl enable privoxy
+sudo systemctl start privoxy
+```
+
+④配置自定义快捷命令
+
+```
+sudo gedit ~/.bashrc
+```
+
+(如果使用的是zsh 修改`sudo gedit ~/.zshrc`)
+
+添加:
+
+```
+alias proxyon="export http_proxy='http://127.0.0.1:8118'; export https_proxy=$http_proxy"
+alias proxyoff="unset http_proxy; unset https_proxy"
+```
+
+使配置生效:
+
+```
+source ~/.bashrc
+```
+
+(或如果使用的zsh: `source ~/.zshrc`）
+
+⑤开起了SSR的代理后，后续开启代理使用`proxyon`命令即可，关闭代理使用`proxyoff`。
+
+⑥检验privoxy的http代理是否可用：
+
+在终端执行命令：
+
+```
+curl --connect-timeout 2 -x 127.0.0.1:8118 http://google.com
+```
+
+如果出现如下代码，说明http代理成功：
+
+```
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>301 Moved</TITLE></HEAD><BODY>
+<H1>301 Moved</H1>
+The document has moved
+<A HREF="http://www.google.com/">here</A>.
+</BODY></HTML>
+```
+
+（2）设置clamtk代理
+
+网络--》手工设置--》
+
+IP地址或域名： `http://127.0.0.1`
+
+端口号：`8118`
+
+--》应用
+
+最后，在更新助手里设置为手动更新，再次点击更新，就可以了！
 
 ### 2.4.4 剪切板管理工具parcellite
 
