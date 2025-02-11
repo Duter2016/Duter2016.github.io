@@ -2698,7 +2698,13 @@ texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 
 `pandoc -s m.tex -S --reference-docx reference.docx -o m.docx`
 
-### 5.1.7
+### 5.1.7 安装数科OFD阅读器
+
+在win下wps是集成了数科ofd阅读器的，但是在linux下，wps-office-365只能输出ofd格式文档，但是不能阅读ofd文档，即linux下的wps没有集成数科ofd阅读器。在linux下需要单独安装数科ofd阅读器：
+
+```
+yay -S suwell-reader-bin
+```
 
 ## 5.2 阅读类
 
