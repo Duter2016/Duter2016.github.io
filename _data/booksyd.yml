@@ -1,3 +1,171 @@
+- name: "县中的孩子"    #书名
+  author: "林小英"    #作者
+  translator: "-"    #翻译者
+  press: "上海人民出版社"    #出版社
+  publishdate: "2023-7"    #出版日期
+  price: "88.00元"    #价格
+  bookimg: "https://img2.doubanio.com/view/subject/s/public/s34571241.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/36407364/"    #豆瓣书单地址
+  readdate: "2025-2"    #阅读日期
+  booktag: "社会学"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "作者用纪录片式的分镜头细 致呈现了县域教育的生态，深度剖析了中国“以县为主”基础教育管理体制所面临困境的根源及其后果，详解县域教育何以在今天这个时代成为一个问题式的存在。"    #书评
+
+- name: "太白金星有点烦"    #书名
+  author: "马伯庸"    #作者
+  translator: "-"    #翻译者
+  press: "湖南文艺出版社"    #出版社
+  publishdate: "2023-6"    #出版日期
+  price: "45.00元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/s/public/s34544956.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/36328704/"    #豆瓣书单地址
+  readdate: "2025-3"    #阅读日期
+  booktag: "哲学"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "地下取经队伍降妖除魔百般威武，天上神界仙界各怀心思斗智斗勇。现代视角另类演绎西游故事，就算成仙也得讲究职场智慧。"    #书评
+
+- name: "在小山和小山之间"    #书名
+  author: "李停"    #作者
+  translator: "-"    #翻译者
+  press: "上海文艺出版社"    #出版社
+  publishdate: "2023-5-18"    #出版日期
+  price: "45.00元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/s/public/s34514752.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/36388449/"    #豆瓣书单地址
+  readdate: "2025-2"    #阅读日期
+  booktag: "中国文学"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "此书巧妙地用双视点写出了母女两代的生育历程和身心转折。女儿视角的描述尤其动人，有日出而作的文化斡旋，有日落而息的两性交战，更有于无声处听了惊雷又见南山的平常人生。"    #书评
+
+- name: "在菜场，在人间"    #书名
+  author: "陈慧"    #作者
+  translator: "-"    #翻译者
+  press: "天津人民出版社"    #出版社
+  publishdate: "2023-12-31"    #出版日期
+  price: "58.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/s/public/s34759058.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/36706392/"    #豆瓣书单地址
+  readdate: "2025-1"    #阅读日期
+  booktag: "中国文学"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "在菜市场摆摊的十八年里，陈慧遇见过形形色色的人和故事，有相熟的乡邻、常来的顾客，也有隔壁摊位的叔叔阿姨、大哥大姐。现在，她将日常所见化作真诚的记述，把市井百态、红尘温暖，和一个个平凡生命的庄严与贵重，通通写入这本《在菜场，在人间》。把烟火人间的热热闹闹、挨挨挤挤，把贴地而活的生之乐趣，带给每一个读者"    #书评
+
+- name: "五四婚姻"    #书名
+  author: "孔慧怡"    #作者
+  translator: "-"    #翻译者
+  press: "岳麓书社"    #出版社
+  publishdate: "2023-9"    #出版日期
+  price: "56.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/s/public/s34608860.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/36478066/"    #豆瓣书单地址
+  readdate: "2025-1"    #阅读日期
+  booktag: "中国文学"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "本书重述新文化时期知名的三宗离婚与八段婚姻。作者孔慧怡一反男性中心的传记传统，寻找历史中失落的女性声音，以女性主义的视角，重新讲述朱安、许广平、江冬秀、曹珮声、张幼仪、陆小曼、林徽音的婚恋故事，展现巨变时代中“新”“旧”两代女性波澜起伏的命运。"    #书评
+
+- name: "成为雍正"    #书名
+  author: "李正"    #作者
+  translator: "-"    #翻译者
+  press: "岳麓书社"    #出版社
+  publishdate: "2023-9-8"    #出版日期
+  price: "78.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/s/public/s34628348.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/36523838/"    #豆瓣书单地址
+  readdate: "2024-12"    #阅读日期
+  booktag: "历史、档案"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "阐述了雍正这位“近世中国最具代表性的独裁君主”的成长之路，以及掩盖在“康乾盛世”背影下的雍正一朝的真实面貌。全书结合了大量的史料分析，系统梳理了相关的档案文献，以独特的观察视角，再现了清帝国拐点时期的历史群像。"    #书评
+
+- name: "夹边沟记事"    #书名
+  author: "杨显惠"    #作者
+  translator: "-"    #翻译者
+  press: "花城出版社"    #出版社
+  publishdate: "2017-1"    #出版日期
+  price: "26.80元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/s/public/s1102859.jpg"    #封面图片链接地址
+  doubanurl: "-"    #豆瓣书单地址
+  readdate: "2024-11"    #阅读日期
+  booktag: "社会纪实"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "文革时期的……"    #书评
+
+- name: "十大元帅之谜"    #书名
+  author: "晓亮/文军"    #作者
+  translator: "-"    #翻译者
+  press: "河南人民出版社"    #出版社
+  publishdate: "1993-9"    #出版日期
+  price: "13.60元"    #价格
+  bookimg: "https://img3.doubanio.com/view/subject/s/public/s32323787.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/11511036/"    #豆瓣书单地址
+  readdate: "2024-10"    #阅读日期
+  booktag: "人物传记"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "开国大将"    #书评
+
+- name: "时间贫困"    #书名
+  author: "[英]凯茜·霍姆斯（ Cassie Holmes）"    #作者
+  translator: "柳菁/万佳"    #翻译者
+  press: "中信出版社"    #出版社
+  publishdate: "2023-12-13"    #出版日期
+  price: "59元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/s/public/s34725454.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/36687146/"    #豆瓣书单地址
+  readdate: "2024-6"    #阅读日期
+  booktag: "哲学"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "书中提供了详细的时间管理案例和非常具体的实施步骤，可以带我们一步步修正自己的时间策略，学会合理利用时间。"    #书评
+
+- name: "贫穷的本质"    #书名
+  author: "[印度] 阿比吉特·班纳吉/[法] 埃斯特·迪弗洛"    #作者
+  translator: "景芳"    #翻译者
+  press: "中信出版社"    #出版社
+  publishdate: "2018-9"    #出版日期
+  price: "58元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/s/public/s29856376.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/30161884/"    #豆瓣书单地址
+  readdate: "2024-4"    #阅读日期
+  booktag: "社会学"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "对关于贫穷的一些流行观点进行了反思，比如援助越多穷人的依赖性越强，外部援助不起作用等等。他们指出，多年来的扶贫政策大都以失败而告终，原因就在于人们对于贫穷的理解不够深刻，好钢没有用在刀刃上。他们通过大量的实例，提出了一些实用性较强的建议，寻找那些经得起检验的扶贫方案，为政策制定者、慈善家、政治家及所有希望天下脱贫的人提供了重要指导。"    #书评
+
+- name: "我在北京送快递"    #书名
+  author: "胡安焉"    #作者
+  translator: "-"    #翻译者
+  press: "湖南文艺出版社"    #出版社
+  publishdate: "2023-3"    #出版日期
+  price: "56.00元"    #价格
+  bookimg: "https://img1.doubanio.com/view/subject/s/public/s34522268.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/36150423/"    #豆瓣书单地址
+  readdate: "2024-3"    #阅读日期
+  booktag: "个人叙事"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "进入社会工作至今的二十年间，胡安焉走南闯北，辗转于广东、广西、云南、上海、北京等地，做过快递员、夜班拣货工人、便利店店员、保安、自行车店销售、服装店导购、加油站加油工……他将日常的点滴和工作的甘苦化作真诚的自述，记录了一个平凡人在生活中的辛劳、私心、温情、正气。"    #书评
+
+- name: "人性的弱点"    #书名
+  author: "[美]戴尔·卡耐基"    #作者
+  translator: "韩文桥"    #翻译者
+  press: "浙江文艺出版社"    #出版社
+  publishdate: "2017-1"    #出版日期
+  price: "39.80元"    #价格
+  bookimg: "https://img9.doubanio.com/view/subject/s/public/s29827294.jpg"    #封面图片链接地址
+  doubanurl: "https://book.douban.com/subject/26954744/"    #豆瓣书单地址
+  readdate: "2022-7"    #阅读日期
+  booktag: "社会学"    #书的分类标签
+  stars: "★★★★★"    #评价星级
+  rate: "力荐"    #1到5星分别为很差、较差、还行、推荐、力荐
+  review: "涵盖家庭生活、商务谈判、公司管理、社会交往、情感交流等方方面面立竿见影的沟通技巧，被誉为“人际与社交圣经”、“提升情商的必读经典”、“能引导你走向成功的书”。"    #书评
+
 - name: "芯片战争"    #书名
   author: "余盛"    #作者
   translator: "-"    #翻译者
